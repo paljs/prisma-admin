@@ -21,11 +21,11 @@
     "dev": "lerna run dev --stream"
   },
   "devDependencies": {
-    "doctoc": "^1.4.0",
-    "husky": "^4.2.5",
+    "doctoc": "1.4.0",
+    "husky": "4.2.5",
     "lerna": "3.20.2",
-    "prettier": "^2.0.4",
-    "pretty-quick": "^2.0.1"
+    "prettier": "2.0.5",
+    "pretty-quick": "2.0.1"
   },
   "prettier": {
     "singleQuote": true,
