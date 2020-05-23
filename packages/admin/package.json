@@ -55,9 +55,9 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.14.0",
-    "@graphql-codegen/typescript": "1.13.1",
+    "@graphql-codegen/typescript": "1.14.0",
     "@graphql-codegen/typescript-operations": "1.14.0",
-    "@graphql-codegen/typescript-react-apollo": "1.13.1",
+    "@graphql-codegen/typescript-react-apollo": "1.14.0",
     "@types/lowdb": "1.0.9",
     "@types/match-sorter": "4.0.0",
     "@types/moment": "2.13.0",
