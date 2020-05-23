@@ -30,7 +30,7 @@ export default function Login() {
       },
     }).then(({ data, errors }) => {
       if (!errors && data?.login && refetch) {
-        localStorage.setItem('token', data.login.token);
+        typeof localStorage !== 'undefined' && localStorage.setItem('token', data.login.token);
         refetch().then(() => navigate('dashboard'));
       }
     });

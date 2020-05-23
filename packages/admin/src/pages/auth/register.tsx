@@ -41,7 +41,7 @@ export default function Register() {
       },
     }).then(({ data, errors }) => {
       if (!errors && data?.signup && refetch) {
-        localStorage.setItem('token', data.signup.token);
+        typeof localStorage !== 'undefined' && localStorage.setItem('token', data.signup.token);
         refetch().then(() => navigate('dashboard'));
       }
     });

@@ -6,7 +6,7 @@ const LogoutPage = () => {
   const client = useApolloClient();
   useEffect(() => {
     async function clear() {
-      await localStorage.removeItem('token');
+      typeof localStorage !== 'undefined' && (await localStorage.removeItem('token'));
       await client.resetStore();
       await navigate('/auth/login');
     }

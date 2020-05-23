@@ -14,13 +14,13 @@ export type Scalars = {
 };
 
 export type AuthPayload = {
-  __typename?: 'AuthPayload';
+   __typename?: 'AuthPayload';
   token: Scalars['String'];
   user: User;
 };
 
 export type BatchPayload = {
-  __typename?: 'BatchPayload';
+   __typename?: 'BatchPayload';
   count: Scalars['Int'];
 };
 
@@ -30,7 +30,7 @@ export type BooleanFilter = {
 };
 
 export type Comment = {
-  __typename?: 'Comment';
+   __typename?: 'Comment';
   author?: Maybe<User>;
   authorId?: Maybe<Scalars['Int']>;
   contain: Scalars['String'];
@@ -208,6 +208,7 @@ export type CommentWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
 };
 
+
 export type DateTimeFilter = {
   equals?: Maybe<Scalars['DateTime']>;
   gt?: Maybe<Scalars['DateTime']>;
@@ -220,13 +221,13 @@ export type DateTimeFilter = {
 };
 
 export type Enum = {
-  __typename?: 'Enum';
+   __typename?: 'Enum';
   fields: Array<Scalars['String']>;
   name: Scalars['String'];
 };
 
 export type Field = {
-  __typename?: 'Field';
+   __typename?: 'Field';
   create: Scalars['Boolean'];
   editor?: Maybe<Scalars['Boolean']>;
   filter: Scalars['Boolean'];
@@ -247,13 +248,14 @@ export type Field = {
 };
 
 export type Group = {
-  __typename?: 'Group';
+   __typename?: 'Group';
   createdAt: Scalars['DateTime'];
   id: Scalars['Int'];
   name: Scalars['String'];
   updatedAt: Scalars['DateTime'];
   users: Array<User>;
 };
+
 
 export type GroupUsersArgs = {
   after?: Maybe<UserWhereUniqueInput>;
@@ -355,11 +357,11 @@ export type IntFilter = {
 export enum KindEnum {
   Enum = 'enum',
   Object = 'object',
-  Scalar = 'scalar',
+  Scalar = 'scalar'
 }
 
 export type Model = {
-  __typename?: 'Model';
+   __typename?: 'Model';
   create: Scalars['Boolean'];
   delete: Scalars['Boolean'];
   displayFields: Array<Scalars['String']>;
@@ -371,7 +373,7 @@ export type Model = {
 };
 
 export type Mutation = {
-  __typename?: 'Mutation';
+   __typename?: 'Mutation';
   createOneComment: Comment;
   createOneGroup: Group;
   createOnePost: Post;
@@ -395,42 +397,52 @@ export type Mutation = {
   upsertOneUser: User;
 };
 
+
 export type MutationCreateOneCommentArgs = {
   data: CommentCreateInput;
 };
+
 
 export type MutationCreateOneGroupArgs = {
   data: GroupCreateInput;
 };
 
+
 export type MutationCreateOnePostArgs = {
   data: PostCreateInput;
 };
+
 
 export type MutationCreateOneUserArgs = {
   data: UserCreateInput;
 };
 
+
 export type MutationDeleteOneCommentArgs = {
   where: CommentWhereUniqueInput;
 };
+
 
 export type MutationDeleteOneGroupArgs = {
   where: GroupWhereUniqueInput;
 };
 
+
 export type MutationDeleteOnePostArgs = {
   where: PostWhereUniqueInput;
 };
+
 
 export type MutationDeleteOneUserArgs = {
   where: UserWhereUniqueInput;
 };
 
+
 export type MutationLoginArgs = {
   email: Scalars['String'];
   password: Scalars['String'];
 };
+
 
 export type MutationSignupArgs = {
   email: Scalars['String'];
@@ -438,41 +450,49 @@ export type MutationSignupArgs = {
   password: Scalars['String'];
 };
 
+
 export type MutationUpdateFieldArgs = {
   data?: Maybe<UpdateFieldInput>;
   id: Scalars['String'];
   modelId: Scalars['String'];
 };
 
+
 export type MutationUpdateModelArgs = {
   data?: Maybe<UpdateModelInput>;
   id: Scalars['String'];
 };
+
 
 export type MutationUpdateOneCommentArgs = {
   data: CommentUpdateInput;
   where: CommentWhereUniqueInput;
 };
 
+
 export type MutationUpdateOneGroupArgs = {
   data: GroupUpdateInput;
   where: GroupWhereUniqueInput;
 };
+
 
 export type MutationUpdateOnePostArgs = {
   data: PostUpdateInput;
   where: PostWhereUniqueInput;
 };
 
+
 export type MutationUpdateOneUserArgs = {
   data: UserUpdateInput;
   where: UserWhereUniqueInput;
 };
 
+
 export type MutationUpdatePasswordArgs = {
   currentPassword: Scalars['String'];
   password: Scalars['String'];
 };
+
 
 export type MutationUpsertOneCommentArgs = {
   create: CommentCreateInput;
@@ -480,17 +500,20 @@ export type MutationUpsertOneCommentArgs = {
   where: CommentWhereUniqueInput;
 };
 
+
 export type MutationUpsertOneGroupArgs = {
   create: GroupCreateInput;
   update: GroupUpdateInput;
   where: GroupWhereUniqueInput;
 };
 
+
 export type MutationUpsertOnePostArgs = {
   create: PostCreateInput;
   update: PostUpdateInput;
   where: PostWhereUniqueInput;
 };
+
 
 export type MutationUpsertOneUserArgs = {
   create: UserCreateInput;
@@ -525,11 +548,11 @@ export type NullableStringFilter = {
 
 export enum OrderByArg {
   Asc = 'asc',
-  Desc = 'desc',
+  Desc = 'desc'
 }
 
 export type Post = {
-  __typename?: 'Post';
+   __typename?: 'Post';
   author?: Maybe<User>;
   authorId?: Maybe<Scalars['Int']>;
   comments: Array<Comment>;
@@ -539,6 +562,7 @@ export type Post = {
   title: Scalars['String'];
   updatedAt: Scalars['DateTime'];
 };
+
 
 export type PostCommentsArgs = {
   after?: Maybe<CommentWhereUniqueInput>;
@@ -716,7 +740,7 @@ export type PostWhereUniqueInput = {
 };
 
 export type Query = {
-  __typename?: 'Query';
+   __typename?: 'Query';
   findManyComment?: Maybe<Array<Comment>>;
   findManyCommentCount: Scalars['Int'];
   findManyGroup?: Maybe<Array<Group>>;
@@ -733,6 +757,7 @@ export type Query = {
   me?: Maybe<User>;
 };
 
+
 export type QueryFindManyCommentArgs = {
   after?: Maybe<CommentWhereUniqueInput>;
   before?: Maybe<CommentWhereUniqueInput>;
@@ -742,6 +767,7 @@ export type QueryFindManyCommentArgs = {
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<CommentWhereInput>;
 };
+
 
 export type QueryFindManyCommentCountArgs = {
   after?: Maybe<CommentWhereUniqueInput>;
@@ -753,6 +779,7 @@ export type QueryFindManyCommentCountArgs = {
   where?: Maybe<CommentWhereInput>;
 };
 
+
 export type QueryFindManyGroupArgs = {
   after?: Maybe<GroupWhereUniqueInput>;
   before?: Maybe<GroupWhereUniqueInput>;
@@ -762,6 +789,7 @@ export type QueryFindManyGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<GroupWhereInput>;
 };
+
 
 export type QueryFindManyGroupCountArgs = {
   after?: Maybe<GroupWhereUniqueInput>;
@@ -773,6 +801,7 @@ export type QueryFindManyGroupCountArgs = {
   where?: Maybe<GroupWhereInput>;
 };
 
+
 export type QueryFindManyPostArgs = {
   after?: Maybe<PostWhereUniqueInput>;
   before?: Maybe<PostWhereUniqueInput>;
@@ -782,6 +811,7 @@ export type QueryFindManyPostArgs = {
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<PostWhereInput>;
 };
+
 
 export type QueryFindManyPostCountArgs = {
   after?: Maybe<PostWhereUniqueInput>;
@@ -793,6 +823,7 @@ export type QueryFindManyPostCountArgs = {
   where?: Maybe<PostWhereInput>;
 };
 
+
 export type QueryFindManyUserArgs = {
   after?: Maybe<UserWhereUniqueInput>;
   before?: Maybe<UserWhereUniqueInput>;
@@ -802,6 +833,7 @@ export type QueryFindManyUserArgs = {
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<UserWhereInput>;
 };
+
 
 export type QueryFindManyUserCountArgs = {
   after?: Maybe<UserWhereUniqueInput>;
@@ -813,24 +845,28 @@ export type QueryFindManyUserCountArgs = {
   where?: Maybe<UserWhereInput>;
 };
 
+
 export type QueryFindOneCommentArgs = {
   where: CommentWhereUniqueInput;
 };
+
 
 export type QueryFindOneGroupArgs = {
   where: GroupWhereUniqueInput;
 };
 
+
 export type QueryFindOnePostArgs = {
   where: PostWhereUniqueInput;
 };
+
 
 export type QueryFindOneUserArgs = {
   where: UserWhereUniqueInput;
 };
 
 export type Schema = {
-  __typename?: 'Schema';
+   __typename?: 'Schema';
   enums: Array<Enum>;
   models: Array<Model>;
 };
@@ -880,7 +916,7 @@ export type UpdateModelInput = {
 };
 
 export type User = {
-  __typename?: 'User';
+   __typename?: 'User';
   comments: Array<Comment>;
   createdAt: Scalars['DateTime'];
   email: Scalars['String'];
@@ -891,6 +927,7 @@ export type User = {
   posts: Array<Post>;
 };
 
+
 export type UserCommentsArgs = {
   after?: Maybe<CommentWhereUniqueInput>;
   before?: Maybe<CommentWhereUniqueInput>;
@@ -900,6 +937,7 @@ export type UserCommentsArgs = {
   skip?: Maybe<Scalars['Int']>;
   where?: Maybe<CommentWhereInput>;
 };
+
 
 export type UserPostsArgs = {
   after?: Maybe<PostWhereUniqueInput>;
@@ -1127,20 +1165,32 @@ export type UserWhereUniqueInput = {
 
 export type MeQueryVariables = {};
 
-export type MeQuery = { __typename?: 'Query' } & {
-  me?: Maybe<{ __typename?: 'User' } & Pick<User, 'id' | 'name' | 'email'>>;
-};
+
+export type MeQuery = (
+  { __typename?: 'Query' }
+  & { me?: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'id' | 'name' | 'email'>
+  )> }
+);
 
 export type LoginMutationVariables = {
   email: Scalars['String'];
   password: Scalars['String'];
 };
 
-export type LoginMutation = { __typename?: 'Mutation' } & {
-  login?: Maybe<
-    { __typename?: 'AuthPayload' } & Pick<AuthPayload, 'token'> & { user: { __typename?: 'User' } & UserFieldsFragment }
-  >;
-};
+
+export type LoginMutation = (
+  { __typename?: 'Mutation' }
+  & { login?: Maybe<(
+    { __typename?: 'AuthPayload' }
+    & Pick<AuthPayload, 'token'>
+    & { user: (
+      { __typename?: 'User' }
+      & UserFieldsFragment
+    ) }
+  )> }
+);
 
 export type SignupMutationVariables = {
   email: Scalars['String'];
@@ -1148,29 +1198,48 @@ export type SignupMutationVariables = {
   name?: Maybe<Scalars['String']>;
 };
 
-export type SignupMutation = { __typename?: 'Mutation' } & {
-  signup: { __typename?: 'AuthPayload' } & Pick<AuthPayload, 'token'> & {
-      user: { __typename?: 'User' } & UserFieldsFragment;
-    };
-};
 
-export type CommentFieldsFragment = { __typename?: 'Comment' } & Pick<
-  Comment,
-  'id' | 'contain' | 'postId' | 'authorId' | 'createdAt' | 'updatedAt'
->;
+export type SignupMutation = (
+  { __typename?: 'Mutation' }
+  & { signup: (
+    { __typename?: 'AuthPayload' }
+    & Pick<AuthPayload, 'token'>
+    & { user: (
+      { __typename?: 'User' }
+      & UserFieldsFragment
+    ) }
+  ) }
+);
 
-export type CommentFragment = { __typename?: 'Comment' } & {
-  post: { __typename?: 'Post' } & PostFieldsFragment;
-  author?: Maybe<{ __typename?: 'User' } & UserFieldsFragment>;
-} & CommentFieldsFragment;
+export type CommentFieldsFragment = (
+  { __typename?: 'Comment' }
+  & Pick<Comment, 'id' | 'contain' | 'postId' | 'authorId' | 'createdAt' | 'updatedAt'>
+);
+
+export type CommentFragment = (
+  { __typename?: 'Comment' }
+  & { post: (
+    { __typename?: 'Post' }
+    & PostFieldsFragment
+  ), author?: Maybe<(
+    { __typename?: 'User' }
+    & UserFieldsFragment
+  )> }
+  & CommentFieldsFragment
+);
 
 export type FindOneCommentQueryVariables = {
   where: CommentWhereUniqueInput;
 };
 
-export type FindOneCommentQuery = { __typename?: 'Query' } & {
-  findOneComment?: Maybe<{ __typename?: 'Comment' } & CommentFragment>;
-};
+
+export type FindOneCommentQuery = (
+  { __typename?: 'Query' }
+  & { findOneComment?: Maybe<(
+    { __typename?: 'Comment' }
+    & CommentFragment
+  )> }
+);
 
 export type FindManyCommentQueryVariables = {
   where?: Maybe<CommentWhereInput>;
@@ -1182,46 +1251,78 @@ export type FindManyCommentQueryVariables = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export type FindManyCommentQuery = { __typename?: 'Query' } & Pick<Query, 'findManyCommentCount'> & {
-    findManyComment?: Maybe<Array<{ __typename?: 'Comment' } & CommentFragment>>;
-  };
+
+export type FindManyCommentQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'findManyCommentCount'>
+  & { findManyComment?: Maybe<Array<(
+    { __typename?: 'Comment' }
+    & CommentFragment
+  )>> }
+);
 
 export type CreateOneCommentMutationVariables = {
   data: CommentCreateInput;
 };
 
-export type CreateOneCommentMutation = { __typename?: 'Mutation' } & {
-  createOneComment: { __typename?: 'Comment' } & CommentFragment;
-};
+
+export type CreateOneCommentMutation = (
+  { __typename?: 'Mutation' }
+  & { createOneComment: (
+    { __typename?: 'Comment' }
+    & CommentFragment
+  ) }
+);
 
 export type UpdateOneCommentMutationVariables = {
   where: CommentWhereUniqueInput;
   data: CommentUpdateInput;
 };
 
-export type UpdateOneCommentMutation = { __typename?: 'Mutation' } & {
-  updateOneComment: { __typename?: 'Comment' } & CommentFragment;
-};
+
+export type UpdateOneCommentMutation = (
+  { __typename?: 'Mutation' }
+  & { updateOneComment: (
+    { __typename?: 'Comment' }
+    & CommentFragment
+  ) }
+);
 
 export type DeleteOneCommentMutationVariables = {
   where: CommentWhereUniqueInput;
 };
 
-export type DeleteOneCommentMutation = { __typename?: 'Mutation' } & {
-  deleteOneComment?: Maybe<{ __typename?: 'Comment' } & Pick<Comment, 'id'>>;
-};
 
-export type GroupFieldsFragment = { __typename?: 'Group' } & Pick<Group, 'name' | 'id' | 'createdAt' | 'updatedAt'>;
+export type DeleteOneCommentMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteOneComment?: Maybe<(
+    { __typename?: 'Comment' }
+    & Pick<Comment, 'id'>
+  )> }
+);
 
-export type GroupFragment = { __typename?: 'Group' } & GroupFieldsFragment;
+export type GroupFieldsFragment = (
+  { __typename?: 'Group' }
+  & Pick<Group, 'name' | 'id' | 'createdAt' | 'updatedAt'>
+);
+
+export type GroupFragment = (
+  { __typename?: 'Group' }
+  & GroupFieldsFragment
+);
 
 export type FindOneGroupQueryVariables = {
   where: GroupWhereUniqueInput;
 };
 
-export type FindOneGroupQuery = { __typename?: 'Query' } & {
-  findOneGroup?: Maybe<{ __typename?: 'Group' } & GroupFragment>;
-};
+
+export type FindOneGroupQuery = (
+  { __typename?: 'Query' }
+  & { findOneGroup?: Maybe<(
+    { __typename?: 'Group' }
+    & GroupFragment
+  )> }
+);
 
 export type FindManyGroupQueryVariables = {
   where?: Maybe<GroupWhereInput>;
@@ -1233,51 +1334,82 @@ export type FindManyGroupQueryVariables = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export type FindManyGroupQuery = { __typename?: 'Query' } & Pick<Query, 'findManyGroupCount'> & {
-    findManyGroup?: Maybe<Array<{ __typename?: 'Group' } & GroupFragment>>;
-  };
+
+export type FindManyGroupQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'findManyGroupCount'>
+  & { findManyGroup?: Maybe<Array<(
+    { __typename?: 'Group' }
+    & GroupFragment
+  )>> }
+);
 
 export type CreateOneGroupMutationVariables = {
   data: GroupCreateInput;
 };
 
-export type CreateOneGroupMutation = { __typename?: 'Mutation' } & {
-  createOneGroup: { __typename?: 'Group' } & GroupFragment;
-};
+
+export type CreateOneGroupMutation = (
+  { __typename?: 'Mutation' }
+  & { createOneGroup: (
+    { __typename?: 'Group' }
+    & GroupFragment
+  ) }
+);
 
 export type UpdateOneGroupMutationVariables = {
   where: GroupWhereUniqueInput;
   data: GroupUpdateInput;
 };
 
-export type UpdateOneGroupMutation = { __typename?: 'Mutation' } & {
-  updateOneGroup: { __typename?: 'Group' } & GroupFragment;
-};
+
+export type UpdateOneGroupMutation = (
+  { __typename?: 'Mutation' }
+  & { updateOneGroup: (
+    { __typename?: 'Group' }
+    & GroupFragment
+  ) }
+);
 
 export type DeleteOneGroupMutationVariables = {
   where: GroupWhereUniqueInput;
 };
 
-export type DeleteOneGroupMutation = { __typename?: 'Mutation' } & {
-  deleteOneGroup?: Maybe<{ __typename?: 'Group' } & Pick<Group, 'id'>>;
-};
 
-export type PostFieldsFragment = { __typename?: 'Post' } & Pick<
-  Post,
-  'id' | 'published' | 'title' | 'authorId' | 'createdAt' | 'updatedAt'
->;
+export type DeleteOneGroupMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteOneGroup?: Maybe<(
+    { __typename?: 'Group' }
+    & Pick<Group, 'id'>
+  )> }
+);
 
-export type PostFragment = { __typename?: 'Post' } & {
-  author?: Maybe<{ __typename?: 'User' } & UserFieldsFragment>;
-} & PostFieldsFragment;
+export type PostFieldsFragment = (
+  { __typename?: 'Post' }
+  & Pick<Post, 'id' | 'published' | 'title' | 'authorId' | 'createdAt' | 'updatedAt'>
+);
+
+export type PostFragment = (
+  { __typename?: 'Post' }
+  & { author?: Maybe<(
+    { __typename?: 'User' }
+    & UserFieldsFragment
+  )> }
+  & PostFieldsFragment
+);
 
 export type FindOnePostQueryVariables = {
   where: PostWhereUniqueInput;
 };
 
-export type FindOnePostQuery = { __typename?: 'Query' } & {
-  findOnePost?: Maybe<{ __typename?: 'Post' } & PostFragment>;
-};
+
+export type FindOnePostQuery = (
+  { __typename?: 'Query' }
+  & { findOnePost?: Maybe<(
+    { __typename?: 'Post' }
+    & PostFragment
+  )> }
+);
 
 export type FindManyPostQueryVariables = {
   where?: Maybe<PostWhereInput>;
@@ -1289,80 +1421,105 @@ export type FindManyPostQueryVariables = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export type FindManyPostQuery = { __typename?: 'Query' } & Pick<Query, 'findManyPostCount'> & {
-    findManyPost?: Maybe<Array<{ __typename?: 'Post' } & PostFragment>>;
-  };
+
+export type FindManyPostQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'findManyPostCount'>
+  & { findManyPost?: Maybe<Array<(
+    { __typename?: 'Post' }
+    & PostFragment
+  )>> }
+);
 
 export type CreateOnePostMutationVariables = {
   data: PostCreateInput;
 };
 
-export type CreateOnePostMutation = { __typename?: 'Mutation' } & {
-  createOnePost: { __typename?: 'Post' } & PostFragment;
-};
+
+export type CreateOnePostMutation = (
+  { __typename?: 'Mutation' }
+  & { createOnePost: (
+    { __typename?: 'Post' }
+    & PostFragment
+  ) }
+);
 
 export type UpdateOnePostMutationVariables = {
   where: PostWhereUniqueInput;
   data: PostUpdateInput;
 };
 
-export type UpdateOnePostMutation = { __typename?: 'Mutation' } & {
-  updateOnePost: { __typename?: 'Post' } & PostFragment;
-};
+
+export type UpdateOnePostMutation = (
+  { __typename?: 'Mutation' }
+  & { updateOnePost: (
+    { __typename?: 'Post' }
+    & PostFragment
+  ) }
+);
 
 export type DeleteOnePostMutationVariables = {
   where: PostWhereUniqueInput;
 };
 
-export type DeleteOnePostMutation = { __typename?: 'Mutation' } & {
-  deleteOnePost?: Maybe<{ __typename?: 'Post' } & Pick<Post, 'id'>>;
-};
 
-export type ModelFragment = { __typename?: 'Model' } & Pick<
-  Model,
-  'id' | 'name' | 'create' | 'delete' | 'update' | 'idField' | 'displayFields'
-> & { fields: Array<{ __typename?: 'Field' } & FieldFragment> };
+export type DeleteOnePostMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteOnePost?: Maybe<(
+    { __typename?: 'Post' }
+    & Pick<Post, 'id'>
+  )> }
+);
 
-export type FieldFragment = { __typename?: 'Field' } & Pick<
-  Field,
-  | 'id'
-  | 'name'
-  | 'title'
-  | 'type'
-  | 'list'
-  | 'kind'
-  | 'read'
-  | 'required'
-  | 'isId'
-  | 'unique'
-  | 'create'
-  | 'order'
-  | 'update'
-  | 'sort'
-  | 'filter'
-  | 'editor'
-  | 'relationField'
->;
+export type ModelFragment = (
+  { __typename?: 'Model' }
+  & Pick<Model, 'id' | 'name' | 'create' | 'delete' | 'update' | 'idField' | 'displayFields'>
+  & { fields: Array<(
+    { __typename?: 'Field' }
+    & FieldFragment
+  )> }
+);
 
-export type EnumFragment = { __typename?: 'Enum' } & Pick<Enum, 'name' | 'fields'>;
+export type FieldFragment = (
+  { __typename?: 'Field' }
+  & Pick<Field, 'id' | 'name' | 'title' | 'type' | 'list' | 'kind' | 'read' | 'required' | 'isId' | 'unique' | 'create' | 'order' | 'update' | 'sort' | 'filter' | 'editor' | 'relationField'>
+);
+
+export type EnumFragment = (
+  { __typename?: 'Enum' }
+  & Pick<Enum, 'name' | 'fields'>
+);
 
 export type GetSchemaQueryVariables = {};
 
-export type GetSchemaQuery = { __typename?: 'Query' } & {
-  getSchema: { __typename?: 'Schema' } & {
-    models: Array<{ __typename?: 'Model' } & ModelFragment>;
-    enums: Array<{ __typename?: 'Enum' } & EnumFragment>;
-  };
-};
+
+export type GetSchemaQuery = (
+  { __typename?: 'Query' }
+  & { getSchema: (
+    { __typename?: 'Schema' }
+    & { models: Array<(
+      { __typename?: 'Model' }
+      & ModelFragment
+    )>, enums: Array<(
+      { __typename?: 'Enum' }
+      & EnumFragment
+    )> }
+  ) }
+);
 
 export type UpdateModelMutationVariables = {
   id: Scalars['String'];
   data: UpdateModelInput;
 };
 
-export type UpdateModelMutation = { __typename?: 'Mutation' } & {
-  updateModel: { __typename?: 'Model' } & ModelFragment;
-};
+
+export type UpdateModelMutation = (
+  { __typename?: 'Mutation' }
+  & { updateModel: (
+    { __typename?: 'Model' }
+    & ModelFragment
+  ) }
+);
 
 export type UpdateFieldMutationVariables = {
   id: Scalars['String'];
@@ -1370,26 +1527,41 @@ export type UpdateFieldMutationVariables = {
   data: UpdateFieldInput;
 };
 
-export type UpdateFieldMutation = { __typename?: 'Mutation' } & {
-  updateField: { __typename?: 'Field' } & FieldFragment;
-};
 
-export type UserFieldsFragment = { __typename?: 'User' } & Pick<
-  User,
-  'id' | 'email' | 'name' | 'groupId' | 'createdAt'
->;
+export type UpdateFieldMutation = (
+  { __typename?: 'Mutation' }
+  & { updateField: (
+    { __typename?: 'Field' }
+    & FieldFragment
+  ) }
+);
 
-export type UserFragment = { __typename?: 'User' } & {
-  group?: Maybe<{ __typename?: 'Group' } & GroupFieldsFragment>;
-} & UserFieldsFragment;
+export type UserFieldsFragment = (
+  { __typename?: 'User' }
+  & Pick<User, 'id' | 'email' | 'name' | 'groupId' | 'createdAt'>
+);
+
+export type UserFragment = (
+  { __typename?: 'User' }
+  & { group?: Maybe<(
+    { __typename?: 'Group' }
+    & GroupFieldsFragment
+  )> }
+  & UserFieldsFragment
+);
 
 export type FindOneUserQueryVariables = {
   where: UserWhereUniqueInput;
 };
 
-export type FindOneUserQuery = { __typename?: 'Query' } & {
-  findOneUser?: Maybe<{ __typename?: 'User' } & UserFragment>;
-};
+
+export type FindOneUserQuery = (
+  { __typename?: 'Query' }
+  & { findOneUser?: Maybe<(
+    { __typename?: 'User' }
+    & UserFragment
+  )> }
+);
 
 export type FindManyUserQueryVariables = {
   where?: Maybe<UserWhereInput>;
@@ -1401,169 +1573,185 @@ export type FindManyUserQueryVariables = {
   last?: Maybe<Scalars['Int']>;
 };
 
-export type FindManyUserQuery = { __typename?: 'Query' } & Pick<Query, 'findManyUserCount'> & {
-    findManyUser?: Maybe<Array<{ __typename?: 'User' } & UserFragment>>;
-  };
+
+export type FindManyUserQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'findManyUserCount'>
+  & { findManyUser?: Maybe<Array<(
+    { __typename?: 'User' }
+    & UserFragment
+  )>> }
+);
 
 export type CreateOneUserMutationVariables = {
   data: UserCreateInput;
 };
 
-export type CreateOneUserMutation = { __typename?: 'Mutation' } & {
-  createOneUser: { __typename?: 'User' } & UserFragment;
-};
+
+export type CreateOneUserMutation = (
+  { __typename?: 'Mutation' }
+  & { createOneUser: (
+    { __typename?: 'User' }
+    & UserFragment
+  ) }
+);
 
 export type UpdateOneUserMutationVariables = {
   where: UserWhereUniqueInput;
   data: UserUpdateInput;
 };
 
-export type UpdateOneUserMutation = { __typename?: 'Mutation' } & {
-  updateOneUser: { __typename?: 'User' } & UserFragment;
-};
+
+export type UpdateOneUserMutation = (
+  { __typename?: 'Mutation' }
+  & { updateOneUser: (
+    { __typename?: 'User' }
+    & UserFragment
+  ) }
+);
 
 export type DeleteOneUserMutationVariables = {
   where: UserWhereUniqueInput;
 };
 
-export type DeleteOneUserMutation = { __typename?: 'Mutation' } & {
-  deleteOneUser?: Maybe<{ __typename?: 'User' } & Pick<User, 'id'>>;
-};
+
+export type DeleteOneUserMutation = (
+  { __typename?: 'Mutation' }
+  & { deleteOneUser?: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'id'>
+  )> }
+);
 
 export const CommentFieldsFragmentDoc = gql`
-  fragment CommentFields on Comment {
-    id
-    contain
-    postId
-    authorId
-    createdAt
-    updatedAt
-  }
-`;
+    fragment CommentFields on Comment {
+  id
+  contain
+  postId
+  authorId
+  createdAt
+  updatedAt
+}
+    `;
 export const PostFieldsFragmentDoc = gql`
-  fragment PostFields on Post {
-    id
-    published
-    title
-    authorId
-    createdAt
-    updatedAt
-  }
-`;
+    fragment PostFields on Post {
+  id
+  published
+  title
+  authorId
+  createdAt
+  updatedAt
+}
+    `;
 export const UserFieldsFragmentDoc = gql`
-  fragment UserFields on User {
-    id
-    email
-    name
-    groupId
-    createdAt
-  }
-`;
+    fragment UserFields on User {
+  id
+  email
+  name
+  groupId
+  createdAt
+}
+    `;
 export const CommentFragmentDoc = gql`
-  fragment Comment on Comment {
-    ...CommentFields
-    post {
-      ...PostFields
-    }
-    author {
-      ...UserFields
-    }
+    fragment Comment on Comment {
+  ...CommentFields
+  post {
+    ...PostFields
   }
-  ${CommentFieldsFragmentDoc}
-  ${PostFieldsFragmentDoc}
-  ${UserFieldsFragmentDoc}
-`;
+  author {
+    ...UserFields
+  }
+}
+    ${CommentFieldsFragmentDoc}
+${PostFieldsFragmentDoc}
+${UserFieldsFragmentDoc}`;
 export const GroupFieldsFragmentDoc = gql`
-  fragment GroupFields on Group {
-    name
-    id
-    createdAt
-    updatedAt
-  }
-`;
+    fragment GroupFields on Group {
+  name
+  id
+  createdAt
+  updatedAt
+}
+    `;
 export const GroupFragmentDoc = gql`
-  fragment Group on Group {
+    fragment Group on Group {
+  ...GroupFields
+}
+    ${GroupFieldsFragmentDoc}`;
+export const PostFragmentDoc = gql`
+    fragment Post on Post {
+  ...PostFields
+  author {
+    ...UserFields
+  }
+}
+    ${PostFieldsFragmentDoc}
+${UserFieldsFragmentDoc}`;
+export const FieldFragmentDoc = gql`
+    fragment Field on Field {
+  id
+  name
+  title
+  type
+  list
+  kind
+  read
+  required
+  isId
+  unique
+  create
+  order
+  update
+  sort
+  filter
+  editor
+  relationField
+}
+    `;
+export const ModelFragmentDoc = gql`
+    fragment Model on Model {
+  id
+  name
+  create
+  delete
+  update
+  idField
+  displayFields
+  fields {
+    ...Field
+  }
+}
+    ${FieldFragmentDoc}`;
+export const EnumFragmentDoc = gql`
+    fragment Enum on Enum {
+  name
+  fields
+}
+    `;
+export const UserFragmentDoc = gql`
+    fragment User on User {
+  ...UserFields
+  group {
     ...GroupFields
   }
-  ${GroupFieldsFragmentDoc}
-`;
-export const PostFragmentDoc = gql`
-  fragment Post on Post {
-    ...PostFields
-    author {
-      ...UserFields
-    }
-  }
-  ${PostFieldsFragmentDoc}
-  ${UserFieldsFragmentDoc}
-`;
-export const FieldFragmentDoc = gql`
-  fragment Field on Field {
-    id
-    name
-    title
-    type
-    list
-    kind
-    read
-    required
-    isId
-    unique
-    create
-    order
-    update
-    sort
-    filter
-    editor
-    relationField
-  }
-`;
-export const ModelFragmentDoc = gql`
-  fragment Model on Model {
-    id
-    name
-    create
-    delete
-    update
-    idField
-    displayFields
-    fields {
-      ...Field
-    }
-  }
-  ${FieldFragmentDoc}
-`;
-export const EnumFragmentDoc = gql`
-  fragment Enum on Enum {
-    name
-    fields
-  }
-`;
-export const UserFragmentDoc = gql`
-  fragment User on User {
-    ...UserFields
-    group {
-      ...GroupFields
-    }
-  }
-  ${UserFieldsFragmentDoc}
-  ${GroupFieldsFragmentDoc}
-`;
+}
+    ${UserFieldsFragmentDoc}
+${GroupFieldsFragmentDoc}`;
 export const MeDocument = gql`
-  query me {
-    me {
-      id
-      name
-      email
-    }
+    query me {
+  me {
+    id
+    name
+    email
   }
-`;
+}
+    `;
 
 /**
  * __useMeQuery__
  *
  * To run a query within a React component, call `useMeQuery` and pass it any options that fit your needs.
- * When your component renders, `useMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useMeQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -1575,25 +1763,24 @@ export const MeDocument = gql`
  * });
  */
 export function useMeQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<MeQuery, MeQueryVariables>) {
-  return ApolloReactHooks.useQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
-}
+        return ApolloReactHooks.useQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
+      }
 export function useMeLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<MeQuery, MeQueryVariables>) {
-  return ApolloReactHooks.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
-}
+          return ApolloReactHooks.useLazyQuery<MeQuery, MeQueryVariables>(MeDocument, baseOptions);
+        }
 export type MeQueryHookResult = ReturnType<typeof useMeQuery>;
 export type MeLazyQueryHookResult = ReturnType<typeof useMeLazyQuery>;
 export type MeQueryResult = ApolloReactCommon.QueryResult<MeQuery, MeQueryVariables>;
 export const LoginDocument = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-      user {
-        ...UserFields
-      }
+    mutation login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    token
+    user {
+      ...UserFields
     }
   }
-  ${UserFieldsFragmentDoc}
-`;
+}
+    ${UserFieldsFragmentDoc}`;
 
 /**
  * __useLoginMutation__
@@ -1613,25 +1800,22 @@ export const LoginDocument = gql`
  *   },
  * });
  */
-export function useLoginMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<LoginMutation, LoginMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
-}
+export function useLoginMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LoginMutation, LoginMutationVariables>) {
+        return ApolloReactHooks.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument, baseOptions);
+      }
 export type LoginMutationHookResult = ReturnType<typeof useLoginMutation>;
 export type LoginMutationResult = ApolloReactCommon.MutationResult<LoginMutation>;
 export type LoginMutationOptions = ApolloReactCommon.BaseMutationOptions<LoginMutation, LoginMutationVariables>;
 export const SignupDocument = gql`
-  mutation signup($email: String!, $password: String!, $name: String) {
-    signup(email: $email, password: $password, name: $name) {
-      token
-      user {
-        ...UserFields
-      }
+    mutation signup($email: String!, $password: String!, $name: String) {
+  signup(email: $email, password: $password, name: $name) {
+    token
+    user {
+      ...UserFields
     }
   }
-  ${UserFieldsFragmentDoc}
-`;
+}
+    ${UserFieldsFragmentDoc}`;
 
 /**
  * __useSignupMutation__
@@ -1652,28 +1836,25 @@ export const SignupDocument = gql`
  *   },
  * });
  */
-export function useSignupMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<SignupMutation, SignupMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<SignupMutation, SignupMutationVariables>(SignupDocument, baseOptions);
-}
+export function useSignupMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<SignupMutation, SignupMutationVariables>) {
+        return ApolloReactHooks.useMutation<SignupMutation, SignupMutationVariables>(SignupDocument, baseOptions);
+      }
 export type SignupMutationHookResult = ReturnType<typeof useSignupMutation>;
 export type SignupMutationResult = ApolloReactCommon.MutationResult<SignupMutation>;
 export type SignupMutationOptions = ApolloReactCommon.BaseMutationOptions<SignupMutation, SignupMutationVariables>;
 export const FindOneCommentDocument = gql`
-  query findOneComment($where: CommentWhereUniqueInput!) {
-    findOneComment(where: $where) {
-      ...Comment
-    }
+    query findOneComment($where: CommentWhereUniqueInput!) {
+  findOneComment(where: $where) {
+    ...Comment
   }
-  ${CommentFragmentDoc}
-`;
+}
+    ${CommentFragmentDoc}`;
 
 /**
  * __useFindOneCommentQuery__
  *
  * To run a query within a React component, call `useFindOneCommentQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindOneCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useFindOneCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -1685,59 +1866,29 @@ export const FindOneCommentDocument = gql`
  *   },
  * });
  */
-export function useFindOneCommentQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<FindOneCommentQuery, FindOneCommentQueryVariables>,
-) {
-  return ApolloReactHooks.useQuery<FindOneCommentQuery, FindOneCommentQueryVariables>(
-    FindOneCommentDocument,
-    baseOptions,
-  );
-}
-export function useFindOneCommentLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindOneCommentQuery, FindOneCommentQueryVariables>,
-) {
-  return ApolloReactHooks.useLazyQuery<FindOneCommentQuery, FindOneCommentQueryVariables>(
-    FindOneCommentDocument,
-    baseOptions,
-  );
-}
+export function useFindOneCommentQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindOneCommentQuery, FindOneCommentQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindOneCommentQuery, FindOneCommentQueryVariables>(FindOneCommentDocument, baseOptions);
+      }
+export function useFindOneCommentLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindOneCommentQuery, FindOneCommentQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindOneCommentQuery, FindOneCommentQueryVariables>(FindOneCommentDocument, baseOptions);
+        }
 export type FindOneCommentQueryHookResult = ReturnType<typeof useFindOneCommentQuery>;
 export type FindOneCommentLazyQueryHookResult = ReturnType<typeof useFindOneCommentLazyQuery>;
-export type FindOneCommentQueryResult = ApolloReactCommon.QueryResult<
-  FindOneCommentQuery,
-  FindOneCommentQueryVariables
->;
+export type FindOneCommentQueryResult = ApolloReactCommon.QueryResult<FindOneCommentQuery, FindOneCommentQueryVariables>;
 export const FindManyCommentDocument = gql`
-  query findManyComment(
-    $where: CommentWhereInput
-    $orderBy: CommentOrderByInput
-    $after: CommentWhereUniqueInput
-    $before: CommentWhereUniqueInput
-    $skip: Int
-    $first: Int
-    $last: Int
-  ) {
-    findManyComment(
-      where: $where
-      orderBy: $orderBy
-      after: $after
-      before: $before
-      skip: $skip
-      first: $first
-      last: $last
-    ) {
-      ...Comment
-    }
-    findManyCommentCount(where: $where)
+    query findManyComment($where: CommentWhereInput, $orderBy: CommentOrderByInput, $after: CommentWhereUniqueInput, $before: CommentWhereUniqueInput, $skip: Int, $first: Int, $last: Int) {
+  findManyComment(where: $where, orderBy: $orderBy, after: $after, before: $before, skip: $skip, first: $first, last: $last) {
+    ...Comment
   }
-  ${CommentFragmentDoc}
-`;
+  findManyCommentCount(where: $where)
+}
+    ${CommentFragmentDoc}`;
 
 /**
  * __useFindManyCommentQuery__
  *
  * To run a query within a React component, call `useFindManyCommentQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useFindManyCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -1755,36 +1906,22 @@ export const FindManyCommentDocument = gql`
  *   },
  * });
  */
-export function useFindManyCommentQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyCommentQuery, FindManyCommentQueryVariables>,
-) {
-  return ApolloReactHooks.useQuery<FindManyCommentQuery, FindManyCommentQueryVariables>(
-    FindManyCommentDocument,
-    baseOptions,
-  );
-}
-export function useFindManyCommentLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyCommentQuery, FindManyCommentQueryVariables>,
-) {
-  return ApolloReactHooks.useLazyQuery<FindManyCommentQuery, FindManyCommentQueryVariables>(
-    FindManyCommentDocument,
-    baseOptions,
-  );
-}
+export function useFindManyCommentQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyCommentQuery, FindManyCommentQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindManyCommentQuery, FindManyCommentQueryVariables>(FindManyCommentDocument, baseOptions);
+      }
+export function useFindManyCommentLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyCommentQuery, FindManyCommentQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindManyCommentQuery, FindManyCommentQueryVariables>(FindManyCommentDocument, baseOptions);
+        }
 export type FindManyCommentQueryHookResult = ReturnType<typeof useFindManyCommentQuery>;
 export type FindManyCommentLazyQueryHookResult = ReturnType<typeof useFindManyCommentLazyQuery>;
-export type FindManyCommentQueryResult = ApolloReactCommon.QueryResult<
-  FindManyCommentQuery,
-  FindManyCommentQueryVariables
->;
+export type FindManyCommentQueryResult = ApolloReactCommon.QueryResult<FindManyCommentQuery, FindManyCommentQueryVariables>;
 export const CreateOneCommentDocument = gql`
-  mutation createOneComment($data: CommentCreateInput!) {
-    createOneComment(data: $data) {
-      ...Comment
-    }
+    mutation createOneComment($data: CommentCreateInput!) {
+  createOneComment(data: $data) {
+    ...Comment
   }
-  ${CommentFragmentDoc}
-`;
+}
+    ${CommentFragmentDoc}`;
 
 /**
  * __useCreateOneCommentMutation__
@@ -1803,28 +1940,19 @@ export const CreateOneCommentDocument = gql`
  *   },
  * });
  */
-export function useCreateOneCommentMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOneCommentMutation, CreateOneCommentMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<CreateOneCommentMutation, CreateOneCommentMutationVariables>(
-    CreateOneCommentDocument,
-    baseOptions,
-  );
-}
+export function useCreateOneCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOneCommentMutation, CreateOneCommentMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateOneCommentMutation, CreateOneCommentMutationVariables>(CreateOneCommentDocument, baseOptions);
+      }
 export type CreateOneCommentMutationHookResult = ReturnType<typeof useCreateOneCommentMutation>;
 export type CreateOneCommentMutationResult = ApolloReactCommon.MutationResult<CreateOneCommentMutation>;
-export type CreateOneCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  CreateOneCommentMutation,
-  CreateOneCommentMutationVariables
->;
+export type CreateOneCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateOneCommentMutation, CreateOneCommentMutationVariables>;
 export const UpdateOneCommentDocument = gql`
-  mutation updateOneComment($where: CommentWhereUniqueInput!, $data: CommentUpdateInput!) {
-    updateOneComment(where: $where, data: $data) {
-      ...Comment
-    }
+    mutation updateOneComment($where: CommentWhereUniqueInput!, $data: CommentUpdateInput!) {
+  updateOneComment(where: $where, data: $data) {
+    ...Comment
   }
-  ${CommentFragmentDoc}
-`;
+}
+    ${CommentFragmentDoc}`;
 
 /**
  * __useUpdateOneCommentMutation__
@@ -1844,27 +1972,19 @@ export const UpdateOneCommentDocument = gql`
  *   },
  * });
  */
-export function useUpdateOneCommentMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateOneCommentMutation, UpdateOneCommentMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<UpdateOneCommentMutation, UpdateOneCommentMutationVariables>(
-    UpdateOneCommentDocument,
-    baseOptions,
-  );
-}
+export function useUpdateOneCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateOneCommentMutation, UpdateOneCommentMutationVariables>) {
+        return ApolloReactHooks.useMutation<UpdateOneCommentMutation, UpdateOneCommentMutationVariables>(UpdateOneCommentDocument, baseOptions);
+      }
 export type UpdateOneCommentMutationHookResult = ReturnType<typeof useUpdateOneCommentMutation>;
 export type UpdateOneCommentMutationResult = ApolloReactCommon.MutationResult<UpdateOneCommentMutation>;
-export type UpdateOneCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  UpdateOneCommentMutation,
-  UpdateOneCommentMutationVariables
->;
+export type UpdateOneCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateOneCommentMutation, UpdateOneCommentMutationVariables>;
 export const DeleteOneCommentDocument = gql`
-  mutation deleteOneComment($where: CommentWhereUniqueInput!) {
-    deleteOneComment(where: $where) {
-      id
-    }
+    mutation deleteOneComment($where: CommentWhereUniqueInput!) {
+  deleteOneComment(where: $where) {
+    id
   }
-`;
+}
+    `;
 
 /**
  * __useDeleteOneCommentMutation__
@@ -1883,34 +2003,25 @@ export const DeleteOneCommentDocument = gql`
  *   },
  * });
  */
-export function useDeleteOneCommentMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteOneCommentMutation, DeleteOneCommentMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<DeleteOneCommentMutation, DeleteOneCommentMutationVariables>(
-    DeleteOneCommentDocument,
-    baseOptions,
-  );
-}
+export function useDeleteOneCommentMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteOneCommentMutation, DeleteOneCommentMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteOneCommentMutation, DeleteOneCommentMutationVariables>(DeleteOneCommentDocument, baseOptions);
+      }
 export type DeleteOneCommentMutationHookResult = ReturnType<typeof useDeleteOneCommentMutation>;
 export type DeleteOneCommentMutationResult = ApolloReactCommon.MutationResult<DeleteOneCommentMutation>;
-export type DeleteOneCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  DeleteOneCommentMutation,
-  DeleteOneCommentMutationVariables
->;
+export type DeleteOneCommentMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteOneCommentMutation, DeleteOneCommentMutationVariables>;
 export const FindOneGroupDocument = gql`
-  query findOneGroup($where: GroupWhereUniqueInput!) {
-    findOneGroup(where: $where) {
-      ...Group
-    }
+    query findOneGroup($where: GroupWhereUniqueInput!) {
+  findOneGroup(where: $where) {
+    ...Group
   }
-  ${GroupFragmentDoc}
-`;
+}
+    ${GroupFragmentDoc}`;
 
 /**
  * __useFindOneGroupQuery__
  *
  * To run a query within a React component, call `useFindOneGroupQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindOneGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useFindOneGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -1922,53 +2033,29 @@ export const FindOneGroupDocument = gql`
  *   },
  * });
  */
-export function useFindOneGroupQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<FindOneGroupQuery, FindOneGroupQueryVariables>,
-) {
-  return ApolloReactHooks.useQuery<FindOneGroupQuery, FindOneGroupQueryVariables>(FindOneGroupDocument, baseOptions);
-}
-export function useFindOneGroupLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindOneGroupQuery, FindOneGroupQueryVariables>,
-) {
-  return ApolloReactHooks.useLazyQuery<FindOneGroupQuery, FindOneGroupQueryVariables>(
-    FindOneGroupDocument,
-    baseOptions,
-  );
-}
+export function useFindOneGroupQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindOneGroupQuery, FindOneGroupQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindOneGroupQuery, FindOneGroupQueryVariables>(FindOneGroupDocument, baseOptions);
+      }
+export function useFindOneGroupLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindOneGroupQuery, FindOneGroupQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindOneGroupQuery, FindOneGroupQueryVariables>(FindOneGroupDocument, baseOptions);
+        }
 export type FindOneGroupQueryHookResult = ReturnType<typeof useFindOneGroupQuery>;
 export type FindOneGroupLazyQueryHookResult = ReturnType<typeof useFindOneGroupLazyQuery>;
 export type FindOneGroupQueryResult = ApolloReactCommon.QueryResult<FindOneGroupQuery, FindOneGroupQueryVariables>;
 export const FindManyGroupDocument = gql`
-  query findManyGroup(
-    $where: GroupWhereInput
-    $orderBy: GroupOrderByInput
-    $after: GroupWhereUniqueInput
-    $before: GroupWhereUniqueInput
-    $skip: Int
-    $first: Int
-    $last: Int
-  ) {
-    findManyGroup(
-      where: $where
-      orderBy: $orderBy
-      after: $after
-      before: $before
-      skip: $skip
-      first: $first
-      last: $last
-    ) {
-      ...Group
-    }
-    findManyGroupCount(where: $where)
+    query findManyGroup($where: GroupWhereInput, $orderBy: GroupOrderByInput, $after: GroupWhereUniqueInput, $before: GroupWhereUniqueInput, $skip: Int, $first: Int, $last: Int) {
+  findManyGroup(where: $where, orderBy: $orderBy, after: $after, before: $before, skip: $skip, first: $first, last: $last) {
+    ...Group
   }
-  ${GroupFragmentDoc}
-`;
+  findManyGroupCount(where: $where)
+}
+    ${GroupFragmentDoc}`;
 
 /**
  * __useFindManyGroupQuery__
  *
  * To run a query within a React component, call `useFindManyGroupQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useFindManyGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -1986,30 +2073,22 @@ export const FindManyGroupDocument = gql`
  *   },
  * });
  */
-export function useFindManyGroupQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>,
-) {
-  return ApolloReactHooks.useQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
-}
-export function useFindManyGroupLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>,
-) {
-  return ApolloReactHooks.useLazyQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(
-    FindManyGroupDocument,
-    baseOptions,
-  );
-}
+export function useFindManyGroupQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
+      }
+export function useFindManyGroupLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
+        }
 export type FindManyGroupQueryHookResult = ReturnType<typeof useFindManyGroupQuery>;
 export type FindManyGroupLazyQueryHookResult = ReturnType<typeof useFindManyGroupLazyQuery>;
 export type FindManyGroupQueryResult = ApolloReactCommon.QueryResult<FindManyGroupQuery, FindManyGroupQueryVariables>;
 export const CreateOneGroupDocument = gql`
-  mutation createOneGroup($data: GroupCreateInput!) {
-    createOneGroup(data: $data) {
-      ...Group
-    }
+    mutation createOneGroup($data: GroupCreateInput!) {
+  createOneGroup(data: $data) {
+    ...Group
   }
-  ${GroupFragmentDoc}
-`;
+}
+    ${GroupFragmentDoc}`;
 
 /**
  * __useCreateOneGroupMutation__
@@ -2028,28 +2107,19 @@ export const CreateOneGroupDocument = gql`
  *   },
  * });
  */
-export function useCreateOneGroupMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOneGroupMutation, CreateOneGroupMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<CreateOneGroupMutation, CreateOneGroupMutationVariables>(
-    CreateOneGroupDocument,
-    baseOptions,
-  );
-}
+export function useCreateOneGroupMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOneGroupMutation, CreateOneGroupMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateOneGroupMutation, CreateOneGroupMutationVariables>(CreateOneGroupDocument, baseOptions);
+      }
 export type CreateOneGroupMutationHookResult = ReturnType<typeof useCreateOneGroupMutation>;
 export type CreateOneGroupMutationResult = ApolloReactCommon.MutationResult<CreateOneGroupMutation>;
-export type CreateOneGroupMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  CreateOneGroupMutation,
-  CreateOneGroupMutationVariables
->;
+export type CreateOneGroupMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateOneGroupMutation, CreateOneGroupMutationVariables>;
 export const UpdateOneGroupDocument = gql`
-  mutation updateOneGroup($where: GroupWhereUniqueInput!, $data: GroupUpdateInput!) {
-    updateOneGroup(where: $where, data: $data) {
-      ...Group
-    }
+    mutation updateOneGroup($where: GroupWhereUniqueInput!, $data: GroupUpdateInput!) {
+  updateOneGroup(where: $where, data: $data) {
+    ...Group
   }
-  ${GroupFragmentDoc}
-`;
+}
+    ${GroupFragmentDoc}`;
 
 /**
  * __useUpdateOneGroupMutation__
@@ -2069,27 +2139,19 @@ export const UpdateOneGroupDocument = gql`
  *   },
  * });
  */
-export function useUpdateOneGroupMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateOneGroupMutation, UpdateOneGroupMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<UpdateOneGroupMutation, UpdateOneGroupMutationVariables>(
-    UpdateOneGroupDocument,
-    baseOptions,
-  );
-}
+export function useUpdateOneGroupMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateOneGroupMutation, UpdateOneGroupMutationVariables>) {
+        return ApolloReactHooks.useMutation<UpdateOneGroupMutation, UpdateOneGroupMutationVariables>(UpdateOneGroupDocument, baseOptions);
+      }
 export type UpdateOneGroupMutationHookResult = ReturnType<typeof useUpdateOneGroupMutation>;
 export type UpdateOneGroupMutationResult = ApolloReactCommon.MutationResult<UpdateOneGroupMutation>;
-export type UpdateOneGroupMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  UpdateOneGroupMutation,
-  UpdateOneGroupMutationVariables
->;
+export type UpdateOneGroupMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateOneGroupMutation, UpdateOneGroupMutationVariables>;
 export const DeleteOneGroupDocument = gql`
-  mutation deleteOneGroup($where: GroupWhereUniqueInput!) {
-    deleteOneGroup(where: $where) {
-      id
-    }
+    mutation deleteOneGroup($where: GroupWhereUniqueInput!) {
+  deleteOneGroup(where: $where) {
+    id
   }
-`;
+}
+    `;
 
 /**
  * __useDeleteOneGroupMutation__
@@ -2108,34 +2170,25 @@ export const DeleteOneGroupDocument = gql`
  *   },
  * });
  */
-export function useDeleteOneGroupMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteOneGroupMutation, DeleteOneGroupMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<DeleteOneGroupMutation, DeleteOneGroupMutationVariables>(
-    DeleteOneGroupDocument,
-    baseOptions,
-  );
-}
+export function useDeleteOneGroupMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteOneGroupMutation, DeleteOneGroupMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteOneGroupMutation, DeleteOneGroupMutationVariables>(DeleteOneGroupDocument, baseOptions);
+      }
 export type DeleteOneGroupMutationHookResult = ReturnType<typeof useDeleteOneGroupMutation>;
 export type DeleteOneGroupMutationResult = ApolloReactCommon.MutationResult<DeleteOneGroupMutation>;
-export type DeleteOneGroupMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  DeleteOneGroupMutation,
-  DeleteOneGroupMutationVariables
->;
+export type DeleteOneGroupMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteOneGroupMutation, DeleteOneGroupMutationVariables>;
 export const FindOnePostDocument = gql`
-  query findOnePost($where: PostWhereUniqueInput!) {
-    findOnePost(where: $where) {
-      ...Post
-    }
+    query findOnePost($where: PostWhereUniqueInput!) {
+  findOnePost(where: $where) {
+    ...Post
   }
-  ${PostFragmentDoc}
-`;
+}
+    ${PostFragmentDoc}`;
 
 /**
  * __useFindOnePostQuery__
  *
  * To run a query within a React component, call `useFindOnePostQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindOnePostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useFindOnePostQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2147,50 +2200,29 @@ export const FindOnePostDocument = gql`
  *   },
  * });
  */
-export function useFindOnePostQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<FindOnePostQuery, FindOnePostQueryVariables>,
-) {
-  return ApolloReactHooks.useQuery<FindOnePostQuery, FindOnePostQueryVariables>(FindOnePostDocument, baseOptions);
-}
-export function useFindOnePostLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindOnePostQuery, FindOnePostQueryVariables>,
-) {
-  return ApolloReactHooks.useLazyQuery<FindOnePostQuery, FindOnePostQueryVariables>(FindOnePostDocument, baseOptions);
-}
+export function useFindOnePostQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindOnePostQuery, FindOnePostQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindOnePostQuery, FindOnePostQueryVariables>(FindOnePostDocument, baseOptions);
+      }
+export function useFindOnePostLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindOnePostQuery, FindOnePostQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindOnePostQuery, FindOnePostQueryVariables>(FindOnePostDocument, baseOptions);
+        }
 export type FindOnePostQueryHookResult = ReturnType<typeof useFindOnePostQuery>;
 export type FindOnePostLazyQueryHookResult = ReturnType<typeof useFindOnePostLazyQuery>;
 export type FindOnePostQueryResult = ApolloReactCommon.QueryResult<FindOnePostQuery, FindOnePostQueryVariables>;
 export const FindManyPostDocument = gql`
-  query findManyPost(
-    $where: PostWhereInput
-    $orderBy: PostOrderByInput
-    $after: PostWhereUniqueInput
-    $before: PostWhereUniqueInput
-    $skip: Int
-    $first: Int
-    $last: Int
-  ) {
-    findManyPost(
-      where: $where
-      orderBy: $orderBy
-      after: $after
-      before: $before
-      skip: $skip
-      first: $first
-      last: $last
-    ) {
-      ...Post
-    }
-    findManyPostCount(where: $where)
+    query findManyPost($where: PostWhereInput, $orderBy: PostOrderByInput, $after: PostWhereUniqueInput, $before: PostWhereUniqueInput, $skip: Int, $first: Int, $last: Int) {
+  findManyPost(where: $where, orderBy: $orderBy, after: $after, before: $before, skip: $skip, first: $first, last: $last) {
+    ...Post
   }
-  ${PostFragmentDoc}
-`;
+  findManyPostCount(where: $where)
+}
+    ${PostFragmentDoc}`;
 
 /**
  * __useFindManyPostQuery__
  *
  * To run a query within a React component, call `useFindManyPostQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useFindManyPostQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2208,30 +2240,22 @@ export const FindManyPostDocument = gql`
  *   },
  * });
  */
-export function useFindManyPostQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyPostQuery, FindManyPostQueryVariables>,
-) {
-  return ApolloReactHooks.useQuery<FindManyPostQuery, FindManyPostQueryVariables>(FindManyPostDocument, baseOptions);
-}
-export function useFindManyPostLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyPostQuery, FindManyPostQueryVariables>,
-) {
-  return ApolloReactHooks.useLazyQuery<FindManyPostQuery, FindManyPostQueryVariables>(
-    FindManyPostDocument,
-    baseOptions,
-  );
-}
+export function useFindManyPostQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyPostQuery, FindManyPostQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindManyPostQuery, FindManyPostQueryVariables>(FindManyPostDocument, baseOptions);
+      }
+export function useFindManyPostLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyPostQuery, FindManyPostQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindManyPostQuery, FindManyPostQueryVariables>(FindManyPostDocument, baseOptions);
+        }
 export type FindManyPostQueryHookResult = ReturnType<typeof useFindManyPostQuery>;
 export type FindManyPostLazyQueryHookResult = ReturnType<typeof useFindManyPostLazyQuery>;
 export type FindManyPostQueryResult = ApolloReactCommon.QueryResult<FindManyPostQuery, FindManyPostQueryVariables>;
 export const CreateOnePostDocument = gql`
-  mutation createOnePost($data: PostCreateInput!) {
-    createOnePost(data: $data) {
-      ...Post
-    }
+    mutation createOnePost($data: PostCreateInput!) {
+  createOnePost(data: $data) {
+    ...Post
   }
-  ${PostFragmentDoc}
-`;
+}
+    ${PostFragmentDoc}`;
 
 /**
  * __useCreateOnePostMutation__
@@ -2250,28 +2274,19 @@ export const CreateOnePostDocument = gql`
  *   },
  * });
  */
-export function useCreateOnePostMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOnePostMutation, CreateOnePostMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<CreateOnePostMutation, CreateOnePostMutationVariables>(
-    CreateOnePostDocument,
-    baseOptions,
-  );
-}
+export function useCreateOnePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOnePostMutation, CreateOnePostMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateOnePostMutation, CreateOnePostMutationVariables>(CreateOnePostDocument, baseOptions);
+      }
 export type CreateOnePostMutationHookResult = ReturnType<typeof useCreateOnePostMutation>;
 export type CreateOnePostMutationResult = ApolloReactCommon.MutationResult<CreateOnePostMutation>;
-export type CreateOnePostMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  CreateOnePostMutation,
-  CreateOnePostMutationVariables
->;
+export type CreateOnePostMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateOnePostMutation, CreateOnePostMutationVariables>;
 export const UpdateOnePostDocument = gql`
-  mutation updateOnePost($where: PostWhereUniqueInput!, $data: PostUpdateInput!) {
-    updateOnePost(where: $where, data: $data) {
-      ...Post
-    }
+    mutation updateOnePost($where: PostWhereUniqueInput!, $data: PostUpdateInput!) {
+  updateOnePost(where: $where, data: $data) {
+    ...Post
   }
-  ${PostFragmentDoc}
-`;
+}
+    ${PostFragmentDoc}`;
 
 /**
  * __useUpdateOnePostMutation__
@@ -2291,27 +2306,19 @@ export const UpdateOnePostDocument = gql`
  *   },
  * });
  */
-export function useUpdateOnePostMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateOnePostMutation, UpdateOnePostMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<UpdateOnePostMutation, UpdateOnePostMutationVariables>(
-    UpdateOnePostDocument,
-    baseOptions,
-  );
-}
+export function useUpdateOnePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateOnePostMutation, UpdateOnePostMutationVariables>) {
+        return ApolloReactHooks.useMutation<UpdateOnePostMutation, UpdateOnePostMutationVariables>(UpdateOnePostDocument, baseOptions);
+      }
 export type UpdateOnePostMutationHookResult = ReturnType<typeof useUpdateOnePostMutation>;
 export type UpdateOnePostMutationResult = ApolloReactCommon.MutationResult<UpdateOnePostMutation>;
-export type UpdateOnePostMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  UpdateOnePostMutation,
-  UpdateOnePostMutationVariables
->;
+export type UpdateOnePostMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateOnePostMutation, UpdateOnePostMutationVariables>;
 export const DeleteOnePostDocument = gql`
-  mutation deleteOnePost($where: PostWhereUniqueInput!) {
-    deleteOnePost(where: $where) {
-      id
-    }
+    mutation deleteOnePost($where: PostWhereUniqueInput!) {
+  deleteOnePost(where: $where) {
+    id
   }
-`;
+}
+    `;
 
 /**
  * __useDeleteOnePostMutation__
@@ -2330,40 +2337,31 @@ export const DeleteOnePostDocument = gql`
  *   },
  * });
  */
-export function useDeleteOnePostMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteOnePostMutation, DeleteOnePostMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<DeleteOnePostMutation, DeleteOnePostMutationVariables>(
-    DeleteOnePostDocument,
-    baseOptions,
-  );
-}
+export function useDeleteOnePostMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteOnePostMutation, DeleteOnePostMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteOnePostMutation, DeleteOnePostMutationVariables>(DeleteOnePostDocument, baseOptions);
+      }
 export type DeleteOnePostMutationHookResult = ReturnType<typeof useDeleteOnePostMutation>;
 export type DeleteOnePostMutationResult = ApolloReactCommon.MutationResult<DeleteOnePostMutation>;
-export type DeleteOnePostMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  DeleteOnePostMutation,
-  DeleteOnePostMutationVariables
->;
+export type DeleteOnePostMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteOnePostMutation, DeleteOnePostMutationVariables>;
 export const GetSchemaDocument = gql`
-  query getSchema {
-    getSchema {
-      models {
-        ...Model
-      }
-      enums {
-        ...Enum
-      }
+    query getSchema {
+  getSchema {
+    models {
+      ...Model
+    }
+    enums {
+      ...Enum
     }
   }
-  ${ModelFragmentDoc}
-  ${EnumFragmentDoc}
-`;
+}
+    ${ModelFragmentDoc}
+${EnumFragmentDoc}`;
 
 /**
  * __useGetSchemaQuery__
  *
  * To run a query within a React component, call `useGetSchemaQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetSchemaQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useGetSchemaQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2374,27 +2372,22 @@ export const GetSchemaDocument = gql`
  *   },
  * });
  */
-export function useGetSchemaQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<GetSchemaQuery, GetSchemaQueryVariables>,
-) {
-  return ApolloReactHooks.useQuery<GetSchemaQuery, GetSchemaQueryVariables>(GetSchemaDocument, baseOptions);
-}
-export function useGetSchemaLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetSchemaQuery, GetSchemaQueryVariables>,
-) {
-  return ApolloReactHooks.useLazyQuery<GetSchemaQuery, GetSchemaQueryVariables>(GetSchemaDocument, baseOptions);
-}
+export function useGetSchemaQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<GetSchemaQuery, GetSchemaQueryVariables>) {
+        return ApolloReactHooks.useQuery<GetSchemaQuery, GetSchemaQueryVariables>(GetSchemaDocument, baseOptions);
+      }
+export function useGetSchemaLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<GetSchemaQuery, GetSchemaQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<GetSchemaQuery, GetSchemaQueryVariables>(GetSchemaDocument, baseOptions);
+        }
 export type GetSchemaQueryHookResult = ReturnType<typeof useGetSchemaQuery>;
 export type GetSchemaLazyQueryHookResult = ReturnType<typeof useGetSchemaLazyQuery>;
 export type GetSchemaQueryResult = ApolloReactCommon.QueryResult<GetSchemaQuery, GetSchemaQueryVariables>;
 export const UpdateModelDocument = gql`
-  mutation updateModel($id: String!, $data: UpdateModelInput!) {
-    updateModel(id: $id, data: $data) {
-      ...Model
-    }
+    mutation updateModel($id: String!, $data: UpdateModelInput!) {
+  updateModel(id: $id, data: $data) {
+    ...Model
   }
-  ${ModelFragmentDoc}
-`;
+}
+    ${ModelFragmentDoc}`;
 
 /**
  * __useUpdateModelMutation__
@@ -2414,28 +2407,19 @@ export const UpdateModelDocument = gql`
  *   },
  * });
  */
-export function useUpdateModelMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateModelMutation, UpdateModelMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<UpdateModelMutation, UpdateModelMutationVariables>(
-    UpdateModelDocument,
-    baseOptions,
-  );
-}
+export function useUpdateModelMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateModelMutation, UpdateModelMutationVariables>) {
+        return ApolloReactHooks.useMutation<UpdateModelMutation, UpdateModelMutationVariables>(UpdateModelDocument, baseOptions);
+      }
 export type UpdateModelMutationHookResult = ReturnType<typeof useUpdateModelMutation>;
 export type UpdateModelMutationResult = ApolloReactCommon.MutationResult<UpdateModelMutation>;
-export type UpdateModelMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  UpdateModelMutation,
-  UpdateModelMutationVariables
->;
+export type UpdateModelMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateModelMutation, UpdateModelMutationVariables>;
 export const UpdateFieldDocument = gql`
-  mutation updateField($id: String!, $modelId: String!, $data: UpdateFieldInput!) {
-    updateField(id: $id, modelId: $modelId, data: $data) {
-      ...Field
-    }
+    mutation updateField($id: String!, $modelId: String!, $data: UpdateFieldInput!) {
+  updateField(id: $id, modelId: $modelId, data: $data) {
+    ...Field
   }
-  ${FieldFragmentDoc}
-`;
+}
+    ${FieldFragmentDoc}`;
 
 /**
  * __useUpdateFieldMutation__
@@ -2456,34 +2440,25 @@ export const UpdateFieldDocument = gql`
  *   },
  * });
  */
-export function useUpdateFieldMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateFieldMutation, UpdateFieldMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<UpdateFieldMutation, UpdateFieldMutationVariables>(
-    UpdateFieldDocument,
-    baseOptions,
-  );
-}
+export function useUpdateFieldMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateFieldMutation, UpdateFieldMutationVariables>) {
+        return ApolloReactHooks.useMutation<UpdateFieldMutation, UpdateFieldMutationVariables>(UpdateFieldDocument, baseOptions);
+      }
 export type UpdateFieldMutationHookResult = ReturnType<typeof useUpdateFieldMutation>;
 export type UpdateFieldMutationResult = ApolloReactCommon.MutationResult<UpdateFieldMutation>;
-export type UpdateFieldMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  UpdateFieldMutation,
-  UpdateFieldMutationVariables
->;
+export type UpdateFieldMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateFieldMutation, UpdateFieldMutationVariables>;
 export const FindOneUserDocument = gql`
-  query findOneUser($where: UserWhereUniqueInput!) {
-    findOneUser(where: $where) {
-      ...User
-    }
+    query findOneUser($where: UserWhereUniqueInput!) {
+  findOneUser(where: $where) {
+    ...User
   }
-  ${UserFragmentDoc}
-`;
+}
+    ${UserFragmentDoc}`;
 
 /**
  * __useFindOneUserQuery__
  *
  * To run a query within a React component, call `useFindOneUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindOneUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useFindOneUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2495,50 +2470,29 @@ export const FindOneUserDocument = gql`
  *   },
  * });
  */
-export function useFindOneUserQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<FindOneUserQuery, FindOneUserQueryVariables>,
-) {
-  return ApolloReactHooks.useQuery<FindOneUserQuery, FindOneUserQueryVariables>(FindOneUserDocument, baseOptions);
-}
-export function useFindOneUserLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindOneUserQuery, FindOneUserQueryVariables>,
-) {
-  return ApolloReactHooks.useLazyQuery<FindOneUserQuery, FindOneUserQueryVariables>(FindOneUserDocument, baseOptions);
-}
+export function useFindOneUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindOneUserQuery, FindOneUserQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindOneUserQuery, FindOneUserQueryVariables>(FindOneUserDocument, baseOptions);
+      }
+export function useFindOneUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindOneUserQuery, FindOneUserQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindOneUserQuery, FindOneUserQueryVariables>(FindOneUserDocument, baseOptions);
+        }
 export type FindOneUserQueryHookResult = ReturnType<typeof useFindOneUserQuery>;
 export type FindOneUserLazyQueryHookResult = ReturnType<typeof useFindOneUserLazyQuery>;
 export type FindOneUserQueryResult = ApolloReactCommon.QueryResult<FindOneUserQuery, FindOneUserQueryVariables>;
 export const FindManyUserDocument = gql`
-  query findManyUser(
-    $where: UserWhereInput
-    $orderBy: UserOrderByInput
-    $after: UserWhereUniqueInput
-    $before: UserWhereUniqueInput
-    $skip: Int
-    $first: Int
-    $last: Int
-  ) {
-    findManyUser(
-      where: $where
-      orderBy: $orderBy
-      after: $after
-      before: $before
-      skip: $skip
-      first: $first
-      last: $last
-    ) {
-      ...User
-    }
-    findManyUserCount(where: $where)
+    query findManyUser($where: UserWhereInput, $orderBy: UserOrderByInput, $after: UserWhereUniqueInput, $before: UserWhereUniqueInput, $skip: Int, $first: Int, $last: Int) {
+  findManyUser(where: $where, orderBy: $orderBy, after: $after, before: $before, skip: $skip, first: $first, last: $last) {
+    ...User
   }
-  ${UserFragmentDoc}
-`;
+  findManyUserCount(where: $where)
+}
+    ${UserFragmentDoc}`;
 
 /**
  * __useFindManyUserQuery__
  *
  * To run a query within a React component, call `useFindManyUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * When your component renders, `useFindManyUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2556,30 +2510,22 @@ export const FindManyUserDocument = gql`
  *   },
  * });
  */
-export function useFindManyUserQuery(
-  baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyUserQuery, FindManyUserQueryVariables>,
-) {
-  return ApolloReactHooks.useQuery<FindManyUserQuery, FindManyUserQueryVariables>(FindManyUserDocument, baseOptions);
-}
-export function useFindManyUserLazyQuery(
-  baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyUserQuery, FindManyUserQueryVariables>,
-) {
-  return ApolloReactHooks.useLazyQuery<FindManyUserQuery, FindManyUserQueryVariables>(
-    FindManyUserDocument,
-    baseOptions,
-  );
-}
+export function useFindManyUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyUserQuery, FindManyUserQueryVariables>) {
+        return ApolloReactHooks.useQuery<FindManyUserQuery, FindManyUserQueryVariables>(FindManyUserDocument, baseOptions);
+      }
+export function useFindManyUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyUserQuery, FindManyUserQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FindManyUserQuery, FindManyUserQueryVariables>(FindManyUserDocument, baseOptions);
+        }
 export type FindManyUserQueryHookResult = ReturnType<typeof useFindManyUserQuery>;
 export type FindManyUserLazyQueryHookResult = ReturnType<typeof useFindManyUserLazyQuery>;
 export type FindManyUserQueryResult = ApolloReactCommon.QueryResult<FindManyUserQuery, FindManyUserQueryVariables>;
 export const CreateOneUserDocument = gql`
-  mutation createOneUser($data: UserCreateInput!) {
-    createOneUser(data: $data) {
-      ...User
-    }
+    mutation createOneUser($data: UserCreateInput!) {
+  createOneUser(data: $data) {
+    ...User
   }
-  ${UserFragmentDoc}
-`;
+}
+    ${UserFragmentDoc}`;
 
 /**
  * __useCreateOneUserMutation__
@@ -2598,28 +2544,19 @@ export const CreateOneUserDocument = gql`
  *   },
  * });
  */
-export function useCreateOneUserMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOneUserMutation, CreateOneUserMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<CreateOneUserMutation, CreateOneUserMutationVariables>(
-    CreateOneUserDocument,
-    baseOptions,
-  );
-}
+export function useCreateOneUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateOneUserMutation, CreateOneUserMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateOneUserMutation, CreateOneUserMutationVariables>(CreateOneUserDocument, baseOptions);
+      }
 export type CreateOneUserMutationHookResult = ReturnType<typeof useCreateOneUserMutation>;
 export type CreateOneUserMutationResult = ApolloReactCommon.MutationResult<CreateOneUserMutation>;
-export type CreateOneUserMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  CreateOneUserMutation,
-  CreateOneUserMutationVariables
->;
+export type CreateOneUserMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateOneUserMutation, CreateOneUserMutationVariables>;
 export const UpdateOneUserDocument = gql`
-  mutation updateOneUser($where: UserWhereUniqueInput!, $data: UserUpdateInput!) {
-    updateOneUser(where: $where, data: $data) {
-      ...User
-    }
+    mutation updateOneUser($where: UserWhereUniqueInput!, $data: UserUpdateInput!) {
+  updateOneUser(where: $where, data: $data) {
+    ...User
   }
-  ${UserFragmentDoc}
-`;
+}
+    ${UserFragmentDoc}`;
 
 /**
  * __useUpdateOneUserMutation__
@@ -2639,27 +2576,19 @@ export const UpdateOneUserDocument = gql`
  *   },
  * });
  */
-export function useUpdateOneUserMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateOneUserMutation, UpdateOneUserMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<UpdateOneUserMutation, UpdateOneUserMutationVariables>(
-    UpdateOneUserDocument,
-    baseOptions,
-  );
-}
+export function useUpdateOneUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<UpdateOneUserMutation, UpdateOneUserMutationVariables>) {
+        return ApolloReactHooks.useMutation<UpdateOneUserMutation, UpdateOneUserMutationVariables>(UpdateOneUserDocument, baseOptions);
+      }
 export type UpdateOneUserMutationHookResult = ReturnType<typeof useUpdateOneUserMutation>;
 export type UpdateOneUserMutationResult = ApolloReactCommon.MutationResult<UpdateOneUserMutation>;
-export type UpdateOneUserMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  UpdateOneUserMutation,
-  UpdateOneUserMutationVariables
->;
+export type UpdateOneUserMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateOneUserMutation, UpdateOneUserMutationVariables>;
 export const DeleteOneUserDocument = gql`
-  mutation deleteOneUser($where: UserWhereUniqueInput!) {
-    deleteOneUser(where: $where) {
-      id
-    }
+    mutation deleteOneUser($where: UserWhereUniqueInput!) {
+  deleteOneUser(where: $where) {
+    id
   }
-`;
+}
+    `;
 
 /**
  * __useDeleteOneUserMutation__
@@ -2678,17 +2607,9 @@ export const DeleteOneUserDocument = gql`
  *   },
  * });
  */
-export function useDeleteOneUserMutation(
-  baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteOneUserMutation, DeleteOneUserMutationVariables>,
-) {
-  return ApolloReactHooks.useMutation<DeleteOneUserMutation, DeleteOneUserMutationVariables>(
-    DeleteOneUserDocument,
-    baseOptions,
-  );
-}
+export function useDeleteOneUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<DeleteOneUserMutation, DeleteOneUserMutationVariables>) {
+        return ApolloReactHooks.useMutation<DeleteOneUserMutation, DeleteOneUserMutationVariables>(DeleteOneUserDocument, baseOptions);
+      }
 export type DeleteOneUserMutationHookResult = ReturnType<typeof useDeleteOneUserMutation>;
 export type DeleteOneUserMutationResult = ApolloReactCommon.MutationResult<DeleteOneUserMutation>;
-export type DeleteOneUserMutationOptions = ApolloReactCommon.BaseMutationOptions<
-  DeleteOneUserMutation,
-  DeleteOneUserMutationVariables
->;
+export type DeleteOneUserMutationOptions = ApolloReactCommon.BaseMutationOptions<DeleteOneUserMutation, DeleteOneUserMutationVariables>;
