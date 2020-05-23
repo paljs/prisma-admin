@@ -49,7 +49,7 @@ Admin pages for Prisma project db with [`@prisma-tools/admin`](https://github.co
 
 # Online demo
 
-[http://prisma-admin.ahmedelywa.com/](http://prisma-admin.ahmedelywa.com/)
+[https://prisma-admin.ahmedelywa.com/](https://prisma-admin.ahmedelywa.com/)
 
 For online version you need to signup new account then login
 
