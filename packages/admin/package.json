@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "resolutions": {
-    "moment": "2.24.0"
+    "moment": "2.26.0"
   },
   "dependencies": {
     "@apollo/client": "3.0.0-beta.50",
@@ -27,7 +27,7 @@
     "isomorphic-fetch": "2.2.1",
     "lowdb": "1.0.0",
     "match-sorter": "4.1.0",
-    "moment": "2.24.0",
+    "moment": "2.26.0",
     "namor": "2.0.2",
     "oah-eva-icon": "1.0.1",
     "oah-ui": "2.1.4",
