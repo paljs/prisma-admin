@@ -22,7 +22,7 @@
     "@nexus/schema": "0.13.1",
     "@prisma-tools/delete": "0.0.6",
     "@prisma-tools/nexus": "0.6.11",
-    "@prisma/client": "2.0.0-beta.5",
+    "@prisma/client": "2.0.0-previewnull-1",
     "nexus-schema-plugin-prisma-select": "0.0.1",
     "apollo-server": "2.13.1",
     "bcryptjs": "2.4.3",
