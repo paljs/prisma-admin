@@ -1,6 +1,6 @@
 # Introduction
 
-Admin pages for Prisma project db with [`@prisma-tools/admin`](https://github.com/AhmedElywa/prisma-tools/tree/master/packages/admin) tool to generate pages and apollo (queries and mutations) hooks and `schema.json` to custom your models
+Admin pages for Prisma project db with [`@prisma-tools/admin`](https://prisma-admin.ahmedelywa.com/admin/generator) tool to generate pages and apollo (queries and mutations) hooks and `schema.json` to custom your models
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
