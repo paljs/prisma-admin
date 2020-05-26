@@ -14,13 +14,13 @@ export type Scalars = {
 };
 
 export type AuthPayload = {
-   __typename?: 'AuthPayload';
+  __typename?: 'AuthPayload';
   token: Scalars['String'];
   user: User;
 };
 
 export type BatchPayload = {
-   __typename?: 'BatchPayload';
+  __typename?: 'BatchPayload';
   count: Scalars['Int'];
 };
 
@@ -30,7 +30,7 @@ export type BooleanFilter = {
 };
 
 export type Comment = {
-   __typename?: 'Comment';
+  __typename?: 'Comment';
   author?: Maybe<User>;
   authorId?: Maybe<Scalars['Int']>;
   contain: Scalars['String'];
@@ -221,13 +221,13 @@ export type DateTimeFilter = {
 };
 
 export type Enum = {
-   __typename?: 'Enum';
+  __typename?: 'Enum';
   fields: Array<Scalars['String']>;
   name: Scalars['String'];
 };
 
 export type Field = {
-   __typename?: 'Field';
+  __typename?: 'Field';
   create: Scalars['Boolean'];
   editor?: Maybe<Scalars['Boolean']>;
   filter: Scalars['Boolean'];
@@ -248,7 +248,7 @@ export type Field = {
 };
 
 export type Group = {
-   __typename?: 'Group';
+  __typename?: 'Group';
   createdAt: Scalars['DateTime'];
   id: Scalars['Int'];
   name: Scalars['String'];
@@ -361,7 +361,7 @@ export enum KindEnum {
 }
 
 export type Model = {
-   __typename?: 'Model';
+  __typename?: 'Model';
   create: Scalars['Boolean'];
   delete: Scalars['Boolean'];
   displayFields: Array<Scalars['String']>;
@@ -373,7 +373,7 @@ export type Model = {
 };
 
 export type Mutation = {
-   __typename?: 'Mutation';
+  __typename?: 'Mutation';
   createOneComment: Comment;
   createOneGroup: Group;
   createOnePost: Post;
@@ -552,7 +552,7 @@ export enum OrderByArg {
 }
 
 export type Post = {
-   __typename?: 'Post';
+  __typename?: 'Post';
   author?: Maybe<User>;
   authorId?: Maybe<Scalars['Int']>;
   comments: Array<Comment>;
@@ -740,7 +740,7 @@ export type PostWhereUniqueInput = {
 };
 
 export type Query = {
-   __typename?: 'Query';
+  __typename?: 'Query';
   findManyComment?: Maybe<Array<Comment>>;
   findManyCommentCount: Scalars['Int'];
   findManyGroup?: Maybe<Array<Group>>;
@@ -866,7 +866,7 @@ export type QueryFindOneUserArgs = {
 };
 
 export type Schema = {
-   __typename?: 'Schema';
+  __typename?: 'Schema';
   enums: Array<Enum>;
   models: Array<Model>;
 };
@@ -916,7 +916,7 @@ export type UpdateModelInput = {
 };
 
 export type User = {
-   __typename?: 'User';
+  __typename?: 'User';
   comments: Array<Comment>;
   createdAt: Scalars['DateTime'];
   email: Scalars['String'];
@@ -1751,7 +1751,7 @@ export const MeDocument = gql`
  * __useMeQuery__
  *
  * To run a query within a React component, call `useMeQuery` and pass it any options that fit your needs.
- * When your component renders, `useMeQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useMeQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -1854,7 +1854,7 @@ export const FindOneCommentDocument = gql`
  * __useFindOneCommentQuery__
  *
  * To run a query within a React component, call `useFindOneCommentQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindOneCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindOneCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -1888,7 +1888,7 @@ export const FindManyCommentDocument = gql`
  * __useFindManyCommentQuery__
  *
  * To run a query within a React component, call `useFindManyCommentQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindManyCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2021,7 +2021,7 @@ export const FindOneGroupDocument = gql`
  * __useFindOneGroupQuery__
  *
  * To run a query within a React component, call `useFindOneGroupQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindOneGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindOneGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2055,7 +2055,7 @@ export const FindManyGroupDocument = gql`
  * __useFindManyGroupQuery__
  *
  * To run a query within a React component, call `useFindManyGroupQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindManyGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2188,7 +2188,7 @@ export const FindOnePostDocument = gql`
  * __useFindOnePostQuery__
  *
  * To run a query within a React component, call `useFindOnePostQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindOnePostQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindOnePostQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2222,7 +2222,7 @@ export const FindManyPostDocument = gql`
  * __useFindManyPostQuery__
  *
  * To run a query within a React component, call `useFindManyPostQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyPostQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindManyPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2361,7 +2361,7 @@ ${EnumFragmentDoc}`;
  * __useGetSchemaQuery__
  *
  * To run a query within a React component, call `useGetSchemaQuery` and pass it any options that fit your needs.
- * When your component renders, `useGetSchemaQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useGetSchemaQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2458,7 +2458,7 @@ export const FindOneUserDocument = gql`
  * __useFindOneUserQuery__
  *
  * To run a query within a React component, call `useFindOneUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindOneUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindOneUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
@@ -2492,7 +2492,7 @@ export const FindManyUserDocument = gql`
  * __useFindManyUserQuery__
  *
  * To run a query within a React component, call `useFindManyUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyUserQuery` returns an object from Apollo Client that contains loading, error, and data properties 
+ * When your component renders, `useFindManyUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
  * you can use to render your UI.
  *
  * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
