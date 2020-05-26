@@ -9,8 +9,6 @@ Admin pages for Prisma project db with [`@prisma-tools/admin`](https://prisma-ad
 - [Online demo](#online-demo)
 - [How to use](#how-to-use)
   - [Download example](#download-example)
-    - [Unix (Mac OS, Linux)](#unix-mac-os-linux)
-    - [Windows](#windows)
   - [Install dependencies](#install-dependencies)
 - [Ui package used](#ui-package-used)
 - [Have questions?](#have-questions)
@@ -57,16 +55,8 @@ For online version you need to signup new account then login
 
 ## Download example
 
-### Unix (Mac OS, Linux)
-
-```shell script
-curl https://codeload.github.com/AhmedElywa/prisma-tools/tar.gz/master | tar -xz --strip=2 prisma-tools-master/examples/admin-gatsby
-```
-
-### Windows
-
-```shell script
-curl https://codeload.github.com/AhmedElywa/prisma-tools/tar.gz/master -o master.tar.gz && tar -zxvf master.tar.gz prisma-tools-master/examples/admin-gatsby && move prisma-tools-master/examples/admin-gatsby admin-gatsby && rmdir /S /Q prisma-tools-master && del /Q master.tar.gz
+```shell
+git clone https://github.com/AhmedElywa/prisma-admin.git
 ```
 
 ## Install dependencies
