@@ -79,7 +79,7 @@
     "gh-pages": "2.2.0",
     "prettier": "2.0.5",
     "react-live": "2.2.2",
-    "ts-node": "8.10.1",
+    "ts-node": "8.10.2",
     "typescript": "3.9.3"
   }
 }
