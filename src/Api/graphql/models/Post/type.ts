@@ -9,7 +9,7 @@ export const Post = objectType({
     t.field('author', {
       nullable: true,
       type: 'User',
-      resolve(parent) {
+      resolve(parent: any) {
         return parent['author']
       },
     })
@@ -27,7 +27,7 @@ export const Post = objectType({
         first: 'Int',
         last: 'Int',
       },
-      resolve(parent) {
+      resolve(parent: any) {
         return parent['comments']
       },
     })

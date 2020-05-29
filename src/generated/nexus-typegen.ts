@@ -3,7 +3,7 @@
  * Do not make changes to this file directly
  */
 
-import * as Context from "./src/Api/context"
+import * as Context from "../Api/context"
 
 
 

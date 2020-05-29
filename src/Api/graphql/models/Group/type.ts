@@ -20,7 +20,7 @@ export const Group = objectType({
         first: 'Int',
         last: 'Int',
       },
-      resolve(parent) {
+      resolve(parent: any) {
         return parent['users']
       },
     })

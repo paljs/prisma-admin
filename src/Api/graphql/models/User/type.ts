@@ -20,14 +20,14 @@ export const User = objectType({
         first: 'Int',
         last: 'Int',
       },
-      resolve(parent) {
+      resolve(parent: any) {
         return parent['posts']
       },
     })
     t.field('group', {
       nullable: true,
       type: 'Group',
-      resolve(parent) {
+      resolve(parent: any) {
         return parent['group']
       },
     })
@@ -45,7 +45,7 @@ export const User = objectType({
         first: 'Int',
         last: 'Int',
       },
-      resolve(parent) {
+      resolve(parent: any) {
         return parent['comments']
       },
     })
