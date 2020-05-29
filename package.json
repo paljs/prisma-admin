@@ -22,7 +22,7 @@
     "@nexus/schema": "0.13.1",
     "@prisma-tools/admin": "0.0.20",
     "@prisma-tools/delete": "0.0.7",
-    "@prisma-tools/nexus": "0.6.12",
+    "@prisma-tools/nexus": "0.6.13",
     "@prisma/client": "2.0.0-beta.6",
     "apollo-server-micro": "2.9.16",
     "apollo-utilities": "^1.3.2",
