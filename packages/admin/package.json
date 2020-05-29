@@ -8,7 +8,7 @@
     "moment": "2.24.0"
   },
   "dependencies": {
-    "@apollo/client": "3.0.0-beta.50",
+    "@apollo/client": "3.0.0-beta.52",
     "@prisma-tools/admin": "0.0.19",
     "@tinymce/tinymce-react": "3.6.0",
     "babel-plugin-styled-components": "1.10.7",

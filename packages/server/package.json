@@ -24,7 +24,7 @@
     "@prisma-tools/nexus": "0.6.12",
     "@prisma/client": "2.0.0-beta.6",
     "nexus-schema-plugin-prisma-select": "0.0.2",
-    "apollo-server": "2.13.1",
+    "apollo-server": "2.14.1",
     "bcryptjs": "2.4.3",
     "jsonwebtoken": "8.5.1",
     "lowdb": "1.0.0"
