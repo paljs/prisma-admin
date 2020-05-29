@@ -1,43 +1,91 @@
-# Apollo Server and Client Auth Example
+# Introduction
 
-[Apollo](https://www.apollographql.com/client/) is a GraphQL client that allows you to easily query the exact data you need from a GraphQL server. In addition to fetching and mutating data, Apollo analyzes your queries and their results to construct a client-side cache of your data, which is kept up to date as further queries and mutations are run, fetching more results from the server.
+Admin pages for Prisma project db with [`@prisma-tools/admin`](https://prisma-admin.ahmedelywa.com/admin/generator) tool to generate pages and apollo (queries and mutations) hooks and `schema.json` to custom your models
 
-In this simple example, we integrate Apollo seamlessly with Next by wrapping our _pages/\_app.js_ inside a [higher-order component (HOC)](https://facebook.github.io/react/docs/higher-order-components.html). Using the HOC pattern we're able to pass down a central store of query result data created by Apollo into our React component hierarchy defined inside each page of our Next application.
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-On initial page load, while on the server and inside `getInitialProps`, we invoke the Apollo method, [`getDataFromTree`](https://www.apollographql.com/docs/react/api/react-ssr/#getdatafromtree). This method returns a promise; at the point in which the promise resolves, our Apollo Client store is completely initialized.
+- [Features](#features)
+- [Online demo](#online-demo)
+- [How to use](#how-to-use)
+  - [Download example](#download-example)
+  - [Install dependencies](#install-dependencies)
+- [Ui package used](#ui-package-used)
+- [Have questions?](#have-questions)
 
-Note: Do not be alarmed that you see two renders being executed. Apollo recursively traverses the React render tree looking for Apollo query components. When it has done that, it fetches all these queries and then passes the result to a cache. This cache is then used to render the data on the server side (another React render).
-https://www.apollographql.com/docs/react/api/react-ssr/#getdatafromtree
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## How to use
+# Features
 
-### Using `create-next-app`
+- Have settings system to control of your models.
+  - Control of models
+    - Change model display name in table
+    - Select id field to use in db queries
+    - Select display field to display when model have relation with another model
+    - Have actions Create update delete default for all true
+  - Control of fields
+    - Change field display name in a table, update and create pages
+    - Change field order by a drag and drop to change gi order in a table, update and create pages
+    - Update action to add this field in update page
+    - Create action to add this field in create page
+    - Read, sort and filter to add this option to this field in display table
+- Every model has a page contain pagination table.
+  - Table has many page size option
+  - Table has go to page number input
+  - Table has select page number.
+  - If field value bigger than column width will hide it and show all of it in a popover when you click on it
+  - you can filter by many fields in same time and in relation fields you can select any field in this relation to filter by it.
+  - When you click in any relation field will go to his page with a filter.
+- Edit record page.
+  - Has a form to edit model fields.
+  - Relation fields has a search icon to search in relation records and connect. has close icon to delete relation if field not required.
+  - Tabs card has a table with list relation records.
+    - You can add a new record to parent record you edit.
+- Add new record modal.
+  - Has a form to add model fields.
+  - Relation fields has a search icon to search in relation records and connect. has close icon to delete relation if field not required.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) or [npx](https://github.com/zkat/npx#readme) to bootstrap the example:
+# Online demo
 
-```bash
-npx create-next-app --example api-routes-apollo-server-and-client-auth api-routes-apollo-server-and-client-auth-app
-# or
-yarn create next-app --example api-routes-apollo-server-and-client-auth api-routes-apollo-server-and-client-auth-app
+[https://prisma-admin.ahmedelywa.com/](https://prisma-admin.ahmedelywa.com/)
+
+For online version you need to signup new account then login
+
+# How to use
+
+## Download example
+
+```shell
+git clone https://github.com/AhmedElywa/prisma-admin.git
 ```
 
-### Download manually
+## Install dependencies
 
-Download the example:
-
-```bash
-curl https://codeload.github.com/vercel/next.js/tar.gz/canary | tar -xz --strip=2 next.js-canary/examples/api-routes-apollo-server-and-client-auth
-cd api-routes-apollo-server-and-client-auth
-```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-# or
+```shell script
 yarn
+```
+
+Start service
+
+```shell script
 yarn dev
 ```
 
-> If you have issues installing `bcrypt`, follow this instructions: https://github.com/kelektiv/node.bcrypt.js/wiki/Installation-Instructions
+After change your `schema.prisma`
+
+```shell script
+yarn generate
+yarn dev
+```
+
+Navigate to [http://localhost:8000](http://localhost:8000/) in your browser to explore admin pages
+
+# Ui package used
+
+This admin ui template built on [oah-ui](http://oah-ui.ahmedelywa.com/getting-started)
+
+# Have questions?
+
+Didn't find something here? Look through the [issues](https://github.com/AhmedElywa/prisma-tools/issues) or simply drop us a line at <ahmed.elywa@icloud.com>.
+
+**_Like my tool give me star_**
