@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "generate": "yarn generate:prisma && yarn generate:crud && yarn generate:nexus && yarn generate:admin && yarn generate:graphql",
     "generate:prisma": "prisma generate",
     "generate:crud": "ts-node --transpile-only -P nexus.tsconfig.json scripts/createCRUD",
