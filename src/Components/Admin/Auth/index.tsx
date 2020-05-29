@@ -29,7 +29,7 @@ const AuthStyle = styled.div<{ subTitle?: string }>`
 export const Group = styled.div`
   margin: 2rem 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 `;
 
