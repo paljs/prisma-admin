@@ -1,0 +1,12 @@
+# For local dev use - creates a postgres server.  Use "yarn db-start"
+version: "3"
+services:
+  db:
+    image: "postgres:11.6"
+    container_name: "prisma-admin-pg"
+    environment:
+      - POSTGRES_USER=prisma
+      - POSTGRES_PASSWORD=prisma
+      - POSTGRES_DB=prisma-admin
+    ports:
+      - "5432:5432"
