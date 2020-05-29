@@ -4,7 +4,7 @@ import styled, { DefaultTheme } from 'styled-components';
 import { Actions, Select, LayoutHeader, User, breakpointDown, EvaIcon } from 'oah-ui';
 import { LayoutContext } from './index';
 import { useApolloClient } from '@apollo/client';
-import { useLogoutMutation } from '../../generated';
+import { useLogoutMutation } from 'generated';
 
 const HeaderStyle = styled.div`
   display: flex;
@@ -129,16 +129,14 @@ const Header: React.FC<HeaderProps> = (props) => {
           actions={[
             {
               icon: 'github',
-              url: { href: 'https://github.com/AhmedElywa/prisma-tools', target: '_blank' },
+              url: { href: 'https://github.com/AhmedElywa/prisma-admin', target: '_blank' },
             },
             {
               icon: 'twitter',
               url: { href: 'https://twitter.com/AhmedElywh', target: '_blank' },
             },
             {
-              content: me && (
-                <User name={me.name!} title="Manager" size="Medium" />
-              ),
+              content: me && <User name={me.name!} title="Manager" size="Medium" />,
             },
             {
               icon: { name: 'log-out-outline', options: { animation: { type: 'zoom' } } },
