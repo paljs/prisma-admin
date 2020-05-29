@@ -24,12 +24,12 @@
     "@nexus/schema": "0.13.1",
     "@prisma-tools/admin": "0.0.20",
     "@prisma-tools/delete": "0.0.7",
-    "@prisma-tools/nexus": "0.6.13",
+    "@prisma-tools/nexus": "0.6.14",
     "@prisma/client": "2.0.0-beta.6",
     "apollo-server-micro": "2.9.16",
     "bcryptjs": "2.4.3",
     "cookie": "0.4.0",
-    "graphql": "14.0.2",
+    "graphql": "14.5.4",
     "graphql-tag": "2.10.1",
     "jsonwebtoken": "8.5.1",
     "lowdb": "1.0.0",
@@ -84,5 +84,6 @@
     "hooks": {
       "pre-commit": "pretty-quick --pattern \"**/*.*(ts|tsx|graphql)\" --staged"
     }
-  }
+  },
+  "cacheDirectories": [".next/cache"]
 }
