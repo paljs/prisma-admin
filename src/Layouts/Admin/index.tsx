@@ -56,6 +56,7 @@ const LayoutPage: React.FC = ({ children }) => {
   };
 
   const authLayout = router.pathname.startsWith('/admin/auth');
+  const adminLayout = router.pathname.startsWith('/admin');
 
   useEffect(() => {
     if (!loading && !userData?.me && !authLayout) {
@@ -84,7 +85,7 @@ const LayoutPage: React.FC = ({ children }) => {
           <Layout evaIcons={icons} className={authLayout ? 'auth-layout' : ''}>
             {!authLayout && <Header changeTheme={changeTheme} toggleSidebar={() => sidebarRef.current?.toggle()} />}
             <LayoutContainer>
-              {!authLayout && (
+              {!authLayout && adminLayout && (
                 <Sidebar ref={sidebarRef} property="start" containerFixed responsive className="menu-sidebar">
                   <SidebarBody>
                     <Menu
