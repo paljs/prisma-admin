@@ -18,21 +18,11 @@ query findOneGroup($where: GroupWhereUniqueInput!) {
 query findManyGroup(
   $where: GroupWhereInput
   $orderBy: GroupOrderByInput
-  $after: GroupWhereUniqueInput
-  $before: GroupWhereUniqueInput
+  $cursor: GroupWhereUniqueInput
   $skip: Int
-  $first: Int
-  $last: Int
+  $take: Int
 ) {
-  findManyGroup(
-    where: $where
-    orderBy: $orderBy
-    after: $after
-    before: $before
-    skip: $skip
-    first: $first
-    last: $last
-  ) {
+  findManyGroup(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
     ...Group
   }
   findManyGroupCount(where: $where)

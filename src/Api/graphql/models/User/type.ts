@@ -14,11 +14,9 @@ export const User = objectType({
       args: {
         where: 'PostWhereInput',
         orderBy: 'PostOrderByInput',
+        cursor: 'PostWhereUniqueInput',
+        take: 'Int',
         skip: 'Int',
-        after: 'PostWhereUniqueInput',
-        before: 'PostWhereUniqueInput',
-        first: 'Int',
-        last: 'Int',
       },
       resolve(parent: any) {
         return parent['posts']
@@ -39,11 +37,9 @@ export const User = objectType({
       args: {
         where: 'CommentWhereInput',
         orderBy: 'CommentOrderByInput',
+        cursor: 'CommentWhereUniqueInput',
+        take: 'Int',
         skip: 'Int',
-        after: 'CommentWhereUniqueInput',
-        before: 'CommentWhereUniqueInput',
-        first: 'Int',
-        last: 'Int',
       },
       resolve(parent: any) {
         return parent['comments']

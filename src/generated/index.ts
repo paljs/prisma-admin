@@ -252,12 +252,10 @@ export type Group = {
 
 
 export type GroupUsersArgs = {
-  after?: Maybe<UserWhereUniqueInput>;
-  before?: Maybe<UserWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<UserWhereUniqueInput>;
   orderBy?: Maybe<UserOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<UserWhereInput>;
 };
 
@@ -560,12 +558,10 @@ export type Post = {
 
 
 export type PostCommentsArgs = {
-  after?: Maybe<CommentWhereUniqueInput>;
-  before?: Maybe<CommentWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<CommentWhereUniqueInput>;
   orderBy?: Maybe<CommentOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<CommentWhereInput>;
 };
 
@@ -754,89 +750,73 @@ export type Query = {
 
 
 export type QueryFindManyCommentArgs = {
-  after?: Maybe<CommentWhereUniqueInput>;
-  before?: Maybe<CommentWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<CommentWhereUniqueInput>;
   orderBy?: Maybe<CommentOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<CommentWhereInput>;
 };
 
 
 export type QueryFindManyCommentCountArgs = {
-  after?: Maybe<CommentWhereUniqueInput>;
-  before?: Maybe<CommentWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<CommentWhereUniqueInput>;
   orderBy?: Maybe<CommentOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<CommentWhereInput>;
 };
 
 
 export type QueryFindManyGroupArgs = {
-  after?: Maybe<GroupWhereUniqueInput>;
-  before?: Maybe<GroupWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<GroupWhereUniqueInput>;
   orderBy?: Maybe<GroupOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<GroupWhereInput>;
 };
 
 
 export type QueryFindManyGroupCountArgs = {
-  after?: Maybe<GroupWhereUniqueInput>;
-  before?: Maybe<GroupWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<GroupWhereUniqueInput>;
   orderBy?: Maybe<GroupOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<GroupWhereInput>;
 };
 
 
 export type QueryFindManyPostArgs = {
-  after?: Maybe<PostWhereUniqueInput>;
-  before?: Maybe<PostWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<PostWhereUniqueInput>;
   orderBy?: Maybe<PostOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<PostWhereInput>;
 };
 
 
 export type QueryFindManyPostCountArgs = {
-  after?: Maybe<PostWhereUniqueInput>;
-  before?: Maybe<PostWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<PostWhereUniqueInput>;
   orderBy?: Maybe<PostOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<PostWhereInput>;
 };
 
 
 export type QueryFindManyUserArgs = {
-  after?: Maybe<UserWhereUniqueInput>;
-  before?: Maybe<UserWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<UserWhereUniqueInput>;
   orderBy?: Maybe<UserOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<UserWhereInput>;
 };
 
 
 export type QueryFindManyUserCountArgs = {
-  after?: Maybe<UserWhereUniqueInput>;
-  before?: Maybe<UserWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<UserWhereUniqueInput>;
   orderBy?: Maybe<UserOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<UserWhereInput>;
 };
 
@@ -924,23 +904,19 @@ export type User = {
 
 
 export type UserCommentsArgs = {
-  after?: Maybe<CommentWhereUniqueInput>;
-  before?: Maybe<CommentWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<CommentWhereUniqueInput>;
   orderBy?: Maybe<CommentOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<CommentWhereInput>;
 };
 
 
 export type UserPostsArgs = {
-  after?: Maybe<PostWhereUniqueInput>;
-  before?: Maybe<PostWhereUniqueInput>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  cursor?: Maybe<PostWhereUniqueInput>;
   orderBy?: Maybe<PostOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
   where?: Maybe<PostWhereInput>;
 };
 
@@ -1239,11 +1215,9 @@ export type FindOneCommentQuery = (
 export type FindManyCommentQueryVariables = {
   where?: Maybe<CommentWhereInput>;
   orderBy?: Maybe<CommentOrderByInput>;
-  after?: Maybe<CommentWhereUniqueInput>;
-  before?: Maybe<CommentWhereUniqueInput>;
+  cursor?: Maybe<CommentWhereUniqueInput>;
   skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
 };
 
 
@@ -1322,11 +1296,9 @@ export type FindOneGroupQuery = (
 export type FindManyGroupQueryVariables = {
   where?: Maybe<GroupWhereInput>;
   orderBy?: Maybe<GroupOrderByInput>;
-  after?: Maybe<GroupWhereUniqueInput>;
-  before?: Maybe<GroupWhereUniqueInput>;
+  cursor?: Maybe<GroupWhereUniqueInput>;
   skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
 };
 
 
@@ -1409,11 +1381,9 @@ export type FindOnePostQuery = (
 export type FindManyPostQueryVariables = {
   where?: Maybe<PostWhereInput>;
   orderBy?: Maybe<PostOrderByInput>;
-  after?: Maybe<PostWhereUniqueInput>;
-  before?: Maybe<PostWhereUniqueInput>;
+  cursor?: Maybe<PostWhereUniqueInput>;
   skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
 };
 
 
@@ -1561,11 +1531,9 @@ export type FindOneUserQuery = (
 export type FindManyUserQueryVariables = {
   where?: Maybe<UserWhereInput>;
   orderBy?: Maybe<UserOrderByInput>;
-  after?: Maybe<UserWhereUniqueInput>;
-  before?: Maybe<UserWhereUniqueInput>;
+  cursor?: Maybe<UserWhereUniqueInput>;
   skip?: Maybe<Scalars['Int']>;
-  first?: Maybe<Scalars['Int']>;
-  last?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
 };
 
 
@@ -1893,8 +1861,8 @@ export type FindOneCommentQueryHookResult = ReturnType<typeof useFindOneCommentQ
 export type FindOneCommentLazyQueryHookResult = ReturnType<typeof useFindOneCommentLazyQuery>;
 export type FindOneCommentQueryResult = ApolloReactCommon.QueryResult<FindOneCommentQuery, FindOneCommentQueryVariables>;
 export const FindManyCommentDocument = gql`
-    query findManyComment($where: CommentWhereInput, $orderBy: CommentOrderByInput, $after: CommentWhereUniqueInput, $before: CommentWhereUniqueInput, $skip: Int, $first: Int, $last: Int) {
-  findManyComment(where: $where, orderBy: $orderBy, after: $after, before: $before, skip: $skip, first: $first, last: $last) {
+    query findManyComment($where: CommentWhereInput, $orderBy: CommentOrderByInput, $cursor: CommentWhereUniqueInput, $skip: Int, $take: Int) {
+  findManyComment(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
     ...Comment
   }
   findManyCommentCount(where: $where)
@@ -1915,11 +1883,9 @@ export const FindManyCommentDocument = gql`
  *   variables: {
  *      where: // value for 'where'
  *      orderBy: // value for 'orderBy'
- *      after: // value for 'after'
- *      before: // value for 'before'
+ *      cursor: // value for 'cursor'
  *      skip: // value for 'skip'
- *      first: // value for 'first'
- *      last: // value for 'last'
+ *      take: // value for 'take'
  *   },
  * });
  */
@@ -2060,8 +2026,8 @@ export type FindOneGroupQueryHookResult = ReturnType<typeof useFindOneGroupQuery
 export type FindOneGroupLazyQueryHookResult = ReturnType<typeof useFindOneGroupLazyQuery>;
 export type FindOneGroupQueryResult = ApolloReactCommon.QueryResult<FindOneGroupQuery, FindOneGroupQueryVariables>;
 export const FindManyGroupDocument = gql`
-    query findManyGroup($where: GroupWhereInput, $orderBy: GroupOrderByInput, $after: GroupWhereUniqueInput, $before: GroupWhereUniqueInput, $skip: Int, $first: Int, $last: Int) {
-  findManyGroup(where: $where, orderBy: $orderBy, after: $after, before: $before, skip: $skip, first: $first, last: $last) {
+    query findManyGroup($where: GroupWhereInput, $orderBy: GroupOrderByInput, $cursor: GroupWhereUniqueInput, $skip: Int, $take: Int) {
+  findManyGroup(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
     ...Group
   }
   findManyGroupCount(where: $where)
@@ -2082,11 +2048,9 @@ export const FindManyGroupDocument = gql`
  *   variables: {
  *      where: // value for 'where'
  *      orderBy: // value for 'orderBy'
- *      after: // value for 'after'
- *      before: // value for 'before'
+ *      cursor: // value for 'cursor'
  *      skip: // value for 'skip'
- *      first: // value for 'first'
- *      last: // value for 'last'
+ *      take: // value for 'take'
  *   },
  * });
  */
@@ -2227,8 +2191,8 @@ export type FindOnePostQueryHookResult = ReturnType<typeof useFindOnePostQuery>;
 export type FindOnePostLazyQueryHookResult = ReturnType<typeof useFindOnePostLazyQuery>;
 export type FindOnePostQueryResult = ApolloReactCommon.QueryResult<FindOnePostQuery, FindOnePostQueryVariables>;
 export const FindManyPostDocument = gql`
-    query findManyPost($where: PostWhereInput, $orderBy: PostOrderByInput, $after: PostWhereUniqueInput, $before: PostWhereUniqueInput, $skip: Int, $first: Int, $last: Int) {
-  findManyPost(where: $where, orderBy: $orderBy, after: $after, before: $before, skip: $skip, first: $first, last: $last) {
+    query findManyPost($where: PostWhereInput, $orderBy: PostOrderByInput, $cursor: PostWhereUniqueInput, $skip: Int, $take: Int) {
+  findManyPost(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
     ...Post
   }
   findManyPostCount(where: $where)
@@ -2249,11 +2213,9 @@ export const FindManyPostDocument = gql`
  *   variables: {
  *      where: // value for 'where'
  *      orderBy: // value for 'orderBy'
- *      after: // value for 'after'
- *      before: // value for 'before'
+ *      cursor: // value for 'cursor'
  *      skip: // value for 'skip'
- *      first: // value for 'first'
- *      last: // value for 'last'
+ *      take: // value for 'take'
  *   },
  * });
  */
@@ -2497,8 +2459,8 @@ export type FindOneUserQueryHookResult = ReturnType<typeof useFindOneUserQuery>;
 export type FindOneUserLazyQueryHookResult = ReturnType<typeof useFindOneUserLazyQuery>;
 export type FindOneUserQueryResult = ApolloReactCommon.QueryResult<FindOneUserQuery, FindOneUserQueryVariables>;
 export const FindManyUserDocument = gql`
-    query findManyUser($where: UserWhereInput, $orderBy: UserOrderByInput, $after: UserWhereUniqueInput, $before: UserWhereUniqueInput, $skip: Int, $first: Int, $last: Int) {
-  findManyUser(where: $where, orderBy: $orderBy, after: $after, before: $before, skip: $skip, first: $first, last: $last) {
+    query findManyUser($where: UserWhereInput, $orderBy: UserOrderByInput, $cursor: UserWhereUniqueInput, $skip: Int, $take: Int) {
+  findManyUser(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
     ...User
   }
   findManyUserCount(where: $where)
@@ -2519,11 +2481,9 @@ export const FindManyUserDocument = gql`
  *   variables: {
  *      where: // value for 'where'
  *      orderBy: // value for 'orderBy'
- *      after: // value for 'after'
- *      before: // value for 'before'
+ *      cursor: // value for 'cursor'
  *      skip: // value for 'skip'
- *      first: // value for 'first'
- *      last: // value for 'last'
+ *      take: // value for 'take'
  *   },
  * });
  */

@@ -1,7 +1,7 @@
-import { makeSchema } from '@nexus/schema';
-import * as types from './graphql';
-import { prismaSelectObject } from 'nexus-schema-plugin-prisma-select';
-import { join } from 'path';
+import { makeSchema } from '@nexus/schema'
+import * as types from './graphql'
+import { prismaSelectObject } from 'nexus-schema-plugin-prisma-select'
+import { join } from 'path'
 
 export const schema = makeSchema({
   types,
@@ -23,4 +23,4 @@ export const schema = makeSchema({
     ],
     contextType: 'Context.Context',
   },
-});
+})

@@ -26,21 +26,11 @@ query findOneComment($where: CommentWhereUniqueInput!) {
 query findManyComment(
   $where: CommentWhereInput
   $orderBy: CommentOrderByInput
-  $after: CommentWhereUniqueInput
-  $before: CommentWhereUniqueInput
+  $cursor: CommentWhereUniqueInput
   $skip: Int
-  $first: Int
-  $last: Int
+  $take: Int
 ) {
-  findManyComment(
-    where: $where
-    orderBy: $orderBy
-    after: $after
-    before: $before
-    skip: $skip
-    first: $first
-    last: $last
-  ) {
+  findManyComment(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
     ...Comment
   }
   findManyCommentCount(where: $where)

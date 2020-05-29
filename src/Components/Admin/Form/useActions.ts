@@ -1,7 +1,7 @@
-import * as generate from '../../../generated';
+import * as generate from 'generated';
 import { DocumentNode, useMutation } from '@apollo/client';
 import { useContext } from 'react';
-import { LayoutContext } from '../../../Layouts/Admin';
+import { LayoutContext } from 'Layouts/Admin';
 import { FormProps } from './index';
 
 type keys = keyof typeof generate;

@@ -1,9 +1,9 @@
-import { extendType, stringArg } from '@nexus/schema';
-import { compare, hash } from 'bcryptjs';
-import { sign } from 'jsonwebtoken';
-import { JWT_SECRET } from '../utils';
-import cookie from 'cookie';
-import { UserInputError } from 'apollo-server-micro';
+import { extendType, stringArg } from '@nexus/schema'
+import { compare, hash } from 'bcryptjs'
+import { sign } from 'jsonwebtoken'
+import { JWT_SECRET } from '../utils'
+import cookie from 'cookie'
+import { UserInputError } from 'apollo-server-micro'
 
 export const AuthQueries = extendType({
   type: 'Query',
@@ -12,17 +12,17 @@ export const AuthQueries = extendType({
       type: 'User',
       nullable: true,
       resolve: async (_, __, { prisma, select, userId }) => {
-        if (!userId) return null;
+        if (!userId) return null
         return prisma.user.findOne({
           where: {
             id: userId,
           },
           ...select,
-        });
+        })
       },
-    });
+    })
   },
-});
+})
 
 export const AuthMutations = extendType({
   type: 'Mutation',
@@ -35,14 +35,14 @@ export const AuthMutations = extendType({
         password: stringArg({ nullable: false }),
       },
       resolve: async (_parent, { name, email, password }, ctx) => {
-        const hashedPassword = await hash(password, 10);
+        const hashedPassword = await hash(password, 10)
         const user = await ctx.prisma.user.create({
           data: {
             name,
             email,
             password: hashedPassword,
           },
-        });
+        })
         ctx.res.setHeader(
           'Set-Cookie',
           cookie.serialize('token', sign({ userId: user.id }, JWT_SECRET), {
@@ -52,10 +52,10 @@ export const AuthMutations = extendType({
             sameSite: 'lax',
             secure: process.env.NODE_ENV === 'production',
           }),
-        );
-        return user;
+        )
+        return user
       },
-    });
+    })
     t.field('login', {
       type: 'User',
       nullable: true,
@@ -68,13 +68,13 @@ export const AuthMutations = extendType({
           where: {
             email,
           },
-        });
+        })
         if (!user) {
-          throw new UserInputError(`No user found for email: ${email}`);
+          throw new UserInputError(`No user found for email: ${email}`)
         }
-        const passwordValid = await compare(password, user.password);
+        const passwordValid = await compare(password, user.password)
         if (!passwordValid) {
-          throw new UserInputError('Invalid password');
+          throw new UserInputError('Invalid password')
         }
         ctx.res.setHeader(
           'Set-Cookie',
@@ -85,10 +85,10 @@ export const AuthMutations = extendType({
             sameSite: 'lax',
             secure: process.env.NODE_ENV === 'production',
           }),
-        );
-        return user;
+        )
+        return user
       },
-    });
+    })
     t.field('logout', {
       type: 'Boolean',
       resolve(_parent, _args, ctx) {
@@ -101,10 +101,10 @@ export const AuthMutations = extendType({
             sameSite: 'lax',
             secure: process.env.NODE_ENV === 'production',
           }),
-        );
-        return true;
+        )
+        return true
       },
-    });
+    })
     t.field('updatePassword', {
       type: 'Boolean',
       args: {
@@ -117,22 +117,22 @@ export const AuthMutations = extendType({
           const user = await ctx.prisma.user.findOne({
             where: { id: ctx.userId },
             select: { password: true },
-          });
+          })
           if (!user) {
-            return false;
+            return false
           }
-          const validPass = await compare(currentPassword, user.password);
-          if (!validPass) throw new UserInputError('Incorrect Current Password, Error: 1015');
-          const hashPassword = await hash(password, 10);
+          const validPass = await compare(currentPassword, user.password)
+          if (!validPass) throw new UserInputError('Incorrect Current Password, Error: 1015')
+          const hashPassword = await hash(password, 10)
 
           await ctx.prisma.user.update({
             data: { password: hashPassword },
             where: { id: ctx.userId },
-          });
-          return true;
+          })
+          return true
         }
-        return false;
+        return false
       },
-    });
+    })
   },
-});
+})

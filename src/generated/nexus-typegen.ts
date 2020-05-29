@@ -947,12 +947,10 @@ export interface NexusGenFieldTypes {
 export interface NexusGenArgTypes {
   Group: {
     users: { // args
-      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       orderBy?: NexusGenInputs['UserOrderByInput'] | null; // UserOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
   }
@@ -1042,86 +1040,68 @@ export interface NexusGenArgTypes {
   }
   Post: {
     comments: { // args
-      after?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      before?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
       orderBy?: NexusGenInputs['CommentOrderByInput'] | null; // CommentOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
     }
   }
   Query: {
     findManyComment: { // args
-      after?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      before?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
       orderBy?: NexusGenInputs['CommentOrderByInput'] | null; // CommentOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
     }
     findManyCommentCount: { // args
-      after?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      before?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
       orderBy?: NexusGenInputs['CommentOrderByInput'] | null; // CommentOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
     }
     findManyGroup: { // args
-      after?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      before?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
       orderBy?: NexusGenInputs['GroupOrderByInput'] | null; // GroupOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
     }
     findManyGroupCount: { // args
-      after?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      before?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
       orderBy?: NexusGenInputs['GroupOrderByInput'] | null; // GroupOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['GroupWhereInput'] | null; // GroupWhereInput
     }
     findManyPost: { // args
-      after?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      before?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
       orderBy?: NexusGenInputs['PostOrderByInput'] | null; // PostOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     }
     findManyPostCount: { // args
-      after?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      before?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
       orderBy?: NexusGenInputs['PostOrderByInput'] | null; // PostOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     }
     findManyUser: { // args
-      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       orderBy?: NexusGenInputs['UserOrderByInput'] | null; // UserOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
     findManyUserCount: { // args
-      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       orderBy?: NexusGenInputs['UserOrderByInput'] | null; // UserOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
     findOneComment: { // args
@@ -1139,21 +1119,17 @@ export interface NexusGenArgTypes {
   }
   User: {
     comments: { // args
-      after?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      before?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
       orderBy?: NexusGenInputs['CommentOrderByInput'] | null; // CommentOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['CommentWhereInput'] | null; // CommentWhereInput
     }
     posts: { // args
-      after?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      before?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
+      cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
       orderBy?: NexusGenInputs['PostOrderByInput'] | null; // PostOrderByInput
       skip?: number | null; // Int
+      take?: number | null; // Int
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     }
   }

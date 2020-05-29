@@ -4,7 +4,7 @@ import { FormContextValues } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 import styled, { css } from 'styled-components';
 import { useEnum, useModel } from '../useSchema';
-import * as generated from '../../../generated';
+import * as generated from 'generated';
 import { DocumentNode, useLazyQuery } from '@apollo/client';
 import { getDisplayName } from '../Table/utils';
 import DynamicTable from '../dynamicTable';

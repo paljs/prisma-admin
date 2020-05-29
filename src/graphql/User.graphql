@@ -22,21 +22,11 @@ query findOneUser($where: UserWhereUniqueInput!) {
 query findManyUser(
   $where: UserWhereInput
   $orderBy: UserOrderByInput
-  $after: UserWhereUniqueInput
-  $before: UserWhereUniqueInput
+  $cursor: UserWhereUniqueInput
   $skip: Int
-  $first: Int
-  $last: Int
+  $take: Int
 ) {
-  findManyUser(
-    where: $where
-    orderBy: $orderBy
-    after: $after
-    before: $before
-    skip: $skip
-    first: $first
-    last: $last
-  ) {
+  findManyUser(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
     ...User
   }
   findManyUserCount(where: $where)

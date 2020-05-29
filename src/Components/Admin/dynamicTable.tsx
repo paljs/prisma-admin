@@ -1,11 +1,11 @@
 import { Modal } from 'oah-ui';
 import React, { useContext, useEffect, useState } from 'react';
 import { Table } from './Table';
-import * as generate from '../../generated';
+import * as generate from 'generated';
 import { useFilterAndSort } from './Table/useFilterAndSort';
 import Form from './Form';
 import { DocumentNode, useLazyQuery, useMutation } from '@apollo/client';
-import { LayoutContext } from '../../Layouts/Admin';
+import { LayoutContext } from 'Layouts/Admin';
 import EditRecord from './EditRecord';
 import { useRouter } from 'next/router';
 
@@ -21,7 +21,7 @@ interface DynamicTableProps {
 }
 const DynamicTable: React.FC<DynamicTableProps> = ({ model, inEdit, filter, parent, connect, onConnect }) => {
   const [page, setPage] = useState({
-    first: 10,
+    take: 10,
     skip: 0,
   });
   const [create, setCreate] = useState(false);
@@ -60,9 +60,9 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ model, inEdit, filter, pare
   }, [data, loading, query]);
 
   const fetchMoreHandler = (pageSize: number, pageIndex: number) => {
-    if (pageSize !== page.first || pageSize * pageIndex !== page.skip) {
+    if (pageSize !== page.take || pageSize * pageIndex !== page.skip) {
       setPage({
-        first: pageSize,
+        take: pageSize,
         skip: pageSize * pageIndex,
       });
     }
@@ -124,7 +124,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ model, inEdit, filter, pare
           filterHandler={filterHandler}
           sortByHandler={sortByHandler}
           initialFilter={initialFilter}
-          pageCount={data ? Math.ceil(data[`findMany${model}Count`] / page.first) : 0}
+          pageCount={data ? Math.ceil(data[`findMany${model}Count`] / page.take) : 0}
         />
       )}
     </>

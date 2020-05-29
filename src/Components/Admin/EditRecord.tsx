@@ -4,7 +4,7 @@ import Form from './Form';
 import styled from 'styled-components';
 import DynamicTable from './dynamicTable';
 import { DocumentNode, useLazyQuery } from '@apollo/client';
-import * as generate from '../../generated';
+import * as generate from 'generated';
 import { useModel } from './useSchema';
 import { useRouter } from 'next/router';
 

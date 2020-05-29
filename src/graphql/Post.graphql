@@ -23,21 +23,11 @@ query findOnePost($where: PostWhereUniqueInput!) {
 query findManyPost(
   $where: PostWhereInput
   $orderBy: PostOrderByInput
-  $after: PostWhereUniqueInput
-  $before: PostWhereUniqueInput
+  $cursor: PostWhereUniqueInput
   $skip: Int
-  $first: Int
-  $last: Int
+  $take: Int
 ) {
-  findManyPost(
-    where: $where
-    orderBy: $orderBy
-    after: $after
-    before: $before
-    skip: $skip
-    first: $first
-    last: $last
-  ) {
+  findManyPost(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
     ...Post
   }
   findManyPostCount(where: $where)

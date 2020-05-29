@@ -1,30 +1,30 @@
-import { PrismaClient, PrismaClientOptions } from '@prisma/client';
-import PrismaDelete, { onDeleteArgs } from '@prisma-tools/delete';
-import { NextApiRequest, NextApiResponse } from 'next';
-import { getUserId } from './utils';
+import { PrismaClient, PrismaClientOptions } from '@prisma/client'
+import PrismaDelete, { onDeleteArgs } from '@prisma-tools/delete'
+import { NextApiRequest, NextApiResponse } from 'next'
+import { getUserId } from './utils'
 
 class Prisma extends PrismaClient {
   constructor(options?: PrismaClientOptions) {
-    super(options);
+    super(options)
   }
 
   async onDelete(args: onDeleteArgs) {
-    const prismaDelete = new PrismaDelete(this);
-    await prismaDelete.onDelete(args);
+    const prismaDelete = new PrismaDelete(this)
+    await prismaDelete.onDelete(args)
   }
 }
 
-const prisma = new Prisma();
+const prisma = new Prisma()
 
 export interface Context extends NextApi {
-  prisma: Prisma;
-  userId?: number;
-  select: any;
+  prisma: Prisma
+  userId?: number
+  select: any
 }
 
 interface NextApi {
-  req: NextApiRequest;
-  res: NextApiResponse;
+  req: NextApiRequest
+  res: NextApiResponse
 }
 
 export function createContext({ req, res }: NextApi): Context {
@@ -34,5 +34,5 @@ export function createContext({ req, res }: NextApi): Context {
     prisma,
     userId: getUserId(req),
     select: {},
-  };
+  }
 }
