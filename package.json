@@ -31,7 +31,7 @@
     "cookie": "0.4.0",
     "graphql": "14.5.4",
     "graphql-tag": "2.10.1",
-    "graphql-tools": "^6.0.4",
+    "graphql-tools": "6.0.4",
     "jsonwebtoken": "8.5.1",
     "lowdb": "1.0.0",
     "moment": "2.24.0",
