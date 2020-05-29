@@ -32,5 +32,3 @@ yarn-error.log*
 
 #IDE
 .idea
-
-src/generated
