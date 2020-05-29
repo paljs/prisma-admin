@@ -6,7 +6,6 @@ module.exports = {
     // !! WARN !!
     ignoreBuildErrors: true,
   },
-  target: 'server',
   serverRuntimeConfig: {
     JWT_SECRET: 'changeMe',
   },
