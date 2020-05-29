@@ -28,7 +28,7 @@
     "@prisma/client": "2.0.0-beta.6",
     "apollo-server-micro": "2.14.1",
     "bcryptjs": "2.4.3",
-    "cookie": "0.4.0",
+    "cookie": "0.4.1",
     "graphql": "14.5.4",
     "graphql-tag": "2.10.3",
     "graphql-tools": "6.0.4",
