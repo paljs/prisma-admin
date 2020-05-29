@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@apollo/client": "3.0.0-beta.50",
-    "@prisma-tools/admin": "0.0.19",
+    "@prisma-tools/admin": "0.0.20",
     "@tinymce/tinymce-react": "3.6.0",
     "babel-plugin-styled-components": "1.10.7",
     "dotenv": "8.2.0",
