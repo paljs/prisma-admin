@@ -65,7 +65,7 @@
     "@types/react-beautiful-dnd": "12.1.2",
     "@types/react-datepicker": "2.11.0",
     "@types/react-dom": "16.9.8",
-    "@types/react-select": "3.0.10",
+    "@types/react-select": "3.0.13",
     "@types/react-table": "7.0.13",
     "@types/styled-components": "4.4.2",
     "@typescript-eslint/eslint-plugin": "2.16.0",
