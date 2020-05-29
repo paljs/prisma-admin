@@ -1671,10 +1671,10 @@
   resolved "https://registry.yarnpkg.com/@prisma-tools/delete/-/delete-0.0.7.tgz#7ed1bbf024eedda68c5fc6b4417b7a012408619d"
   integrity sha512-tpdJFQTMM+E3mB1w8T5fnmzw/aup8mMR774HdEUxxmMz8S6DXQKqb6fPH2+rF8TEtQXx7qhAbp2P5gA1PCZaqQ==
 
-"@prisma-tools/nexus@0.6.13":
-  version "0.6.13"
-  resolved "https://registry.yarnpkg.com/@prisma-tools/nexus/-/nexus-0.6.13.tgz#e26622fb77c6a3fe83bc42f3ec4e2947372e1bcd"
-  integrity sha512-yTrgrQrQqJ7K6BxYqRVIuzdowX7CkY63z9eEy9xbDnFQyRtu66Om+m1w5gxNr+DkbIcedreFUKThlfgtTAR95w==
+"@prisma-tools/nexus@0.6.14":
+  version "0.6.14"
+  resolved "https://registry.yarnpkg.com/@prisma-tools/nexus/-/nexus-0.6.14.tgz#1578df27e8f8b832e41f93fd7253f762e474b26d"
+  integrity sha512-RuVYf9B0L/yQNfnK+K5AMd7WpxFGpPKj2oSZOhFF/OzznX4/AmgwssUe9KUjzAcF550FEnceTi4R7SHNNMfRMQ==
   dependencies:
     prettier "^2.0.4"
 
