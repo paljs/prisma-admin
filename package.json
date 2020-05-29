@@ -44,7 +44,8 @@
     "react-hook-form": "^5.4.2",
     "react-quill": "^2.0.0-beta.2",
     "react-table": "^7.0.4",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "ts-node": "^8.10.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "1.15.0",
@@ -73,8 +74,8 @@
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.19.0",
-    "jest-dom": "^4.0.0",
     "husky": "4.2.5",
+    "jest-dom": "^4.0.0",
     "lerna": "3.22.0",
     "prettier": "2.0.5",
     "pretty-quick": "2.0.1",
