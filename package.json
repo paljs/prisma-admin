@@ -19,7 +19,7 @@
     "migrate-database": "prisma migrate up --experimental --auto-approve --create-db"
   },
   "dependencies": {
-    "@apollo/client": "3.0.0-beta.52",
+    "@apollo/client": "3.0.0-beta.53",
     "@apollo/react-ssr": "4.0.0-beta.1",
     "@nexus/schema": "0.13.1",
     "@prisma-tools/admin": "0.0.21",
