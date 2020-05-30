@@ -45,7 +45,7 @@
     "react-dom": "16.13.1",
     "react-hook-form": "5.4.2",
     "react-quill": "2.0.0-beta.2",
-    "react-table": "7.0.4",
+    "react-table": "7.1.0",
     "styled-components": "5.0.1",
     "ts-node": "8.10.2"
   },
@@ -66,7 +66,7 @@
     "@types/react-datepicker": "2.11.0",
     "@types/react-dom": "16.9.8",
     "@types/react-select": "3.0.13",
-    "@types/react-table": "7.0.13",
+    "@types/react-table": "7.0.18",
     "@types/styled-components": "4.4.3",
     "@typescript-eslint/eslint-plugin": "2.16.0",
     "@typescript-eslint/parser": "2.16.0",
