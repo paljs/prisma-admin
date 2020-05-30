@@ -2,7 +2,7 @@
 version: "3"
 services:
   db:
-    image: "postgres:11.6"
+    image: "postgres:11.8"
     container_name: "prisma-admin-pg"
     environment:
       - POSTGRES_USER=prisma
