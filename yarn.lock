@@ -46,10 +46,10 @@
   dependencies:
     cross-fetch "3.0.4"
 
-"@apollo/client@3.0.0-beta.53":
-  version "3.0.0-beta.53"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.53.tgz#a23514a59c85a6c74faa365351be60f29bfb4a89"
-  integrity sha512-5y4vcQxCi+M93hd7zWFuB7EetIiIvSkYLQveQ50q5Cl6Hqtz8iRWN0Z4LFLsKvxYNwd8j6hde/wF9Xo+LiXEIg==
+"@apollo/client@3.0.0-beta.54":
+  version "3.0.0-beta.54"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-beta.54.tgz#24ec68488aabcade5bbcbbc866213baadbda3570"
+  integrity sha512-63WDvSmnrYhtqN+SomLj+W0sQ8b/5nyITzjWTOMsT+IgiWZd96u1DgkacnGCEzwz38J2JouwkQ/jTiEloMV25w==
   dependencies:
     "@types/zen-observable" "^0.8.0"
     "@wry/equality" "^0.1.9"
