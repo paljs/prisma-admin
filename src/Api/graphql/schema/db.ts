@@ -2,7 +2,6 @@ import { extendType, stringArg } from '@nexus/schema'
 import low from 'lowdb'
 import FileSync from 'lowdb/adapters/FileSync'
 import { NexusGenRootTypes } from 'generated/nexus-typegen'
-import './schema.json'
 
 interface Db {
   models: NexusGenRootTypes['Model'][]

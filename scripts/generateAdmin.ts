@@ -6,7 +6,7 @@ generateAdmin(path.resolve(__dirname, '../prisma/schema.prisma'), defaultSchema 
   excludeFieldsByModel: {
     User: ['password'],
   },
-  excludeQueriesAndMutations: ['updateMany', 'deleteMany', 'findCount'],
+  excludeQueriesAndMutations: ['updateMany', 'deleteMany', 'findCount', 'findMany'],
   schemaOutput: path.resolve(__dirname, '../src/Api/graphql/schema/schema.json'),
   graphqlOutput: path.resolve(__dirname, '../src/graphql'),
   pagesOutput: path.resolve(__dirname, '../src/pages/admin/models'),

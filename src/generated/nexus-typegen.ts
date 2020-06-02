@@ -669,7 +669,7 @@ export interface NexusGenRootTypes {
   }
   Field: { // root type
     create: boolean; // Boolean!
-    editor?: boolean | null; // Boolean
+    editor: boolean; // Boolean!
     filter: boolean; // Boolean!
     id: string; // String!
     isId: boolean; // Boolean!
@@ -844,7 +844,7 @@ export interface NexusGenFieldTypes {
   }
   Field: { // field return type
     create: boolean; // Boolean!
-    editor: boolean | null; // Boolean
+    editor: boolean; // Boolean!
     filter: boolean; // Boolean!
     id: string; // String!
     isId: boolean; // Boolean!

@@ -9,4 +9,4 @@ services:
       - POSTGRES_PASSWORD=prisma
       - POSTGRES_DB=prisma-admin
     ports:
-      - "5432:5432"
+      - "54320:5432"

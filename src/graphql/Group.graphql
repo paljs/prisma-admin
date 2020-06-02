@@ -1,6 +1,6 @@
 fragment GroupFields on Group {
-  name
   id
+  name
   createdAt
   updatedAt
 }
@@ -13,19 +13,6 @@ query findOneGroup($where: GroupWhereUniqueInput!) {
   findOneGroup(where: $where) {
     ...Group
   }
-}
-
-query findManyGroup(
-  $where: GroupWhereInput
-  $orderBy: GroupOrderByInput
-  $cursor: GroupWhereUniqueInput
-  $skip: Int
-  $take: Int
-) {
-  findManyGroup(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
-    ...Group
-  }
-  findManyGroupCount(where: $where)
 }
 
 mutation createOneGroup($data: GroupCreateInput!) {

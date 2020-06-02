@@ -8,6 +8,7 @@ import { DocumentNode, useLazyQuery, useMutation } from '@apollo/client';
 import { LayoutContext } from 'Layouts/Admin';
 import EditRecord from './EditRecord';
 import { useRouter } from 'next/router';
+import { generateFindManyQuery } from '@prisma-tools/admin/dist/QueryDocument';
 
 type keys = keyof typeof generate;
 
@@ -15,7 +16,7 @@ interface DynamicTableProps {
   parent?: { name: string; value: any };
   inEdit?: boolean;
   model: string;
-  filter?: object;
+  filter?: unknown;
   connect?: any;
   onConnect?: (value: any) => void;
 }
@@ -36,7 +37,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ model, inEdit, filter, pare
     inEdit ? filter : query,
   );
 
-  const [getData, { data, loading }] = useLazyQuery(generate[`FindMany${model}Document` as keys] as DocumentNode, {
+  const [getData, { data, loading }] = useLazyQuery(generateFindManyQuery(models, model), {
     variables: {
       where,
       orderBy,
@@ -68,7 +69,7 @@ const DynamicTable: React.FC<DynamicTableProps> = ({ model, inEdit, filter, pare
     }
   };
 
-  const onAction = (action: 'create' | 'delete' | 'connect', value?: number | object) => {
+  const onAction = (action: 'create' | 'delete' | 'connect', value?: unknown) => {
     switch (action) {
       case 'delete':
         deleteOne({

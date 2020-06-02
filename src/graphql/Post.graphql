@@ -20,19 +20,6 @@ query findOnePost($where: PostWhereUniqueInput!) {
   }
 }
 
-query findManyPost(
-  $where: PostWhereInput
-  $orderBy: PostOrderByInput
-  $cursor: PostWhereUniqueInput
-  $skip: Int
-  $take: Int
-) {
-  findManyPost(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
-    ...Post
-  }
-  findManyPostCount(where: $where)
-}
-
 mutation createOnePost($data: PostCreateInput!) {
   createOnePost(data: $data) {
     ...Post

@@ -23,19 +23,6 @@ query findOneComment($where: CommentWhereUniqueInput!) {
   }
 }
 
-query findManyComment(
-  $where: CommentWhereInput
-  $orderBy: CommentOrderByInput
-  $cursor: CommentWhereUniqueInput
-  $skip: Int
-  $take: Int
-) {
-  findManyComment(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
-    ...Comment
-  }
-  findManyCommentCount(where: $where)
-}
-
 mutation createOneComment($data: CommentCreateInput!) {
   createOneComment(data: $data) {
     ...Comment

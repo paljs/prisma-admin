@@ -2,8 +2,8 @@ fragment UserFields on User {
   id
   email
   name
-  groupId
   createdAt
+  groupId
 }
 
 fragment User on User {
@@ -17,19 +17,6 @@ query findOneUser($where: UserWhereUniqueInput!) {
   findOneUser(where: $where) {
     ...User
   }
-}
-
-query findManyUser(
-  $where: UserWhereInput
-  $orderBy: UserOrderByInput
-  $cursor: UserWhereUniqueInput
-  $skip: Int
-  $take: Int
-) {
-  findManyUser(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
-    ...User
-  }
-  findManyUserCount(where: $where)
 }
 
 mutation createOneUser($data: UserCreateInput!) {

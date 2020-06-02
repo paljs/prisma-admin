@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 import * as ApolloReactCommon from '@apollo/client';
 import * as ApolloReactHooks from '@apollo/client';
-export type Maybe<T> = T | null;
+export type Maybe<T> = T | undefined;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -223,7 +223,7 @@ export type Enum = {
 export type Field = {
   __typename?: 'Field';
   create: Scalars['Boolean'];
-  editor?: Maybe<Scalars['Boolean']>;
+  editor: Scalars['Boolean'];
   filter: Scalars['Boolean'];
   id: Scalars['String'];
   isId: Scalars['Boolean'];
@@ -1212,24 +1212,6 @@ export type FindOneCommentQuery = (
   )> }
 );
 
-export type FindManyCommentQueryVariables = {
-  where?: Maybe<CommentWhereInput>;
-  orderBy?: Maybe<CommentOrderByInput>;
-  cursor?: Maybe<CommentWhereUniqueInput>;
-  skip?: Maybe<Scalars['Int']>;
-  take?: Maybe<Scalars['Int']>;
-};
-
-
-export type FindManyCommentQuery = (
-  { __typename?: 'Query' }
-  & Pick<Query, 'findManyCommentCount'>
-  & { findManyComment?: Maybe<Array<(
-    { __typename?: 'Comment' }
-    & CommentFragment
-  )>> }
-);
-
 export type CreateOneCommentMutationVariables = {
   data: CommentCreateInput;
 };
@@ -1272,7 +1254,7 @@ export type DeleteOneCommentMutation = (
 
 export type GroupFieldsFragment = (
   { __typename?: 'Group' }
-  & Pick<Group, 'name' | 'id' | 'createdAt' | 'updatedAt'>
+  & Pick<Group, 'id' | 'name' | 'createdAt' | 'updatedAt'>
 );
 
 export type GroupFragment = (
@@ -1291,24 +1273,6 @@ export type FindOneGroupQuery = (
     { __typename?: 'Group' }
     & GroupFragment
   )> }
-);
-
-export type FindManyGroupQueryVariables = {
-  where?: Maybe<GroupWhereInput>;
-  orderBy?: Maybe<GroupOrderByInput>;
-  cursor?: Maybe<GroupWhereUniqueInput>;
-  skip?: Maybe<Scalars['Int']>;
-  take?: Maybe<Scalars['Int']>;
-};
-
-
-export type FindManyGroupQuery = (
-  { __typename?: 'Query' }
-  & Pick<Query, 'findManyGroupCount'>
-  & { findManyGroup?: Maybe<Array<(
-    { __typename?: 'Group' }
-    & GroupFragment
-  )>> }
 );
 
 export type CreateOneGroupMutationVariables = {
@@ -1376,24 +1340,6 @@ export type FindOnePostQuery = (
     { __typename?: 'Post' }
     & PostFragment
   )> }
-);
-
-export type FindManyPostQueryVariables = {
-  where?: Maybe<PostWhereInput>;
-  orderBy?: Maybe<PostOrderByInput>;
-  cursor?: Maybe<PostWhereUniqueInput>;
-  skip?: Maybe<Scalars['Int']>;
-  take?: Maybe<Scalars['Int']>;
-};
-
-
-export type FindManyPostQuery = (
-  { __typename?: 'Query' }
-  & Pick<Query, 'findManyPostCount'>
-  & { findManyPost?: Maybe<Array<(
-    { __typename?: 'Post' }
-    & PostFragment
-  )>> }
 );
 
 export type CreateOnePostMutationVariables = {
@@ -1503,7 +1449,7 @@ export type UpdateFieldMutation = (
 
 export type UserFieldsFragment = (
   { __typename?: 'User' }
-  & Pick<User, 'id' | 'email' | 'name' | 'groupId' | 'createdAt'>
+  & Pick<User, 'id' | 'email' | 'name' | 'createdAt' | 'groupId'>
 );
 
 export type UserFragment = (
@@ -1526,24 +1472,6 @@ export type FindOneUserQuery = (
     { __typename?: 'User' }
     & UserFragment
   )> }
-);
-
-export type FindManyUserQueryVariables = {
-  where?: Maybe<UserWhereInput>;
-  orderBy?: Maybe<UserOrderByInput>;
-  cursor?: Maybe<UserWhereUniqueInput>;
-  skip?: Maybe<Scalars['Int']>;
-  take?: Maybe<Scalars['Int']>;
-};
-
-
-export type FindManyUserQuery = (
-  { __typename?: 'Query' }
-  & Pick<Query, 'findManyUserCount'>
-  & { findManyUser?: Maybe<Array<(
-    { __typename?: 'User' }
-    & UserFragment
-  )>> }
 );
 
 export type CreateOneUserMutationVariables = {
@@ -1611,8 +1539,8 @@ export const UserFieldsFragmentDoc = gql`
   id
   email
   name
-  groupId
   createdAt
+  groupId
 }
     `;
 export const CommentFragmentDoc = gql`
@@ -1630,8 +1558,8 @@ ${PostFieldsFragmentDoc}
 ${UserFieldsFragmentDoc}`;
 export const GroupFieldsFragmentDoc = gql`
     fragment GroupFields on Group {
-  name
   id
+  name
   createdAt
   updatedAt
 }
@@ -1860,44 +1788,6 @@ export function useFindOneCommentLazyQuery(baseOptions?: ApolloReactHooks.LazyQu
 export type FindOneCommentQueryHookResult = ReturnType<typeof useFindOneCommentQuery>;
 export type FindOneCommentLazyQueryHookResult = ReturnType<typeof useFindOneCommentLazyQuery>;
 export type FindOneCommentQueryResult = ApolloReactCommon.QueryResult<FindOneCommentQuery, FindOneCommentQueryVariables>;
-export const FindManyCommentDocument = gql`
-    query findManyComment($where: CommentWhereInput, $orderBy: CommentOrderByInput, $cursor: CommentWhereUniqueInput, $skip: Int, $take: Int) {
-  findManyComment(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
-    ...Comment
-  }
-  findManyCommentCount(where: $where)
-}
-    ${CommentFragmentDoc}`;
-
-/**
- * __useFindManyCommentQuery__
- *
- * To run a query within a React component, call `useFindManyCommentQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyCommentQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindManyCommentQuery({
- *   variables: {
- *      where: // value for 'where'
- *      orderBy: // value for 'orderBy'
- *      cursor: // value for 'cursor'
- *      skip: // value for 'skip'
- *      take: // value for 'take'
- *   },
- * });
- */
-export function useFindManyCommentQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyCommentQuery, FindManyCommentQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindManyCommentQuery, FindManyCommentQueryVariables>(FindManyCommentDocument, baseOptions);
-      }
-export function useFindManyCommentLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyCommentQuery, FindManyCommentQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindManyCommentQuery, FindManyCommentQueryVariables>(FindManyCommentDocument, baseOptions);
-        }
-export type FindManyCommentQueryHookResult = ReturnType<typeof useFindManyCommentQuery>;
-export type FindManyCommentLazyQueryHookResult = ReturnType<typeof useFindManyCommentLazyQuery>;
-export type FindManyCommentQueryResult = ApolloReactCommon.QueryResult<FindManyCommentQuery, FindManyCommentQueryVariables>;
 export const CreateOneCommentDocument = gql`
     mutation createOneComment($data: CommentCreateInput!) {
   createOneComment(data: $data) {
@@ -2025,44 +1915,6 @@ export function useFindOneGroupLazyQuery(baseOptions?: ApolloReactHooks.LazyQuer
 export type FindOneGroupQueryHookResult = ReturnType<typeof useFindOneGroupQuery>;
 export type FindOneGroupLazyQueryHookResult = ReturnType<typeof useFindOneGroupLazyQuery>;
 export type FindOneGroupQueryResult = ApolloReactCommon.QueryResult<FindOneGroupQuery, FindOneGroupQueryVariables>;
-export const FindManyGroupDocument = gql`
-    query findManyGroup($where: GroupWhereInput, $orderBy: GroupOrderByInput, $cursor: GroupWhereUniqueInput, $skip: Int, $take: Int) {
-  findManyGroup(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
-    ...Group
-  }
-  findManyGroupCount(where: $where)
-}
-    ${GroupFragmentDoc}`;
-
-/**
- * __useFindManyGroupQuery__
- *
- * To run a query within a React component, call `useFindManyGroupQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyGroupQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindManyGroupQuery({
- *   variables: {
- *      where: // value for 'where'
- *      orderBy: // value for 'orderBy'
- *      cursor: // value for 'cursor'
- *      skip: // value for 'skip'
- *      take: // value for 'take'
- *   },
- * });
- */
-export function useFindManyGroupQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
-      }
-export function useFindManyGroupLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyGroupQuery, FindManyGroupQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindManyGroupQuery, FindManyGroupQueryVariables>(FindManyGroupDocument, baseOptions);
-        }
-export type FindManyGroupQueryHookResult = ReturnType<typeof useFindManyGroupQuery>;
-export type FindManyGroupLazyQueryHookResult = ReturnType<typeof useFindManyGroupLazyQuery>;
-export type FindManyGroupQueryResult = ApolloReactCommon.QueryResult<FindManyGroupQuery, FindManyGroupQueryVariables>;
 export const CreateOneGroupDocument = gql`
     mutation createOneGroup($data: GroupCreateInput!) {
   createOneGroup(data: $data) {
@@ -2190,44 +2042,6 @@ export function useFindOnePostLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type FindOnePostQueryHookResult = ReturnType<typeof useFindOnePostQuery>;
 export type FindOnePostLazyQueryHookResult = ReturnType<typeof useFindOnePostLazyQuery>;
 export type FindOnePostQueryResult = ApolloReactCommon.QueryResult<FindOnePostQuery, FindOnePostQueryVariables>;
-export const FindManyPostDocument = gql`
-    query findManyPost($where: PostWhereInput, $orderBy: PostOrderByInput, $cursor: PostWhereUniqueInput, $skip: Int, $take: Int) {
-  findManyPost(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
-    ...Post
-  }
-  findManyPostCount(where: $where)
-}
-    ${PostFragmentDoc}`;
-
-/**
- * __useFindManyPostQuery__
- *
- * To run a query within a React component, call `useFindManyPostQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyPostQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindManyPostQuery({
- *   variables: {
- *      where: // value for 'where'
- *      orderBy: // value for 'orderBy'
- *      cursor: // value for 'cursor'
- *      skip: // value for 'skip'
- *      take: // value for 'take'
- *   },
- * });
- */
-export function useFindManyPostQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyPostQuery, FindManyPostQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindManyPostQuery, FindManyPostQueryVariables>(FindManyPostDocument, baseOptions);
-      }
-export function useFindManyPostLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyPostQuery, FindManyPostQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindManyPostQuery, FindManyPostQueryVariables>(FindManyPostDocument, baseOptions);
-        }
-export type FindManyPostQueryHookResult = ReturnType<typeof useFindManyPostQuery>;
-export type FindManyPostLazyQueryHookResult = ReturnType<typeof useFindManyPostLazyQuery>;
-export type FindManyPostQueryResult = ApolloReactCommon.QueryResult<FindManyPostQuery, FindManyPostQueryVariables>;
 export const CreateOnePostDocument = gql`
     mutation createOnePost($data: PostCreateInput!) {
   createOnePost(data: $data) {
@@ -2458,44 +2272,6 @@ export function useFindOneUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type FindOneUserQueryHookResult = ReturnType<typeof useFindOneUserQuery>;
 export type FindOneUserLazyQueryHookResult = ReturnType<typeof useFindOneUserLazyQuery>;
 export type FindOneUserQueryResult = ApolloReactCommon.QueryResult<FindOneUserQuery, FindOneUserQueryVariables>;
-export const FindManyUserDocument = gql`
-    query findManyUser($where: UserWhereInput, $orderBy: UserOrderByInput, $cursor: UserWhereUniqueInput, $skip: Int, $take: Int) {
-  findManyUser(where: $where, orderBy: $orderBy, cursor: $cursor, skip: $skip, take: $take) {
-    ...User
-  }
-  findManyUserCount(where: $where)
-}
-    ${UserFragmentDoc}`;
-
-/**
- * __useFindManyUserQuery__
- *
- * To run a query within a React component, call `useFindManyUserQuery` and pass it any options that fit your needs.
- * When your component renders, `useFindManyUserQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useFindManyUserQuery({
- *   variables: {
- *      where: // value for 'where'
- *      orderBy: // value for 'orderBy'
- *      cursor: // value for 'cursor'
- *      skip: // value for 'skip'
- *      take: // value for 'take'
- *   },
- * });
- */
-export function useFindManyUserQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FindManyUserQuery, FindManyUserQueryVariables>) {
-        return ApolloReactHooks.useQuery<FindManyUserQuery, FindManyUserQueryVariables>(FindManyUserDocument, baseOptions);
-      }
-export function useFindManyUserLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FindManyUserQuery, FindManyUserQueryVariables>) {
-          return ApolloReactHooks.useLazyQuery<FindManyUserQuery, FindManyUserQueryVariables>(FindManyUserDocument, baseOptions);
-        }
-export type FindManyUserQueryHookResult = ReturnType<typeof useFindManyUserQuery>;
-export type FindManyUserLazyQueryHookResult = ReturnType<typeof useFindManyUserLazyQuery>;
-export type FindManyUserQueryResult = ApolloReactCommon.QueryResult<FindManyUserQuery, FindManyUserQueryVariables>;
 export const CreateOneUserDocument = gql`
     mutation createOneUser($data: UserCreateInput!) {
   createOneUser(data: $data) {
