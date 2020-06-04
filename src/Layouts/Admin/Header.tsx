@@ -39,6 +39,7 @@ const SelectStyled = styled(Select)`
 interface HeaderProps {
   toggleSidebar: () => void;
   changeTheme: (value: DefaultTheme['name']) => void;
+  theme: DefaultTheme['name'];
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
@@ -116,6 +117,7 @@ const Header: React.FC<HeaderProps> = (props) => {
                   isSearchable={false}
                   shape="SemiRound"
                   placeholder="Themes"
+                  value={themeOptions.find((item) => item.value === props.theme)}
                   options={themeOptions}
                   onChange={({ value }: { value: DefaultTheme['name'] }) => props.changeTheme(value)}
                 />

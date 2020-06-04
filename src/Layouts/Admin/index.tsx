@@ -69,7 +69,9 @@ const LayoutPage: React.FC = ({ children }) => {
         >
           <SimpleLayout />
           <Layout evaIcons={icons} className={authLayout ? 'auth-layout' : ''}>
-            {!authLayout && <Header changeTheme={changeTheme} toggleSidebar={() => sidebarRef.current?.toggle()} />}
+            {!authLayout && (
+              <Header theme={theme} changeTheme={changeTheme} toggleSidebar={() => sidebarRef.current?.toggle()} />
+            )}
             <LayoutContainer>
               {!authLayout && adminLayout && (
                 <Sidebar ref={sidebarRef} property="start" containerFixed responsive className="menu-sidebar">
