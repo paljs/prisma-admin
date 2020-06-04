@@ -19,27 +19,18 @@ import icons from 'oah-eva-icon';
 import Header from './Header';
 import SimpleLayout from './SimpleLayout';
 import menuItems from './menuItem';
-import { EnumFragment, MeQuery, MeQueryVariables, ModelFragment, useGetSchemaQuery, useMeQuery } from '../../generated';
+import { MeQuery, MeQueryVariables, useMeQuery } from '../../generated';
 import { ApolloQueryResult } from '@apollo/client';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 interface ContextProps {
-  schema: {
-    models: ModelFragment[];
-    enums: EnumFragment[];
-  };
   me?: MeQuery['me'] | null;
   refetch?: (variables?: MeQueryVariables | undefined) => Promise<ApolloQueryResult<MeQuery>>;
   children?: React.ReactNode;
 }
 
-const initialContext: ContextProps = {
-  schema: {
-    models: [],
-    enums: [],
-  },
-};
+const initialContext: ContextProps = {};
 
 export const LayoutContext: React.Context<ContextProps> = React.createContext(initialContext);
 
@@ -47,7 +38,6 @@ const LayoutPage: React.FC = ({ children }) => {
   const [theme, setTheme] = useState<DefaultTheme['name']>('dark');
   const sidebarRef = useRef<SidebarRefObject>(null);
   const menuRef = useRef<MenuRefObject>(null);
-  const { data, loading: schemaLoading } = useGetSchemaQuery();
   const { data: userData, loading, refetch } = useMeQuery();
   const router = useRouter();
 
@@ -68,15 +58,11 @@ const LayoutPage: React.FC = ({ children }) => {
 
   return (
     <ThemeProvider theme={themes(theme)}>
-      {loading || schemaLoading ? (
+      {loading ? (
         <Spinner size="Giant" status="Primary" />
       ) : (
         <LayoutContext.Provider
           value={{
-            schema: data?.getSchema ?? {
-              models: [],
-              enums: [],
-            },
             me: userData?.me,
             refetch,
           }}

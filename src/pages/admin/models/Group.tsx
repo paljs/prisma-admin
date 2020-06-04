@@ -1,8 +1,8 @@
 import React from 'react';
-import DynamicTable from 'Components/Admin/dynamicTable';
+import PrismaTable from 'Components/PrismaTable';
 
 const Group: React.FC = () => {
-  return <DynamicTable model="Group" />;
+  return <PrismaTable model="Group" />;
 };
 
 export default Group;

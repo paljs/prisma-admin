@@ -1,5 +1,5 @@
 import React from 'react';
-import { Settings } from 'Components/Admin/Settings';
+import { Settings } from '@prisma-tools/admin';
 
 export default function Index() {
   return <Settings />;

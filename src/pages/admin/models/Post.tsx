@@ -1,8 +1,8 @@
 import React from 'react';
-import DynamicTable from 'Components/Admin/dynamicTable';
+import PrismaTable from 'Components/PrismaTable';
 
 const Post: React.FC = () => {
-  return <DynamicTable model="Post" />;
+  return <PrismaTable model="Post" />;
 };
 
 export default Post;

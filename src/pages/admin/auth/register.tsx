@@ -1,8 +1,8 @@
 import { InputGroup, Checkbox, Button } from 'oah-ui';
 import React, { useContext, useState } from 'react';
 
-import Auth from 'Components/Admin/Auth';
-import Socials from 'Components/Admin/Auth/Socials';
+import Auth from 'Components/Auth';
+import Socials from 'Components/Auth/Socials';
 import { useSignupMutation } from 'generated';
 import { LayoutContext } from 'Layouts/Admin';
 import { useRouter } from 'next/router';

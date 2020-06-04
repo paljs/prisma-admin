@@ -8,13 +8,13 @@ query me {
 
 mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
-    ...UserFields
+    id
   }
 }
 
 mutation signup($email: String!, $password: String!, $name: String) {
   signup(email: $email, password: $password, name: $name) {
-    ...UserFields
+    id
   }
 }
 
