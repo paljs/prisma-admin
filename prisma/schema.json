@@ -22,7 +22,7 @@
           "unique": false,
           "create": false,
           "update": false,
-          "read": true,
+          "read": false,
           "filter": true,
           "sort": true,
           "editor": false,
