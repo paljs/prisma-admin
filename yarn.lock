@@ -1728,10 +1728,10 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@prisma-tools/admin@1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@prisma-tools/admin/-/admin-1.0.5.tgz#0f39e4c261ba76c0ca5e422d914bb9655035069b"
-  integrity sha512-4D5hoFHZihfHAf2YEAf2rUfKSveY6ph6ryZRMMvqV7IcCLI3u7S8ak+zBDbCD2Uoq81MKc1HoFHxa4s55k/72w==
+"@prisma-tools/admin@1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@prisma-tools/admin/-/admin-1.0.7.tgz#4ed5390fdda15c568975aad4b6d2594672be757b"
+  integrity sha512-YdxJoOfF2JrxFqaRh6eR79vNXZpyHZ4rX0VnZycEsziqcq0N92jXEjXbM3p6BwlnBisFSSDh00Fz6yHOqEcLTA==
   dependencies:
     "@prisma-tools/schema" "0.0.4"
     moment "2.26.0"
