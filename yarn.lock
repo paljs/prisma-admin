@@ -1743,10 +1743,12 @@
     react-quill "1.3.5"
     react-table "7.1.0"
 
-"@prisma-tools/delete@0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@prisma-tools/delete/-/delete-0.0.7.tgz#7ed1bbf024eedda68c5fc6b4417b7a012408619d"
-  integrity sha512-tpdJFQTMM+E3mB1w8T5fnmzw/aup8mMR774HdEUxxmMz8S6DXQKqb6fPH2+rF8TEtQXx7qhAbp2P5gA1PCZaqQ==
+"@prisma-tools/delete@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@prisma-tools/delete/-/delete-0.0.8.tgz#2fccd2612c8f83097eeffb760bb8a3c135d8a637"
+  integrity sha512-2klQPY09PgxerWvoqhD6C67Omi9iq4X2LLnKxRNU2RtMD3LfldkS0OGr5r5sAUePOGpgB1cVv4Zvh5UdNo0oBQ==
+  dependencies:
+    "@prisma-tools/schema" "^0.0.5"
 
 "@prisma-tools/nexus@0.6.16":
   version "0.6.16"
@@ -1761,6 +1763,11 @@
   resolved "https://registry.yarnpkg.com/@prisma-tools/schema/-/schema-0.0.4.tgz#74047824f16dfa354b6b671c8330f02ee03045eb"
   integrity sha512-9AoJJAEjboAhyDwM8y0+RHMz08CzJt8bZcUt/we06udk/hABE+gdqusAYbI9Ii1PFtGcp2xRCUheV+qfsBIU+w==
 
+"@prisma-tools/schema@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@prisma-tools/schema/-/schema-0.0.5.tgz#e89d2ec0f0324358120459658ac18d33b34fc2ad"
+  integrity sha512-Bk+ZRCrH6DijrmFYxP47AiiV9x2m4En7QSl0AVG9Q/sObXHQXL6WHVuBInxev/jdXfJDvKD2F705WX569XlS6Q==
+
 "@prisma-tools/select@^0.0.7":
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/@prisma-tools/select/-/select-0.0.7.tgz#380d099d4410e494ae1b03a18fcb5523219a4dd7"
@@ -1768,15 +1775,15 @@
   dependencies:
     graphql-fields "^2.0.3"
 
-"@prisma/cli@2.0.0-beta.8":
-  version "2.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@prisma/cli/-/cli-2.0.0-beta.8.tgz#18356d5464040339c9c01cdf9a4241c1bccc5dea"
-  integrity sha512-l1bHUmPzjdOF87MzIkcE55AkGLDKV2apmS2D9ZuYM+7hWWMk7lcJjjquDr9RAtSDMN8nuvYQcXnFFg7JP4DUxw==
+"@prisma/cli@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@prisma/cli/-/cli-2.0.0.tgz#d5638c627e98faaa93230359185072a19e17a020"
+  integrity sha512-RID4fOX6Y+2uHrBiFsoVt+F9oa7Z7IaO+AbwA+uepyYcjWjIhvl1cgml2mStGLyig8uuYmTOJGmh8XDkOyo10g==
 
-"@prisma/client@2.0.0-beta.8":
-  version "2.0.0-beta.8"
-  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.0.0-beta.8.tgz#1f2effb3b377fab4453fef894a04cc16bf46ef8f"
-  integrity sha512-MOUYJ5IRsmufhEoBs+sBNlmkxkUcsE0ONY/RcvQ+F1svU8iKeGi7UNFUxKwzYCe15mmAfvhh/ZaJ34/tUkpBeQ==
+"@prisma/client@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-2.0.0.tgz#755ca8be2f2be5446fc44e92e58f782b7416b890"
+  integrity sha512-3Ejs4qmyM0bsLdZbKZWrngYLZMupbHRScBmPdikupTCFraq8I9aLb5CuSCsROf1C8tWwWcDaH6RdIS7I+EiESQ==
   dependencies:
     pkg-up "^3.1.0"
 
