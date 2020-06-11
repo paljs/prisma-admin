@@ -1,9 +1,4 @@
-import {
-  enumType,
-  scalarType,
-  inputObjectType,
-  objectType,
-} from '@nexus/schema'
+import { enumType, scalarType, inputObjectType, objectType } from '@nexus/schema'
 
 export const DateTime = scalarType({
   name: 'DateTime',

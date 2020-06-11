@@ -46,10 +46,10 @@
   dependencies:
     cross-fetch "3.0.4"
 
-"@apollo/client@3.0.0-rc.2":
-  version "3.0.0-rc.2"
-  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-rc.2.tgz#2534eac9d430200f795a3849c187a7a1a946f90d"
-  integrity sha512-bYr2JUVAebAj0C8vaR/OyETomagxi7/CikSwuzULmO4EokKG54ir+5o71FYtJijd9CnzSTjvwmeoxL4zQ70uAQ==
+"@apollo/client@3.0.0-rc.3":
+  version "3.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/@apollo/client/-/client-3.0.0-rc.3.tgz#652ad3832248d95d5b7fbc23e9da5a388c61bcb3"
+  integrity sha512-yHlTUjwm7BX8UsncTurXSOyWs0bjd8dDn0T6/txGzIl0CVzJg/wPJkqoUs1vc16hkVh3kD+CzKvxVV4qV7hGEQ==
   dependencies:
     "@types/zen-observable" "^0.8.0"
     "@wry/equality" "^0.1.9"
@@ -1890,10 +1890,10 @@
   dependencies:
     "@prisma-tools/schema" "^0.0.5"
 
-"@prisma-tools/nexus@0.6.17":
-  version "0.6.17"
-  resolved "https://registry.yarnpkg.com/@prisma-tools/nexus/-/nexus-0.6.17.tgz#62c8472c46735de3e6164d0dae0212d69b754f91"
-  integrity sha512-p7fatNJM8CB7R9XfhOgDfGj2yQ5dlhwZAq7EBvexQ//r1bGbfhZSwXl+2JFn8TbxK27YO7+JZ5xVLJBjA/JQbg==
+"@prisma-tools/nexus@0.6.24":
+  version "0.6.24"
+  resolved "https://registry.yarnpkg.com/@prisma-tools/nexus/-/nexus-0.6.24.tgz#e22d70377be55dbe968d2fa148f1cb9ee284a2ba"
+  integrity sha512-P/tdo8d7yN5RW/sI5zqveU7AAVqrMNMe9H5PDQ2cWI27x9Aktz7GBM+wfjJShaStirO6Hn3urtn40n9xsUZTzg==
   dependencies:
     lowdb "^1.0.0"
     prettier "^2.0.4"
