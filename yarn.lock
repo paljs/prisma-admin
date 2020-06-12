@@ -1868,15 +1868,15 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@prisma-tools/admin@1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@prisma-tools/admin/-/admin-1.0.8.tgz#71ed6ec44d74ec3a62044fc8ebf8333d0d1a8e86"
-  integrity sha512-Hxr7FileZrPv+JgIW8eDTvRF2k4qMNsCkX7DH4NoOquZcLDfp33cQqkrbpQWpKgm90/AsGi0INLjQTh/ToomzQ==
+"@prisma-tools/admin@1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@prisma-tools/admin/-/admin-1.0.10.tgz#0061ceb61efa8b0cfef60b5d3d84f60c3536aa45"
+  integrity sha512-JCwHE1wPsn6UTo2N29B32oUlF282zX11dnPH5G3+qu0iPhd3s6FUI/zYWJP+V+NC57rpBESnzfNspDTVW+m24A==
   dependencies:
-    "@prisma-tools/schema" "0.0.4"
+    "@prisma-tools/schema" "0.0.5"
     moment "2.26.0"
     prettier "2.0.5"
-    query-string "6.12.1"
+    query-string "6.13.0"
     react-beautiful-dnd "13.0.0"
     react-datepicker "3.0.0"
     react-hook-form "5.7.2"
@@ -1898,12 +1898,7 @@
     lowdb "^1.0.0"
     prettier "^2.0.4"
 
-"@prisma-tools/schema@0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@prisma-tools/schema/-/schema-0.0.4.tgz#74047824f16dfa354b6b671c8330f02ee03045eb"
-  integrity sha512-9AoJJAEjboAhyDwM8y0+RHMz08CzJt8bZcUt/we06udk/hABE+gdqusAYbI9Ii1PFtGcp2xRCUheV+qfsBIU+w==
-
-"@prisma-tools/schema@^0.0.5":
+"@prisma-tools/schema@0.0.5", "@prisma-tools/schema@^0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@prisma-tools/schema/-/schema-0.0.5.tgz#e89d2ec0f0324358120459658ac18d33b34fc2ad"
   integrity sha512-Bk+ZRCrH6DijrmFYxP47AiiV9x2m4En7QSl0AVG9Q/sObXHQXL6WHVuBInxev/jdXfJDvKD2F705WX569XlS6Q==
@@ -8219,10 +8214,10 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-query-string@6.12.1:
-  version "6.12.1"
-  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.12.1.tgz#2ae4d272db4fba267141665374e49a1de09e8a7c"
-  integrity sha512-OHj+zzfRMyj3rmo/6G8a5Ifvw3AleL/EbcHMD27YA31Q+cO5lfmQxECkImuNVjcskLcvBRVHNAB3w6udMs1eAA==
+query-string@6.13.0:
+  version "6.13.0"
+  resolved "https://registry.yarnpkg.com/query-string/-/query-string-6.13.0.tgz#8d875f66581c854d7480ac79478abb847de742f6"
+  integrity sha512-KJe8p8EUcixhPCp4cJoTYVfmgKHjnAB/Pq3fiqlmyNHvpHnOL5U4YE7iI2PYivGHp4HFocWz300906BAQX0H7g==
   dependencies:
     decode-uri-component "^0.2.0"
     split-on-first "^1.0.0"
