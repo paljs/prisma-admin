@@ -1890,10 +1890,10 @@
   resolved "https://registry.yarnpkg.com/@prisma-tools/schema/-/schema-0.0.5.tgz#e89d2ec0f0324358120459658ac18d33b34fc2ad"
   integrity sha512-Bk+ZRCrH6DijrmFYxP47AiiV9x2m4En7QSl0AVG9Q/sObXHQXL6WHVuBInxev/jdXfJDvKD2F705WX569XlS6Q==
 
-"@prisma-tools/select@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@prisma-tools/select/-/select-0.0.7.tgz#380d099d4410e494ae1b03a18fcb5523219a4dd7"
-  integrity sha512-UZrqvvvd81I5htA8kFytxATZdxO+ovawdwmCt4oqhoGR7LhBUCHcnpqOrydC4mvUOeeUuYCPL9PzRqPj9s2IDg==
+"@prisma-tools/select@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@prisma-tools/select/-/select-0.0.8.tgz#f59d35532f4aa8fe736529a90f3061d86a9b6e2f"
+  integrity sha512-u4t8Fnwo6XFtRVrho1t+9LsXOmUNmaoyxvKDTz/T43C4W0B7S+TetzwbUmYW/pfc75cXL9OSbWjFHvN4RPojeQ==
   dependencies:
     graphql-fields "^2.0.3"
 
@@ -7092,12 +7092,12 @@ next@latest:
     webpack "4.43.0"
     webpack-sources "1.4.3"
 
-nexus-schema-plugin-prisma-select@0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/nexus-schema-plugin-prisma-select/-/nexus-schema-plugin-prisma-select-0.0.3.tgz#e8f655433bd8920edb81be485e7903906c64f626"
-  integrity sha512-4OCuUSUnvnO4qeQPVhtBBioAeqN0/yHFoDaNx+h6QOGIzWw+/0vt19nkHtphJU0nw2O7xmOr8L6/iXZggkMVNw==
+nexus-schema-plugin-prisma-select@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/nexus-schema-plugin-prisma-select/-/nexus-schema-plugin-prisma-select-0.0.4.tgz#fdce412f3cbb7f464fd434bbf2ae25e75ae4df14"
+  integrity sha512-Yv6uK4jjY5+ibo1uhpUXEkcjUML1AcXmcC1lc3Wh+LQ7p9A/UoalKoO3m3TJmmpdzyXIw5uO0s9LJlXU6iQhaQ==
   dependencies:
-    "@prisma-tools/select" "^0.0.7"
+    "@prisma-tools/select" "0.0.8"
 
 no-case@^3.0.3:
   version "3.0.3"

@@ -35,7 +35,7 @@
     "jsonwebtoken": "8.5.1",
     "moment": "2.24.0",
     "next": "latest",
-    "nexus-schema-plugin-prisma-select": "0.0.3",
+    "nexus-schema-plugin-prisma-select": "0.0.4",
     "oah-eva-icon": "1.0.1",
     "oah-ui": "2.1.4",
     "react": "16.13.1",
