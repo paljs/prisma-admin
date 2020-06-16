@@ -1,3 +1,4 @@
+import { schema } from './../../prisma/schema'
 import { PrismaClient, PrismaClientOptions } from '@prisma/client'
 import PrismaDelete, { onDeleteArgs } from '@prisma-tools/delete'
 import { NextApiRequest, NextApiResponse } from 'next'
@@ -9,7 +10,7 @@ class Prisma extends PrismaClient {
   }
 
   async onDelete(args: onDeleteArgs) {
-    const prismaDelete = new PrismaDelete(this)
+    const prismaDelete = new PrismaDelete(this, schema)
     await prismaDelete.onDelete(args)
   }
 }

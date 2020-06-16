@@ -2,6 +2,7 @@ import gql from 'graphql-tag';
 import * as ApolloReactCommon from '@apollo/client';
 import * as ApolloReactHooks from '@apollo/client';
 export type Maybe<T> = T | undefined;
+export type Exact<T extends { [key: string]: any }> = { [K in keyof T]: T[K] };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -1134,7 +1135,7 @@ export type UserWhereUniqueInput = {
   id?: Maybe<Scalars['Int']>;
 };
 
-export type MeQueryVariables = {};
+export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MeQuery = (
@@ -1145,10 +1146,10 @@ export type MeQuery = (
   )> }
 );
 
-export type LoginMutationVariables = {
+export type LoginMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
-};
+}>;
 
 
 export type LoginMutation = (
@@ -1159,11 +1160,11 @@ export type LoginMutation = (
   )> }
 );
 
-export type SignupMutationVariables = {
+export type SignupMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
   name?: Maybe<Scalars['String']>;
-};
+}>;
 
 
 export type SignupMutation = (
@@ -1174,7 +1175,7 @@ export type SignupMutation = (
   ) }
 );
 
-export type LogoutMutationVariables = {};
+export type LogoutMutationVariables = Exact<{ [key: string]: never; }>;
 
 
 export type LogoutMutation = (
