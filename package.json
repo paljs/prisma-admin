@@ -39,7 +39,7 @@
     "next": "latest",
     "nexus-schema-plugin-prisma-select": "0.0.5",
     "oah-eva-icon": "1.0.1",
-    "oah-ui": "2.1.4",
+    "oah-ui": "2.1.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "styled-components": "5.0.1",
