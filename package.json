@@ -27,7 +27,7 @@
     "@prisma-tools/delete": "0.0.15",
     "@prisma-tools/schema": "0.0.11",
     "@prisma-tools/nexus": "0.6.25",
-    "@prisma/client": "2.0.0",
+    "@prisma/client": "2.0.1",
     "apollo-server-micro": "2.14.4",
     "bcryptjs": "2.4.3",
     "cookie": "0.4.1",
