@@ -35,7 +35,7 @@
     "graphql-tag": "2.10.3",
     "graphql-tools": "6.0.10",
     "jsonwebtoken": "8.5.1",
-    "moment": "2.24.0",
+    "moment": "2.27.0",
     "next": "latest",
     "nexus-schema-plugin-prisma-select": "0.0.5",
     "oah-eva-icon": "1.0.1",
