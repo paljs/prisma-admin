@@ -1,4 +1,4 @@
-## DB
+## Prisma Admin dynamic Table
 
 We added `sqlite` as db provider in `schema.prisma` you can change it to your custom db provider
 
