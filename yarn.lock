@@ -1713,12 +1713,12 @@
     "@nodelib/fs.scandir" "2.1.3"
     fastq "^1.6.0"
 
-"@paljs/admin@1.2.4":
-  version "1.2.4"
-  resolved "https://registry.yarnpkg.com/@paljs/admin/-/admin-1.2.4.tgz#288271973a0f2904283a31178153b36ed46ba29b"
-  integrity sha512-/lLF5TkZNZsULzyoZqLxoIYVCp26fut+4UiG+VZony4I2DTri1T6pFgIWr7VWAnBvPRACnW8sTdCM8anwQQJjQ==
+"@paljs/admin@1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@paljs/admin/-/admin-1.2.8.tgz#8b927715f3535d6c9c8530264871ce56bcb24102"
+  integrity sha512-OUbmhx6GcKAikdP8J/ohaejBy3f6vwrkAwp+vbVze2/LxIXHtPKfWxpDJLnhLQAwQGm5IhK6DsvS33W++MYj9Q==
   dependencies:
-    "@paljs/types" "^1.1.0"
+    "@paljs/types" "^1.2.8"
     moment "2.26.0"
     prettier "2.0.5"
     query-string "6.13.1"
@@ -1762,6 +1762,11 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@paljs/types/-/types-1.1.0.tgz#b33b8bac4f6625ed9ea817f5ad315d4c1c371059"
   integrity sha512-PROb3n3vFmyyYQvAyLb/JXDngoRlssql+Bhpf1gYYjAhwnjlGQOXlqGzXvq4r72fQDQPAmUs31pbG+XUk1wiTg==
+
+"@paljs/types@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@paljs/types/-/types-1.2.8.tgz#ed879f6b00598bab40fd85ac599703c0fabe7e75"
+  integrity sha512-SGL+QTUWzJZRrTtgZrJgElWkFXSlezFr2dUN7MMMyo2zgyGwp1js8V81M7YDGwcNmKPJgtG/4Twk94Y2lgMGJw==
 
 "@paljs/ui@1.0.3":
   version "1.0.3"
