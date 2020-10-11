@@ -2,26 +2,34 @@
   "version": "0.3.14-fixed",
   "steps": [
     {
+      "tag": "CreateEnum",
+      "enum": "Rols",
+      "values": [
+        "USER",
+        "ADMIN"
+      ]
+    },
+    {
       "tag": "CreateSource",
-      "source": "db"
+      "source": "postgresql"
     },
     {
       "tag": "CreateArgument",
       "location": {
         "tag": "Source",
-        "source": "db"
+        "source": "postgresql"
       },
       "argument": "url",
-      "value": "\"file:./dev.db\""
+      "value": "\"***\""
     },
     {
       "tag": "CreateArgument",
       "location": {
         "tag": "Source",
-        "source": "db"
+        "source": "postgresql"
       },
       "argument": "provider",
-      "value": "\"sqlite\""
+      "value": "\"postgresql\""
     },
     {
       "tag": "CreateModel",
@@ -33,6 +41,17 @@
       "field": "id",
       "type": "Int",
       "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "id"
+        },
+        "directive": "id"
+      }
     },
     {
       "tag": "CreateDirective",
@@ -58,17 +77,6 @@
       },
       "argument": "",
       "value": "autoincrement()"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "User",
-          "field": "id"
-        },
-        "directive": "id"
-      }
     },
     {
       "tag": "CreateField",
@@ -195,6 +203,13 @@
       "arity": "Optional"
     },
     {
+      "tag": "CreateField",
+      "model": "User",
+      "field": "comments",
+      "type": "Comment",
+      "arity": "List"
+    },
+    {
       "tag": "CreateModel",
       "model": "Post"
     },
@@ -204,6 +219,17 @@
       "field": "id",
       "type": "Int",
       "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Post",
+          "field": "id"
+        },
+        "directive": "id"
+      }
     },
     {
       "tag": "CreateDirective",
@@ -229,17 +255,6 @@
       },
       "argument": "",
       "value": "autoincrement()"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Post",
-          "field": "id"
-        },
-        "directive": "id"
-      }
     },
     {
       "tag": "CreateField",
@@ -409,6 +424,17 @@
           "model": "Comment",
           "field": "id"
         },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Comment",
+          "field": "id"
+        },
         "directive": "default"
       }
     },
@@ -425,17 +451,6 @@
       },
       "argument": "",
       "value": "autoincrement()"
-    },
-    {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Comment",
-          "field": "id"
-        },
-        "directive": "id"
-      }
     },
     {
       "tag": "CreateField",
@@ -619,6 +634,17 @@
           "model": "Group",
           "field": "id"
         },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Group",
+          "field": "id"
+        },
         "directive": "default"
       }
     },
@@ -637,29 +663,11 @@
       "value": "autoincrement()"
     },
     {
-      "tag": "CreateDirective",
-      "location": {
-        "path": {
-          "tag": "Field",
-          "model": "Group",
-          "field": "id"
-        },
-        "directive": "id"
-      }
-    },
-    {
       "tag": "CreateField",
       "model": "Group",
       "field": "name",
       "type": "String",
       "arity": "Required"
-    },
-    {
-      "tag": "CreateField",
-      "model": "Group",
-      "field": "users",
-      "type": "User",
-      "arity": "List"
     },
     {
       "tag": "CreateField",
@@ -710,6 +718,95 @@
         },
         "directive": "updatedAt"
       }
+    },
+    {
+      "tag": "CreateField",
+      "model": "Group",
+      "field": "users",
+      "type": "User",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateModel",
+      "model": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "List",
+      "field": "id",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "List",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "List",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "List",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "autoincrement()"
+    },
+    {
+      "tag": "CreateField",
+      "model": "List",
+      "field": "intger",
+      "type": "Int",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "List",
+      "field": "flout",
+      "type": "Float",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "List",
+      "field": "string",
+      "type": "String",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "List",
+      "field": "enums",
+      "type": "Rols",
+      "arity": "List"
+    },
+    {
+      "tag": "CreateField",
+      "model": "List",
+      "field": "boolean",
+      "type": "Boolean",
+      "arity": "List"
     }
   ]
 }

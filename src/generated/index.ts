@@ -33,6 +33,15 @@ export type AggregateGroup = {
   sum?: Maybe<GroupSumAggregateOutputType>;
 };
 
+export type AggregateList = {
+  __typename?: 'AggregateList';
+  avg?: Maybe<ListAvgAggregateOutputType>;
+  count: Scalars['Int'];
+  max?: Maybe<ListMaxAggregateOutputType>;
+  min?: Maybe<ListMinAggregateOutputType>;
+  sum?: Maybe<ListSumAggregateOutputType>;
+};
+
 export type AggregatePost = {
   __typename?: 'AggregatePost';
   avg?: Maybe<PostAvgAggregateOutputType>;
@@ -63,6 +72,10 @@ export type BoolFieldUpdateOperationsInput = {
 export type BoolFilter = {
   equals?: Maybe<Scalars['Boolean']>;
   not?: Maybe<NestedBoolFilter>;
+};
+
+export type BoolNullableListFilter = {
+  equals?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
 };
 
 export type Comment = {
@@ -298,6 +311,10 @@ export type Enum = {
   name?: Maybe<Scalars['String']>;
 };
 
+export type EnumRolsNullableListFilter = {
+  equals?: Maybe<Array<Maybe<Rols>>>;
+};
+
 export type Field = {
   __typename?: 'Field';
   create?: Maybe<Scalars['Boolean']>;
@@ -318,6 +335,10 @@ export type Field = {
   unique?: Maybe<Scalars['Boolean']>;
   update?: Maybe<Scalars['Boolean']>;
   upload?: Maybe<Scalars['Boolean']>;
+};
+
+export type FloatNullableListFilter = {
+  equals?: Maybe<Array<Maybe<Scalars['Float']>>>;
 };
 
 export type Group = {
@@ -466,12 +487,152 @@ export type IntNullableFilter = {
   notIn?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
+export type IntNullableListFilter = {
+  equals?: Maybe<Array<Maybe<Scalars['Int']>>>;
+};
+
 
 export enum KindEnum {
   Enum = 'enum',
   Object = 'object',
   Scalar = 'scalar'
 }
+
+export type List = {
+  __typename?: 'List';
+  boolean: Array<Scalars['Boolean']>;
+  enums: Array<Rols>;
+  flout: Array<Scalars['Float']>;
+  id: Scalars['Int'];
+  intger: Array<Scalars['Int']>;
+  string: Array<Scalars['String']>;
+};
+
+export type ListAvgAggregateOutputType = {
+  __typename?: 'ListAvgAggregateOutputType';
+  flout?: Maybe<Scalars['Float']>;
+  id: Scalars['Float'];
+  intger?: Maybe<Scalars['Float']>;
+};
+
+export type ListCreatebooleanInput = {
+  set: Array<Maybe<Scalars['Boolean']>>;
+};
+
+export type ListCreateenumsInput = {
+  set: Array<Maybe<Rols>>;
+};
+
+export type ListCreatefloutInput = {
+  set: Array<Maybe<Scalars['Float']>>;
+};
+
+export type ListCreateInput = {
+  boolean?: Maybe<ListCreatebooleanInput>;
+  enums?: Maybe<ListCreateenumsInput>;
+  flout?: Maybe<ListCreatefloutInput>;
+  intger?: Maybe<ListCreateintgerInput>;
+  string?: Maybe<ListCreatestringInput>;
+};
+
+export type ListCreateintgerInput = {
+  set: Array<Maybe<Scalars['Int']>>;
+};
+
+export type ListCreatestringInput = {
+  set: Array<Maybe<Scalars['String']>>;
+};
+
+export enum ListDistinctFieldEnum {
+  Boolean = 'boolean',
+  Enums = 'enums',
+  Flout = 'flout',
+  Id = 'id',
+  Intger = 'intger',
+  String = 'string'
+}
+
+export type ListMaxAggregateOutputType = {
+  __typename?: 'ListMaxAggregateOutputType';
+  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  id: Scalars['Int'];
+  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+};
+
+export type ListMinAggregateOutputType = {
+  __typename?: 'ListMinAggregateOutputType';
+  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  id: Scalars['Int'];
+  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+};
+
+export type ListOrderByInput = {
+  boolean?: Maybe<SortOrder>;
+  enums?: Maybe<SortOrder>;
+  flout?: Maybe<SortOrder>;
+  id?: Maybe<SortOrder>;
+  intger?: Maybe<SortOrder>;
+  string?: Maybe<SortOrder>;
+};
+
+export type ListSumAggregateOutputType = {
+  __typename?: 'ListSumAggregateOutputType';
+  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  id: Scalars['Int'];
+  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+};
+
+export type ListUpdatebooleanInput = {
+  set: Array<Maybe<Scalars['Boolean']>>;
+};
+
+export type ListUpdateenumsInput = {
+  set: Array<Maybe<Rols>>;
+};
+
+export type ListUpdatefloutInput = {
+  set: Array<Maybe<Scalars['Float']>>;
+};
+
+export type ListUpdateInput = {
+  boolean?: Maybe<ListUpdatebooleanInput>;
+  enums?: Maybe<ListUpdateenumsInput>;
+  flout?: Maybe<ListUpdatefloutInput>;
+  intger?: Maybe<ListUpdateintgerInput>;
+  string?: Maybe<ListUpdatestringInput>;
+};
+
+export type ListUpdateintgerInput = {
+  set: Array<Maybe<Scalars['Int']>>;
+};
+
+export type ListUpdateManyMutationInput = {
+  boolean?: Maybe<ListUpdatebooleanInput>;
+  enums?: Maybe<ListUpdateenumsInput>;
+  flout?: Maybe<ListUpdatefloutInput>;
+  intger?: Maybe<ListUpdateintgerInput>;
+  string?: Maybe<ListUpdatestringInput>;
+};
+
+export type ListUpdatestringInput = {
+  set: Array<Maybe<Scalars['String']>>;
+};
+
+export type ListWhereInput = {
+  AND?: Maybe<Array<Maybe<ListWhereInput>>>;
+  boolean?: Maybe<BoolNullableListFilter>;
+  enums?: Maybe<EnumRolsNullableListFilter>;
+  flout?: Maybe<FloatNullableListFilter>;
+  id?: Maybe<IntFilter>;
+  intger?: Maybe<IntNullableListFilter>;
+  NOT?: Maybe<Array<Maybe<ListWhereInput>>>;
+  OR?: Maybe<Array<Maybe<ListWhereInput>>>;
+  string?: Maybe<StringNullableListFilter>;
+};
+
+export type ListWhereUniqueInput = {
+  id?: Maybe<Scalars['Int']>;
+};
 
 export type Model = {
   __typename?: 'Model';
@@ -489,14 +650,17 @@ export type Mutation = {
   __typename?: 'Mutation';
   createOneComment: Comment;
   createOneGroup: Group;
+  createOneList: List;
   createOnePost: Post;
   createOneUser: User;
   deleteManyComment?: Maybe<BatchPayload>;
   deleteManyGroup?: Maybe<BatchPayload>;
+  deleteManyList?: Maybe<BatchPayload>;
   deleteManyPost?: Maybe<BatchPayload>;
   deleteManyUser?: Maybe<BatchPayload>;
   deleteOneComment?: Maybe<Comment>;
   deleteOneGroup?: Maybe<Group>;
+  deleteOneList?: Maybe<List>;
   deleteOnePost?: Maybe<Post>;
   deleteOneUser?: Maybe<User>;
   login?: Maybe<User>;
@@ -505,16 +669,19 @@ export type Mutation = {
   updateField?: Maybe<Field>;
   updateManyComment?: Maybe<BatchPayload>;
   updateManyGroup?: Maybe<BatchPayload>;
+  updateManyList?: Maybe<BatchPayload>;
   updateManyPost?: Maybe<BatchPayload>;
   updateManyUser?: Maybe<BatchPayload>;
   updateModel?: Maybe<Model>;
   updateOneComment: Comment;
   updateOneGroup: Group;
+  updateOneList: List;
   updateOnePost: Post;
   updateOneUser: User;
   updatePassword?: Maybe<Scalars['Boolean']>;
   upsertOneComment: Comment;
   upsertOneGroup: Group;
+  upsertOneList: List;
   upsertOnePost: Post;
   upsertOneUser: User;
 };
@@ -527,6 +694,11 @@ export type MutationCreateOneCommentArgs = {
 
 export type MutationCreateOneGroupArgs = {
   data: GroupCreateInput;
+};
+
+
+export type MutationCreateOneListArgs = {
+  data: ListCreateInput;
 };
 
 
@@ -550,6 +722,11 @@ export type MutationDeleteManyGroupArgs = {
 };
 
 
+export type MutationDeleteManyListArgs = {
+  where?: Maybe<ListWhereInput>;
+};
+
+
 export type MutationDeleteManyPostArgs = {
   where?: Maybe<PostWhereInput>;
 };
@@ -567,6 +744,11 @@ export type MutationDeleteOneCommentArgs = {
 
 export type MutationDeleteOneGroupArgs = {
   where: GroupWhereUniqueInput;
+};
+
+
+export type MutationDeleteOneListArgs = {
+  where: ListWhereUniqueInput;
 };
 
 
@@ -612,6 +794,12 @@ export type MutationUpdateManyGroupArgs = {
 };
 
 
+export type MutationUpdateManyListArgs = {
+  data: ListUpdateManyMutationInput;
+  where?: Maybe<ListWhereInput>;
+};
+
+
 export type MutationUpdateManyPostArgs = {
   data: PostUpdateManyMutationInput;
   where?: Maybe<PostWhereInput>;
@@ -639,6 +827,12 @@ export type MutationUpdateOneCommentArgs = {
 export type MutationUpdateOneGroupArgs = {
   data: GroupUpdateInput;
   where: GroupWhereUniqueInput;
+};
+
+
+export type MutationUpdateOneListArgs = {
+  data: ListUpdateInput;
+  where: ListWhereUniqueInput;
 };
 
 
@@ -671,6 +865,13 @@ export type MutationUpsertOneGroupArgs = {
   create: GroupCreateInput;
   update: GroupUpdateInput;
   where: GroupWhereUniqueInput;
+};
+
+
+export type MutationUpsertOneListArgs = {
+  create: ListCreateInput;
+  update: ListUpdateInput;
+  where: ListWhereUniqueInput;
 };
 
 
@@ -982,12 +1183,15 @@ export type Query = {
   findManyCommentCount?: Maybe<Scalars['Int']>;
   findManyGroup?: Maybe<Array<Maybe<Group>>>;
   findManyGroupCount?: Maybe<Scalars['Int']>;
+  findManyList?: Maybe<Array<Maybe<List>>>;
+  findManyListCount?: Maybe<Scalars['Int']>;
   findManyPost?: Maybe<Array<Maybe<Post>>>;
   findManyPostCount?: Maybe<Scalars['Int']>;
   findManyUser?: Maybe<Array<Maybe<User>>>;
   findManyUserCount?: Maybe<Scalars['Int']>;
   findOneComment?: Maybe<Comment>;
   findOneGroup?: Maybe<Group>;
+  findOneList?: Maybe<List>;
   findOnePost?: Maybe<Post>;
   findOneUser?: Maybe<User>;
   getSchema?: Maybe<Schema>;
@@ -1028,6 +1232,26 @@ export type QueryFindManyGroupCountArgs = {
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
   where?: Maybe<GroupWhereInput>;
+};
+
+
+export type QueryFindManyListArgs = {
+  cursor?: Maybe<ListWhereUniqueInput>;
+  distinct?: Maybe<ListDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<ListOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<ListWhereInput>;
+};
+
+
+export type QueryFindManyListCountArgs = {
+  cursor?: Maybe<ListWhereUniqueInput>;
+  distinct?: Maybe<ListDistinctFieldEnum>;
+  orderBy?: Maybe<Array<Maybe<ListOrderByInput>>>;
+  skip?: Maybe<Scalars['Int']>;
+  take?: Maybe<Scalars['Int']>;
+  where?: Maybe<ListWhereInput>;
 };
 
 
@@ -1077,6 +1301,11 @@ export type QueryFindOneGroupArgs = {
 };
 
 
+export type QueryFindOneListArgs = {
+  where: ListWhereUniqueInput;
+};
+
+
 export type QueryFindOnePostArgs = {
   where: PostWhereUniqueInput;
 };
@@ -1089,6 +1318,11 @@ export type QueryFindOneUserArgs = {
 export enum QueryMode {
   Default = 'default',
   Insensitive = 'insensitive'
+}
+
+export enum Rols {
+  Admin = 'ADMIN',
+  User = 'USER'
 }
 
 export type Schema = {
@@ -1134,6 +1368,10 @@ export type StringNullableFilter = {
   not?: Maybe<NestedStringNullableFilter>;
   notIn?: Maybe<Array<Maybe<Scalars['String']>>>;
   startsWith?: Maybe<Scalars['String']>;
+};
+
+export type StringNullableListFilter = {
+  equals?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type UpdateFieldInput = {

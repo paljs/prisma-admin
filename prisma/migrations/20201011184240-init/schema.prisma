@@ -1,36 +1,41 @@
-datasource db {
+datasource postgresql {
   url = "***"
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 generator client {
   provider = "prisma-client-js"
 }
 
+// models examples
 model User {
-  id        Int      @default(autoincrement()) @id
-  createdAt DateTime @default(now())
-  email     String   @unique
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  email     String    @unique
   name      String?
   password  String
+  /// @onDelete(CASCADE)
   posts     Post[]
-  group     Group?   @relation(fields: [groupId], references: [id])
+  group     Group?    @relation(fields: [groupId], references: [id])
   groupId   Int?
+  /// @onDelete(SET_NULL)
+  comments  Comment[]
 }
 
 model Post {
-  id        Int       @default(autoincrement()) @id
+  id        Int       @id @default(autoincrement())
   published Boolean   @default(false)
   title     String
   author    User?     @relation(fields: [authorId], references: [id])
   authorId  Int?
+  /// @onDelete(CASCADE)
   comments  Comment[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
 
 model Comment {
-  id        Int      @default(autoincrement()) @id
+  id        Int      @id @default(autoincrement())
   contain   String
   post      Post     @relation(fields: [postId], references: [id])
   postId    Int
@@ -41,9 +46,24 @@ model Comment {
 }
 
 model Group {
-  id        Int      @default(autoincrement()) @id
+  id        Int      @id @default(autoincrement())
   name      String
-  users     User[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  /// @onDelete(SET_NULL)
+  users     User[]
+}
+
+model List {
+  id      Int       @id @default(autoincrement())
+  intger  Int[]
+  flout   Float[]
+  string  String[]
+  enums   Rols[]
+  boolean Boolean[]
+}
+
+enum Rols {
+  USER
+  ADMIN
 }

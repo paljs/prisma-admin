@@ -19,6 +19,10 @@ const items: MenuItemType[] = [
         title: 'Groups',
         link: { href: '/admin/models/Group' },
       },
+      {
+        title: 'List fields',
+        link: { href: '/admin/models/List' },
+      },
     ],
   },
 ];

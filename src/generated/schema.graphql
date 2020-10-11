@@ -18,6 +18,14 @@ type AggregateGroup {
   sum: GroupSumAggregateOutputType
 }
 
+type AggregateList {
+  avg: ListAvgAggregateOutputType
+  count: Int!
+  max: ListMaxAggregateOutputType
+  min: ListMinAggregateOutputType
+  sum: ListSumAggregateOutputType
+}
+
 type AggregatePost {
   avg: PostAvgAggregateOutputType
   count: Int!
@@ -45,6 +53,10 @@ input BoolFieldUpdateOperationsInput {
 input BoolFilter {
   equals: Boolean
   not: NestedBoolFilter
+}
+
+input BoolNullableListFilter {
+  equals: [Boolean]
 }
 
 type Comment {
@@ -276,6 +288,10 @@ type Enum {
   name: String
 }
 
+input EnumRolsNullableListFilter {
+  equals: [Rols]
+}
+
 type Field {
   create: Boolean
   editor: Boolean
@@ -295,6 +311,10 @@ type Field {
   unique: Boolean
   update: Boolean
   upload: Boolean
+}
+
+input FloatNullableListFilter {
+  equals: [Float]
 }
 
 type Group {
@@ -428,13 +448,166 @@ input IntNullableFilter {
   notIn: [Int]
 }
 
+input IntNullableListFilter {
+  equals: [Int]
+}
+
 """Json custom scalar type"""
 scalar Json
+
+input JsonNullableListFilter {
+  equals: [Json]
+}
 
 enum KindEnum {
   enum
   object
   scalar
+}
+
+type List {
+  boolean: [Boolean!]!
+  enums: [Rols!]!
+  flout: [Float!]!
+  id: Int!
+  intger: [Int!]!
+  string: [String!]!
+}
+
+type ListAvgAggregateOutputType {
+  flout: Float
+  id: Float!
+  intger: Float
+}
+
+input ListCreatebooleanInput {
+  set: [Boolean]!
+}
+
+input ListCreateenumsInput {
+  set: [Rols]!
+}
+
+input ListCreatefloutInput {
+  set: [Float]!
+}
+
+input ListCreateInput {
+  boolean: ListCreatebooleanInput
+  enums: ListCreateenumsInput
+  flout: ListCreatefloutInput
+  intger: ListCreateintgerInput
+  json: ListCreatejsonInput
+  string: ListCreatestringInput
+}
+
+input ListCreateintgerInput {
+  set: [Int]!
+}
+
+input ListCreatejsonInput {
+  set: [Json]!
+}
+
+input ListCreatestringInput {
+  set: [String]!
+}
+
+enum ListDistinctFieldEnum {
+  boolean
+  enums
+  flout
+  id
+  intger
+  json
+  string
+}
+
+type ListMaxAggregateOutputType {
+  flout: [Float]
+  id: Int!
+  intger: [Int]
+}
+
+type ListMinAggregateOutputType {
+  flout: [Float]
+  id: Int!
+  intger: [Int]
+}
+
+input ListOrderByInput {
+  boolean: SortOrder
+  enums: SortOrder
+  flout: SortOrder
+  id: SortOrder
+  intger: SortOrder
+  json: SortOrder
+  string: SortOrder
+}
+
+type ListSumAggregateOutputType {
+  flout: [Float]
+  id: Int!
+  intger: [Int]
+}
+
+input ListUpdatebooleanInput {
+  set: [Boolean]!
+}
+
+input ListUpdateenumsInput {
+  set: [Rols]!
+}
+
+input ListUpdatefloutInput {
+  set: [Float]!
+}
+
+input ListUpdateInput {
+  boolean: ListUpdatebooleanInput
+  enums: ListUpdateenumsInput
+  flout: ListUpdatefloutInput
+  intger: ListUpdateintgerInput
+  json: ListUpdatejsonInput
+  string: ListUpdatestringInput
+}
+
+input ListUpdateintgerInput {
+  set: [Int]!
+}
+
+input ListUpdatejsonInput {
+  set: [Json]!
+}
+
+input ListUpdateManyMutationInput {
+  boolean: ListUpdatebooleanInput
+  enums: ListUpdateenumsInput
+  flout: ListUpdatefloutInput
+  intger: ListUpdateintgerInput
+  json: ListUpdatejsonInput
+  string: ListUpdatestringInput
+}
+
+input ListUpdatestringInput {
+  set: [String]!
+}
+
+input ListWhereInput {
+  AND: [ListWhereInput]
+  boolean: BoolNullableListFilter
+  enums: EnumRolsNullableListFilter
+  flout: FloatNullableListFilter
+  id: IntFilter
+  intger: IntNullableListFilter
+  json: JsonNullableListFilter
+  NOT: [ListWhereInput]
+  OR: [ListWhereInput]
+  string: StringNullableListFilter
+}
+
+input ListWhereUniqueInput {
+  id: Int
 }
 
 type Model {
@@ -451,14 +624,17 @@ type Model {
 type Mutation {
   createOneComment(data: CommentCreateInput!): Comment!
   createOneGroup(data: GroupCreateInput!): Group!
+  createOneList(data: ListCreateInput!): List!
   createOnePost(data: PostCreateInput!): Post!
   createOneUser(data: UserCreateInput!): User!
   deleteManyComment(where: CommentWhereInput): BatchPayload
   deleteManyGroup(where: GroupWhereInput): BatchPayload
+  deleteManyList(where: ListWhereInput): BatchPayload
   deleteManyPost(where: PostWhereInput): BatchPayload
   deleteManyUser(where: UserWhereInput): BatchPayload
   deleteOneComment(where: CommentWhereUniqueInput!): Comment
   deleteOneGroup(where: GroupWhereUniqueInput!): Group
+  deleteOneList(where: ListWhereUniqueInput!): List
   deleteOnePost(where: PostWhereUniqueInput!): Post
   deleteOneUser(where: UserWhereUniqueInput!): User
   login(email: String!, password: String!): User
@@ -467,16 +643,19 @@ type Mutation {
   updateField(data: UpdateFieldInput, id: String!, modelId: String!): Field
   updateManyComment(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload
   updateManyGroup(data: GroupUpdateManyMutationInput!, where: GroupWhereInput): BatchPayload
+  updateManyList(data: ListUpdateManyMutationInput!, where: ListWhereInput): BatchPayload
   updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload
   updateModel(data: UpdateModelInput, id: String!): Model
   updateOneComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
   updateOneGroup(data: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group!
+  updateOneList(data: ListUpdateInput!, where: ListWhereUniqueInput!): List!
   updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
   updatePassword(currentPassword: String!, password: String!): Boolean
   upsertOneComment(create: CommentCreateInput!, update: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
   upsertOneGroup(create: GroupCreateInput!, update: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group!
+  upsertOneList(create: ListCreateInput!, update: ListUpdateInput!, where: ListWhereUniqueInput!): List!
   upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
   upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
@@ -760,12 +939,15 @@ type Query {
   findManyCommentCount(cursor: CommentWhereUniqueInput, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Int
   findManyGroup(cursor: GroupWhereUniqueInput, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group]
   findManyGroupCount(cursor: GroupWhereUniqueInput, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Int
+  findManyList(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): [List]
+  findManyListCount(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): Int
   findManyPost(cursor: PostWhereUniqueInput, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post]
   findManyPostCount(cursor: PostWhereUniqueInput, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Int
   findManyUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User]
   findManyUserCount(cursor: UserWhereUniqueInput, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): Int
   findOneComment(where: CommentWhereUniqueInput!): Comment
   findOneGroup(where: GroupWhereUniqueInput!): Group
+  findOneList(where: ListWhereUniqueInput!): List
   findOnePost(where: PostWhereUniqueInput!): Post
   findOneUser(where: UserWhereUniqueInput!): User
   getSchema: Schema
@@ -775,6 +957,11 @@ type Query {
 enum QueryMode {
   default
   insensitive
+}
+
+enum Rols {
+  ADMIN
+  USER
 }
 
 type Schema {
@@ -819,6 +1006,10 @@ input StringNullableFilter {
   not: NestedStringNullableFilter
   notIn: [String]
   startsWith: String
+}
+
+input StringNullableListFilter {
+  equals: [String]
 }
 
 input UpdateFieldInput {
