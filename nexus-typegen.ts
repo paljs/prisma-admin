@@ -326,17 +326,12 @@ export interface NexusGenInputs {
     // input type
     equals?: Array<number | null> | null; // [Int]
   };
-  JsonNullableListFilter: {
-    // input type
-    equals?: Array<NexusGenScalars['Json'] | null> | null; // [Json]
-  };
   ListCreateInput: {
     // input type
     boolean?: NexusGenInputs['ListCreatebooleanInput'] | null; // ListCreatebooleanInput
     enums?: NexusGenInputs['ListCreateenumsInput'] | null; // ListCreateenumsInput
     flout?: NexusGenInputs['ListCreatefloutInput'] | null; // ListCreatefloutInput
     intger?: NexusGenInputs['ListCreateintgerInput'] | null; // ListCreateintgerInput
-    json?: NexusGenInputs['ListCreatejsonInput'] | null; // ListCreatejsonInput
     string?: NexusGenInputs['ListCreatestringInput'] | null; // ListCreatestringInput
   };
   ListCreatebooleanInput: {
@@ -355,10 +350,6 @@ export interface NexusGenInputs {
     // input type
     set: Array<number | null>; // [Int]!
   };
-  ListCreatejsonInput: {
-    // input type
-    set: Array<NexusGenScalars['Json'] | null>; // [Json]!
-  };
   ListCreatestringInput: {
     // input type
     set: Array<string | null>; // [String]!
@@ -370,7 +361,6 @@ export interface NexusGenInputs {
     flout?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
     intger?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    json?: NexusGenEnums['SortOrder'] | null; // SortOrder
     string?: NexusGenEnums['SortOrder'] | null; // SortOrder
   };
   ListUpdateInput: {
@@ -379,7 +369,6 @@ export interface NexusGenInputs {
     enums?: NexusGenInputs['ListUpdateenumsInput'] | null; // ListUpdateenumsInput
     flout?: NexusGenInputs['ListUpdatefloutInput'] | null; // ListUpdatefloutInput
     intger?: NexusGenInputs['ListUpdateintgerInput'] | null; // ListUpdateintgerInput
-    json?: NexusGenInputs['ListUpdatejsonInput'] | null; // ListUpdatejsonInput
     string?: NexusGenInputs['ListUpdatestringInput'] | null; // ListUpdatestringInput
   };
   ListUpdateManyMutationInput: {
@@ -388,7 +377,6 @@ export interface NexusGenInputs {
     enums?: NexusGenInputs['ListUpdateenumsInput'] | null; // ListUpdateenumsInput
     flout?: NexusGenInputs['ListUpdatefloutInput'] | null; // ListUpdatefloutInput
     intger?: NexusGenInputs['ListUpdateintgerInput'] | null; // ListUpdateintgerInput
-    json?: NexusGenInputs['ListUpdatejsonInput'] | null; // ListUpdatejsonInput
     string?: NexusGenInputs['ListUpdatestringInput'] | null; // ListUpdatestringInput
   };
   ListUpdatebooleanInput: {
@@ -407,10 +395,6 @@ export interface NexusGenInputs {
     // input type
     set: Array<number | null>; // [Int]!
   };
-  ListUpdatejsonInput: {
-    // input type
-    set: Array<NexusGenScalars['Json'] | null>; // [Json]!
-  };
   ListUpdatestringInput: {
     // input type
     set: Array<string | null>; // [String]!
@@ -423,7 +407,6 @@ export interface NexusGenInputs {
     flout?: NexusGenInputs['FloatNullableListFilter'] | null; // FloatNullableListFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
     intger?: NexusGenInputs['IntNullableListFilter'] | null; // IntNullableListFilter
-    json?: NexusGenInputs['JsonNullableListFilter'] | null; // JsonNullableListFilter
     NOT?: Array<NexusGenInputs['ListWhereInput'] | null> | null; // [ListWhereInput]
     OR?: Array<NexusGenInputs['ListWhereInput'] | null> | null; // [ListWhereInput]
     string?: NexusGenInputs['StringNullableListFilter'] | null; // StringNullableListFilter
@@ -952,7 +935,7 @@ export interface NexusGenEnums {
   CommentDistinctFieldEnum: 'authorId' | 'contain' | 'createdAt' | 'id' | 'postId' | 'updatedAt';
   GroupDistinctFieldEnum: 'createdAt' | 'id' | 'name' | 'updatedAt';
   KindEnum: 'enum' | 'object' | 'scalar';
-  ListDistinctFieldEnum: 'boolean' | 'enums' | 'flout' | 'id' | 'intger' | 'json' | 'string';
+  ListDistinctFieldEnum: 'boolean' | 'enums' | 'flout' | 'id' | 'intger' | 'string';
   PostDistinctFieldEnum: 'authorId' | 'createdAt' | 'id' | 'published' | 'title' | 'updatedAt';
   QueryMode: 'default' | 'insensitive';
   Rols: 'ADMIN' | 'USER';
@@ -1253,13 +1236,11 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   IntFilter: NexusGenInputs['IntFilter'];
   IntNullableFilter: NexusGenInputs['IntNullableFilter'];
   IntNullableListFilter: NexusGenInputs['IntNullableListFilter'];
-  JsonNullableListFilter: NexusGenInputs['JsonNullableListFilter'];
   ListCreateInput: NexusGenInputs['ListCreateInput'];
   ListCreatebooleanInput: NexusGenInputs['ListCreatebooleanInput'];
   ListCreateenumsInput: NexusGenInputs['ListCreateenumsInput'];
   ListCreatefloutInput: NexusGenInputs['ListCreatefloutInput'];
   ListCreateintgerInput: NexusGenInputs['ListCreateintgerInput'];
-  ListCreatejsonInput: NexusGenInputs['ListCreatejsonInput'];
   ListCreatestringInput: NexusGenInputs['ListCreatestringInput'];
   ListOrderByInput: NexusGenInputs['ListOrderByInput'];
   ListUpdateInput: NexusGenInputs['ListUpdateInput'];
@@ -1268,7 +1249,6 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   ListUpdateenumsInput: NexusGenInputs['ListUpdateenumsInput'];
   ListUpdatefloutInput: NexusGenInputs['ListUpdatefloutInput'];
   ListUpdateintgerInput: NexusGenInputs['ListUpdateintgerInput'];
-  ListUpdatejsonInput: NexusGenInputs['ListUpdatejsonInput'];
   ListUpdatestringInput: NexusGenInputs['ListUpdatestringInput'];
   ListWhereInput: NexusGenInputs['ListWhereInput'];
   ListWhereUniqueInput: NexusGenInputs['ListWhereUniqueInput'];
@@ -2061,13 +2041,11 @@ export type NexusGenInputNames =
   | 'IntFilter'
   | 'IntNullableFilter'
   | 'IntNullableListFilter'
-  | 'JsonNullableListFilter'
   | 'ListCreateInput'
   | 'ListCreatebooleanInput'
   | 'ListCreateenumsInput'
   | 'ListCreatefloutInput'
   | 'ListCreateintgerInput'
-  | 'ListCreatejsonInput'
   | 'ListCreatestringInput'
   | 'ListOrderByInput'
   | 'ListUpdateInput'
@@ -2076,7 +2054,6 @@ export type NexusGenInputNames =
   | 'ListUpdateenumsInput'
   | 'ListUpdatefloutInput'
   | 'ListUpdateintgerInput'
-  | 'ListUpdatejsonInput'
   | 'ListUpdatestringInput'
   | 'ListWhereInput'
   | 'ListWhereUniqueInput'

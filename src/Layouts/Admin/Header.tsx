@@ -30,6 +30,15 @@ const HeaderStyle = styled.div`
     white-space: nowrap;
     text-decoration: none;
   }
+  .left {
+    display: flex;
+    align-items: center;
+    .github {
+      color: white;
+      font-size: 18px;
+      margin-right: 5px;
+    }
+  }
 `;
 
 const Label = styled.span`
@@ -135,8 +144,12 @@ const Header: React.FC<HeaderProps> = (props) => {
           className="right"
           actions={[
             {
-              icon: 'github',
-              url: { href: 'https://github.com/paljs', target: '_blank' },
+              content: (
+                <a className="left" href={`https://github.com/paljs/prisma-tools`} target="_blank" rel="noreferrer">
+                  <span className="github">Support us in GitHub</span>
+                  <img src={`https://badgen.net/github/stars/paljs/prisma-tools`} />
+                </a>
+              ),
             },
             {
               icon: 'twitter',

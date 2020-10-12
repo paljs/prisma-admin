@@ -455,10 +455,6 @@ input IntNullableListFilter {
 """Json custom scalar type"""
 scalar Json
 
-input JsonNullableListFilter {
-  equals: [Json]
-}
-
 enum KindEnum {
   enum
   object
@@ -497,16 +493,11 @@ input ListCreateInput {
   enums: ListCreateenumsInput
   flout: ListCreatefloutInput
   intger: ListCreateintgerInput
-  json: ListCreatejsonInput
   string: ListCreatestringInput
 }
 
 input ListCreateintgerInput {
   set: [Int]!
-}
-
-input ListCreatejsonInput {
-  set: [Json]!
 }
 
 input ListCreatestringInput {
@@ -519,7 +510,6 @@ enum ListDistinctFieldEnum {
   flout
   id
   intger
-  json
   string
 }
 
@@ -541,7 +531,6 @@ input ListOrderByInput {
   flout: SortOrder
   id: SortOrder
   intger: SortOrder
-  json: SortOrder
   string: SortOrder
 }
 
@@ -568,7 +557,6 @@ input ListUpdateInput {
   enums: ListUpdateenumsInput
   flout: ListUpdatefloutInput
   intger: ListUpdateintgerInput
-  json: ListUpdatejsonInput
   string: ListUpdatestringInput
 }
 
@@ -576,16 +564,11 @@ input ListUpdateintgerInput {
   set: [Int]!
 }
 
-input ListUpdatejsonInput {
-  set: [Json]!
-}
-
 input ListUpdateManyMutationInput {
   boolean: ListUpdatebooleanInput
   enums: ListUpdateenumsInput
   flout: ListUpdatefloutInput
   intger: ListUpdateintgerInput
-  json: ListUpdatejsonInput
   string: ListUpdatestringInput
 }
 
@@ -600,7 +583,6 @@ input ListWhereInput {
   flout: FloatNullableListFilter
   id: IntFilter
   intger: IntNullableListFilter
-  json: JsonNullableListFilter
   NOT: [ListWhereInput]
   OR: [ListWhereInput]
   string: StringNullableListFilter
