@@ -8,6 +8,7 @@ export const CommentFindManyQuery = queryField('findManyComment', {
     where: 'CommentWhereInput',
     orderBy: arg({ type: 'CommentOrderByInput', list: true }),
     cursor: 'CommentWhereUniqueInput',
+    distinct: 'CommentDistinctFieldEnum',
     skip: 'Int',
     take: 'Int',
   },
@@ -15,6 +16,6 @@ export const CommentFindManyQuery = queryField('findManyComment', {
     return prisma.comment.findMany({
       ...args,
       ...select,
-    }) as any
+    })
   },
 })

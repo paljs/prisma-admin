@@ -8,6 +8,7 @@ export const PostFindManyQuery = queryField('findManyPost', {
     where: 'PostWhereInput',
     orderBy: arg({ type: 'PostOrderByInput', list: true }),
     cursor: 'PostWhereUniqueInput',
+    distinct: 'PostDistinctFieldEnum',
     skip: 'Int',
     take: 'Int',
   },
@@ -15,6 +16,6 @@ export const PostFindManyQuery = queryField('findManyPost', {
     return prisma.post.findMany({
       ...args,
       ...select,
-    }) as any
+    })
   },
 })

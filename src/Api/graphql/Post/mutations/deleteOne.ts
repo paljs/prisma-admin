@@ -14,6 +14,6 @@ export const PostDeleteOneMutation = mutationField('deleteOnePost', {
     return prisma.post.delete({
       where,
       ...select,
-    }) as any
+    })
   },
 })

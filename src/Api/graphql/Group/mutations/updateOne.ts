@@ -18,6 +18,6 @@ export const GroupUpdateOneMutation = mutationField('updateOneGroup', {
       where,
       data,
       ...select,
-    }) as any
+    })
   },
 })

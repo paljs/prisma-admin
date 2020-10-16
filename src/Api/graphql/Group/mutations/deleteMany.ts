@@ -10,6 +10,6 @@ export const GroupDeleteManyMutation = mutationField('deleteManyGroup', {
   },
   resolve: async (_parent, { where }, { prisma }) => {
     await prisma.onDelete({ model: 'Group', where })
-    return prisma.group.deleteMany({ where })
+    return prisma.group.deleteMany({ where } as any)
   },
 })

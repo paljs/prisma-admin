@@ -13,6 +13,6 @@ export const GroupFindOneQuery = queryField('findOneGroup', {
     return prisma.group.findOne({
       where,
       ...select,
-    }) as any
+    })
   },
 })

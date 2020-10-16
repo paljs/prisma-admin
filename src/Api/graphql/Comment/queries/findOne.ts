@@ -13,6 +13,6 @@ export const CommentFindOneQuery = queryField('findOneComment', {
     return prisma.comment.findOne({
       where,
       ...select,
-    }) as any
+    })
   },
 })

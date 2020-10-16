@@ -21,6 +21,6 @@ export const UserUpsertOneMutation = mutationField('upsertOneUser', {
     return prisma.user.upsert({
       ...args,
       ...select,
-    }) as any
+    })
   },
 })

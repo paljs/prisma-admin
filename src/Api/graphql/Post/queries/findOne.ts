@@ -13,6 +13,6 @@ export const PostFindOneQuery = queryField('findOnePost', {
     return prisma.post.findOne({
       where,
       ...select,
-    }) as any
+    })
   },
 })

@@ -13,6 +13,6 @@ export const PostCreateOneMutation = mutationField('createOnePost', {
     return prisma.post.create({
       data,
       ...select,
-    }) as any
+    })
   },
 })

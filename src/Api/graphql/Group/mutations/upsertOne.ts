@@ -21,6 +21,6 @@ export const GroupUpsertOneMutation = mutationField('upsertOneGroup', {
     return prisma.group.upsert({
       ...args,
       ...select,
-    }) as any
+    })
   },
 })

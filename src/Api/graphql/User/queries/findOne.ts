@@ -13,6 +13,6 @@ export const UserFindOneQuery = queryField('findOneUser', {
     return prisma.user.findOne({
       where,
       ...select,
-    }) as any
+    })
   },
 })

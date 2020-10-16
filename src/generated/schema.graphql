@@ -917,16 +917,16 @@ input PostWhereUniqueInput {
 }
 
 type Query {
-  findManyComment(cursor: CommentWhereUniqueInput, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment]
-  findManyCommentCount(cursor: CommentWhereUniqueInput, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Int
-  findManyGroup(cursor: GroupWhereUniqueInput, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group]
-  findManyGroupCount(cursor: GroupWhereUniqueInput, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Int
+  findManyComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment]
+  findManyCommentCount(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Int
+  findManyGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group]
+  findManyGroupCount(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Int
   findManyList(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): [List]
   findManyListCount(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): Int
-  findManyPost(cursor: PostWhereUniqueInput, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post]
-  findManyPostCount(cursor: PostWhereUniqueInput, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Int
-  findManyUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User]
-  findManyUserCount(cursor: UserWhereUniqueInput, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): Int
+  findManyPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post]
+  findManyPostCount(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Int
+  findManyUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User]
+  findManyUserCount(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): Int
   findOneComment(where: CommentWhereUniqueInput!): Comment
   findOneGroup(where: GroupWhereUniqueInput!): Group
   findOneList(where: ListWhereUniqueInput!): List

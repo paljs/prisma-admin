@@ -10,6 +10,6 @@ export const UserDeleteManyMutation = mutationField('deleteManyUser', {
   },
   resolve: async (_parent, { where }, { prisma }) => {
     await prisma.onDelete({ model: 'User', where })
-    return prisma.user.deleteMany({ where })
+    return prisma.user.deleteMany({ where } as any)
   },
 })

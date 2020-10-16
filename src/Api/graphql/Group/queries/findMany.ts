@@ -8,6 +8,7 @@ export const GroupFindManyQuery = queryField('findManyGroup', {
     where: 'GroupWhereInput',
     orderBy: arg({ type: 'GroupOrderByInput', list: true }),
     cursor: 'GroupWhereUniqueInput',
+    distinct: 'GroupDistinctFieldEnum',
     skip: 'Int',
     take: 'Int',
   },
@@ -15,6 +16,6 @@ export const GroupFindManyQuery = queryField('findManyGroup', {
     return prisma.group.findMany({
       ...args,
       ...select,
-    }) as any
+    })
   },
 })

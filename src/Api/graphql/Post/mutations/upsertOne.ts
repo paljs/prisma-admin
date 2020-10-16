@@ -21,6 +21,6 @@ export const PostUpsertOneMutation = mutationField('upsertOnePost', {
     return prisma.post.upsert({
       ...args,
       ...select,
-    }) as any
+    })
   },
 })

@@ -18,6 +18,6 @@ export const CommentUpdateOneMutation = mutationField('updateOneComment', {
       where,
       data,
       ...select,
-    }) as any
+    })
   },
 })

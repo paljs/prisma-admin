@@ -13,6 +13,6 @@ export const GroupUpdateManyMutation = mutationField('updateManyGroup', {
     }),
   },
   resolve(_parent, args, { prisma }) {
-    return prisma.group.updateMany(args)
+    return prisma.group.updateMany(args as any)
   },
 })

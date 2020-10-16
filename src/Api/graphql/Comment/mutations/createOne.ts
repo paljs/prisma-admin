@@ -13,6 +13,6 @@ export const CommentCreateOneMutation = mutationField('createOneComment', {
     return prisma.comment.create({
       data,
       ...select,
-    }) as any
+    })
   },
 })

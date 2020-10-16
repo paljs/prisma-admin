@@ -13,6 +13,6 @@ export const UserCreateOneMutation = mutationField('createOneUser', {
     return prisma.user.create({
       data,
       ...select,
-    }) as any
+    })
   },
 })

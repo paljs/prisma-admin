@@ -14,6 +14,6 @@ export const GroupDeleteOneMutation = mutationField('deleteOneGroup', {
     return prisma.group.delete({
       where,
       ...select,
-    }) as any
+    })
   },
 })

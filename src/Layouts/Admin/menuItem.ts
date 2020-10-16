@@ -5,6 +5,7 @@ const items: MenuItemType[] = [
   {
     title: 'Models',
     icon: { name: 'layers-outline' },
+    expanded: true,
     children: [
       { title: 'Users', link: { href: '/admin/models/User' } },
       {

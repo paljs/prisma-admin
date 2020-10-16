@@ -13,6 +13,6 @@ export const GroupCreateOneMutation = mutationField('createOneGroup', {
     return prisma.group.create({
       data,
       ...select,
-    }) as any
+    })
   },
 })

@@ -21,6 +21,6 @@ export const CommentUpsertOneMutation = mutationField('upsertOneComment', {
     return prisma.comment.upsert({
       ...args,
       ...select,
-    }) as any
+    })
   },
 })

@@ -13,6 +13,6 @@ export const CommentUpdateManyMutation = mutationField('updateManyComment', {
     }),
   },
   resolve(_parent, args, { prisma }) {
-    return prisma.comment.updateMany(args)
+    return prisma.comment.updateMany(args as any)
   },
 })
