@@ -19,8 +19,8 @@ export const Group = objectType({
         skip: 'Int',
         distinct: 'UserDistinctFieldEnum',
       },
-      resolve(parent: any) {
-        return parent['users']
+      resolve(root: any) {
+        return root.users
       },
     })
   },

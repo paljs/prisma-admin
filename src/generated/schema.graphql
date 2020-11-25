@@ -86,12 +86,24 @@ input CommentCreateInput {
 
 input CommentCreateManyWithoutAuthorInput {
   connect: [CommentWhereUniqueInput]
+  connectOrCreate: [CommentCreateOrConnectWithoutauthorInput]
   create: [CommentCreateWithoutAuthorInput]
 }
 
 input CommentCreateManyWithoutPostInput {
   connect: [CommentWhereUniqueInput]
+  connectOrCreate: [CommentCreateOrConnectWithoutpostInput]
   create: [CommentCreateWithoutPostInput]
+}
+
+input CommentCreateOrConnectWithoutauthorInput {
+  create: CommentCreateWithoutAuthorInput!
+  where: CommentWhereUniqueInput!
+}
+
+input CommentCreateOrConnectWithoutpostInput {
+  create: CommentCreateWithoutPostInput!
+  where: CommentWhereUniqueInput!
 }
 
 input CommentCreateWithoutAuthorInput {
@@ -170,12 +182,6 @@ input CommentUpdateInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
-input CommentUpdateManyDataInput {
-  contain: StringFieldUpdateOperationsInput
-  createdAt: DateTimeFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-}
-
 input CommentUpdateManyMutationInput {
   contain: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
@@ -184,41 +190,48 @@ input CommentUpdateManyMutationInput {
 
 input CommentUpdateManyWithoutAuthorInput {
   connect: [CommentWhereUniqueInput]
+  connectOrCreate: [CommentCreateOrConnectWithoutauthorInput]
   create: [CommentCreateWithoutAuthorInput]
   delete: [CommentWhereUniqueInput]
   deleteMany: [CommentScalarWhereInput]
   disconnect: [CommentWhereUniqueInput]
   set: [CommentWhereUniqueInput]
   update: [CommentUpdateWithWhereUniqueWithoutAuthorInput]
-  updateMany: [CommentUpdateManyWithWhereNestedInput]
+  updateMany: [CommentUpdateManyWithWhereWithoutAuthorInput]
   upsert: [CommentUpsertWithWhereUniqueWithoutAuthorInput]
 }
 
 input CommentUpdateManyWithoutPostInput {
   connect: [CommentWhereUniqueInput]
+  connectOrCreate: [CommentCreateOrConnectWithoutpostInput]
   create: [CommentCreateWithoutPostInput]
   delete: [CommentWhereUniqueInput]
   deleteMany: [CommentScalarWhereInput]
   disconnect: [CommentWhereUniqueInput]
   set: [CommentWhereUniqueInput]
   update: [CommentUpdateWithWhereUniqueWithoutPostInput]
-  updateMany: [CommentUpdateManyWithWhereNestedInput]
+  updateMany: [CommentUpdateManyWithWhereWithoutPostInput]
   upsert: [CommentUpsertWithWhereUniqueWithoutPostInput]
 }
 
-input CommentUpdateManyWithWhereNestedInput {
-  data: CommentUpdateManyDataInput!
+input CommentUpdateManyWithWhereWithoutAuthorInput {
+  data: CommentUpdateManyMutationInput!
   where: CommentScalarWhereInput!
 }
 
-input CommentUpdateWithoutAuthorDataInput {
+input CommentUpdateManyWithWhereWithoutPostInput {
+  data: CommentUpdateManyMutationInput!
+  where: CommentScalarWhereInput!
+}
+
+input CommentUpdateWithoutAuthorInput {
   contain: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   post: PostUpdateOneRequiredWithoutCommentsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
-input CommentUpdateWithoutPostDataInput {
+input CommentUpdateWithoutPostInput {
   author: UserUpdateOneWithoutCommentsInput
   contain: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
@@ -226,24 +239,24 @@ input CommentUpdateWithoutPostDataInput {
 }
 
 input CommentUpdateWithWhereUniqueWithoutAuthorInput {
-  data: CommentUpdateWithoutAuthorDataInput!
+  data: CommentUpdateWithoutAuthorInput!
   where: CommentWhereUniqueInput!
 }
 
 input CommentUpdateWithWhereUniqueWithoutPostInput {
-  data: CommentUpdateWithoutPostDataInput!
+  data: CommentUpdateWithoutPostInput!
   where: CommentWhereUniqueInput!
 }
 
 input CommentUpsertWithWhereUniqueWithoutAuthorInput {
   create: CommentCreateWithoutAuthorInput!
-  update: CommentUpdateWithoutAuthorDataInput!
+  update: CommentUpdateWithoutAuthorInput!
   where: CommentWhereUniqueInput!
 }
 
 input CommentUpsertWithWhereUniqueWithoutPostInput {
   create: CommentCreateWithoutPostInput!
-  update: CommentUpdateWithoutPostDataInput!
+  update: CommentUpdateWithoutPostInput!
   where: CommentWhereUniqueInput!
 }
 
@@ -338,7 +351,13 @@ input GroupCreateInput {
 
 input GroupCreateOneWithoutUsersInput {
   connect: GroupWhereUniqueInput
+  connectOrCreate: GroupCreateOrConnectWithoutusersInput
   create: GroupCreateWithoutUsersInput
+}
+
+input GroupCreateOrConnectWithoutusersInput {
+  create: GroupCreateWithoutUsersInput!
+  where: GroupWhereUniqueInput!
 }
 
 input GroupCreateWithoutUsersInput {
@@ -393,14 +412,15 @@ input GroupUpdateManyMutationInput {
 
 input GroupUpdateOneWithoutUsersInput {
   connect: GroupWhereUniqueInput
+  connectOrCreate: GroupCreateOrConnectWithoutusersInput
   create: GroupCreateWithoutUsersInput
   delete: Boolean
   disconnect: Boolean
-  update: GroupUpdateWithoutUsersDataInput
+  update: GroupUpdateWithoutUsersInput
   upsert: GroupUpsertWithoutUsersInput
 }
 
-input GroupUpdateWithoutUsersDataInput {
+input GroupUpdateWithoutUsersInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   name: StringFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
@@ -408,7 +428,7 @@ input GroupUpdateWithoutUsersDataInput {
 
 input GroupUpsertWithoutUsersInput {
   create: GroupCreateWithoutUsersInput!
-  update: GroupUpdateWithoutUsersDataInput!
+  update: GroupUpdateWithoutUsersInput!
 }
 
 input GroupWhereInput {
@@ -477,15 +497,15 @@ type ListAvgAggregateOutputType {
 }
 
 input ListCreatebooleanInput {
-  set: [Boolean]!
+  set: [Boolean!]!
 }
 
 input ListCreateenumsInput {
-  set: [Rols]!
+  set: [Rols!]!
 }
 
 input ListCreatefloutInput {
-  set: [Float]!
+  set: [Float!]!
 }
 
 input ListCreateInput {
@@ -497,11 +517,11 @@ input ListCreateInput {
 }
 
 input ListCreateintgerInput {
-  set: [Int]!
+  set: [Int!]!
 }
 
 input ListCreatestringInput {
-  set: [String]!
+  set: [String!]!
 }
 
 enum ListDistinctFieldEnum {
@@ -541,15 +561,15 @@ type ListSumAggregateOutputType {
 }
 
 input ListUpdatebooleanInput {
-  set: [Boolean]!
+  set: [Boolean!]!
 }
 
 input ListUpdateenumsInput {
-  set: [Rols]!
+  set: [Rols!]!
 }
 
 input ListUpdatefloutInput {
-  set: [Float]!
+  set: [Float!]!
 }
 
 input ListUpdateInput {
@@ -561,7 +581,7 @@ input ListUpdateInput {
 }
 
 input ListUpdateintgerInput {
-  set: [Int]!
+  set: [Int!]!
 }
 
 input ListUpdateManyMutationInput {
@@ -573,7 +593,7 @@ input ListUpdateManyMutationInput {
 }
 
 input ListUpdatestringInput {
-  set: [String]!
+  set: [String!]!
 }
 
 input ListWhereInput {
@@ -739,12 +759,24 @@ input PostCreateInput {
 
 input PostCreateManyWithoutAuthorInput {
   connect: [PostWhereUniqueInput]
+  connectOrCreate: [PostCreateOrConnectWithoutauthorInput]
   create: [PostCreateWithoutAuthorInput]
 }
 
 input PostCreateOneWithoutCommentsInput {
   connect: PostWhereUniqueInput
+  connectOrCreate: PostCreateOrConnectWithoutcommentsInput
   create: PostCreateWithoutCommentsInput
+}
+
+input PostCreateOrConnectWithoutauthorInput {
+  create: PostCreateWithoutAuthorInput!
+  where: PostWhereUniqueInput!
+}
+
+input PostCreateOrConnectWithoutcommentsInput {
+  create: PostCreateWithoutCommentsInput!
+  where: PostWhereUniqueInput!
 }
 
 input PostCreateWithoutAuthorInput {
@@ -828,13 +860,6 @@ input PostUpdateInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
-input PostUpdateManyDataInput {
-  createdAt: DateTimeFieldUpdateOperationsInput
-  published: BoolFieldUpdateOperationsInput
-  title: StringFieldUpdateOperationsInput
-  updatedAt: DateTimeFieldUpdateOperationsInput
-}
-
 input PostUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
@@ -844,29 +869,31 @@ input PostUpdateManyMutationInput {
 
 input PostUpdateManyWithoutAuthorInput {
   connect: [PostWhereUniqueInput]
+  connectOrCreate: [PostCreateOrConnectWithoutauthorInput]
   create: [PostCreateWithoutAuthorInput]
   delete: [PostWhereUniqueInput]
   deleteMany: [PostScalarWhereInput]
   disconnect: [PostWhereUniqueInput]
   set: [PostWhereUniqueInput]
   update: [PostUpdateWithWhereUniqueWithoutAuthorInput]
-  updateMany: [PostUpdateManyWithWhereNestedInput]
+  updateMany: [PostUpdateManyWithWhereWithoutAuthorInput]
   upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput]
 }
 
-input PostUpdateManyWithWhereNestedInput {
-  data: PostUpdateManyDataInput!
+input PostUpdateManyWithWhereWithoutAuthorInput {
+  data: PostUpdateManyMutationInput!
   where: PostScalarWhereInput!
 }
 
 input PostUpdateOneRequiredWithoutCommentsInput {
   connect: PostWhereUniqueInput
+  connectOrCreate: PostCreateOrConnectWithoutcommentsInput
   create: PostCreateWithoutCommentsInput
-  update: PostUpdateWithoutCommentsDataInput
+  update: PostUpdateWithoutCommentsInput
   upsert: PostUpsertWithoutCommentsInput
 }
 
-input PostUpdateWithoutAuthorDataInput {
+input PostUpdateWithoutAuthorInput {
   comments: CommentUpdateManyWithoutPostInput
   createdAt: DateTimeFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
@@ -874,7 +901,7 @@ input PostUpdateWithoutAuthorDataInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
-input PostUpdateWithoutCommentsDataInput {
+input PostUpdateWithoutCommentsInput {
   author: UserUpdateOneWithoutPostsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   published: BoolFieldUpdateOperationsInput
@@ -883,18 +910,18 @@ input PostUpdateWithoutCommentsDataInput {
 }
 
 input PostUpdateWithWhereUniqueWithoutAuthorInput {
-  data: PostUpdateWithoutAuthorDataInput!
+  data: PostUpdateWithoutAuthorInput!
   where: PostWhereUniqueInput!
 }
 
 input PostUpsertWithoutCommentsInput {
   create: PostCreateWithoutCommentsInput!
-  update: PostUpdateWithoutCommentsDataInput!
+  update: PostUpdateWithoutCommentsInput!
 }
 
 input PostUpsertWithWhereUniqueWithoutAuthorInput {
   create: PostCreateWithoutAuthorInput!
-  update: PostUpdateWithoutAuthorDataInput!
+  update: PostUpdateWithoutAuthorInput!
   where: PostWhereUniqueInput!
 }
 
@@ -917,21 +944,26 @@ input PostWhereUniqueInput {
 }
 
 type Query {
-  findManyComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment]
+  findFirstComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Comment
+  findFirstGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Group
+  findFirstList(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): List
+  findFirstPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Post
+  findFirstUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): User
+  findManyComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment!]
   findManyCommentCount(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Int
-  findManyGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group]
+  findManyGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group!]
   findManyGroupCount(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Int
-  findManyList(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): [List]
+  findManyList(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): [List!]
   findManyListCount(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): Int
-  findManyPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post]
+  findManyPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post!]
   findManyPostCount(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Int
-  findManyUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User]
+  findManyUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User!]
   findManyUserCount(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): Int
-  findOneComment(where: CommentWhereUniqueInput!): Comment
-  findOneGroup(where: GroupWhereUniqueInput!): Group
-  findOneList(where: ListWhereUniqueInput!): List
-  findOnePost(where: PostWhereUniqueInput!): Post
-  findOneUser(where: UserWhereUniqueInput!): User
+  findUniqueComment(where: CommentWhereUniqueInput!): Comment
+  findUniqueGroup(where: GroupWhereUniqueInput!): Group
+  findUniqueList(where: ListWhereUniqueInput!): List
+  findUniquePost(where: PostWhereUniqueInput!): Post
+  findUniqueUser(where: UserWhereUniqueInput!): User
   getSchema: Schema
   me: User
 }
@@ -1054,17 +1086,35 @@ input UserCreateInput {
 
 input UserCreateManyWithoutGroupInput {
   connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutgroupInput]
   create: [UserCreateWithoutGroupInput]
 }
 
 input UserCreateOneWithoutCommentsInput {
   connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutcommentsInput
   create: UserCreateWithoutCommentsInput
 }
 
 input UserCreateOneWithoutPostsInput {
   connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutpostsInput
   create: UserCreateWithoutPostsInput
+}
+
+input UserCreateOrConnectWithoutcommentsInput {
+  create: UserCreateWithoutCommentsInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutgroupInput {
+  create: UserCreateWithoutGroupInput!
+  where: UserWhereUniqueInput!
+}
+
+input UserCreateOrConnectWithoutpostsInput {
+  create: UserCreateWithoutPostsInput!
+  where: UserWhereUniqueInput!
 }
 
 input UserCreateWithoutCommentsInput {
@@ -1160,13 +1210,6 @@ input UserUpdateInput {
   posts: PostUpdateManyWithoutAuthorInput
 }
 
-input UserUpdateManyDataInput {
-  createdAt: DateTimeFieldUpdateOperationsInput
-  email: StringFieldUpdateOperationsInput
-  name: NullableStringFieldUpdateOperationsInput
-  password: StringFieldUpdateOperationsInput
-}
-
 input UserUpdateManyMutationInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -1176,40 +1219,43 @@ input UserUpdateManyMutationInput {
 
 input UserUpdateManyWithoutGroupInput {
   connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutgroupInput]
   create: [UserCreateWithoutGroupInput]
   delete: [UserWhereUniqueInput]
   deleteMany: [UserScalarWhereInput]
   disconnect: [UserWhereUniqueInput]
   set: [UserWhereUniqueInput]
   update: [UserUpdateWithWhereUniqueWithoutGroupInput]
-  updateMany: [UserUpdateManyWithWhereNestedInput]
+  updateMany: [UserUpdateManyWithWhereWithoutGroupInput]
   upsert: [UserUpsertWithWhereUniqueWithoutGroupInput]
 }
 
-input UserUpdateManyWithWhereNestedInput {
-  data: UserUpdateManyDataInput!
+input UserUpdateManyWithWhereWithoutGroupInput {
+  data: UserUpdateManyMutationInput!
   where: UserScalarWhereInput!
 }
 
 input UserUpdateOneWithoutCommentsInput {
   connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutcommentsInput
   create: UserCreateWithoutCommentsInput
   delete: Boolean
   disconnect: Boolean
-  update: UserUpdateWithoutCommentsDataInput
+  update: UserUpdateWithoutCommentsInput
   upsert: UserUpsertWithoutCommentsInput
 }
 
 input UserUpdateOneWithoutPostsInput {
   connect: UserWhereUniqueInput
+  connectOrCreate: UserCreateOrConnectWithoutpostsInput
   create: UserCreateWithoutPostsInput
   delete: Boolean
   disconnect: Boolean
-  update: UserUpdateWithoutPostsDataInput
+  update: UserUpdateWithoutPostsInput
   upsert: UserUpsertWithoutPostsInput
 }
 
-input UserUpdateWithoutCommentsDataInput {
+input UserUpdateWithoutCommentsInput {
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
   group: GroupUpdateOneWithoutUsersInput
@@ -1218,7 +1264,7 @@ input UserUpdateWithoutCommentsDataInput {
   posts: PostUpdateManyWithoutAuthorInput
 }
 
-input UserUpdateWithoutGroupDataInput {
+input UserUpdateWithoutGroupInput {
   comments: CommentUpdateManyWithoutAuthorInput
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -1227,7 +1273,7 @@ input UserUpdateWithoutGroupDataInput {
   posts: PostUpdateManyWithoutAuthorInput
 }
 
-input UserUpdateWithoutPostsDataInput {
+input UserUpdateWithoutPostsInput {
   comments: CommentUpdateManyWithoutAuthorInput
   createdAt: DateTimeFieldUpdateOperationsInput
   email: StringFieldUpdateOperationsInput
@@ -1237,23 +1283,23 @@ input UserUpdateWithoutPostsDataInput {
 }
 
 input UserUpdateWithWhereUniqueWithoutGroupInput {
-  data: UserUpdateWithoutGroupDataInput!
+  data: UserUpdateWithoutGroupInput!
   where: UserWhereUniqueInput!
 }
 
 input UserUpsertWithoutCommentsInput {
   create: UserCreateWithoutCommentsInput!
-  update: UserUpdateWithoutCommentsDataInput!
+  update: UserUpdateWithoutCommentsInput!
 }
 
 input UserUpsertWithoutPostsInput {
   create: UserCreateWithoutPostsInput!
-  update: UserUpdateWithoutPostsDataInput!
+  update: UserUpdateWithoutPostsInput!
 }
 
 input UserUpsertWithWhereUniqueWithoutGroupInput {
   create: UserCreateWithoutGroupInput!
-  update: UserUpdateWithoutGroupDataInput!
+  update: UserUpdateWithoutGroupInput!
   where: UserWhereUniqueInput!
 }
 

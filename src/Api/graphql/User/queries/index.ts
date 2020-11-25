@@ -1,3 +1,4 @@
-export * from './findOne'
+export * from './findUnique'
+export * from './findFirst'
 export * from './findMany'
 export * from './findCount'

@@ -8,16 +8,16 @@ export const Comment = objectType({
     t.field('post', {
       nullable: false,
       type: 'Post',
-      resolve(parent: any) {
-        return parent['post']
+      resolve(root: any) {
+        return root.post
       },
     })
     t.int('postId', { nullable: false })
     t.field('author', {
       nullable: true,
       type: 'User',
-      resolve(parent: any) {
-        return parent['author']
+      resolve(root: any) {
+        return root.author
       },
     })
     t.int('authorId', { nullable: true })

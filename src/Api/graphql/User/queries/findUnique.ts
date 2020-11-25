@@ -1,16 +1,16 @@
 import { queryField, arg } from '@nexus/schema'
 
-export const ListFindOneQuery = queryField('findOneList', {
-  type: 'List',
+export const UserFindUniqueQuery = queryField('findUniqueUser', {
+  type: 'User',
   nullable: true,
   args: {
     where: arg({
-      type: 'ListWhereUniqueInput',
+      type: 'UserWhereUniqueInput',
       nullable: false,
     }),
   },
   resolve(_parent, { where }, { prisma, select }) {
-    return prisma.list.findOne({
+    return prisma.user.findUnique({
       where,
       ...select,
     })

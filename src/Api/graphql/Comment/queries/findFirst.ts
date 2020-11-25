@@ -1,8 +1,8 @@
 import { queryField, arg } from '@nexus/schema'
 
-export const CommentFindManyQuery = queryField('findManyComment', {
+export const CommentFindFirstQuery = queryField('findFirstComment', {
   type: 'Comment',
-  list: [true],
+  nullable: true,
   args: {
     where: 'CommentWhereInput',
     orderBy: arg({ type: 'CommentOrderByInput', list: true }),
@@ -12,7 +12,7 @@ export const CommentFindManyQuery = queryField('findManyComment', {
     take: 'Int',
   },
   resolve(_parent, args, { prisma, select }) {
-    return prisma.comment.findMany({
+    return prisma.comment.findFirst({
       ...args,
       ...select,
     })

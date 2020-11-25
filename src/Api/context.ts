@@ -1,10 +1,10 @@
-import { PrismaClient, PrismaClientOptions } from '@prisma/client'
+import { PrismaClient, Prisma as PrismaType } from '@prisma/client'
 import { PrismaDelete, onDeleteArgs } from '@paljs/plugins'
 import { NextApiRequest, NextApiResponse } from 'next'
 import { getUserId } from './utils'
 
 class Prisma extends PrismaClient {
-  constructor(options?: PrismaClientOptions) {
+  constructor(options?: PrismaType.PrismaClientOptions) {
     super(options)
   }
 

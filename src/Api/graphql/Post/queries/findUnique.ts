@@ -1,6 +1,6 @@
 import { queryField, arg } from '@nexus/schema'
 
-export const PostFindOneQuery = queryField('findOnePost', {
+export const PostFindUniqueQuery = queryField('findUniquePost', {
   type: 'Post',
   nullable: true,
   args: {
@@ -10,7 +10,7 @@ export const PostFindOneQuery = queryField('findOnePost', {
     }),
   },
   resolve(_parent, { where }, { prisma, select }) {
-    return prisma.post.findOne({
+    return prisma.post.findUnique({
       where,
       ...select,
     })

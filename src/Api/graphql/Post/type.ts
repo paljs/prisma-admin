@@ -9,8 +9,8 @@ export const Post = objectType({
     t.field('author', {
       nullable: true,
       type: 'User',
-      resolve(parent: any) {
-        return parent['author']
+      resolve(root: any) {
+        return root.author
       },
     })
     t.int('authorId', { nullable: true })
@@ -26,8 +26,8 @@ export const Post = objectType({
         skip: 'Int',
         distinct: 'CommentDistinctFieldEnum',
       },
-      resolve(parent: any) {
-        return parent['comments']
+      resolve(root: any) {
+        return root.comments
       },
     })
     t.field('createdAt', { nullable: false, type: 'DateTime' })

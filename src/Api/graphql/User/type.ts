@@ -20,15 +20,15 @@ export const User = objectType({
         skip: 'Int',
         distinct: 'PostDistinctFieldEnum',
       },
-      resolve(parent: any) {
-        return parent['posts']
+      resolve(root: any) {
+        return root.posts
       },
     })
     t.field('group', {
       nullable: true,
       type: 'Group',
-      resolve(parent: any) {
-        return parent['group']
+      resolve(root: any) {
+        return root.group
       },
     })
     t.int('groupId', { nullable: true })
@@ -44,8 +44,8 @@ export const User = objectType({
         skip: 'Int',
         distinct: 'CommentDistinctFieldEnum',
       },
-      resolve(parent: any) {
-        return parent['comments']
+      resolve(root: any) {
+        return root.comments
       },
     })
   },

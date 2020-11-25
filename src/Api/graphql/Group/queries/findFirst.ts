@@ -1,8 +1,8 @@
 import { queryField, arg } from '@nexus/schema'
 
-export const GroupFindManyQuery = queryField('findManyGroup', {
+export const GroupFindFirstQuery = queryField('findFirstGroup', {
   type: 'Group',
-  list: [true],
+  nullable: true,
   args: {
     where: 'GroupWhereInput',
     orderBy: arg({ type: 'GroupOrderByInput', list: true }),
@@ -12,7 +12,7 @@ export const GroupFindManyQuery = queryField('findManyGroup', {
     take: 'Int',
   },
   resolve(_parent, args, { prisma, select }) {
-    return prisma.group.findMany({
+    return prisma.group.findFirst({
       ...args,
       ...select,
     })

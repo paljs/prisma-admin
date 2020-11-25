@@ -1,16 +1,16 @@
 import { queryField, arg } from '@nexus/schema'
 
-export const CommentFindOneQuery = queryField('findOneComment', {
-  type: 'Comment',
+export const ListFindUniqueQuery = queryField('findUniqueList', {
+  type: 'List',
   nullable: true,
   args: {
     where: arg({
-      type: 'CommentWhereUniqueInput',
+      type: 'ListWhereUniqueInput',
       nullable: false,
     }),
   },
   resolve(_parent, { where }, { prisma, select }) {
-    return prisma.comment.findOne({
+    return prisma.list.findUnique({
       where,
       ...select,
     })

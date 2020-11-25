@@ -1,8 +1,8 @@
 import { queryField, arg } from '@nexus/schema'
 
-export const ListFindManyQuery = queryField('findManyList', {
+export const ListFindFirstQuery = queryField('findFirstList', {
   type: 'List',
-  list: [true],
+  nullable: true,
   args: {
     where: 'ListWhereInput',
     orderBy: arg({ type: 'ListOrderByInput', list: true }),
@@ -12,7 +12,7 @@ export const ListFindManyQuery = queryField('findManyList', {
     take: 'Int',
   },
   resolve(_parent, args, { prisma, select }) {
-    return prisma.list.findMany({
+    return prisma.list.findFirst({
       ...args,
       ...select,
     })
