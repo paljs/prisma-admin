@@ -1,13 +1,17 @@
 import { objectType } from '@nexus/schema'
 
 export const List = objectType({
+  nonNullDefaults: {
+    output: true,
+    input: false,
+  },
   name: 'List',
   definition(t) {
-    t.int('id', { nullable: false })
-    t.int('intger', { nullable: false, list: [true] })
-    t.float('flout', { nullable: false, list: [true] })
-    t.string('string', { nullable: false, list: [true] })
-    t.field('enums', { nullable: false, list: [true], type: 'Rols' })
-    t.boolean('boolean', { nullable: false, list: [true] })
+    t.int('id')
+    t.list.int('intger')
+    t.list.float('flout')
+    t.list.string('string')
+    t.list.field('enums', { type: 'Rols' })
+    t.list.boolean('boolean')
   },
 })

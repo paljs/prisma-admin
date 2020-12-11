@@ -1,16 +1,16 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const ListUpdateManyMutation = mutationField('updateManyList', {
-  type: 'BatchPayload',
+  type: nonNull('BatchPayload'),
   args: {
     where: arg({
       type: 'ListWhereInput',
-      nullable: true,
     }),
-    data: arg({
-      type: 'ListUpdateManyMutationInput',
-      nullable: false,
-    }),
+    data: nonNull(
+      arg({
+        type: 'ListUpdateManyMutationInput',
+      }),
+    ),
   },
   resolve(_parent, args, { prisma }) {
     return prisma.list.updateMany(args as any)

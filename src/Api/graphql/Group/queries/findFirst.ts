@@ -1,13 +1,12 @@
-import { queryField, arg } from '@nexus/schema'
+import { queryField, arg, list } from '@nexus/schema'
 
 export const GroupFindFirstQuery = queryField('findFirstGroup', {
   type: 'Group',
-  nullable: true,
   args: {
     where: 'GroupWhereInput',
-    orderBy: arg({ type: 'GroupOrderByInput', list: true }),
+    orderBy: list(arg({ type: 'GroupOrderByInput' })),
     cursor: 'GroupWhereUniqueInput',
-    distinct: 'GroupDistinctFieldEnum',
+    distinct: 'GroupScalarFieldEnum',
     skip: 'Int',
     take: 'Int',
   },

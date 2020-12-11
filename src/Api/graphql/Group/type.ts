@@ -1,15 +1,17 @@
 import { objectType } from '@nexus/schema'
 
 export const Group = objectType({
+  nonNullDefaults: {
+    output: true,
+    input: false,
+  },
   name: 'Group',
   definition(t) {
-    t.int('id', { nullable: false })
-    t.string('name', { nullable: false })
-    t.field('createdAt', { nullable: false, type: 'DateTime' })
-    t.field('updatedAt', { nullable: false, type: 'DateTime' })
-    t.field('users', {
-      nullable: false,
-      list: [true],
+    t.int('id')
+    t.string('name')
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('updatedAt', { type: 'DateTime' })
+    t.list.field('users', {
       type: 'User',
       args: {
         where: 'UserWhereInput',
@@ -17,7 +19,7 @@ export const Group = objectType({
         cursor: 'UserWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
-        distinct: 'UserDistinctFieldEnum',
+        distinct: 'UserScalarFieldEnum',
       },
       resolve(root: any) {
         return root.users

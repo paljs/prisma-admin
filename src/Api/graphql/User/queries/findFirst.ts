@@ -1,13 +1,12 @@
-import { queryField, arg } from '@nexus/schema'
+import { queryField, arg, list } from '@nexus/schema'
 
 export const UserFindFirstQuery = queryField('findFirstUser', {
   type: 'User',
-  nullable: true,
   args: {
     where: 'UserWhereInput',
-    orderBy: arg({ type: 'UserOrderByInput', list: true }),
+    orderBy: list(arg({ type: 'UserOrderByInput' })),
     cursor: 'UserWhereUniqueInput',
-    distinct: 'UserDistinctFieldEnum',
+    distinct: 'UserScalarFieldEnum',
     skip: 'Int',
     take: 'Int',
   },

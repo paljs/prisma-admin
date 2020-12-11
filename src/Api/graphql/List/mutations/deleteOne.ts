@@ -1,13 +1,13 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const ListDeleteOneMutation = mutationField('deleteOneList', {
   type: 'List',
-  nullable: true,
   args: {
-    where: arg({
-      type: 'ListWhereUniqueInput',
-      nullable: false,
-    }),
+    where: nonNull(
+      arg({
+        type: 'ListWhereUniqueInput',
+      }),
+    ),
   },
   resolve: async (_parent, { where }, { prisma, select }) => {
     await prisma.onDelete({ model: 'List', where })

@@ -2,6 +2,8 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | undefined;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: string;
@@ -18,7 +20,7 @@ export type Scalars = {
 export type AggregateComment = {
   __typename?: 'AggregateComment';
   avg?: Maybe<CommentAvgAggregateOutputType>;
-  count: Scalars['Int'];
+  count?: Maybe<CommentCountAggregateOutputType>;
   max?: Maybe<CommentMaxAggregateOutputType>;
   min?: Maybe<CommentMinAggregateOutputType>;
   sum?: Maybe<CommentSumAggregateOutputType>;
@@ -27,7 +29,7 @@ export type AggregateComment = {
 export type AggregateGroup = {
   __typename?: 'AggregateGroup';
   avg?: Maybe<GroupAvgAggregateOutputType>;
-  count: Scalars['Int'];
+  count?: Maybe<GroupCountAggregateOutputType>;
   max?: Maybe<GroupMaxAggregateOutputType>;
   min?: Maybe<GroupMinAggregateOutputType>;
   sum?: Maybe<GroupSumAggregateOutputType>;
@@ -36,7 +38,7 @@ export type AggregateGroup = {
 export type AggregateList = {
   __typename?: 'AggregateList';
   avg?: Maybe<ListAvgAggregateOutputType>;
-  count: Scalars['Int'];
+  count?: Maybe<ListCountAggregateOutputType>;
   max?: Maybe<ListMaxAggregateOutputType>;
   min?: Maybe<ListMinAggregateOutputType>;
   sum?: Maybe<ListSumAggregateOutputType>;
@@ -45,7 +47,7 @@ export type AggregateList = {
 export type AggregatePost = {
   __typename?: 'AggregatePost';
   avg?: Maybe<PostAvgAggregateOutputType>;
-  count: Scalars['Int'];
+  count?: Maybe<PostCountAggregateOutputType>;
   max?: Maybe<PostMaxAggregateOutputType>;
   min?: Maybe<PostMinAggregateOutputType>;
   sum?: Maybe<PostSumAggregateOutputType>;
@@ -54,7 +56,7 @@ export type AggregatePost = {
 export type AggregateUser = {
   __typename?: 'AggregateUser';
   avg?: Maybe<UserAvgAggregateOutputType>;
-  count: Scalars['Int'];
+  count?: Maybe<UserCountAggregateOutputType>;
   max?: Maybe<UserMaxAggregateOutputType>;
   min?: Maybe<UserMinAggregateOutputType>;
   sum?: Maybe<UserSumAggregateOutputType>;
@@ -95,6 +97,17 @@ export type CommentAvgAggregateOutputType = {
   authorId?: Maybe<Scalars['Float']>;
   id: Scalars['Float'];
   postId: Scalars['Float'];
+};
+
+export type CommentCountAggregateOutputType = {
+  __typename?: 'CommentCountAggregateOutputType';
+  _all: Scalars['Int'];
+  authorId?: Maybe<Scalars['Int']>;
+  contain?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['Int']>;
+  id: Scalars['Int'];
+  postId: Scalars['Int'];
+  updatedAt?: Maybe<Scalars['Int']>;
 };
 
 export type CommentCreateInput = {
@@ -141,15 +154,6 @@ export type CommentCreateWithoutPostInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export enum CommentDistinctFieldEnum {
-  AuthorId = 'authorId',
-  Contain = 'contain',
-  CreatedAt = 'createdAt',
-  Id = 'id',
-  PostId = 'postId',
-  UpdatedAt = 'updatedAt'
-}
-
 export type CommentListRelationFilter = {
   every?: Maybe<CommentWhereInput>;
   none?: Maybe<CommentWhereInput>;
@@ -159,15 +163,21 @@ export type CommentListRelationFilter = {
 export type CommentMaxAggregateOutputType = {
   __typename?: 'CommentMaxAggregateOutputType';
   authorId?: Maybe<Scalars['Int']>;
+  contain?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['Int'];
   postId: Scalars['Int'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type CommentMinAggregateOutputType = {
   __typename?: 'CommentMinAggregateOutputType';
   authorId?: Maybe<Scalars['Int']>;
+  contain?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['Int'];
   postId: Scalars['Int'];
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type CommentOrderByInput = {
@@ -178,6 +188,15 @@ export type CommentOrderByInput = {
   postId?: Maybe<SortOrder>;
   updatedAt?: Maybe<SortOrder>;
 };
+
+export enum CommentScalarFieldEnum {
+  AuthorId = 'authorId',
+  Contain = 'contain',
+  CreatedAt = 'createdAt',
+  Id = 'id',
+  PostId = 'postId',
+  UpdatedAt = 'updatedAt'
+}
 
 export type CommentScalarWhereInput = {
   AND?: Maybe<Array<Maybe<CommentScalarWhereInput>>>;
@@ -320,8 +339,8 @@ export type DateTimeFilter = {
 
 export type Enum = {
   __typename?: 'Enum';
-  fields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  name?: Maybe<Scalars['String']>;
+  fields: Array<Scalars['String']>;
+  name: Scalars['String'];
 };
 
 export type EnumRolsNullableListFilter = {
@@ -330,24 +349,24 @@ export type EnumRolsNullableListFilter = {
 
 export type Field = {
   __typename?: 'Field';
-  create?: Maybe<Scalars['Boolean']>;
-  editor?: Maybe<Scalars['Boolean']>;
-  filter?: Maybe<Scalars['Boolean']>;
-  id?: Maybe<Scalars['String']>;
-  isId?: Maybe<Scalars['Boolean']>;
-  kind?: Maybe<KindEnum>;
-  list?: Maybe<Scalars['Boolean']>;
-  name?: Maybe<Scalars['String']>;
-  order?: Maybe<Scalars['Int']>;
-  read?: Maybe<Scalars['Boolean']>;
+  create: Scalars['Boolean'];
+  editor: Scalars['Boolean'];
+  filter: Scalars['Boolean'];
+  id: Scalars['String'];
+  isId: Scalars['Boolean'];
+  kind: KindEnum;
+  list: Scalars['Boolean'];
+  name: Scalars['String'];
+  order: Scalars['Int'];
+  read: Scalars['Boolean'];
   relationField?: Maybe<Scalars['Boolean']>;
-  required?: Maybe<Scalars['Boolean']>;
-  sort?: Maybe<Scalars['Boolean']>;
-  title?: Maybe<Scalars['String']>;
-  type?: Maybe<Scalars['String']>;
-  unique?: Maybe<Scalars['Boolean']>;
-  update?: Maybe<Scalars['Boolean']>;
-  upload?: Maybe<Scalars['Boolean']>;
+  required: Scalars['Boolean'];
+  sort: Scalars['Boolean'];
+  title: Scalars['String'];
+  type: Scalars['String'];
+  unique: Scalars['Boolean'];
+  update: Scalars['Boolean'];
+  upload: Scalars['Boolean'];
 };
 
 export type FloatNullableListFilter = {
@@ -366,7 +385,7 @@ export type Group = {
 
 export type GroupUsersArgs = {
   cursor?: Maybe<UserWhereUniqueInput>;
-  distinct?: Maybe<UserDistinctFieldEnum>;
+  distinct?: Maybe<UserScalarFieldEnum>;
   orderBy?: Maybe<UserOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -376,6 +395,15 @@ export type GroupUsersArgs = {
 export type GroupAvgAggregateOutputType = {
   __typename?: 'GroupAvgAggregateOutputType';
   id: Scalars['Float'];
+};
+
+export type GroupCountAggregateOutputType = {
+  __typename?: 'GroupCountAggregateOutputType';
+  _all: Scalars['Int'];
+  createdAt?: Maybe<Scalars['Int']>;
+  id: Scalars['Int'];
+  name?: Maybe<Scalars['Int']>;
+  updatedAt?: Maybe<Scalars['Int']>;
 };
 
 export type GroupCreateInput = {
@@ -402,21 +430,20 @@ export type GroupCreateWithoutUsersInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export enum GroupDistinctFieldEnum {
-  CreatedAt = 'createdAt',
-  Id = 'id',
-  Name = 'name',
-  UpdatedAt = 'updatedAt'
-}
-
 export type GroupMaxAggregateOutputType = {
   __typename?: 'GroupMaxAggregateOutputType';
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type GroupMinAggregateOutputType = {
   __typename?: 'GroupMinAggregateOutputType';
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type GroupOrderByInput = {
@@ -430,6 +457,13 @@ export type GroupRelationFilter = {
   is?: Maybe<GroupWhereInput>;
   isNot?: Maybe<GroupWhereInput>;
 };
+
+export enum GroupScalarFieldEnum {
+  CreatedAt = 'createdAt',
+  Id = 'id',
+  Name = 'name',
+  UpdatedAt = 'updatedAt'
+}
 
 export type GroupSumAggregateOutputType = {
   __typename?: 'GroupSumAggregateOutputType';
@@ -535,16 +569,27 @@ export type ListAvgAggregateOutputType = {
   intger?: Maybe<Scalars['Float']>;
 };
 
+export type ListCountAggregateOutputType = {
+  __typename?: 'ListCountAggregateOutputType';
+  _all: Scalars['Int'];
+  boolean?: Maybe<Scalars['Int']>;
+  enums?: Maybe<Scalars['Int']>;
+  flout?: Maybe<Scalars['Int']>;
+  id: Scalars['Int'];
+  intger?: Maybe<Scalars['Int']>;
+  string?: Maybe<Scalars['Int']>;
+};
+
 export type ListCreatebooleanInput = {
-  set: Array<Scalars['Boolean']>;
+  set: Scalars['Boolean'];
 };
 
 export type ListCreateenumsInput = {
-  set: Array<Rols>;
+  set: Rols;
 };
 
 export type ListCreatefloutInput = {
-  set: Array<Scalars['Float']>;
+  set: Scalars['Float'];
 };
 
 export type ListCreateInput = {
@@ -556,34 +601,21 @@ export type ListCreateInput = {
 };
 
 export type ListCreateintgerInput = {
-  set: Array<Scalars['Int']>;
+  set: Scalars['Int'];
 };
 
 export type ListCreatestringInput = {
-  set: Array<Scalars['String']>;
+  set: Scalars['String'];
 };
-
-export enum ListDistinctFieldEnum {
-  Boolean = 'boolean',
-  Enums = 'enums',
-  Flout = 'flout',
-  Id = 'id',
-  Intger = 'intger',
-  String = 'string'
-}
 
 export type ListMaxAggregateOutputType = {
   __typename?: 'ListMaxAggregateOutputType';
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
   id: Scalars['Int'];
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
 export type ListMinAggregateOutputType = {
   __typename?: 'ListMinAggregateOutputType';
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
   id: Scalars['Int'];
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
 export type ListOrderByInput = {
@@ -595,23 +627,32 @@ export type ListOrderByInput = {
   string?: Maybe<SortOrder>;
 };
 
+export enum ListScalarFieldEnum {
+  Boolean = 'boolean',
+  Enums = 'enums',
+  Flout = 'flout',
+  Id = 'id',
+  Intger = 'intger',
+  String = 'string'
+}
+
 export type ListSumAggregateOutputType = {
   __typename?: 'ListSumAggregateOutputType';
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  flout?: Maybe<Scalars['Float']>;
   id: Scalars['Int'];
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  intger?: Maybe<Scalars['Int']>;
 };
 
 export type ListUpdatebooleanInput = {
-  set: Array<Scalars['Boolean']>;
+  set: Scalars['Boolean'];
 };
 
 export type ListUpdateenumsInput = {
-  set: Array<Rols>;
+  set: Rols;
 };
 
 export type ListUpdatefloutInput = {
-  set: Array<Scalars['Float']>;
+  set: Scalars['Float'];
 };
 
 export type ListUpdateInput = {
@@ -623,7 +664,7 @@ export type ListUpdateInput = {
 };
 
 export type ListUpdateintgerInput = {
-  set: Array<Scalars['Int']>;
+  set: Scalars['Int'];
 };
 
 export type ListUpdateManyMutationInput = {
@@ -635,7 +676,7 @@ export type ListUpdateManyMutationInput = {
 };
 
 export type ListUpdatestringInput = {
-  set: Array<Scalars['String']>;
+  set: Scalars['String'];
 };
 
 export type ListWhereInput = {
@@ -656,14 +697,14 @@ export type ListWhereUniqueInput = {
 
 export type Model = {
   __typename?: 'Model';
-  create?: Maybe<Scalars['Boolean']>;
-  delete?: Maybe<Scalars['Boolean']>;
-  displayFields?: Maybe<Array<Maybe<Scalars['String']>>>;
-  fields?: Maybe<Array<Maybe<Field>>>;
-  id?: Maybe<Scalars['String']>;
-  idField?: Maybe<Scalars['String']>;
-  name?: Maybe<Scalars['String']>;
-  update?: Maybe<Scalars['Boolean']>;
+  create: Scalars['Boolean'];
+  delete: Scalars['Boolean'];
+  displayFields: Array<Scalars['String']>;
+  fields: Array<Field>;
+  id: Scalars['String'];
+  idField: Scalars['String'];
+  name: Scalars['String'];
+  update: Scalars['Boolean'];
 };
 
 export type Mutation = {
@@ -673,32 +714,32 @@ export type Mutation = {
   createOneList: List;
   createOnePost: Post;
   createOneUser: User;
-  deleteManyComment?: Maybe<BatchPayload>;
-  deleteManyGroup?: Maybe<BatchPayload>;
-  deleteManyList?: Maybe<BatchPayload>;
-  deleteManyPost?: Maybe<BatchPayload>;
-  deleteManyUser?: Maybe<BatchPayload>;
+  deleteManyComment: BatchPayload;
+  deleteManyGroup: BatchPayload;
+  deleteManyList: BatchPayload;
+  deleteManyPost: BatchPayload;
+  deleteManyUser: BatchPayload;
   deleteOneComment?: Maybe<Comment>;
   deleteOneGroup?: Maybe<Group>;
   deleteOneList?: Maybe<List>;
   deleteOnePost?: Maybe<Post>;
   deleteOneUser?: Maybe<User>;
   login?: Maybe<User>;
-  logout?: Maybe<Scalars['Boolean']>;
+  logout: Scalars['Boolean'];
   signup?: Maybe<User>;
-  updateField?: Maybe<Field>;
-  updateManyComment?: Maybe<BatchPayload>;
-  updateManyGroup?: Maybe<BatchPayload>;
-  updateManyList?: Maybe<BatchPayload>;
-  updateManyPost?: Maybe<BatchPayload>;
-  updateManyUser?: Maybe<BatchPayload>;
-  updateModel?: Maybe<Model>;
+  updateField: Field;
+  updateManyComment: BatchPayload;
+  updateManyGroup: BatchPayload;
+  updateManyList: BatchPayload;
+  updateManyPost: BatchPayload;
+  updateManyUser: BatchPayload;
+  updateModel: Model;
   updateOneComment: Comment;
   updateOneGroup: Group;
   updateOneList: List;
   updateOnePost: Post;
   updateOneUser: User;
-  updatePassword?: Maybe<Scalars['Boolean']>;
+  updatePassword: Scalars['Boolean'];
   upsertOneComment: Comment;
   upsertOneGroup: Group;
   upsertOneList: List;
@@ -796,7 +837,7 @@ export type MutationSignupArgs = {
 
 
 export type MutationUpdateFieldArgs = {
-  data?: Maybe<UpdateFieldInput>;
+  data: UpdateFieldInput;
   id: Scalars['String'];
   modelId: Scalars['String'];
 };
@@ -833,7 +874,7 @@ export type MutationUpdateManyUserArgs = {
 
 
 export type MutationUpdateModelArgs = {
-  data?: Maybe<UpdateModelInput>;
+  data: UpdateModelInput;
   id: Scalars['String'];
 };
 
@@ -993,7 +1034,7 @@ export type Post = {
 
 export type PostCommentsArgs = {
   cursor?: Maybe<CommentWhereUniqueInput>;
-  distinct?: Maybe<CommentDistinctFieldEnum>;
+  distinct?: Maybe<CommentScalarFieldEnum>;
   orderBy?: Maybe<CommentOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1004,6 +1045,17 @@ export type PostAvgAggregateOutputType = {
   __typename?: 'PostAvgAggregateOutputType';
   authorId?: Maybe<Scalars['Float']>;
   id: Scalars['Float'];
+};
+
+export type PostCountAggregateOutputType = {
+  __typename?: 'PostCountAggregateOutputType';
+  _all: Scalars['Int'];
+  authorId?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['Int']>;
+  id: Scalars['Int'];
+  published?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['Int']>;
+  updatedAt?: Maybe<Scalars['Int']>;
 };
 
 export type PostCreateInput = {
@@ -1053,15 +1105,6 @@ export type PostCreateWithoutCommentsInput = {
   updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
-export enum PostDistinctFieldEnum {
-  AuthorId = 'authorId',
-  CreatedAt = 'createdAt',
-  Id = 'id',
-  Published = 'published',
-  Title = 'title',
-  UpdatedAt = 'updatedAt'
-}
-
 export type PostListRelationFilter = {
   every?: Maybe<PostWhereInput>;
   none?: Maybe<PostWhereInput>;
@@ -1071,13 +1114,21 @@ export type PostListRelationFilter = {
 export type PostMaxAggregateOutputType = {
   __typename?: 'PostMaxAggregateOutputType';
   authorId?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['Int'];
+  published?: Maybe<Scalars['Boolean']>;
+  title?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type PostMinAggregateOutputType = {
   __typename?: 'PostMinAggregateOutputType';
   authorId?: Maybe<Scalars['Int']>;
+  createdAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['Int'];
+  published?: Maybe<Scalars['Boolean']>;
+  title?: Maybe<Scalars['String']>;
+  updatedAt?: Maybe<Scalars['DateTime']>;
 };
 
 export type PostOrderByInput = {
@@ -1093,6 +1144,15 @@ export type PostRelationFilter = {
   is?: Maybe<PostWhereInput>;
   isNot?: Maybe<PostWhereInput>;
 };
+
+export enum PostScalarFieldEnum {
+  AuthorId = 'authorId',
+  CreatedAt = 'createdAt',
+  Id = 'id',
+  Published = 'published',
+  Title = 'title',
+  UpdatedAt = 'updatedAt'
+}
 
 export type PostScalarWhereInput = {
   AND?: Maybe<Array<Maybe<PostScalarWhereInput>>>;
@@ -1211,29 +1271,29 @@ export type Query = {
   findFirstList?: Maybe<List>;
   findFirstPost?: Maybe<Post>;
   findFirstUser?: Maybe<User>;
-  findManyComment?: Maybe<Array<Comment>>;
-  findManyCommentCount?: Maybe<Scalars['Int']>;
-  findManyGroup?: Maybe<Array<Group>>;
-  findManyGroupCount?: Maybe<Scalars['Int']>;
-  findManyList?: Maybe<Array<List>>;
-  findManyListCount?: Maybe<Scalars['Int']>;
-  findManyPost?: Maybe<Array<Post>>;
-  findManyPostCount?: Maybe<Scalars['Int']>;
-  findManyUser?: Maybe<Array<User>>;
-  findManyUserCount?: Maybe<Scalars['Int']>;
-  findUniqueComment?: Maybe<Comment>;
-  findUniqueGroup?: Maybe<Group>;
-  findUniqueList?: Maybe<List>;
-  findUniquePost?: Maybe<Post>;
-  findUniqueUser?: Maybe<User>;
-  getSchema?: Maybe<Schema>;
+  findManyComment: Array<Comment>;
+  findManyCommentCount: Scalars['Int'];
+  findManyGroup: Array<Group>;
+  findManyGroupCount: Scalars['Int'];
+  findManyList: Array<List>;
+  findManyListCount: Scalars['Int'];
+  findManyPost: Array<Post>;
+  findManyPostCount: Scalars['Int'];
+  findManyUser: Array<User>;
+  findManyUserCount: Scalars['Int'];
+  findUniqueComment: Comment;
+  findUniqueGroup: Group;
+  findUniqueList: List;
+  findUniquePost: Post;
+  findUniqueUser: User;
+  getSchema: Schema;
   me?: Maybe<User>;
 };
 
 
 export type QueryFindFirstCommentArgs = {
   cursor?: Maybe<CommentWhereUniqueInput>;
-  distinct?: Maybe<CommentDistinctFieldEnum>;
+  distinct?: Maybe<CommentScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<CommentOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1243,7 +1303,7 @@ export type QueryFindFirstCommentArgs = {
 
 export type QueryFindFirstGroupArgs = {
   cursor?: Maybe<GroupWhereUniqueInput>;
-  distinct?: Maybe<GroupDistinctFieldEnum>;
+  distinct?: Maybe<GroupScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<GroupOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1253,7 +1313,7 @@ export type QueryFindFirstGroupArgs = {
 
 export type QueryFindFirstListArgs = {
   cursor?: Maybe<ListWhereUniqueInput>;
-  distinct?: Maybe<ListDistinctFieldEnum>;
+  distinct?: Maybe<ListScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<ListOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1263,7 +1323,7 @@ export type QueryFindFirstListArgs = {
 
 export type QueryFindFirstPostArgs = {
   cursor?: Maybe<PostWhereUniqueInput>;
-  distinct?: Maybe<PostDistinctFieldEnum>;
+  distinct?: Maybe<PostScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<PostOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1273,7 +1333,7 @@ export type QueryFindFirstPostArgs = {
 
 export type QueryFindFirstUserArgs = {
   cursor?: Maybe<UserWhereUniqueInput>;
-  distinct?: Maybe<UserDistinctFieldEnum>;
+  distinct?: Maybe<UserScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<UserOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1283,7 +1343,7 @@ export type QueryFindFirstUserArgs = {
 
 export type QueryFindManyCommentArgs = {
   cursor?: Maybe<CommentWhereUniqueInput>;
-  distinct?: Maybe<CommentDistinctFieldEnum>;
+  distinct?: Maybe<CommentScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<CommentOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1293,7 +1353,7 @@ export type QueryFindManyCommentArgs = {
 
 export type QueryFindManyCommentCountArgs = {
   cursor?: Maybe<CommentWhereUniqueInput>;
-  distinct?: Maybe<CommentDistinctFieldEnum>;
+  distinct?: Maybe<CommentScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<CommentOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1303,7 +1363,7 @@ export type QueryFindManyCommentCountArgs = {
 
 export type QueryFindManyGroupArgs = {
   cursor?: Maybe<GroupWhereUniqueInput>;
-  distinct?: Maybe<GroupDistinctFieldEnum>;
+  distinct?: Maybe<GroupScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<GroupOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1313,7 +1373,7 @@ export type QueryFindManyGroupArgs = {
 
 export type QueryFindManyGroupCountArgs = {
   cursor?: Maybe<GroupWhereUniqueInput>;
-  distinct?: Maybe<GroupDistinctFieldEnum>;
+  distinct?: Maybe<GroupScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<GroupOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1323,7 +1383,7 @@ export type QueryFindManyGroupCountArgs = {
 
 export type QueryFindManyListArgs = {
   cursor?: Maybe<ListWhereUniqueInput>;
-  distinct?: Maybe<ListDistinctFieldEnum>;
+  distinct?: Maybe<ListScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<ListOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1333,7 +1393,7 @@ export type QueryFindManyListArgs = {
 
 export type QueryFindManyListCountArgs = {
   cursor?: Maybe<ListWhereUniqueInput>;
-  distinct?: Maybe<ListDistinctFieldEnum>;
+  distinct?: Maybe<ListScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<ListOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1343,7 +1403,7 @@ export type QueryFindManyListCountArgs = {
 
 export type QueryFindManyPostArgs = {
   cursor?: Maybe<PostWhereUniqueInput>;
-  distinct?: Maybe<PostDistinctFieldEnum>;
+  distinct?: Maybe<PostScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<PostOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1353,7 +1413,7 @@ export type QueryFindManyPostArgs = {
 
 export type QueryFindManyPostCountArgs = {
   cursor?: Maybe<PostWhereUniqueInput>;
-  distinct?: Maybe<PostDistinctFieldEnum>;
+  distinct?: Maybe<PostScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<PostOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1363,7 +1423,7 @@ export type QueryFindManyPostCountArgs = {
 
 export type QueryFindManyUserArgs = {
   cursor?: Maybe<UserWhereUniqueInput>;
-  distinct?: Maybe<UserDistinctFieldEnum>;
+  distinct?: Maybe<UserScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<UserOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1373,7 +1433,7 @@ export type QueryFindManyUserArgs = {
 
 export type QueryFindManyUserCountArgs = {
   cursor?: Maybe<UserWhereUniqueInput>;
-  distinct?: Maybe<UserDistinctFieldEnum>;
+  distinct?: Maybe<UserScalarFieldEnum>;
   orderBy?: Maybe<Array<Maybe<UserOrderByInput>>>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1382,27 +1442,27 @@ export type QueryFindManyUserCountArgs = {
 
 
 export type QueryFindUniqueCommentArgs = {
-  where: CommentWhereUniqueInput;
+  where?: Maybe<CommentWhereUniqueInput>;
 };
 
 
 export type QueryFindUniqueGroupArgs = {
-  where: GroupWhereUniqueInput;
+  where?: Maybe<GroupWhereUniqueInput>;
 };
 
 
 export type QueryFindUniqueListArgs = {
-  where: ListWhereUniqueInput;
+  where?: Maybe<ListWhereUniqueInput>;
 };
 
 
 export type QueryFindUniquePostArgs = {
-  where: PostWhereUniqueInput;
+  where?: Maybe<PostWhereUniqueInput>;
 };
 
 
 export type QueryFindUniqueUserArgs = {
-  where: UserWhereUniqueInput;
+  where?: Maybe<UserWhereUniqueInput>;
 };
 
 export enum QueryMode {
@@ -1417,8 +1477,8 @@ export enum Rols {
 
 export type Schema = {
   __typename?: 'Schema';
-  enums?: Maybe<Array<Maybe<Enum>>>;
-  models?: Maybe<Array<Maybe<Model>>>;
+  enums: Array<Enum>;
+  models: Array<Model>;
 };
 
 export enum SortOrder {
@@ -1511,7 +1571,7 @@ export type User = {
 
 export type UserCommentsArgs = {
   cursor?: Maybe<CommentWhereUniqueInput>;
-  distinct?: Maybe<CommentDistinctFieldEnum>;
+  distinct?: Maybe<CommentScalarFieldEnum>;
   orderBy?: Maybe<CommentOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1521,7 +1581,7 @@ export type UserCommentsArgs = {
 
 export type UserPostsArgs = {
   cursor?: Maybe<PostWhereUniqueInput>;
-  distinct?: Maybe<PostDistinctFieldEnum>;
+  distinct?: Maybe<PostScalarFieldEnum>;
   orderBy?: Maybe<PostOrderByInput>;
   skip?: Maybe<Scalars['Int']>;
   take?: Maybe<Scalars['Int']>;
@@ -1532,6 +1592,17 @@ export type UserAvgAggregateOutputType = {
   __typename?: 'UserAvgAggregateOutputType';
   groupId?: Maybe<Scalars['Float']>;
   id: Scalars['Float'];
+};
+
+export type UserCountAggregateOutputType = {
+  __typename?: 'UserCountAggregateOutputType';
+  _all: Scalars['Int'];
+  createdAt?: Maybe<Scalars['Int']>;
+  email?: Maybe<Scalars['Int']>;
+  groupId?: Maybe<Scalars['Int']>;
+  id: Scalars['Int'];
+  name?: Maybe<Scalars['Int']>;
+  password?: Maybe<Scalars['Int']>;
 };
 
 export type UserCreateInput = {
@@ -1604,15 +1675,6 @@ export type UserCreateWithoutPostsInput = {
   password: Scalars['String'];
 };
 
-export enum UserDistinctFieldEnum {
-  CreatedAt = 'createdAt',
-  Email = 'email',
-  GroupId = 'groupId',
-  Id = 'id',
-  Name = 'name',
-  Password = 'password'
-}
-
 export type UserListRelationFilter = {
   every?: Maybe<UserWhereInput>;
   none?: Maybe<UserWhereInput>;
@@ -1621,14 +1683,22 @@ export type UserListRelationFilter = {
 
 export type UserMaxAggregateOutputType = {
   __typename?: 'UserMaxAggregateOutputType';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  email?: Maybe<Scalars['String']>;
   groupId?: Maybe<Scalars['Int']>;
   id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
 };
 
 export type UserMinAggregateOutputType = {
   __typename?: 'UserMinAggregateOutputType';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  email?: Maybe<Scalars['String']>;
   groupId?: Maybe<Scalars['Int']>;
   id: Scalars['Int'];
+  name?: Maybe<Scalars['String']>;
+  password?: Maybe<Scalars['String']>;
 };
 
 export type UserOrderByInput = {
@@ -1644,6 +1714,15 @@ export type UserRelationFilter = {
   is?: Maybe<UserWhereInput>;
   isNot?: Maybe<UserWhereInput>;
 };
+
+export enum UserScalarFieldEnum {
+  CreatedAt = 'createdAt',
+  Email = 'email',
+  GroupId = 'groupId',
+  Id = 'id',
+  Name = 'name',
+  Password = 'password'
+}
 
 export type UserScalarWhereInput = {
   AND?: Maybe<Array<Maybe<UserScalarWhereInput>>>;

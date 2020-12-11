@@ -1,17 +1,18 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const GroupUpdateOneMutation = mutationField('updateOneGroup', {
-  type: 'Group',
-  nullable: false,
+  type: nonNull('Group'),
   args: {
-    where: arg({
-      type: 'GroupWhereUniqueInput',
-      nullable: false,
-    }),
-    data: arg({
-      type: 'GroupUpdateInput',
-      nullable: false,
-    }),
+    where: nonNull(
+      arg({
+        type: 'GroupWhereUniqueInput',
+      }),
+    ),
+    data: nonNull(
+      arg({
+        type: 'GroupUpdateInput',
+      }),
+    ),
   },
   resolve(_parent, { data, where }, { prisma, select }) {
     return prisma.group.update({

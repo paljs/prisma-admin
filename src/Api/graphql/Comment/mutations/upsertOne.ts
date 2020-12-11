@@ -1,21 +1,23 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const CommentUpsertOneMutation = mutationField('upsertOneComment', {
-  type: 'Comment',
-  nullable: false,
+  type: nonNull('Comment'),
   args: {
-    where: arg({
-      type: 'CommentWhereUniqueInput',
-      nullable: false,
-    }),
-    create: arg({
-      type: 'CommentCreateInput',
-      nullable: false,
-    }),
-    update: arg({
-      type: 'CommentUpdateInput',
-      nullable: false,
-    }),
+    where: nonNull(
+      arg({
+        type: 'CommentWhereUniqueInput',
+      }),
+    ),
+    create: nonNull(
+      arg({
+        type: 'CommentCreateInput',
+      }),
+    ),
+    update: nonNull(
+      arg({
+        type: 'CommentUpdateInput',
+      }),
+    ),
   },
   resolve(_parent, args, { prisma, select }) {
     return prisma.comment.upsert({

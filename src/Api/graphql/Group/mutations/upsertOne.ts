@@ -1,21 +1,23 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const GroupUpsertOneMutation = mutationField('upsertOneGroup', {
-  type: 'Group',
-  nullable: false,
+  type: nonNull('Group'),
   args: {
-    where: arg({
-      type: 'GroupWhereUniqueInput',
-      nullable: false,
-    }),
-    create: arg({
-      type: 'GroupCreateInput',
-      nullable: false,
-    }),
-    update: arg({
-      type: 'GroupUpdateInput',
-      nullable: false,
-    }),
+    where: nonNull(
+      arg({
+        type: 'GroupWhereUniqueInput',
+      }),
+    ),
+    create: nonNull(
+      arg({
+        type: 'GroupCreateInput',
+      }),
+    ),
+    update: nonNull(
+      arg({
+        type: 'GroupUpdateInput',
+      }),
+    ),
   },
   resolve(_parent, args, { prisma, select }) {
     return prisma.group.upsert({

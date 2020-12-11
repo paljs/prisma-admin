@@ -4,7 +4,7 @@
 
 type AggregateComment {
   avg: CommentAvgAggregateOutputType
-  count: Int!
+  count: CommentCountAggregateOutputType
   max: CommentMaxAggregateOutputType
   min: CommentMinAggregateOutputType
   sum: CommentSumAggregateOutputType
@@ -12,7 +12,7 @@ type AggregateComment {
 
 type AggregateGroup {
   avg: GroupAvgAggregateOutputType
-  count: Int!
+  count: GroupCountAggregateOutputType
   max: GroupMaxAggregateOutputType
   min: GroupMinAggregateOutputType
   sum: GroupSumAggregateOutputType
@@ -20,7 +20,7 @@ type AggregateGroup {
 
 type AggregateList {
   avg: ListAvgAggregateOutputType
-  count: Int!
+  count: ListCountAggregateOutputType
   max: ListMaxAggregateOutputType
   min: ListMinAggregateOutputType
   sum: ListSumAggregateOutputType
@@ -28,7 +28,7 @@ type AggregateList {
 
 type AggregatePost {
   avg: PostAvgAggregateOutputType
-  count: Int!
+  count: PostCountAggregateOutputType
   max: PostMaxAggregateOutputType
   min: PostMinAggregateOutputType
   sum: PostSumAggregateOutputType
@@ -36,7 +36,7 @@ type AggregatePost {
 
 type AggregateUser {
   avg: UserAvgAggregateOutputType
-  count: Int!
+  count: UserCountAggregateOutputType
   max: UserMaxAggregateOutputType
   min: UserMinAggregateOutputType
   sum: UserSumAggregateOutputType
@@ -74,6 +74,16 @@ type CommentAvgAggregateOutputType {
   authorId: Float
   id: Float!
   postId: Float!
+}
+
+type CommentCountAggregateOutputType {
+  _all: Int!
+  authorId: Int
+  contain: Int
+  createdAt: Int
+  id: Int!
+  postId: Int!
+  updatedAt: Int
 }
 
 input CommentCreateInput {
@@ -120,15 +130,6 @@ input CommentCreateWithoutPostInput {
   updatedAt: DateTime
 }
 
-enum CommentDistinctFieldEnum {
-  authorId
-  contain
-  createdAt
-  id
-  postId
-  updatedAt
-}
-
 input CommentListRelationFilter {
   every: CommentWhereInput
   none: CommentWhereInput
@@ -137,14 +138,20 @@ input CommentListRelationFilter {
 
 type CommentMaxAggregateOutputType {
   authorId: Int
+  contain: String
+  createdAt: DateTime
   id: Int!
   postId: Int!
+  updatedAt: DateTime
 }
 
 type CommentMinAggregateOutputType {
   authorId: Int
+  contain: String
+  createdAt: DateTime
   id: Int!
   postId: Int!
+  updatedAt: DateTime
 }
 
 input CommentOrderByInput {
@@ -154,6 +161,15 @@ input CommentOrderByInput {
   id: SortOrder
   postId: SortOrder
   updatedAt: SortOrder
+}
+
+enum CommentScalarFieldEnum {
+  authorId
+  contain
+  createdAt
+  id
+  postId
+  updatedAt
 }
 
 input CommentScalarWhereInput {
@@ -297,8 +313,8 @@ input DateTimeFilter {
 }
 
 type Enum {
-  fields: [String]
-  name: String
+  fields: [String!]!
+  name: String!
 }
 
 input EnumRolsNullableListFilter {
@@ -306,24 +322,24 @@ input EnumRolsNullableListFilter {
 }
 
 type Field {
-  create: Boolean
-  editor: Boolean
-  filter: Boolean
-  id: String
-  isId: Boolean
-  kind: KindEnum
-  list: Boolean
-  name: String
-  order: Int
-  read: Boolean
+  create: Boolean!
+  editor: Boolean!
+  filter: Boolean!
+  id: String!
+  isId: Boolean!
+  kind: KindEnum!
+  list: Boolean!
+  name: String!
+  order: Int!
+  read: Boolean!
   relationField: Boolean
-  required: Boolean
-  sort: Boolean
-  title: String
-  type: String
-  unique: Boolean
-  update: Boolean
-  upload: Boolean
+  required: Boolean!
+  sort: Boolean!
+  title: String!
+  type: String!
+  unique: Boolean!
+  update: Boolean!
+  upload: Boolean!
 }
 
 input FloatNullableListFilter {
@@ -335,11 +351,19 @@ type Group {
   id: Int!
   name: String!
   updatedAt: DateTime!
-  users(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: UserOrderByInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
+  users(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: UserOrderByInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
 }
 
 type GroupAvgAggregateOutputType {
   id: Float!
+}
+
+type GroupCountAggregateOutputType {
+  _all: Int!
+  createdAt: Int
+  id: Int!
+  name: Int
+  updatedAt: Int
 }
 
 input GroupCreateInput {
@@ -366,19 +390,18 @@ input GroupCreateWithoutUsersInput {
   updatedAt: DateTime
 }
 
-enum GroupDistinctFieldEnum {
-  createdAt
-  id
-  name
-  updatedAt
-}
-
 type GroupMaxAggregateOutputType {
+  createdAt: DateTime
   id: Int!
+  name: String
+  updatedAt: DateTime
 }
 
 type GroupMinAggregateOutputType {
+  createdAt: DateTime
   id: Int!
+  name: String
+  updatedAt: DateTime
 }
 
 input GroupOrderByInput {
@@ -391,6 +414,13 @@ input GroupOrderByInput {
 input GroupRelationFilter {
   is: GroupWhereInput
   isNot: GroupWhereInput
+}
+
+enum GroupScalarFieldEnum {
+  createdAt
+  id
+  name
+  updatedAt
 }
 
 type GroupSumAggregateOutputType {
@@ -496,16 +526,26 @@ type ListAvgAggregateOutputType {
   intger: Float
 }
 
+type ListCountAggregateOutputType {
+  _all: Int!
+  boolean: Int
+  enums: Int
+  flout: Int
+  id: Int!
+  intger: Int
+  string: Int
+}
+
 input ListCreatebooleanInput {
-  set: [Boolean!]!
+  set: Boolean!
 }
 
 input ListCreateenumsInput {
-  set: [Rols!]!
+  set: Rols!
 }
 
 input ListCreatefloutInput {
-  set: [Float!]!
+  set: Float!
 }
 
 input ListCreateInput {
@@ -517,32 +557,19 @@ input ListCreateInput {
 }
 
 input ListCreateintgerInput {
-  set: [Int!]!
+  set: Int!
 }
 
 input ListCreatestringInput {
-  set: [String!]!
-}
-
-enum ListDistinctFieldEnum {
-  boolean
-  enums
-  flout
-  id
-  intger
-  string
+  set: String!
 }
 
 type ListMaxAggregateOutputType {
-  flout: [Float]
   id: Int!
-  intger: [Int]
 }
 
 type ListMinAggregateOutputType {
-  flout: [Float]
   id: Int!
-  intger: [Int]
 }
 
 input ListOrderByInput {
@@ -554,22 +581,31 @@ input ListOrderByInput {
   string: SortOrder
 }
 
+enum ListScalarFieldEnum {
+  boolean
+  enums
+  flout
+  id
+  intger
+  string
+}
+
 type ListSumAggregateOutputType {
-  flout: [Float]
+  flout: Float
   id: Int!
-  intger: [Int]
+  intger: Int
 }
 
 input ListUpdatebooleanInput {
-  set: [Boolean!]!
+  set: Boolean!
 }
 
 input ListUpdateenumsInput {
-  set: [Rols!]!
+  set: Rols!
 }
 
 input ListUpdatefloutInput {
-  set: [Float!]!
+  set: Float!
 }
 
 input ListUpdateInput {
@@ -581,7 +617,7 @@ input ListUpdateInput {
 }
 
 input ListUpdateintgerInput {
-  set: [Int!]!
+  set: Int!
 }
 
 input ListUpdateManyMutationInput {
@@ -593,7 +629,7 @@ input ListUpdateManyMutationInput {
 }
 
 input ListUpdatestringInput {
-  set: [String!]!
+  set: String!
 }
 
 input ListWhereInput {
@@ -613,14 +649,14 @@ input ListWhereUniqueInput {
 }
 
 type Model {
-  create: Boolean
-  delete: Boolean
-  displayFields: [String]
-  fields: [Field]
-  id: String
-  idField: String
-  name: String
-  update: Boolean
+  create: Boolean!
+  delete: Boolean!
+  displayFields: [String!]!
+  fields: [Field!]!
+  id: String!
+  idField: String!
+  name: String!
+  update: Boolean!
 }
 
 type Mutation {
@@ -629,32 +665,32 @@ type Mutation {
   createOneList(data: ListCreateInput!): List!
   createOnePost(data: PostCreateInput!): Post!
   createOneUser(data: UserCreateInput!): User!
-  deleteManyComment(where: CommentWhereInput): BatchPayload
-  deleteManyGroup(where: GroupWhereInput): BatchPayload
-  deleteManyList(where: ListWhereInput): BatchPayload
-  deleteManyPost(where: PostWhereInput): BatchPayload
-  deleteManyUser(where: UserWhereInput): BatchPayload
+  deleteManyComment(where: CommentWhereInput): BatchPayload!
+  deleteManyGroup(where: GroupWhereInput): BatchPayload!
+  deleteManyList(where: ListWhereInput): BatchPayload!
+  deleteManyPost(where: PostWhereInput): BatchPayload!
+  deleteManyUser(where: UserWhereInput): BatchPayload!
   deleteOneComment(where: CommentWhereUniqueInput!): Comment
   deleteOneGroup(where: GroupWhereUniqueInput!): Group
   deleteOneList(where: ListWhereUniqueInput!): List
   deleteOnePost(where: PostWhereUniqueInput!): Post
   deleteOneUser(where: UserWhereUniqueInput!): User
   login(email: String!, password: String!): User
-  logout: Boolean
+  logout: Boolean!
   signup(email: String!, name: String, password: String!): User
-  updateField(data: UpdateFieldInput, id: String!, modelId: String!): Field
-  updateManyComment(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload
-  updateManyGroup(data: GroupUpdateManyMutationInput!, where: GroupWhereInput): BatchPayload
-  updateManyList(data: ListUpdateManyMutationInput!, where: ListWhereInput): BatchPayload
-  updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload
-  updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload
-  updateModel(data: UpdateModelInput, id: String!): Model
+  updateField(data: UpdateFieldInput!, id: String!, modelId: String!): Field!
+  updateManyComment(data: CommentUpdateManyMutationInput!, where: CommentWhereInput): BatchPayload!
+  updateManyGroup(data: GroupUpdateManyMutationInput!, where: GroupWhereInput): BatchPayload!
+  updateManyList(data: ListUpdateManyMutationInput!, where: ListWhereInput): BatchPayload!
+  updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+  updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateModel(data: UpdateModelInput!, id: String!): Model!
   updateOneComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
   updateOneGroup(data: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group!
   updateOneList(data: ListUpdateInput!, where: ListWhereUniqueInput!): List!
   updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
-  updatePassword(currentPassword: String!, password: String!): Boolean
+  updatePassword(currentPassword: String!, password: String!): Boolean!
   upsertOneComment(create: CommentCreateInput!, update: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment!
   upsertOneGroup(create: GroupCreateInput!, update: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group!
   upsertOneList(create: ListCreateInput!, update: ListUpdateInput!, where: ListWhereUniqueInput!): List!
@@ -735,7 +771,7 @@ input NullableStringFieldUpdateOperationsInput {
 type Post {
   author: User
   authorId: Int
-  comments(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: CommentOrderByInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
+  comments(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: CommentOrderByInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
   createdAt: DateTime!
   id: Int!
   published: Boolean!
@@ -746,6 +782,16 @@ type Post {
 type PostAvgAggregateOutputType {
   authorId: Float
   id: Float!
+}
+
+type PostCountAggregateOutputType {
+  _all: Int!
+  authorId: Int
+  createdAt: Int
+  id: Int!
+  published: Int
+  title: Int
+  updatedAt: Int
 }
 
 input PostCreateInput {
@@ -795,15 +841,6 @@ input PostCreateWithoutCommentsInput {
   updatedAt: DateTime
 }
 
-enum PostDistinctFieldEnum {
-  authorId
-  createdAt
-  id
-  published
-  title
-  updatedAt
-}
-
 input PostListRelationFilter {
   every: PostWhereInput
   none: PostWhereInput
@@ -812,12 +849,20 @@ input PostListRelationFilter {
 
 type PostMaxAggregateOutputType {
   authorId: Int
+  createdAt: DateTime
   id: Int!
+  published: Boolean
+  title: String
+  updatedAt: DateTime
 }
 
 type PostMinAggregateOutputType {
   authorId: Int
+  createdAt: DateTime
   id: Int!
+  published: Boolean
+  title: String
+  updatedAt: DateTime
 }
 
 input PostOrderByInput {
@@ -832,6 +877,15 @@ input PostOrderByInput {
 input PostRelationFilter {
   is: PostWhereInput
   isNot: PostWhereInput
+}
+
+enum PostScalarFieldEnum {
+  authorId
+  createdAt
+  id
+  published
+  title
+  updatedAt
 }
 
 input PostScalarWhereInput {
@@ -944,27 +998,27 @@ input PostWhereUniqueInput {
 }
 
 type Query {
-  findFirstComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Comment
-  findFirstGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Group
-  findFirstList(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): List
-  findFirstPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Post
-  findFirstUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): User
-  findManyComment(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment!]
-  findManyCommentCount(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Int
-  findManyGroup(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group!]
-  findManyGroupCount(cursor: GroupWhereUniqueInput, distinct: GroupDistinctFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Int
-  findManyList(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): [List!]
-  findManyListCount(cursor: ListWhereUniqueInput, distinct: ListDistinctFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): Int
-  findManyPost(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post!]
-  findManyPostCount(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Int
-  findManyUser(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User!]
-  findManyUserCount(cursor: UserWhereUniqueInput, distinct: UserDistinctFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): Int
-  findUniqueComment(where: CommentWhereUniqueInput!): Comment
-  findUniqueGroup(where: GroupWhereUniqueInput!): Group
-  findUniqueList(where: ListWhereUniqueInput!): List
-  findUniquePost(where: PostWhereUniqueInput!): Post
-  findUniqueUser(where: UserWhereUniqueInput!): User
-  getSchema: Schema
+  findFirstComment(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Comment
+  findFirstGroup(cursor: GroupWhereUniqueInput, distinct: GroupScalarFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Group
+  findFirstList(cursor: ListWhereUniqueInput, distinct: ListScalarFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): List
+  findFirstPost(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Post
+  findFirstUser(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): User
+  findManyComment(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
+  findManyCommentCount(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Int!
+  findManyGroup(cursor: GroupWhereUniqueInput, distinct: GroupScalarFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group!]!
+  findManyGroupCount(cursor: GroupWhereUniqueInput, distinct: GroupScalarFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Int!
+  findManyList(cursor: ListWhereUniqueInput, distinct: ListScalarFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): [List!]!
+  findManyListCount(cursor: ListWhereUniqueInput, distinct: ListScalarFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): Int!
+  findManyPost(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post!]!
+  findManyPostCount(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Int!
+  findManyUser(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User!]!
+  findManyUserCount(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): Int!
+  findUniqueComment(where: CommentWhereUniqueInput): Comment!
+  findUniqueGroup(where: GroupWhereUniqueInput): Group!
+  findUniqueList(where: ListWhereUniqueInput): List!
+  findUniquePost(where: PostWhereUniqueInput): Post!
+  findUniqueUser(where: UserWhereUniqueInput): User!
+  getSchema: Schema!
   me: User
 }
 
@@ -979,8 +1033,8 @@ enum Rols {
 }
 
 type Schema {
-  enums: [Enum]
-  models: [Model]
+  enums: [Enum!]!
+  models: [Model!]!
 }
 
 enum SortOrder {
@@ -1058,7 +1112,7 @@ input UpdateModelInput {
 }
 
 type User {
-  comments(cursor: CommentWhereUniqueInput, distinct: CommentDistinctFieldEnum, orderBy: CommentOrderByInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
+  comments(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: CommentOrderByInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
   createdAt: DateTime!
   email: String!
   group: Group
@@ -1066,12 +1120,22 @@ type User {
   id: Int!
   name: String
   password: String!
-  posts(cursor: PostWhereUniqueInput, distinct: PostDistinctFieldEnum, orderBy: PostOrderByInput, skip: Int, take: Int, where: PostWhereInput): [Post!]!
+  posts(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: PostOrderByInput, skip: Int, take: Int, where: PostWhereInput): [Post!]!
 }
 
 type UserAvgAggregateOutputType {
   groupId: Float
   id: Float!
+}
+
+type UserCountAggregateOutputType {
+  _all: Int!
+  createdAt: Int
+  email: Int
+  groupId: Int
+  id: Int!
+  name: Int
+  password: Int
 }
 
 input UserCreateInput {
@@ -1144,15 +1208,6 @@ input UserCreateWithoutPostsInput {
   password: String!
 }
 
-enum UserDistinctFieldEnum {
-  createdAt
-  email
-  groupId
-  id
-  name
-  password
-}
-
 input UserListRelationFilter {
   every: UserWhereInput
   none: UserWhereInput
@@ -1160,13 +1215,21 @@ input UserListRelationFilter {
 }
 
 type UserMaxAggregateOutputType {
+  createdAt: DateTime
+  email: String
   groupId: Int
   id: Int!
+  name: String
+  password: String
 }
 
 type UserMinAggregateOutputType {
+  createdAt: DateTime
+  email: String
   groupId: Int
   id: Int!
+  name: String
+  password: String
 }
 
 input UserOrderByInput {
@@ -1181,6 +1244,15 @@ input UserOrderByInput {
 input UserRelationFilter {
   is: UserWhereInput
   isNot: UserWhereInput
+}
+
+enum UserScalarFieldEnum {
+  createdAt
+  email
+  groupId
+  id
+  name
+  password
 }
 
 input UserScalarWhereInput {

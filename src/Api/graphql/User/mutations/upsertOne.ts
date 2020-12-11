@@ -1,21 +1,23 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const UserUpsertOneMutation = mutationField('upsertOneUser', {
-  type: 'User',
-  nullable: false,
+  type: nonNull('User'),
   args: {
-    where: arg({
-      type: 'UserWhereUniqueInput',
-      nullable: false,
-    }),
-    create: arg({
-      type: 'UserCreateInput',
-      nullable: false,
-    }),
-    update: arg({
-      type: 'UserUpdateInput',
-      nullable: false,
-    }),
+    where: nonNull(
+      arg({
+        type: 'UserWhereUniqueInput',
+      }),
+    ),
+    create: nonNull(
+      arg({
+        type: 'UserCreateInput',
+      }),
+    ),
+    update: nonNull(
+      arg({
+        type: 'UserUpdateInput',
+      }),
+    ),
   },
   resolve(_parent, args, { prisma, select }) {
     return prisma.user.upsert({

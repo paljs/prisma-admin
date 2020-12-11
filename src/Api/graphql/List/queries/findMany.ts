@@ -1,13 +1,12 @@
-import { queryField, arg } from '@nexus/schema'
+import { queryField, arg, nonNull, list } from '@nexus/schema'
 
 export const ListFindManyQuery = queryField('findManyList', {
-  type: 'List',
-  list: [true],
+  type: nonNull(list(nonNull('List'))),
   args: {
     where: 'ListWhereInput',
-    orderBy: arg({ type: 'ListOrderByInput', list: true }),
+    orderBy: list(arg({ type: 'ListOrderByInput' })),
     cursor: 'ListWhereUniqueInput',
-    distinct: 'ListDistinctFieldEnum',
+    distinct: 'ListScalarFieldEnum',
     skip: 'Int',
     take: 'Int',
   },

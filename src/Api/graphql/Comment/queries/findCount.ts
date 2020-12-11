@@ -1,12 +1,12 @@
-import { queryField, arg } from '@nexus/schema'
+import { queryField, arg, nonNull, list } from '@nexus/schema'
 
 export const CommentFindCountQuery = queryField('findManyCommentCount', {
-  type: 'Int',
+  type: nonNull('Int'),
   args: {
     where: 'CommentWhereInput',
-    orderBy: arg({ type: 'CommentOrderByInput', list: true }),
+    orderBy: list(arg({ type: 'CommentOrderByInput' })),
     cursor: 'CommentWhereUniqueInput',
-    distinct: 'CommentDistinctFieldEnum',
+    distinct: 'CommentScalarFieldEnum',
     skip: 'Int',
     take: 'Int',
   },

@@ -1,16 +1,18 @@
 import { objectType } from '@nexus/schema'
 
 export const User = objectType({
+  nonNullDefaults: {
+    output: true,
+    input: false,
+  },
   name: 'User',
   definition(t) {
-    t.int('id', { nullable: false })
-    t.field('createdAt', { nullable: false, type: 'DateTime' })
-    t.string('email', { nullable: false })
-    t.string('name', { nullable: true })
-    t.string('password', { nullable: false })
-    t.field('posts', {
-      nullable: false,
-      list: [true],
+    t.int('id')
+    t.field('createdAt', { type: 'DateTime' })
+    t.string('email')
+    t.nullable.string('name')
+    t.string('password')
+    t.list.field('posts', {
       type: 'Post',
       args: {
         where: 'PostWhereInput',
@@ -18,23 +20,20 @@ export const User = objectType({
         cursor: 'PostWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
-        distinct: 'PostDistinctFieldEnum',
+        distinct: 'PostScalarFieldEnum',
       },
       resolve(root: any) {
         return root.posts
       },
     })
-    t.field('group', {
-      nullable: true,
+    t.nullable.field('group', {
       type: 'Group',
       resolve(root: any) {
         return root.group
       },
     })
-    t.int('groupId', { nullable: true })
-    t.field('comments', {
-      nullable: false,
-      list: [true],
+    t.nullable.int('groupId')
+    t.list.field('comments', {
       type: 'Comment',
       args: {
         where: 'CommentWhereInput',
@@ -42,7 +41,7 @@ export const User = objectType({
         cursor: 'CommentWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
-        distinct: 'CommentDistinctFieldEnum',
+        distinct: 'CommentScalarFieldEnum',
       },
       resolve(root: any) {
         return root.comments

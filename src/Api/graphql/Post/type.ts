@@ -1,22 +1,23 @@
 import { objectType } from '@nexus/schema'
 
 export const Post = objectType({
+  nonNullDefaults: {
+    output: true,
+    input: false,
+  },
   name: 'Post',
   definition(t) {
-    t.int('id', { nullable: false })
-    t.boolean('published', { nullable: false })
-    t.string('title', { nullable: false })
-    t.field('author', {
-      nullable: true,
+    t.int('id')
+    t.boolean('published')
+    t.string('title')
+    t.nullable.field('author', {
       type: 'User',
       resolve(root: any) {
         return root.author
       },
     })
-    t.int('authorId', { nullable: true })
-    t.field('comments', {
-      nullable: false,
-      list: [true],
+    t.nullable.int('authorId')
+    t.list.field('comments', {
       type: 'Comment',
       args: {
         where: 'CommentWhereInput',
@@ -24,13 +25,13 @@ export const Post = objectType({
         cursor: 'CommentWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
-        distinct: 'CommentDistinctFieldEnum',
+        distinct: 'CommentScalarFieldEnum',
       },
       resolve(root: any) {
         return root.comments
       },
     })
-    t.field('createdAt', { nullable: false, type: 'DateTime' })
-    t.field('updatedAt', { nullable: false, type: 'DateTime' })
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('updatedAt', { type: 'DateTime' })
   },
 })

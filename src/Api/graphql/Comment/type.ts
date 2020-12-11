@@ -1,27 +1,29 @@
 import { objectType } from '@nexus/schema'
 
 export const Comment = objectType({
+  nonNullDefaults: {
+    output: true,
+    input: false,
+  },
   name: 'Comment',
   definition(t) {
-    t.int('id', { nullable: false })
-    t.string('contain', { nullable: false })
+    t.int('id')
+    t.string('contain')
     t.field('post', {
-      nullable: false,
       type: 'Post',
       resolve(root: any) {
         return root.post
       },
     })
-    t.int('postId', { nullable: false })
-    t.field('author', {
-      nullable: true,
+    t.int('postId')
+    t.nullable.field('author', {
       type: 'User',
       resolve(root: any) {
         return root.author
       },
     })
-    t.int('authorId', { nullable: true })
-    t.field('createdAt', { nullable: false, type: 'DateTime' })
-    t.field('updatedAt', { nullable: false, type: 'DateTime' })
+    t.nullable.int('authorId')
+    t.field('createdAt', { type: 'DateTime' })
+    t.field('updatedAt', { type: 'DateTime' })
   },
 })

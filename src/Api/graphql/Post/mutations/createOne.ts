@@ -1,13 +1,13 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const PostCreateOneMutation = mutationField('createOnePost', {
-  type: 'Post',
-  nullable: false,
+  type: nonNull('Post'),
   args: {
-    data: arg({
-      type: 'PostCreateInput',
-      nullable: false,
-    }),
+    data: nonNull(
+      arg({
+        type: 'PostCreateInput',
+      }),
+    ),
   },
   resolve(_parent, { data }, { prisma, select }) {
     return prisma.post.create({

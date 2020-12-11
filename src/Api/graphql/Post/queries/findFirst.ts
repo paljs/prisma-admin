@@ -1,13 +1,12 @@
-import { queryField, arg } from '@nexus/schema'
+import { queryField, arg, list } from '@nexus/schema'
 
 export const PostFindFirstQuery = queryField('findFirstPost', {
   type: 'Post',
-  nullable: true,
   args: {
     where: 'PostWhereInput',
-    orderBy: arg({ type: 'PostOrderByInput', list: true }),
+    orderBy: list(arg({ type: 'PostOrderByInput' })),
     cursor: 'PostWhereUniqueInput',
-    distinct: 'PostDistinctFieldEnum',
+    distinct: 'PostScalarFieldEnum',
     skip: 'Int',
     take: 'Int',
   },

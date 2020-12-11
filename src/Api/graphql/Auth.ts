@@ -1,4 +1,4 @@
-import { extendType, stringArg } from '@nexus/schema'
+import { extendType, nonNull } from '@nexus/schema'
 import { compare, hash } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 import { JWT_SECRET } from '../utils'
@@ -10,7 +10,6 @@ export const AuthQueries = extendType({
   definition(t) {
     t.field('me', {
       type: 'User',
-      nullable: true,
       resolve: async (_, __, { prisma, select, userId }) => {
         if (!userId) return null
         return prisma.user.findUnique({
@@ -30,9 +29,9 @@ export const AuthMutations = extendType({
     t.field('signup', {
       type: 'User',
       args: {
-        name: stringArg(),
-        email: stringArg({ nullable: false }),
-        password: stringArg({ nullable: false }),
+        name: 'String',
+        email: nonNull('String'),
+        password: nonNull('String'),
       },
       resolve: async (_parent, { name, email, password }, ctx) => {
         const hashedPassword = await hash(password, 10)
@@ -58,10 +57,9 @@ export const AuthMutations = extendType({
     })
     t.field('login', {
       type: 'User',
-      nullable: true,
       args: {
-        email: stringArg({ nullable: false }),
-        password: stringArg({ nullable: false }),
+        email: nonNull('String'),
+        password: nonNull('String'),
       },
       resolve: async (_parent, { email, password }, ctx) => {
         const user = await ctx.prisma.user.findUnique({
@@ -90,7 +88,7 @@ export const AuthMutations = extendType({
       },
     })
     t.field('logout', {
-      type: 'Boolean',
+      type: nonNull('Boolean'),
       resolve(_parent, _args, ctx) {
         ctx.res.setHeader(
           'Set-Cookie',
@@ -106,10 +104,10 @@ export const AuthMutations = extendType({
       },
     })
     t.field('updatePassword', {
-      type: 'Boolean',
+      type: nonNull('Boolean'),
       args: {
-        currentPassword: stringArg({ nullable: false }),
-        password: stringArg({ nullable: false }),
+        currentPassword: nonNull('String'),
+        password: nonNull('String'),
       },
       resolve: async (_, { currentPassword, password }, ctx) => {
         if (currentPassword && password) {

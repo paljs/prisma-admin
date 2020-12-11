@@ -1,17 +1,18 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const UserUpdateOneMutation = mutationField('updateOneUser', {
-  type: 'User',
-  nullable: false,
+  type: nonNull('User'),
   args: {
-    where: arg({
-      type: 'UserWhereUniqueInput',
-      nullable: false,
-    }),
-    data: arg({
-      type: 'UserUpdateInput',
-      nullable: false,
-    }),
+    where: nonNull(
+      arg({
+        type: 'UserWhereUniqueInput',
+      }),
+    ),
+    data: nonNull(
+      arg({
+        type: 'UserUpdateInput',
+      }),
+    ),
   },
   resolve(_parent, { data, where }, { prisma, select }) {
     return prisma.user.update({

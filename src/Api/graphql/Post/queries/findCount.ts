@@ -1,12 +1,12 @@
-import { queryField, arg } from '@nexus/schema'
+import { queryField, arg, nonNull, list } from '@nexus/schema'
 
 export const PostFindCountQuery = queryField('findManyPostCount', {
-  type: 'Int',
+  type: nonNull('Int'),
   args: {
     where: 'PostWhereInput',
-    orderBy: arg({ type: 'PostOrderByInput', list: true }),
+    orderBy: list(arg({ type: 'PostOrderByInput' })),
     cursor: 'PostWhereUniqueInput',
-    distinct: 'PostDistinctFieldEnum',
+    distinct: 'PostScalarFieldEnum',
     skip: 'Int',
     take: 'Int',
   },

@@ -1,11 +1,10 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const PostDeleteManyMutation = mutationField('deleteManyPost', {
-  type: 'BatchPayload',
+  type: nonNull('BatchPayload'),
   args: {
     where: arg({
       type: 'PostWhereInput',
-      nullable: true,
     }),
   },
   resolve: async (_parent, { where }, { prisma }) => {

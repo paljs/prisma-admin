@@ -1,17 +1,18 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const ListUpdateOneMutation = mutationField('updateOneList', {
-  type: 'List',
-  nullable: false,
+  type: nonNull('List'),
   args: {
-    where: arg({
-      type: 'ListWhereUniqueInput',
-      nullable: false,
-    }),
-    data: arg({
-      type: 'ListUpdateInput',
-      nullable: false,
-    }),
+    where: nonNull(
+      arg({
+        type: 'ListWhereUniqueInput',
+      }),
+    ),
+    data: nonNull(
+      arg({
+        type: 'ListUpdateInput',
+      }),
+    ),
   },
   resolve(_parent, { data, where }, { prisma, select }) {
     return prisma.list.update({

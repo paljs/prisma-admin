@@ -1,12 +1,12 @@
-import { queryField, arg } from '@nexus/schema'
+import { queryField, arg, nonNull, list } from '@nexus/schema'
 
 export const UserFindCountQuery = queryField('findManyUserCount', {
-  type: 'Int',
+  type: nonNull('Int'),
   args: {
     where: 'UserWhereInput',
-    orderBy: arg({ type: 'UserOrderByInput', list: true }),
+    orderBy: list(arg({ type: 'UserOrderByInput' })),
     cursor: 'UserWhereUniqueInput',
-    distinct: 'UserDistinctFieldEnum',
+    distinct: 'UserScalarFieldEnum',
     skip: 'Int',
     take: 'Int',
   },

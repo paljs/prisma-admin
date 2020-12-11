@@ -1,16 +1,16 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const UserUpdateManyMutation = mutationField('updateManyUser', {
-  type: 'BatchPayload',
+  type: nonNull('BatchPayload'),
   args: {
     where: arg({
       type: 'UserWhereInput',
-      nullable: true,
     }),
-    data: arg({
-      type: 'UserUpdateManyMutationInput',
-      nullable: false,
-    }),
+    data: nonNull(
+      arg({
+        type: 'UserUpdateManyMutationInput',
+      }),
+    ),
   },
   resolve(_parent, args, { prisma }) {
     return prisma.user.updateMany(args as any)

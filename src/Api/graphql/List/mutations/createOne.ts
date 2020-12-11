@@ -1,13 +1,13 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const ListCreateOneMutation = mutationField('createOneList', {
-  type: 'List',
-  nullable: false,
+  type: nonNull('List'),
   args: {
-    data: arg({
-      type: 'ListCreateInput',
-      nullable: false,
-    }),
+    data: nonNull(
+      arg({
+        type: 'ListCreateInput',
+      }),
+    ),
   },
   resolve(_parent, { data }, { prisma, select }) {
     return prisma.list.create({

@@ -1,13 +1,12 @@
-import { queryField, arg } from '@nexus/schema'
+import { queryField, arg, list } from '@nexus/schema'
 
 export const CommentFindFirstQuery = queryField('findFirstComment', {
   type: 'Comment',
-  nullable: true,
   args: {
     where: 'CommentWhereInput',
-    orderBy: arg({ type: 'CommentOrderByInput', list: true }),
+    orderBy: list(arg({ type: 'CommentOrderByInput' })),
     cursor: 'CommentWhereUniqueInput',
-    distinct: 'CommentDistinctFieldEnum',
+    distinct: 'CommentScalarFieldEnum',
     skip: 'Int',
     take: 'Int',
   },

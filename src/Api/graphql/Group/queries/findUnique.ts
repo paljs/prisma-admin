@@ -1,12 +1,10 @@
-import { queryField, arg } from '@nexus/schema'
+import { queryField, arg, nonNull } from '@nexus/schema'
 
 export const GroupFindUniqueQuery = queryField('findUniqueGroup', {
-  type: 'Group',
-  nullable: true,
+  type: nonNull('Group'),
   args: {
     where: arg({
       type: 'GroupWhereUniqueInput',
-      nullable: false,
     }),
   },
   resolve(_parent, { where }, { prisma, select }) {

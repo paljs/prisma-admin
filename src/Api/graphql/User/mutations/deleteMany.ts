@@ -1,11 +1,10 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const UserDeleteManyMutation = mutationField('deleteManyUser', {
-  type: 'BatchPayload',
+  type: nonNull('BatchPayload'),
   args: {
     where: arg({
       type: 'UserWhereInput',
-      nullable: true,
     }),
   },
   resolve: async (_parent, { where }, { prisma }) => {

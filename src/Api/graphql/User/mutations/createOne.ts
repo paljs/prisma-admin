@@ -1,13 +1,13 @@
-import { mutationField, arg } from '@nexus/schema'
+import { mutationField, arg, nonNull } from '@nexus/schema'
 
 export const UserCreateOneMutation = mutationField('createOneUser', {
-  type: 'User',
-  nullable: false,
+  type: nonNull('User'),
   args: {
-    data: arg({
-      type: 'UserCreateInput',
-      nullable: false,
-    }),
+    data: nonNull(
+      arg({
+        type: 'UserCreateInput',
+      }),
+    ),
   },
   resolve(_parent, { data }, { prisma, select }) {
     return prisma.user.create({

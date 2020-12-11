@@ -7,13 +7,25 @@ import * as Context from "./src/Api/context"
 import { core } from "@nexus/schema"
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
-    json<FieldName extends string>(fieldName: FieldName, opts?: core.ScalarInputFieldConfig<core.GetGen3<"inputTypes", TypeName, FieldName>>): void // "Json";
-    date<FieldName extends string>(fieldName: FieldName, opts?: core.ScalarInputFieldConfig<core.GetGen3<"inputTypes", TypeName, FieldName>>): void // "DateTime";
+    /**
+     * Json custom scalar type
+     */
+    json<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Json";
+    /**
+     * Date custom scalar type
+     */
+    date<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
   }
 }
 declare global {
   interface NexusGenCustomOutputMethods<TypeName extends string> {
+    /**
+     * Json custom scalar type
+     */
     json<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Json";
+    /**
+     * Date custom scalar type
+     */
     date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
   }
 }
@@ -307,19 +319,19 @@ export interface NexusGenInputs {
     string?: NexusGenInputs['ListCreatestringInput'] | null; // ListCreatestringInput
   }
   ListCreatebooleanInput: { // input type
-    set: boolean[]; // [Boolean!]!
+    set: boolean; // Boolean!
   }
   ListCreateenumsInput: { // input type
-    set: NexusGenEnums['Rols'][]; // [Rols!]!
+    set: NexusGenEnums['Rols']; // Rols!
   }
   ListCreatefloutInput: { // input type
-    set: number[]; // [Float!]!
+    set: number; // Float!
   }
   ListCreateintgerInput: { // input type
-    set: number[]; // [Int!]!
+    set: number; // Int!
   }
   ListCreatestringInput: { // input type
-    set: string[]; // [String!]!
+    set: string; // String!
   }
   ListOrderByInput: { // input type
     boolean?: NexusGenEnums['SortOrder'] | null; // SortOrder
@@ -344,19 +356,19 @@ export interface NexusGenInputs {
     string?: NexusGenInputs['ListUpdatestringInput'] | null; // ListUpdatestringInput
   }
   ListUpdatebooleanInput: { // input type
-    set: boolean[]; // [Boolean!]!
+    set: boolean; // Boolean!
   }
   ListUpdateenumsInput: { // input type
-    set: NexusGenEnums['Rols'][]; // [Rols!]!
+    set: NexusGenEnums['Rols']; // Rols!
   }
   ListUpdatefloutInput: { // input type
-    set: number[]; // [Float!]!
+    set: number; // Float!
   }
   ListUpdateintgerInput: { // input type
-    set: number[]; // [Int!]!
+    set: number; // Int!
   }
   ListUpdatestringInput: { // input type
-    set: string[]; // [String!]!
+    set: string; // String!
   }
   ListWhereInput: { // input type
     AND?: Array<NexusGenInputs['ListWhereInput'] | null> | null; // [ListWhereInput]
@@ -845,15 +857,15 @@ export interface NexusGenInputs {
 }
 
 export interface NexusGenEnums {
-  CommentDistinctFieldEnum: "authorId" | "contain" | "createdAt" | "id" | "postId" | "updatedAt"
-  GroupDistinctFieldEnum: "createdAt" | "id" | "name" | "updatedAt"
+  CommentScalarFieldEnum: "authorId" | "contain" | "createdAt" | "id" | "postId" | "updatedAt"
+  GroupScalarFieldEnum: "createdAt" | "id" | "name" | "updatedAt"
   KindEnum: "enum" | "object" | "scalar"
-  ListDistinctFieldEnum: "boolean" | "enums" | "flout" | "id" | "intger" | "string"
-  PostDistinctFieldEnum: "authorId" | "createdAt" | "id" | "published" | "title" | "updatedAt"
+  ListScalarFieldEnum: "boolean" | "enums" | "flout" | "id" | "intger" | "string"
+  PostScalarFieldEnum: "authorId" | "createdAt" | "id" | "published" | "title" | "updatedAt"
   QueryMode: "default" | "insensitive"
   Rols: "ADMIN" | "USER"
   SortOrder: "asc" | "desc"
-  UserDistinctFieldEnum: "createdAt" | "email" | "groupId" | "id" | "name" | "password"
+  UserScalarFieldEnum: "createdAt" | "email" | "groupId" | "id" | "name" | "password"
 }
 
 export interface NexusGenScalars {
@@ -866,38 +878,38 @@ export interface NexusGenScalars {
   Json: any
 }
 
-export interface NexusGenRootTypes {
+export interface NexusGenObjects {
   AggregateComment: { // root type
     avg?: NexusGenRootTypes['CommentAvgAggregateOutputType'] | null; // CommentAvgAggregateOutputType
-    count: number; // Int!
+    count?: NexusGenRootTypes['CommentCountAggregateOutputType'] | null; // CommentCountAggregateOutputType
     max?: NexusGenRootTypes['CommentMaxAggregateOutputType'] | null; // CommentMaxAggregateOutputType
     min?: NexusGenRootTypes['CommentMinAggregateOutputType'] | null; // CommentMinAggregateOutputType
     sum?: NexusGenRootTypes['CommentSumAggregateOutputType'] | null; // CommentSumAggregateOutputType
   }
   AggregateGroup: { // root type
     avg?: NexusGenRootTypes['GroupAvgAggregateOutputType'] | null; // GroupAvgAggregateOutputType
-    count: number; // Int!
+    count?: NexusGenRootTypes['GroupCountAggregateOutputType'] | null; // GroupCountAggregateOutputType
     max?: NexusGenRootTypes['GroupMaxAggregateOutputType'] | null; // GroupMaxAggregateOutputType
     min?: NexusGenRootTypes['GroupMinAggregateOutputType'] | null; // GroupMinAggregateOutputType
     sum?: NexusGenRootTypes['GroupSumAggregateOutputType'] | null; // GroupSumAggregateOutputType
   }
   AggregateList: { // root type
     avg?: NexusGenRootTypes['ListAvgAggregateOutputType'] | null; // ListAvgAggregateOutputType
-    count: number; // Int!
+    count?: NexusGenRootTypes['ListCountAggregateOutputType'] | null; // ListCountAggregateOutputType
     max?: NexusGenRootTypes['ListMaxAggregateOutputType'] | null; // ListMaxAggregateOutputType
     min?: NexusGenRootTypes['ListMinAggregateOutputType'] | null; // ListMinAggregateOutputType
     sum?: NexusGenRootTypes['ListSumAggregateOutputType'] | null; // ListSumAggregateOutputType
   }
   AggregatePost: { // root type
     avg?: NexusGenRootTypes['PostAvgAggregateOutputType'] | null; // PostAvgAggregateOutputType
-    count: number; // Int!
+    count?: NexusGenRootTypes['PostCountAggregateOutputType'] | null; // PostCountAggregateOutputType
     max?: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
     min?: NexusGenRootTypes['PostMinAggregateOutputType'] | null; // PostMinAggregateOutputType
     sum?: NexusGenRootTypes['PostSumAggregateOutputType'] | null; // PostSumAggregateOutputType
   }
   AggregateUser: { // root type
     avg?: NexusGenRootTypes['UserAvgAggregateOutputType'] | null; // UserAvgAggregateOutputType
-    count: number; // Int!
+    count?: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
     max?: NexusGenRootTypes['UserMaxAggregateOutputType'] | null; // UserMaxAggregateOutputType
     min?: NexusGenRootTypes['UserMinAggregateOutputType'] | null; // UserMinAggregateOutputType
     sum?: NexusGenRootTypes['UserSumAggregateOutputType'] | null; // UserSumAggregateOutputType
@@ -918,15 +930,30 @@ export interface NexusGenRootTypes {
     id: number; // Float!
     postId: number; // Float!
   }
-  CommentMaxAggregateOutputType: { // root type
+  CommentCountAggregateOutputType: { // root type
+    _all: number; // Int!
     authorId?: number | null; // Int
+    contain?: number | null; // Int
+    createdAt?: number | null; // Int
     id: number; // Int!
     postId: number; // Int!
+    updatedAt?: number | null; // Int
+  }
+  CommentMaxAggregateOutputType: { // root type
+    authorId?: number | null; // Int
+    contain?: string | null; // String
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    postId: number; // Int!
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   CommentMinAggregateOutputType: { // root type
     authorId?: number | null; // Int
+    contain?: string | null; // String
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id: number; // Int!
     postId: number; // Int!
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   CommentSumAggregateOutputType: { // root type
     authorId?: number | null; // Int
@@ -934,28 +961,28 @@ export interface NexusGenRootTypes {
     postId: number; // Int!
   }
   Enum: { // root type
-    fields?: Array<string | null> | null; // [String]
-    name?: string | null; // String
+    fields: string[]; // [String!]!
+    name: string; // String!
   }
   Field: { // root type
-    create?: boolean | null; // Boolean
-    editor?: boolean | null; // Boolean
-    filter?: boolean | null; // Boolean
-    id?: string | null; // String
-    isId?: boolean | null; // Boolean
-    kind?: NexusGenEnums['KindEnum'] | null; // KindEnum
-    list?: boolean | null; // Boolean
-    name?: string | null; // String
-    order?: number | null; // Int
-    read?: boolean | null; // Boolean
+    create: boolean; // Boolean!
+    editor: boolean; // Boolean!
+    filter: boolean; // Boolean!
+    id: string; // String!
+    isId: boolean; // Boolean!
+    kind: NexusGenEnums['KindEnum']; // KindEnum!
+    list: boolean; // Boolean!
+    name: string; // String!
+    order: number; // Int!
+    read: boolean; // Boolean!
     relationField?: boolean | null; // Boolean
-    required?: boolean | null; // Boolean
-    sort?: boolean | null; // Boolean
-    title?: string | null; // String
-    type?: string | null; // String
-    unique?: boolean | null; // Boolean
-    update?: boolean | null; // Boolean
-    upload?: boolean | null; // Boolean
+    required: boolean; // Boolean!
+    sort: boolean; // Boolean!
+    title: string; // String!
+    type: string; // String!
+    unique: boolean; // Boolean!
+    update: boolean; // Boolean!
+    upload: boolean; // Boolean!
   }
   Group: { // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
@@ -966,11 +993,24 @@ export interface NexusGenRootTypes {
   GroupAvgAggregateOutputType: { // root type
     id: number; // Float!
   }
-  GroupMaxAggregateOutputType: { // root type
+  GroupCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    createdAt?: number | null; // Int
     id: number; // Int!
+    name?: number | null; // Int
+    updatedAt?: number | null; // Int
+  }
+  GroupMaxAggregateOutputType: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    name?: string | null; // String
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   GroupMinAggregateOutputType: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id: number; // Int!
+    name?: string | null; // String
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   GroupSumAggregateOutputType: { // root type
     id: number; // Int!
@@ -988,30 +1028,35 @@ export interface NexusGenRootTypes {
     id: number; // Float!
     intger?: number | null; // Float
   }
-  ListMaxAggregateOutputType: { // root type
-    flout?: Array<number | null> | null; // [Float]
+  ListCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    boolean?: number | null; // Int
+    enums?: number | null; // Int
+    flout?: number | null; // Int
     id: number; // Int!
-    intger?: Array<number | null> | null; // [Int]
+    intger?: number | null; // Int
+    string?: number | null; // Int
+  }
+  ListMaxAggregateOutputType: { // root type
+    id: number; // Int!
   }
   ListMinAggregateOutputType: { // root type
-    flout?: Array<number | null> | null; // [Float]
     id: number; // Int!
-    intger?: Array<number | null> | null; // [Int]
   }
   ListSumAggregateOutputType: { // root type
-    flout?: Array<number | null> | null; // [Float]
+    flout?: number | null; // Float
     id: number; // Int!
-    intger?: Array<number | null> | null; // [Int]
+    intger?: number | null; // Int
   }
   Model: { // root type
-    create?: boolean | null; // Boolean
-    delete?: boolean | null; // Boolean
-    displayFields?: Array<string | null> | null; // [String]
-    fields?: Array<NexusGenRootTypes['Field'] | null> | null; // [Field]
-    id?: string | null; // String
-    idField?: string | null; // String
-    name?: string | null; // String
-    update?: boolean | null; // Boolean
+    create: boolean; // Boolean!
+    delete: boolean; // Boolean!
+    displayFields: string[]; // [String!]!
+    fields: NexusGenRootTypes['Field'][]; // [Field!]!
+    id: string; // String!
+    idField: string; // String!
+    name: string; // String!
+    update: boolean; // Boolean!
   }
   Mutation: {};
   Post: { // root type
@@ -1026,13 +1071,30 @@ export interface NexusGenRootTypes {
     authorId?: number | null; // Float
     id: number; // Float!
   }
+  PostCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    authorId?: number | null; // Int
+    createdAt?: number | null; // Int
+    id: number; // Int!
+    published?: number | null; // Int
+    title?: number | null; // Int
+    updatedAt?: number | null; // Int
+  }
   PostMaxAggregateOutputType: { // root type
     authorId?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id: number; // Int!
+    published?: boolean | null; // Boolean
+    title?: string | null; // String
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   PostMinAggregateOutputType: { // root type
     authorId?: number | null; // Int
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
     id: number; // Int!
+    published?: boolean | null; // Boolean
+    title?: string | null; // String
+    updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
   PostSumAggregateOutputType: { // root type
     authorId?: number | null; // Int
@@ -1040,8 +1102,8 @@ export interface NexusGenRootTypes {
   }
   Query: {};
   Schema: { // root type
-    enums?: Array<NexusGenRootTypes['Enum'] | null> | null; // [Enum]
-    models?: Array<NexusGenRootTypes['Model'] | null> | null; // [Model]
+    enums: NexusGenRootTypes['Enum'][]; // [Enum!]!
+    models: NexusGenRootTypes['Model'][]; // [Model!]!
   }
   User: { // root type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
@@ -1055,13 +1117,30 @@ export interface NexusGenRootTypes {
     groupId?: number | null; // Float
     id: number; // Float!
   }
-  UserMaxAggregateOutputType: { // root type
+  UserCountAggregateOutputType: { // root type
+    _all: number; // Int!
+    createdAt?: number | null; // Int
+    email?: number | null; // Int
     groupId?: number | null; // Int
     id: number; // Int!
+    name?: number | null; // Int
+    password?: number | null; // Int
+  }
+  UserMaxAggregateOutputType: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    email?: string | null; // String
+    groupId?: number | null; // Int
+    id: number; // Int!
+    name?: string | null; // String
+    password?: string | null; // String
   }
   UserMinAggregateOutputType: { // root type
+    createdAt?: NexusGenScalars['DateTime'] | null; // DateTime
+    email?: string | null; // String
     groupId?: number | null; // Int
     id: number; // Int!
+    name?: string | null; // String
+    password?: string | null; // String
   }
   UserSumAggregateOutputType: { // root type
     groupId?: number | null; // Int
@@ -1069,185 +1148,48 @@ export interface NexusGenRootTypes {
   }
 }
 
-export interface NexusGenAllTypes extends NexusGenRootTypes {
-  BoolFieldUpdateOperationsInput: NexusGenInputs['BoolFieldUpdateOperationsInput'];
-  BoolFilter: NexusGenInputs['BoolFilter'];
-  BoolNullableListFilter: NexusGenInputs['BoolNullableListFilter'];
-  CommentCreateInput: NexusGenInputs['CommentCreateInput'];
-  CommentCreateManyWithoutAuthorInput: NexusGenInputs['CommentCreateManyWithoutAuthorInput'];
-  CommentCreateManyWithoutPostInput: NexusGenInputs['CommentCreateManyWithoutPostInput'];
-  CommentCreateOrConnectWithoutauthorInput: NexusGenInputs['CommentCreateOrConnectWithoutauthorInput'];
-  CommentCreateOrConnectWithoutpostInput: NexusGenInputs['CommentCreateOrConnectWithoutpostInput'];
-  CommentCreateWithoutAuthorInput: NexusGenInputs['CommentCreateWithoutAuthorInput'];
-  CommentCreateWithoutPostInput: NexusGenInputs['CommentCreateWithoutPostInput'];
-  CommentListRelationFilter: NexusGenInputs['CommentListRelationFilter'];
-  CommentOrderByInput: NexusGenInputs['CommentOrderByInput'];
-  CommentScalarWhereInput: NexusGenInputs['CommentScalarWhereInput'];
-  CommentUpdateInput: NexusGenInputs['CommentUpdateInput'];
-  CommentUpdateManyMutationInput: NexusGenInputs['CommentUpdateManyMutationInput'];
-  CommentUpdateManyWithWhereWithoutAuthorInput: NexusGenInputs['CommentUpdateManyWithWhereWithoutAuthorInput'];
-  CommentUpdateManyWithWhereWithoutPostInput: NexusGenInputs['CommentUpdateManyWithWhereWithoutPostInput'];
-  CommentUpdateManyWithoutAuthorInput: NexusGenInputs['CommentUpdateManyWithoutAuthorInput'];
-  CommentUpdateManyWithoutPostInput: NexusGenInputs['CommentUpdateManyWithoutPostInput'];
-  CommentUpdateWithWhereUniqueWithoutAuthorInput: NexusGenInputs['CommentUpdateWithWhereUniqueWithoutAuthorInput'];
-  CommentUpdateWithWhereUniqueWithoutPostInput: NexusGenInputs['CommentUpdateWithWhereUniqueWithoutPostInput'];
-  CommentUpdateWithoutAuthorInput: NexusGenInputs['CommentUpdateWithoutAuthorInput'];
-  CommentUpdateWithoutPostInput: NexusGenInputs['CommentUpdateWithoutPostInput'];
-  CommentUpsertWithWhereUniqueWithoutAuthorInput: NexusGenInputs['CommentUpsertWithWhereUniqueWithoutAuthorInput'];
-  CommentUpsertWithWhereUniqueWithoutPostInput: NexusGenInputs['CommentUpsertWithWhereUniqueWithoutPostInput'];
-  CommentWhereInput: NexusGenInputs['CommentWhereInput'];
-  CommentWhereUniqueInput: NexusGenInputs['CommentWhereUniqueInput'];
-  DateTimeFieldUpdateOperationsInput: NexusGenInputs['DateTimeFieldUpdateOperationsInput'];
-  DateTimeFilter: NexusGenInputs['DateTimeFilter'];
-  EnumRolsNullableListFilter: NexusGenInputs['EnumRolsNullableListFilter'];
-  FloatNullableListFilter: NexusGenInputs['FloatNullableListFilter'];
-  GroupCreateInput: NexusGenInputs['GroupCreateInput'];
-  GroupCreateOneWithoutUsersInput: NexusGenInputs['GroupCreateOneWithoutUsersInput'];
-  GroupCreateOrConnectWithoutusersInput: NexusGenInputs['GroupCreateOrConnectWithoutusersInput'];
-  GroupCreateWithoutUsersInput: NexusGenInputs['GroupCreateWithoutUsersInput'];
-  GroupOrderByInput: NexusGenInputs['GroupOrderByInput'];
-  GroupRelationFilter: NexusGenInputs['GroupRelationFilter'];
-  GroupUpdateInput: NexusGenInputs['GroupUpdateInput'];
-  GroupUpdateManyMutationInput: NexusGenInputs['GroupUpdateManyMutationInput'];
-  GroupUpdateOneWithoutUsersInput: NexusGenInputs['GroupUpdateOneWithoutUsersInput'];
-  GroupUpdateWithoutUsersInput: NexusGenInputs['GroupUpdateWithoutUsersInput'];
-  GroupUpsertWithoutUsersInput: NexusGenInputs['GroupUpsertWithoutUsersInput'];
-  GroupWhereInput: NexusGenInputs['GroupWhereInput'];
-  GroupWhereUniqueInput: NexusGenInputs['GroupWhereUniqueInput'];
-  IntFilter: NexusGenInputs['IntFilter'];
-  IntNullableFilter: NexusGenInputs['IntNullableFilter'];
-  IntNullableListFilter: NexusGenInputs['IntNullableListFilter'];
-  ListCreateInput: NexusGenInputs['ListCreateInput'];
-  ListCreatebooleanInput: NexusGenInputs['ListCreatebooleanInput'];
-  ListCreateenumsInput: NexusGenInputs['ListCreateenumsInput'];
-  ListCreatefloutInput: NexusGenInputs['ListCreatefloutInput'];
-  ListCreateintgerInput: NexusGenInputs['ListCreateintgerInput'];
-  ListCreatestringInput: NexusGenInputs['ListCreatestringInput'];
-  ListOrderByInput: NexusGenInputs['ListOrderByInput'];
-  ListUpdateInput: NexusGenInputs['ListUpdateInput'];
-  ListUpdateManyMutationInput: NexusGenInputs['ListUpdateManyMutationInput'];
-  ListUpdatebooleanInput: NexusGenInputs['ListUpdatebooleanInput'];
-  ListUpdateenumsInput: NexusGenInputs['ListUpdateenumsInput'];
-  ListUpdatefloutInput: NexusGenInputs['ListUpdatefloutInput'];
-  ListUpdateintgerInput: NexusGenInputs['ListUpdateintgerInput'];
-  ListUpdatestringInput: NexusGenInputs['ListUpdatestringInput'];
-  ListWhereInput: NexusGenInputs['ListWhereInput'];
-  ListWhereUniqueInput: NexusGenInputs['ListWhereUniqueInput'];
-  NestedBoolFilter: NexusGenInputs['NestedBoolFilter'];
-  NestedDateTimeFilter: NexusGenInputs['NestedDateTimeFilter'];
-  NestedIntFilter: NexusGenInputs['NestedIntFilter'];
-  NestedIntNullableFilter: NexusGenInputs['NestedIntNullableFilter'];
-  NestedStringFilter: NexusGenInputs['NestedStringFilter'];
-  NestedStringNullableFilter: NexusGenInputs['NestedStringNullableFilter'];
-  NullableStringFieldUpdateOperationsInput: NexusGenInputs['NullableStringFieldUpdateOperationsInput'];
-  PostCreateInput: NexusGenInputs['PostCreateInput'];
-  PostCreateManyWithoutAuthorInput: NexusGenInputs['PostCreateManyWithoutAuthorInput'];
-  PostCreateOneWithoutCommentsInput: NexusGenInputs['PostCreateOneWithoutCommentsInput'];
-  PostCreateOrConnectWithoutauthorInput: NexusGenInputs['PostCreateOrConnectWithoutauthorInput'];
-  PostCreateOrConnectWithoutcommentsInput: NexusGenInputs['PostCreateOrConnectWithoutcommentsInput'];
-  PostCreateWithoutAuthorInput: NexusGenInputs['PostCreateWithoutAuthorInput'];
-  PostCreateWithoutCommentsInput: NexusGenInputs['PostCreateWithoutCommentsInput'];
-  PostListRelationFilter: NexusGenInputs['PostListRelationFilter'];
-  PostOrderByInput: NexusGenInputs['PostOrderByInput'];
-  PostRelationFilter: NexusGenInputs['PostRelationFilter'];
-  PostScalarWhereInput: NexusGenInputs['PostScalarWhereInput'];
-  PostUpdateInput: NexusGenInputs['PostUpdateInput'];
-  PostUpdateManyMutationInput: NexusGenInputs['PostUpdateManyMutationInput'];
-  PostUpdateManyWithWhereWithoutAuthorInput: NexusGenInputs['PostUpdateManyWithWhereWithoutAuthorInput'];
-  PostUpdateManyWithoutAuthorInput: NexusGenInputs['PostUpdateManyWithoutAuthorInput'];
-  PostUpdateOneRequiredWithoutCommentsInput: NexusGenInputs['PostUpdateOneRequiredWithoutCommentsInput'];
-  PostUpdateWithWhereUniqueWithoutAuthorInput: NexusGenInputs['PostUpdateWithWhereUniqueWithoutAuthorInput'];
-  PostUpdateWithoutAuthorInput: NexusGenInputs['PostUpdateWithoutAuthorInput'];
-  PostUpdateWithoutCommentsInput: NexusGenInputs['PostUpdateWithoutCommentsInput'];
-  PostUpsertWithWhereUniqueWithoutAuthorInput: NexusGenInputs['PostUpsertWithWhereUniqueWithoutAuthorInput'];
-  PostUpsertWithoutCommentsInput: NexusGenInputs['PostUpsertWithoutCommentsInput'];
-  PostWhereInput: NexusGenInputs['PostWhereInput'];
-  PostWhereUniqueInput: NexusGenInputs['PostWhereUniqueInput'];
-  StringFieldUpdateOperationsInput: NexusGenInputs['StringFieldUpdateOperationsInput'];
-  StringFilter: NexusGenInputs['StringFilter'];
-  StringNullableFilter: NexusGenInputs['StringNullableFilter'];
-  StringNullableListFilter: NexusGenInputs['StringNullableListFilter'];
-  UpdateFieldInput: NexusGenInputs['UpdateFieldInput'];
-  UpdateModelInput: NexusGenInputs['UpdateModelInput'];
-  UserCreateInput: NexusGenInputs['UserCreateInput'];
-  UserCreateManyWithoutGroupInput: NexusGenInputs['UserCreateManyWithoutGroupInput'];
-  UserCreateOneWithoutCommentsInput: NexusGenInputs['UserCreateOneWithoutCommentsInput'];
-  UserCreateOneWithoutPostsInput: NexusGenInputs['UserCreateOneWithoutPostsInput'];
-  UserCreateOrConnectWithoutcommentsInput: NexusGenInputs['UserCreateOrConnectWithoutcommentsInput'];
-  UserCreateOrConnectWithoutgroupInput: NexusGenInputs['UserCreateOrConnectWithoutgroupInput'];
-  UserCreateOrConnectWithoutpostsInput: NexusGenInputs['UserCreateOrConnectWithoutpostsInput'];
-  UserCreateWithoutCommentsInput: NexusGenInputs['UserCreateWithoutCommentsInput'];
-  UserCreateWithoutGroupInput: NexusGenInputs['UserCreateWithoutGroupInput'];
-  UserCreateWithoutPostsInput: NexusGenInputs['UserCreateWithoutPostsInput'];
-  UserListRelationFilter: NexusGenInputs['UserListRelationFilter'];
-  UserOrderByInput: NexusGenInputs['UserOrderByInput'];
-  UserRelationFilter: NexusGenInputs['UserRelationFilter'];
-  UserScalarWhereInput: NexusGenInputs['UserScalarWhereInput'];
-  UserUpdateInput: NexusGenInputs['UserUpdateInput'];
-  UserUpdateManyMutationInput: NexusGenInputs['UserUpdateManyMutationInput'];
-  UserUpdateManyWithWhereWithoutGroupInput: NexusGenInputs['UserUpdateManyWithWhereWithoutGroupInput'];
-  UserUpdateManyWithoutGroupInput: NexusGenInputs['UserUpdateManyWithoutGroupInput'];
-  UserUpdateOneWithoutCommentsInput: NexusGenInputs['UserUpdateOneWithoutCommentsInput'];
-  UserUpdateOneWithoutPostsInput: NexusGenInputs['UserUpdateOneWithoutPostsInput'];
-  UserUpdateWithWhereUniqueWithoutGroupInput: NexusGenInputs['UserUpdateWithWhereUniqueWithoutGroupInput'];
-  UserUpdateWithoutCommentsInput: NexusGenInputs['UserUpdateWithoutCommentsInput'];
-  UserUpdateWithoutGroupInput: NexusGenInputs['UserUpdateWithoutGroupInput'];
-  UserUpdateWithoutPostsInput: NexusGenInputs['UserUpdateWithoutPostsInput'];
-  UserUpsertWithWhereUniqueWithoutGroupInput: NexusGenInputs['UserUpsertWithWhereUniqueWithoutGroupInput'];
-  UserUpsertWithoutCommentsInput: NexusGenInputs['UserUpsertWithoutCommentsInput'];
-  UserUpsertWithoutPostsInput: NexusGenInputs['UserUpsertWithoutPostsInput'];
-  UserWhereInput: NexusGenInputs['UserWhereInput'];
-  UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
-  CommentDistinctFieldEnum: NexusGenEnums['CommentDistinctFieldEnum'];
-  GroupDistinctFieldEnum: NexusGenEnums['GroupDistinctFieldEnum'];
-  KindEnum: NexusGenEnums['KindEnum'];
-  ListDistinctFieldEnum: NexusGenEnums['ListDistinctFieldEnum'];
-  PostDistinctFieldEnum: NexusGenEnums['PostDistinctFieldEnum'];
-  QueryMode: NexusGenEnums['QueryMode'];
-  Rols: NexusGenEnums['Rols'];
-  SortOrder: NexusGenEnums['SortOrder'];
-  UserDistinctFieldEnum: NexusGenEnums['UserDistinctFieldEnum'];
-  String: NexusGenScalars['String'];
-  Int: NexusGenScalars['Int'];
-  Float: NexusGenScalars['Float'];
-  Boolean: NexusGenScalars['Boolean'];
-  ID: NexusGenScalars['ID'];
-  DateTime: NexusGenScalars['DateTime'];
-  Json: NexusGenScalars['Json'];
+export interface NexusGenInterfaces {
 }
+
+export interface NexusGenUnions {
+}
+
+export type NexusGenRootTypes = NexusGenObjects
+
+export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnums
 
 export interface NexusGenFieldTypes {
   AggregateComment: { // field return type
     avg: NexusGenRootTypes['CommentAvgAggregateOutputType'] | null; // CommentAvgAggregateOutputType
-    count: number; // Int!
+    count: NexusGenRootTypes['CommentCountAggregateOutputType'] | null; // CommentCountAggregateOutputType
     max: NexusGenRootTypes['CommentMaxAggregateOutputType'] | null; // CommentMaxAggregateOutputType
     min: NexusGenRootTypes['CommentMinAggregateOutputType'] | null; // CommentMinAggregateOutputType
     sum: NexusGenRootTypes['CommentSumAggregateOutputType'] | null; // CommentSumAggregateOutputType
   }
   AggregateGroup: { // field return type
     avg: NexusGenRootTypes['GroupAvgAggregateOutputType'] | null; // GroupAvgAggregateOutputType
-    count: number; // Int!
+    count: NexusGenRootTypes['GroupCountAggregateOutputType'] | null; // GroupCountAggregateOutputType
     max: NexusGenRootTypes['GroupMaxAggregateOutputType'] | null; // GroupMaxAggregateOutputType
     min: NexusGenRootTypes['GroupMinAggregateOutputType'] | null; // GroupMinAggregateOutputType
     sum: NexusGenRootTypes['GroupSumAggregateOutputType'] | null; // GroupSumAggregateOutputType
   }
   AggregateList: { // field return type
     avg: NexusGenRootTypes['ListAvgAggregateOutputType'] | null; // ListAvgAggregateOutputType
-    count: number; // Int!
+    count: NexusGenRootTypes['ListCountAggregateOutputType'] | null; // ListCountAggregateOutputType
     max: NexusGenRootTypes['ListMaxAggregateOutputType'] | null; // ListMaxAggregateOutputType
     min: NexusGenRootTypes['ListMinAggregateOutputType'] | null; // ListMinAggregateOutputType
     sum: NexusGenRootTypes['ListSumAggregateOutputType'] | null; // ListSumAggregateOutputType
   }
   AggregatePost: { // field return type
     avg: NexusGenRootTypes['PostAvgAggregateOutputType'] | null; // PostAvgAggregateOutputType
-    count: number; // Int!
+    count: NexusGenRootTypes['PostCountAggregateOutputType'] | null; // PostCountAggregateOutputType
     max: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
     min: NexusGenRootTypes['PostMinAggregateOutputType'] | null; // PostMinAggregateOutputType
     sum: NexusGenRootTypes['PostSumAggregateOutputType'] | null; // PostSumAggregateOutputType
   }
   AggregateUser: { // field return type
     avg: NexusGenRootTypes['UserAvgAggregateOutputType'] | null; // UserAvgAggregateOutputType
-    count: number; // Int!
+    count: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
     max: NexusGenRootTypes['UserMaxAggregateOutputType'] | null; // UserMaxAggregateOutputType
     min: NexusGenRootTypes['UserMinAggregateOutputType'] | null; // UserMinAggregateOutputType
     sum: NexusGenRootTypes['UserSumAggregateOutputType'] | null; // UserSumAggregateOutputType
@@ -1270,15 +1212,30 @@ export interface NexusGenFieldTypes {
     id: number; // Float!
     postId: number; // Float!
   }
-  CommentMaxAggregateOutputType: { // field return type
+  CommentCountAggregateOutputType: { // field return type
+    _all: number; // Int!
     authorId: number | null; // Int
+    contain: number | null; // Int
+    createdAt: number | null; // Int
     id: number; // Int!
     postId: number; // Int!
+    updatedAt: number | null; // Int
+  }
+  CommentMaxAggregateOutputType: { // field return type
+    authorId: number | null; // Int
+    contain: string | null; // String
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    postId: number; // Int!
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
   }
   CommentMinAggregateOutputType: { // field return type
     authorId: number | null; // Int
+    contain: string | null; // String
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     id: number; // Int!
     postId: number; // Int!
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
   }
   CommentSumAggregateOutputType: { // field return type
     authorId: number | null; // Int
@@ -1286,28 +1243,28 @@ export interface NexusGenFieldTypes {
     postId: number; // Int!
   }
   Enum: { // field return type
-    fields: Array<string | null> | null; // [String]
-    name: string | null; // String
+    fields: string[]; // [String!]!
+    name: string; // String!
   }
   Field: { // field return type
-    create: boolean | null; // Boolean
-    editor: boolean | null; // Boolean
-    filter: boolean | null; // Boolean
-    id: string | null; // String
-    isId: boolean | null; // Boolean
-    kind: NexusGenEnums['KindEnum'] | null; // KindEnum
-    list: boolean | null; // Boolean
-    name: string | null; // String
-    order: number | null; // Int
-    read: boolean | null; // Boolean
+    create: boolean; // Boolean!
+    editor: boolean; // Boolean!
+    filter: boolean; // Boolean!
+    id: string; // String!
+    isId: boolean; // Boolean!
+    kind: NexusGenEnums['KindEnum']; // KindEnum!
+    list: boolean; // Boolean!
+    name: string; // String!
+    order: number; // Int!
+    read: boolean; // Boolean!
     relationField: boolean | null; // Boolean
-    required: boolean | null; // Boolean
-    sort: boolean | null; // Boolean
-    title: string | null; // String
-    type: string | null; // String
-    unique: boolean | null; // Boolean
-    update: boolean | null; // Boolean
-    upload: boolean | null; // Boolean
+    required: boolean; // Boolean!
+    sort: boolean; // Boolean!
+    title: string; // String!
+    type: string; // String!
+    unique: boolean; // Boolean!
+    update: boolean; // Boolean!
+    upload: boolean; // Boolean!
   }
   Group: { // field return type
     createdAt: NexusGenScalars['DateTime']; // DateTime!
@@ -1319,11 +1276,24 @@ export interface NexusGenFieldTypes {
   GroupAvgAggregateOutputType: { // field return type
     id: number; // Float!
   }
-  GroupMaxAggregateOutputType: { // field return type
+  GroupCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    createdAt: number | null; // Int
     id: number; // Int!
+    name: number | null; // Int
+    updatedAt: number | null; // Int
+  }
+  GroupMaxAggregateOutputType: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    id: number; // Int!
+    name: string | null; // String
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
   }
   GroupMinAggregateOutputType: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     id: number; // Int!
+    name: string | null; // String
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
   }
   GroupSumAggregateOutputType: { // field return type
     id: number; // Int!
@@ -1341,30 +1311,35 @@ export interface NexusGenFieldTypes {
     id: number; // Float!
     intger: number | null; // Float
   }
-  ListMaxAggregateOutputType: { // field return type
-    flout: Array<number | null> | null; // [Float]
+  ListCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    boolean: number | null; // Int
+    enums: number | null; // Int
+    flout: number | null; // Int
     id: number; // Int!
-    intger: Array<number | null> | null; // [Int]
+    intger: number | null; // Int
+    string: number | null; // Int
+  }
+  ListMaxAggregateOutputType: { // field return type
+    id: number; // Int!
   }
   ListMinAggregateOutputType: { // field return type
-    flout: Array<number | null> | null; // [Float]
     id: number; // Int!
-    intger: Array<number | null> | null; // [Int]
   }
   ListSumAggregateOutputType: { // field return type
-    flout: Array<number | null> | null; // [Float]
+    flout: number | null; // Float
     id: number; // Int!
-    intger: Array<number | null> | null; // [Int]
+    intger: number | null; // Int
   }
   Model: { // field return type
-    create: boolean | null; // Boolean
-    delete: boolean | null; // Boolean
-    displayFields: Array<string | null> | null; // [String]
-    fields: Array<NexusGenRootTypes['Field'] | null> | null; // [Field]
-    id: string | null; // String
-    idField: string | null; // String
-    name: string | null; // String
-    update: boolean | null; // Boolean
+    create: boolean; // Boolean!
+    delete: boolean; // Boolean!
+    displayFields: string[]; // [String!]!
+    fields: NexusGenRootTypes['Field'][]; // [Field!]!
+    id: string; // String!
+    idField: string; // String!
+    name: string; // String!
+    update: boolean; // Boolean!
   }
   Mutation: { // field return type
     createOneComment: NexusGenRootTypes['Comment']; // Comment!
@@ -1372,32 +1347,32 @@ export interface NexusGenFieldTypes {
     createOneList: NexusGenRootTypes['List']; // List!
     createOnePost: NexusGenRootTypes['Post']; // Post!
     createOneUser: NexusGenRootTypes['User']; // User!
-    deleteManyComment: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
-    deleteManyGroup: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
-    deleteManyList: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
-    deleteManyPost: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
-    deleteManyUser: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
+    deleteManyComment: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyGroup: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyList: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyPost: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteOneComment: NexusGenRootTypes['Comment'] | null; // Comment
     deleteOneGroup: NexusGenRootTypes['Group'] | null; // Group
     deleteOneList: NexusGenRootTypes['List'] | null; // List
     deleteOnePost: NexusGenRootTypes['Post'] | null; // Post
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
     login: NexusGenRootTypes['User'] | null; // User
-    logout: boolean | null; // Boolean
+    logout: boolean; // Boolean!
     signup: NexusGenRootTypes['User'] | null; // User
-    updateField: NexusGenRootTypes['Field'] | null; // Field
-    updateManyComment: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
-    updateManyGroup: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
-    updateManyList: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
-    updateManyPost: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
-    updateManyUser: NexusGenRootTypes['BatchPayload'] | null; // BatchPayload
-    updateModel: NexusGenRootTypes['Model'] | null; // Model
+    updateField: NexusGenRootTypes['Field']; // Field!
+    updateManyComment: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyGroup: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyList: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyPost: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateModel: NexusGenRootTypes['Model']; // Model!
     updateOneComment: NexusGenRootTypes['Comment']; // Comment!
     updateOneGroup: NexusGenRootTypes['Group']; // Group!
     updateOneList: NexusGenRootTypes['List']; // List!
     updateOnePost: NexusGenRootTypes['Post']; // Post!
     updateOneUser: NexusGenRootTypes['User']; // User!
-    updatePassword: boolean | null; // Boolean
+    updatePassword: boolean; // Boolean!
     upsertOneComment: NexusGenRootTypes['Comment']; // Comment!
     upsertOneGroup: NexusGenRootTypes['Group']; // Group!
     upsertOneList: NexusGenRootTypes['List']; // List!
@@ -1418,13 +1393,30 @@ export interface NexusGenFieldTypes {
     authorId: number | null; // Float
     id: number; // Float!
   }
+  PostCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    authorId: number | null; // Int
+    createdAt: number | null; // Int
+    id: number; // Int!
+    published: number | null; // Int
+    title: number | null; // Int
+    updatedAt: number | null; // Int
+  }
   PostMaxAggregateOutputType: { // field return type
     authorId: number | null; // Int
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     id: number; // Int!
+    published: boolean | null; // Boolean
+    title: string | null; // String
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
   }
   PostMinAggregateOutputType: { // field return type
     authorId: number | null; // Int
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
     id: number; // Int!
+    published: boolean | null; // Boolean
+    title: string | null; // String
+    updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
   }
   PostSumAggregateOutputType: { // field return type
     authorId: number | null; // Int
@@ -1436,27 +1428,27 @@ export interface NexusGenFieldTypes {
     findFirstList: NexusGenRootTypes['List'] | null; // List
     findFirstPost: NexusGenRootTypes['Post'] | null; // Post
     findFirstUser: NexusGenRootTypes['User'] | null; // User
-    findManyComment: NexusGenRootTypes['Comment'][] | null; // [Comment!]
-    findManyCommentCount: number | null; // Int
-    findManyGroup: NexusGenRootTypes['Group'][] | null; // [Group!]
-    findManyGroupCount: number | null; // Int
-    findManyList: NexusGenRootTypes['List'][] | null; // [List!]
-    findManyListCount: number | null; // Int
-    findManyPost: NexusGenRootTypes['Post'][] | null; // [Post!]
-    findManyPostCount: number | null; // Int
-    findManyUser: NexusGenRootTypes['User'][] | null; // [User!]
-    findManyUserCount: number | null; // Int
-    findUniqueComment: NexusGenRootTypes['Comment'] | null; // Comment
-    findUniqueGroup: NexusGenRootTypes['Group'] | null; // Group
-    findUniqueList: NexusGenRootTypes['List'] | null; // List
-    findUniquePost: NexusGenRootTypes['Post'] | null; // Post
-    findUniqueUser: NexusGenRootTypes['User'] | null; // User
-    getSchema: NexusGenRootTypes['Schema'] | null; // Schema
+    findManyComment: NexusGenRootTypes['Comment'][]; // [Comment!]!
+    findManyCommentCount: number; // Int!
+    findManyGroup: NexusGenRootTypes['Group'][]; // [Group!]!
+    findManyGroupCount: number; // Int!
+    findManyList: NexusGenRootTypes['List'][]; // [List!]!
+    findManyListCount: number; // Int!
+    findManyPost: NexusGenRootTypes['Post'][]; // [Post!]!
+    findManyPostCount: number; // Int!
+    findManyUser: NexusGenRootTypes['User'][]; // [User!]!
+    findManyUserCount: number; // Int!
+    findUniqueComment: NexusGenRootTypes['Comment']; // Comment!
+    findUniqueGroup: NexusGenRootTypes['Group']; // Group!
+    findUniqueList: NexusGenRootTypes['List']; // List!
+    findUniquePost: NexusGenRootTypes['Post']; // Post!
+    findUniqueUser: NexusGenRootTypes['User']; // User!
+    getSchema: NexusGenRootTypes['Schema']; // Schema!
     me: NexusGenRootTypes['User'] | null; // User
   }
   Schema: { // field return type
-    enums: Array<NexusGenRootTypes['Enum'] | null> | null; // [Enum]
-    models: Array<NexusGenRootTypes['Model'] | null> | null; // [Model]
+    enums: NexusGenRootTypes['Enum'][]; // [Enum!]!
+    models: NexusGenRootTypes['Model'][]; // [Model!]!
   }
   User: { // field return type
     comments: NexusGenRootTypes['Comment'][]; // [Comment!]!
@@ -1473,13 +1465,30 @@ export interface NexusGenFieldTypes {
     groupId: number | null; // Float
     id: number; // Float!
   }
-  UserMaxAggregateOutputType: { // field return type
+  UserCountAggregateOutputType: { // field return type
+    _all: number; // Int!
+    createdAt: number | null; // Int
+    email: number | null; // Int
     groupId: number | null; // Int
     id: number; // Int!
+    name: number | null; // Int
+    password: number | null; // Int
+  }
+  UserMaxAggregateOutputType: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    email: string | null; // String
+    groupId: number | null; // Int
+    id: number; // Int!
+    name: string | null; // String
+    password: string | null; // String
   }
   UserMinAggregateOutputType: { // field return type
+    createdAt: NexusGenScalars['DateTime'] | null; // DateTime
+    email: string | null; // String
     groupId: number | null; // Int
     id: number; // Int!
+    name: string | null; // String
+    password: string | null; // String
   }
   UserSumAggregateOutputType: { // field return type
     groupId: number | null; // Int
@@ -1490,35 +1499,35 @@ export interface NexusGenFieldTypes {
 export interface NexusGenFieldTypeNames {
   AggregateComment: { // field return type name
     avg: 'CommentAvgAggregateOutputType'
-    count: 'Int'
+    count: 'CommentCountAggregateOutputType'
     max: 'CommentMaxAggregateOutputType'
     min: 'CommentMinAggregateOutputType'
     sum: 'CommentSumAggregateOutputType'
   }
   AggregateGroup: { // field return type name
     avg: 'GroupAvgAggregateOutputType'
-    count: 'Int'
+    count: 'GroupCountAggregateOutputType'
     max: 'GroupMaxAggregateOutputType'
     min: 'GroupMinAggregateOutputType'
     sum: 'GroupSumAggregateOutputType'
   }
   AggregateList: { // field return type name
     avg: 'ListAvgAggregateOutputType'
-    count: 'Int'
+    count: 'ListCountAggregateOutputType'
     max: 'ListMaxAggregateOutputType'
     min: 'ListMinAggregateOutputType'
     sum: 'ListSumAggregateOutputType'
   }
   AggregatePost: { // field return type name
     avg: 'PostAvgAggregateOutputType'
-    count: 'Int'
+    count: 'PostCountAggregateOutputType'
     max: 'PostMaxAggregateOutputType'
     min: 'PostMinAggregateOutputType'
     sum: 'PostSumAggregateOutputType'
   }
   AggregateUser: { // field return type name
     avg: 'UserAvgAggregateOutputType'
-    count: 'Int'
+    count: 'UserCountAggregateOutputType'
     max: 'UserMaxAggregateOutputType'
     min: 'UserMinAggregateOutputType'
     sum: 'UserSumAggregateOutputType'
@@ -1541,15 +1550,30 @@ export interface NexusGenFieldTypeNames {
     id: 'Float'
     postId: 'Float'
   }
-  CommentMaxAggregateOutputType: { // field return type name
+  CommentCountAggregateOutputType: { // field return type name
+    _all: 'Int'
     authorId: 'Int'
+    contain: 'Int'
+    createdAt: 'Int'
     id: 'Int'
     postId: 'Int'
+    updatedAt: 'Int'
+  }
+  CommentMaxAggregateOutputType: { // field return type name
+    authorId: 'Int'
+    contain: 'String'
+    createdAt: 'DateTime'
+    id: 'Int'
+    postId: 'Int'
+    updatedAt: 'DateTime'
   }
   CommentMinAggregateOutputType: { // field return type name
     authorId: 'Int'
+    contain: 'String'
+    createdAt: 'DateTime'
     id: 'Int'
     postId: 'Int'
+    updatedAt: 'DateTime'
   }
   CommentSumAggregateOutputType: { // field return type name
     authorId: 'Int'
@@ -1590,11 +1614,24 @@ export interface NexusGenFieldTypeNames {
   GroupAvgAggregateOutputType: { // field return type name
     id: 'Float'
   }
-  GroupMaxAggregateOutputType: { // field return type name
+  GroupCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    createdAt: 'Int'
     id: 'Int'
+    name: 'Int'
+    updatedAt: 'Int'
+  }
+  GroupMaxAggregateOutputType: { // field return type name
+    createdAt: 'DateTime'
+    id: 'Int'
+    name: 'String'
+    updatedAt: 'DateTime'
   }
   GroupMinAggregateOutputType: { // field return type name
+    createdAt: 'DateTime'
     id: 'Int'
+    name: 'String'
+    updatedAt: 'DateTime'
   }
   GroupSumAggregateOutputType: { // field return type name
     id: 'Int'
@@ -1612,15 +1649,20 @@ export interface NexusGenFieldTypeNames {
     id: 'Float'
     intger: 'Float'
   }
-  ListMaxAggregateOutputType: { // field return type name
-    flout: 'Float'
+  ListCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    boolean: 'Int'
+    enums: 'Int'
+    flout: 'Int'
     id: 'Int'
     intger: 'Int'
+    string: 'Int'
+  }
+  ListMaxAggregateOutputType: { // field return type name
+    id: 'Int'
   }
   ListMinAggregateOutputType: { // field return type name
-    flout: 'Float'
     id: 'Int'
-    intger: 'Int'
   }
   ListSumAggregateOutputType: { // field return type name
     flout: 'Float'
@@ -1689,13 +1731,30 @@ export interface NexusGenFieldTypeNames {
     authorId: 'Float'
     id: 'Float'
   }
+  PostCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    authorId: 'Int'
+    createdAt: 'Int'
+    id: 'Int'
+    published: 'Int'
+    title: 'Int'
+    updatedAt: 'Int'
+  }
   PostMaxAggregateOutputType: { // field return type name
     authorId: 'Int'
+    createdAt: 'DateTime'
     id: 'Int'
+    published: 'Boolean'
+    title: 'String'
+    updatedAt: 'DateTime'
   }
   PostMinAggregateOutputType: { // field return type name
     authorId: 'Int'
+    createdAt: 'DateTime'
     id: 'Int'
+    published: 'Boolean'
+    title: 'String'
+    updatedAt: 'DateTime'
   }
   PostSumAggregateOutputType: { // field return type name
     authorId: 'Int'
@@ -1744,13 +1803,30 @@ export interface NexusGenFieldTypeNames {
     groupId: 'Float'
     id: 'Float'
   }
-  UserMaxAggregateOutputType: { // field return type name
+  UserCountAggregateOutputType: { // field return type name
+    _all: 'Int'
+    createdAt: 'Int'
+    email: 'Int'
     groupId: 'Int'
     id: 'Int'
+    name: 'Int'
+    password: 'Int'
+  }
+  UserMaxAggregateOutputType: { // field return type name
+    createdAt: 'DateTime'
+    email: 'String'
+    groupId: 'Int'
+    id: 'Int'
+    name: 'String'
+    password: 'String'
   }
   UserMinAggregateOutputType: { // field return type name
+    createdAt: 'DateTime'
+    email: 'String'
     groupId: 'Int'
     id: 'Int'
+    name: 'String'
+    password: 'String'
   }
   UserSumAggregateOutputType: { // field return type name
     groupId: 'Int'
@@ -1762,7 +1838,7 @@ export interface NexusGenArgTypes {
   Group: {
     users: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      distinct?: NexusGenEnums['UserDistinctFieldEnum'] | null; // UserDistinctFieldEnum
+      distinct?: NexusGenEnums['UserScalarFieldEnum'] | null; // UserScalarFieldEnum
       orderBy?: NexusGenInputs['UserOrderByInput'] | null; // UserOrderByInput
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1825,7 +1901,7 @@ export interface NexusGenArgTypes {
       password: string; // String!
     }
     updateField: { // args
-      data?: NexusGenInputs['UpdateFieldInput'] | null; // UpdateFieldInput
+      data: NexusGenInputs['UpdateFieldInput']; // UpdateFieldInput!
       id: string; // String!
       modelId: string; // String!
     }
@@ -1850,7 +1926,7 @@ export interface NexusGenArgTypes {
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
     updateModel: { // args
-      data?: NexusGenInputs['UpdateModelInput'] | null; // UpdateModelInput
+      data: NexusGenInputs['UpdateModelInput']; // UpdateModelInput!
       id: string; // String!
     }
     updateOneComment: { // args
@@ -1906,7 +1982,7 @@ export interface NexusGenArgTypes {
   Post: {
     comments: { // args
       cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      distinct?: NexusGenEnums['CommentDistinctFieldEnum'] | null; // CommentDistinctFieldEnum
+      distinct?: NexusGenEnums['CommentScalarFieldEnum'] | null; // CommentScalarFieldEnum
       orderBy?: NexusGenInputs['CommentOrderByInput'] | null; // CommentOrderByInput
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1916,7 +1992,7 @@ export interface NexusGenArgTypes {
   Query: {
     findFirstComment: { // args
       cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      distinct?: NexusGenEnums['CommentDistinctFieldEnum'] | null; // CommentDistinctFieldEnum
+      distinct?: NexusGenEnums['CommentScalarFieldEnum'] | null; // CommentScalarFieldEnum
       orderBy?: Array<NexusGenInputs['CommentOrderByInput'] | null> | null; // [CommentOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1924,7 +2000,7 @@ export interface NexusGenArgTypes {
     }
     findFirstGroup: { // args
       cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      distinct?: NexusGenEnums['GroupDistinctFieldEnum'] | null; // GroupDistinctFieldEnum
+      distinct?: NexusGenEnums['GroupScalarFieldEnum'] | null; // GroupScalarFieldEnum
       orderBy?: Array<NexusGenInputs['GroupOrderByInput'] | null> | null; // [GroupOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1932,7 +2008,7 @@ export interface NexusGenArgTypes {
     }
     findFirstList: { // args
       cursor?: NexusGenInputs['ListWhereUniqueInput'] | null; // ListWhereUniqueInput
-      distinct?: NexusGenEnums['ListDistinctFieldEnum'] | null; // ListDistinctFieldEnum
+      distinct?: NexusGenEnums['ListScalarFieldEnum'] | null; // ListScalarFieldEnum
       orderBy?: Array<NexusGenInputs['ListOrderByInput'] | null> | null; // [ListOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1940,7 +2016,7 @@ export interface NexusGenArgTypes {
     }
     findFirstPost: { // args
       cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      distinct?: NexusGenEnums['PostDistinctFieldEnum'] | null; // PostDistinctFieldEnum
+      distinct?: NexusGenEnums['PostScalarFieldEnum'] | null; // PostScalarFieldEnum
       orderBy?: Array<NexusGenInputs['PostOrderByInput'] | null> | null; // [PostOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1948,7 +2024,7 @@ export interface NexusGenArgTypes {
     }
     findFirstUser: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      distinct?: NexusGenEnums['UserDistinctFieldEnum'] | null; // UserDistinctFieldEnum
+      distinct?: NexusGenEnums['UserScalarFieldEnum'] | null; // UserScalarFieldEnum
       orderBy?: Array<NexusGenInputs['UserOrderByInput'] | null> | null; // [UserOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1956,7 +2032,7 @@ export interface NexusGenArgTypes {
     }
     findManyComment: { // args
       cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      distinct?: NexusGenEnums['CommentDistinctFieldEnum'] | null; // CommentDistinctFieldEnum
+      distinct?: NexusGenEnums['CommentScalarFieldEnum'] | null; // CommentScalarFieldEnum
       orderBy?: Array<NexusGenInputs['CommentOrderByInput'] | null> | null; // [CommentOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1964,7 +2040,7 @@ export interface NexusGenArgTypes {
     }
     findManyCommentCount: { // args
       cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      distinct?: NexusGenEnums['CommentDistinctFieldEnum'] | null; // CommentDistinctFieldEnum
+      distinct?: NexusGenEnums['CommentScalarFieldEnum'] | null; // CommentScalarFieldEnum
       orderBy?: Array<NexusGenInputs['CommentOrderByInput'] | null> | null; // [CommentOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1972,7 +2048,7 @@ export interface NexusGenArgTypes {
     }
     findManyGroup: { // args
       cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      distinct?: NexusGenEnums['GroupDistinctFieldEnum'] | null; // GroupDistinctFieldEnum
+      distinct?: NexusGenEnums['GroupScalarFieldEnum'] | null; // GroupScalarFieldEnum
       orderBy?: Array<NexusGenInputs['GroupOrderByInput'] | null> | null; // [GroupOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1980,7 +2056,7 @@ export interface NexusGenArgTypes {
     }
     findManyGroupCount: { // args
       cursor?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
-      distinct?: NexusGenEnums['GroupDistinctFieldEnum'] | null; // GroupDistinctFieldEnum
+      distinct?: NexusGenEnums['GroupScalarFieldEnum'] | null; // GroupScalarFieldEnum
       orderBy?: Array<NexusGenInputs['GroupOrderByInput'] | null> | null; // [GroupOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1988,7 +2064,7 @@ export interface NexusGenArgTypes {
     }
     findManyList: { // args
       cursor?: NexusGenInputs['ListWhereUniqueInput'] | null; // ListWhereUniqueInput
-      distinct?: NexusGenEnums['ListDistinctFieldEnum'] | null; // ListDistinctFieldEnum
+      distinct?: NexusGenEnums['ListScalarFieldEnum'] | null; // ListScalarFieldEnum
       orderBy?: Array<NexusGenInputs['ListOrderByInput'] | null> | null; // [ListOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -1996,7 +2072,7 @@ export interface NexusGenArgTypes {
     }
     findManyListCount: { // args
       cursor?: NexusGenInputs['ListWhereUniqueInput'] | null; // ListWhereUniqueInput
-      distinct?: NexusGenEnums['ListDistinctFieldEnum'] | null; // ListDistinctFieldEnum
+      distinct?: NexusGenEnums['ListScalarFieldEnum'] | null; // ListScalarFieldEnum
       orderBy?: Array<NexusGenInputs['ListOrderByInput'] | null> | null; // [ListOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -2004,7 +2080,7 @@ export interface NexusGenArgTypes {
     }
     findManyPost: { // args
       cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      distinct?: NexusGenEnums['PostDistinctFieldEnum'] | null; // PostDistinctFieldEnum
+      distinct?: NexusGenEnums['PostScalarFieldEnum'] | null; // PostScalarFieldEnum
       orderBy?: Array<NexusGenInputs['PostOrderByInput'] | null> | null; // [PostOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -2012,7 +2088,7 @@ export interface NexusGenArgTypes {
     }
     findManyPostCount: { // args
       cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      distinct?: NexusGenEnums['PostDistinctFieldEnum'] | null; // PostDistinctFieldEnum
+      distinct?: NexusGenEnums['PostScalarFieldEnum'] | null; // PostScalarFieldEnum
       orderBy?: Array<NexusGenInputs['PostOrderByInput'] | null> | null; // [PostOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -2020,7 +2096,7 @@ export interface NexusGenArgTypes {
     }
     findManyUser: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      distinct?: NexusGenEnums['UserDistinctFieldEnum'] | null; // UserDistinctFieldEnum
+      distinct?: NexusGenEnums['UserScalarFieldEnum'] | null; // UserScalarFieldEnum
       orderBy?: Array<NexusGenInputs['UserOrderByInput'] | null> | null; // [UserOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -2028,32 +2104,32 @@ export interface NexusGenArgTypes {
     }
     findManyUserCount: { // args
       cursor?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
-      distinct?: NexusGenEnums['UserDistinctFieldEnum'] | null; // UserDistinctFieldEnum
+      distinct?: NexusGenEnums['UserScalarFieldEnum'] | null; // UserScalarFieldEnum
       orderBy?: Array<NexusGenInputs['UserOrderByInput'] | null> | null; // [UserOrderByInput]
       skip?: number | null; // Int
       take?: number | null; // Int
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
     findUniqueComment: { // args
-      where: NexusGenInputs['CommentWhereUniqueInput']; // CommentWhereUniqueInput!
+      where?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
     }
     findUniqueGroup: { // args
-      where: NexusGenInputs['GroupWhereUniqueInput']; // GroupWhereUniqueInput!
+      where?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
     }
     findUniqueList: { // args
-      where: NexusGenInputs['ListWhereUniqueInput']; // ListWhereUniqueInput!
+      where?: NexusGenInputs['ListWhereUniqueInput'] | null; // ListWhereUniqueInput
     }
     findUniquePost: { // args
-      where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+      where?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
     }
     findUniqueUser: { // args
-      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+      where?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     }
   }
   User: {
     comments: { // args
       cursor?: NexusGenInputs['CommentWhereUniqueInput'] | null; // CommentWhereUniqueInput
-      distinct?: NexusGenEnums['CommentDistinctFieldEnum'] | null; // CommentDistinctFieldEnum
+      distinct?: NexusGenEnums['CommentScalarFieldEnum'] | null; // CommentScalarFieldEnum
       orderBy?: NexusGenInputs['CommentOrderByInput'] | null; // CommentOrderByInput
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -2061,7 +2137,7 @@ export interface NexusGenArgTypes {
     }
     posts: { // args
       cursor?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
-      distinct?: NexusGenEnums['PostDistinctFieldEnum'] | null; // PostDistinctFieldEnum
+      distinct?: NexusGenEnums['PostScalarFieldEnum'] | null; // PostScalarFieldEnum
       orderBy?: NexusGenInputs['PostOrderByInput'] | null; // PostOrderByInput
       skip?: number | null; // Int
       take?: number | null; // Int
@@ -2070,22 +2146,35 @@ export interface NexusGenArgTypes {
   }
 }
 
-export interface NexusGenAbstractResolveReturnTypes {
+export interface NexusGenAbstractTypeMembers {
 }
 
-export interface NexusGenInheritedFields {}
+export interface NexusGenTypeInterfaces {
+}
 
-export type NexusGenObjectNames = "AggregateComment" | "AggregateGroup" | "AggregateList" | "AggregatePost" | "AggregateUser" | "BatchPayload" | "Comment" | "CommentAvgAggregateOutputType" | "CommentMaxAggregateOutputType" | "CommentMinAggregateOutputType" | "CommentSumAggregateOutputType" | "Enum" | "Field" | "Group" | "GroupAvgAggregateOutputType" | "GroupMaxAggregateOutputType" | "GroupMinAggregateOutputType" | "GroupSumAggregateOutputType" | "List" | "ListAvgAggregateOutputType" | "ListMaxAggregateOutputType" | "ListMinAggregateOutputType" | "ListSumAggregateOutputType" | "Model" | "Mutation" | "Post" | "PostAvgAggregateOutputType" | "PostMaxAggregateOutputType" | "PostMinAggregateOutputType" | "PostSumAggregateOutputType" | "Query" | "Schema" | "User" | "UserAvgAggregateOutputType" | "UserMaxAggregateOutputType" | "UserMinAggregateOutputType" | "UserSumAggregateOutputType";
+export type NexusGenObjectNames = keyof NexusGenObjects;
 
-export type NexusGenInputNames = "BoolFieldUpdateOperationsInput" | "BoolFilter" | "BoolNullableListFilter" | "CommentCreateInput" | "CommentCreateManyWithoutAuthorInput" | "CommentCreateManyWithoutPostInput" | "CommentCreateOrConnectWithoutauthorInput" | "CommentCreateOrConnectWithoutpostInput" | "CommentCreateWithoutAuthorInput" | "CommentCreateWithoutPostInput" | "CommentListRelationFilter" | "CommentOrderByInput" | "CommentScalarWhereInput" | "CommentUpdateInput" | "CommentUpdateManyMutationInput" | "CommentUpdateManyWithWhereWithoutAuthorInput" | "CommentUpdateManyWithWhereWithoutPostInput" | "CommentUpdateManyWithoutAuthorInput" | "CommentUpdateManyWithoutPostInput" | "CommentUpdateWithWhereUniqueWithoutAuthorInput" | "CommentUpdateWithWhereUniqueWithoutPostInput" | "CommentUpdateWithoutAuthorInput" | "CommentUpdateWithoutPostInput" | "CommentUpsertWithWhereUniqueWithoutAuthorInput" | "CommentUpsertWithWhereUniqueWithoutPostInput" | "CommentWhereInput" | "CommentWhereUniqueInput" | "DateTimeFieldUpdateOperationsInput" | "DateTimeFilter" | "EnumRolsNullableListFilter" | "FloatNullableListFilter" | "GroupCreateInput" | "GroupCreateOneWithoutUsersInput" | "GroupCreateOrConnectWithoutusersInput" | "GroupCreateWithoutUsersInput" | "GroupOrderByInput" | "GroupRelationFilter" | "GroupUpdateInput" | "GroupUpdateManyMutationInput" | "GroupUpdateOneWithoutUsersInput" | "GroupUpdateWithoutUsersInput" | "GroupUpsertWithoutUsersInput" | "GroupWhereInput" | "GroupWhereUniqueInput" | "IntFilter" | "IntNullableFilter" | "IntNullableListFilter" | "ListCreateInput" | "ListCreatebooleanInput" | "ListCreateenumsInput" | "ListCreatefloutInput" | "ListCreateintgerInput" | "ListCreatestringInput" | "ListOrderByInput" | "ListUpdateInput" | "ListUpdateManyMutationInput" | "ListUpdatebooleanInput" | "ListUpdateenumsInput" | "ListUpdatefloutInput" | "ListUpdateintgerInput" | "ListUpdatestringInput" | "ListWhereInput" | "ListWhereUniqueInput" | "NestedBoolFilter" | "NestedDateTimeFilter" | "NestedIntFilter" | "NestedIntNullableFilter" | "NestedStringFilter" | "NestedStringNullableFilter" | "NullableStringFieldUpdateOperationsInput" | "PostCreateInput" | "PostCreateManyWithoutAuthorInput" | "PostCreateOneWithoutCommentsInput" | "PostCreateOrConnectWithoutauthorInput" | "PostCreateOrConnectWithoutcommentsInput" | "PostCreateWithoutAuthorInput" | "PostCreateWithoutCommentsInput" | "PostListRelationFilter" | "PostOrderByInput" | "PostRelationFilter" | "PostScalarWhereInput" | "PostUpdateInput" | "PostUpdateManyMutationInput" | "PostUpdateManyWithWhereWithoutAuthorInput" | "PostUpdateManyWithoutAuthorInput" | "PostUpdateOneRequiredWithoutCommentsInput" | "PostUpdateWithWhereUniqueWithoutAuthorInput" | "PostUpdateWithoutAuthorInput" | "PostUpdateWithoutCommentsInput" | "PostUpsertWithWhereUniqueWithoutAuthorInput" | "PostUpsertWithoutCommentsInput" | "PostWhereInput" | "PostWhereUniqueInput" | "StringFieldUpdateOperationsInput" | "StringFilter" | "StringNullableFilter" | "StringNullableListFilter" | "UpdateFieldInput" | "UpdateModelInput" | "UserCreateInput" | "UserCreateManyWithoutGroupInput" | "UserCreateOneWithoutCommentsInput" | "UserCreateOneWithoutPostsInput" | "UserCreateOrConnectWithoutcommentsInput" | "UserCreateOrConnectWithoutgroupInput" | "UserCreateOrConnectWithoutpostsInput" | "UserCreateWithoutCommentsInput" | "UserCreateWithoutGroupInput" | "UserCreateWithoutPostsInput" | "UserListRelationFilter" | "UserOrderByInput" | "UserRelationFilter" | "UserScalarWhereInput" | "UserUpdateInput" | "UserUpdateManyMutationInput" | "UserUpdateManyWithWhereWithoutGroupInput" | "UserUpdateManyWithoutGroupInput" | "UserUpdateOneWithoutCommentsInput" | "UserUpdateOneWithoutPostsInput" | "UserUpdateWithWhereUniqueWithoutGroupInput" | "UserUpdateWithoutCommentsInput" | "UserUpdateWithoutGroupInput" | "UserUpdateWithoutPostsInput" | "UserUpsertWithWhereUniqueWithoutGroupInput" | "UserUpsertWithoutCommentsInput" | "UserUpsertWithoutPostsInput" | "UserWhereInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = keyof NexusGenInputs;
 
-export type NexusGenEnumNames = "CommentDistinctFieldEnum" | "GroupDistinctFieldEnum" | "KindEnum" | "ListDistinctFieldEnum" | "PostDistinctFieldEnum" | "QueryMode" | "Rols" | "SortOrder" | "UserDistinctFieldEnum";
+export type NexusGenEnumNames = keyof NexusGenEnums;
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "DateTime" | "Float" | "ID" | "Int" | "Json" | "String";
+export type NexusGenScalarNames = keyof NexusGenScalars;
 
 export type NexusGenUnionNames = never;
+
+export type NexusGenObjectsUsingAbstractStrategyIsTypeOf = never;
+
+export type NexusGenAbstractsUsingStrategyResolveType = never;
+
+export type NexusGenFeaturesConfig = {
+  abstractTypeStrategies: {
+    isTypeOf: false
+    resolveType: true
+    __typename: false
+  }
+}
 
 export interface NexusGenTypes {
   context: Context.Context;
@@ -2095,7 +2184,7 @@ export interface NexusGenTypes {
   fieldTypes: NexusGenFieldTypes;
   fieldTypeNames: NexusGenFieldTypeNames;
   allTypes: NexusGenAllTypes;
-  inheritedFields: NexusGenInheritedFields;
+  typeInterfaces: NexusGenTypeInterfaces;
   objectNames: NexusGenObjectNames;
   inputNames: NexusGenInputNames;
   enumNames: NexusGenEnumNames;
@@ -2106,7 +2195,10 @@ export interface NexusGenTypes {
   allOutputTypes: NexusGenTypes['objectNames'] | NexusGenTypes['enumNames'] | NexusGenTypes['unionNames'] | NexusGenTypes['interfaceNames'] | NexusGenTypes['scalarNames'];
   allNamedTypes: NexusGenTypes['allInputTypes'] | NexusGenTypes['allOutputTypes']
   abstractTypes: NexusGenTypes['interfaceNames'] | NexusGenTypes['unionNames'];
-  abstractResolveReturn: NexusGenAbstractResolveReturnTypes;
+  abstractTypeMembers: NexusGenAbstractTypeMembers;
+  objectsUsingAbstractStrategyIsTypeOf: NexusGenObjectsUsingAbstractStrategyIsTypeOf;
+  abstractsUsingStrategyResolveType: NexusGenAbstractsUsingStrategyResolveType;
+  features: NexusGenFeaturesConfig;
 }
 
 
@@ -2114,7 +2206,71 @@ declare global {
   interface NexusGenPluginTypeConfig<TypeName extends string> {
   }
   interface NexusGenPluginFieldConfig<TypeName extends string, FieldName extends string> {
+    /**
+     * Whether the type can be null
+     * @default (depends on whether nullability is configured in type or schema)
+     * @see declarativeWrappingPlugin
+     */
+    nullable?: boolean
+    /**
+     * Whether the type is list of values, or just a single value.
+     * If list is true, we assume the type is a list. If list is an array,
+     * we'll assume that it's a list with the depth. The boolean indicates whether
+     * the type is required (non-null), where true = nonNull, false = nullable.
+     * @see declarativeWrappingPlugin
+     */
+    list?: true | boolean[]
+    /**
+     * Whether the type should be non null, `required: true` = `nullable: false`
+     * @default (depends on whether nullability is configured in type or schema)
+     * @see declarativeWrappingPlugin
+     */
+    required?: boolean
+  }
+  interface NexusGenPluginInputFieldConfig<TypeName extends string, FieldName extends string> {
+    /**
+     * Whether the type can be null
+     * @default (depends on whether nullability is configured in type or schema)
+     * @see declarativeWrappingPlugin
+     */
+    nullable?: boolean
+    /**
+     * Whether the type is list of values, or just a single value.
+     * If list is true, we assume the type is a list. If list is an array,
+     * we'll assume that it's a list with the depth. The boolean indicates whether
+     * the type is required (non-null), where true = nonNull, false = nullable.
+     * @see declarativeWrappingPlugin
+     */
+    list?: true | boolean[]
+    /**
+     * Whether the type should be non null, `required: true` = `nullable: false`
+     * @default (depends on whether nullability is configured in type or schema)
+     * @see declarativeWrappingPlugin
+     */
+    required?: boolean
   }
   interface NexusGenPluginSchemaConfig {
+  }
+  interface NexusGenPluginArgConfig {
+    /**
+     * Whether the type can be null
+     * @default (depends on whether nullability is configured in type or schema)
+     * @see declarativeWrappingPlugin
+     */
+    nullable?: boolean
+    /**
+     * Whether the type is list of values, or just a single value.
+     * If list is true, we assume the type is a list. If list is an array,
+     * we'll assume that it's a list with the depth. The boolean indicates whether
+     * the type is required (non-null), where true = nonNull, false = nullable.
+     * @see declarativeWrappingPlugin
+     */
+    list?: true | boolean[]
+    /**
+     * Whether the type should be non null, `required: true` = `nullable: false`
+     * @default (depends on whether nullability is configured in type or schema)
+     * @see declarativeWrappingPlugin
+     */
+    required?: boolean
   }
 }
