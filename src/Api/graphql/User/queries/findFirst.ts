@@ -1,4 +1,4 @@
-import { queryField, arg, list } from '@nexus/schema'
+import { queryField, arg, list } from 'nexus'
 
 export const UserFindFirstQuery = queryField('findFirstUser', {
   type: 'User',

@@ -1,4 +1,4 @@
-import { queryField, arg, list } from '@nexus/schema'
+import { queryField, arg, list } from 'nexus'
 
 export const GroupFindFirstQuery = queryField('findFirstGroup', {
   type: 'Group',

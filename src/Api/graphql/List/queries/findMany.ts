@@ -1,4 +1,4 @@
-import { queryField, arg, nonNull, list } from '@nexus/schema'
+import { queryField, arg, nonNull, list } from 'nexus'
 
 export const ListFindManyQuery = queryField('findManyList', {
   type: nonNull(list(nonNull('List'))),

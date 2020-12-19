@@ -1,4 +1,4 @@
-import { mutationField, arg, nonNull } from '@nexus/schema'
+import { mutationField, arg, nonNull } from 'nexus'
 
 export const CommentUpdateOneMutation = mutationField('updateOneComment', {
   type: nonNull('Comment'),

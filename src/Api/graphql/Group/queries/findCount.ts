@@ -1,4 +1,4 @@
-import { queryField, arg, nonNull, list } from '@nexus/schema'
+import { queryField, arg, nonNull, list } from 'nexus'
 
 export const GroupFindCountQuery = queryField('findManyGroupCount', {
   type: nonNull('Int'),

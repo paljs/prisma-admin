@@ -1,4 +1,4 @@
-import { extendType, nonNull } from '@nexus/schema'
+import { extendType, nonNull } from 'nexus'
 import { compare, hash } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 import { JWT_SECRET } from '../utils'

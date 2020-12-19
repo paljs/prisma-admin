@@ -1013,11 +1013,11 @@ type Query {
   findManyPostCount(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Int!
   findManyUser(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User!]!
   findManyUserCount(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): Int!
-  findUniqueComment(where: CommentWhereUniqueInput): Comment!
-  findUniqueGroup(where: GroupWhereUniqueInput): Group!
-  findUniqueList(where: ListWhereUniqueInput): List!
-  findUniquePost(where: PostWhereUniqueInput): Post!
-  findUniqueUser(where: UserWhereUniqueInput): User!
+  findUniqueComment(where: CommentWhereUniqueInput): Comment
+  findUniqueGroup(where: GroupWhereUniqueInput): Group
+  findUniqueList(where: ListWhereUniqueInput): List
+  findUniquePost(where: PostWhereUniqueInput): Post
+  findUniqueUser(where: UserWhereUniqueInput): User
   getSchema: Schema!
   me: User
 }

@@ -1,7 +1,7 @@
-import { queryField, arg, nonNull } from '@nexus/schema'
+import { queryField, arg, nonNull } from 'nexus'
 
 export const ListFindUniqueQuery = queryField('findUniqueList', {
-  type: nonNull('List'),
+  type: 'List',
   args: {
     where: arg({
       type: 'ListWhereUniqueInput',

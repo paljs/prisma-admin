@@ -1,4 +1,4 @@
-import { mutationField, arg, nonNull } from '@nexus/schema'
+import { mutationField, arg, nonNull } from 'nexus'
 
 export const ListUpsertOneMutation = mutationField('upsertOneList', {
   type: nonNull('List'),

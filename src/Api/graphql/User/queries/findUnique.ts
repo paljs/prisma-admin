@@ -1,7 +1,7 @@
-import { queryField, arg, nonNull } from '@nexus/schema'
+import { queryField, arg, nonNull } from 'nexus'
 
 export const UserFindUniqueQuery = queryField('findUniqueUser', {
-  type: nonNull('User'),
+  type: 'User',
   args: {
     where: arg({
       type: 'UserWhereUniqueInput',

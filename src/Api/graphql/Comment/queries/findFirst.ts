@@ -1,4 +1,4 @@
-import { queryField, arg, list } from '@nexus/schema'
+import { queryField, arg, list } from 'nexus'
 
 export const CommentFindFirstQuery = queryField('findFirstComment', {
   type: 'Comment',
