@@ -57,6 +57,10 @@ input BoolFilter {
 
 input BoolNullableListFilter {
   equals: [Boolean]
+  has: Boolean
+  hasEvery: [Boolean]
+  hasSome: [Boolean]
+  isEmpty: Boolean
 }
 
 type Comment {
@@ -72,59 +76,59 @@ type Comment {
 
 type CommentAvgAggregateOutputType {
   authorId: Float
-  id: Float!
-  postId: Float!
+  id: Float
+  postId: Float
 }
 
 type CommentCountAggregateOutputType {
-  _all: Int!
+  _all: Int
   authorId: Int
   contain: Int
   createdAt: Int
-  id: Int!
-  postId: Int!
+  id: Int
+  postId: Int
   updatedAt: Int
 }
 
 input CommentCreateInput {
-  author: UserCreateOneWithoutCommentsInput
+  author: UserCreateNestedOneWithoutCommentsInput
   contain: String!
   createdAt: DateTime
-  post: PostCreateOneWithoutCommentsInput!
+  post: PostCreateNestedOneWithoutCommentsInput!
   updatedAt: DateTime
 }
 
-input CommentCreateManyWithoutAuthorInput {
+input CommentCreateNestedManyWithoutAuthorInput {
   connect: [CommentWhereUniqueInput]
   connectOrCreate: [CommentCreateOrConnectWithoutauthorInput]
   create: [CommentCreateWithoutAuthorInput]
 }
 
-input CommentCreateManyWithoutPostInput {
+input CommentCreateNestedManyWithoutPostInput {
   connect: [CommentWhereUniqueInput]
   connectOrCreate: [CommentCreateOrConnectWithoutpostInput]
   create: [CommentCreateWithoutPostInput]
 }
 
 input CommentCreateOrConnectWithoutauthorInput {
-  create: CommentCreateWithoutAuthorInput!
+  create: CommentUncheckedCreateWithoutAuthorInput!
   where: CommentWhereUniqueInput!
 }
 
 input CommentCreateOrConnectWithoutpostInput {
-  create: CommentCreateWithoutPostInput!
+  create: CommentUncheckedCreateWithoutPostInput!
   where: CommentWhereUniqueInput!
 }
 
 input CommentCreateWithoutAuthorInput {
   contain: String!
   createdAt: DateTime
-  post: PostCreateOneWithoutCommentsInput!
+  post: PostCreateNestedOneWithoutCommentsInput!
   updatedAt: DateTime
 }
 
 input CommentCreateWithoutPostInput {
-  author: UserCreateOneWithoutCommentsInput
+  author: UserCreateNestedOneWithoutCommentsInput
   contain: String!
   createdAt: DateTime
   updatedAt: DateTime
@@ -140,8 +144,8 @@ type CommentMaxAggregateOutputType {
   authorId: Int
   contain: String
   createdAt: DateTime
-  id: Int!
-  postId: Int!
+  id: Int
+  postId: Int
   updatedAt: DateTime
 }
 
@@ -149,16 +153,18 @@ type CommentMinAggregateOutputType {
   authorId: Int
   contain: String
   createdAt: DateTime
-  id: Int!
-  postId: Int!
+  id: Int
+  postId: Int
   updatedAt: DateTime
 }
 
 input CommentOrderByInput {
+  author: UserOrderByInput
   authorId: SortOrder
   contain: SortOrder
   createdAt: SortOrder
   id: SortOrder
+  post: PostOrderByInput
   postId: SortOrder
   updatedAt: SortOrder
 }
@@ -174,20 +180,125 @@ enum CommentScalarFieldEnum {
 
 input CommentScalarWhereInput {
   AND: [CommentScalarWhereInput]
+  NOT: [CommentScalarWhereInput]
+  OR: [CommentScalarWhereInput]
   authorId: IntNullableFilter
   contain: StringFilter
   createdAt: DateTimeFilter
   id: IntFilter
-  NOT: [CommentScalarWhereInput]
-  OR: [CommentScalarWhereInput]
   postId: IntFilter
   updatedAt: DateTimeFilter
 }
 
 type CommentSumAggregateOutputType {
   authorId: Int
-  id: Int!
+  id: Int
+  postId: Int
+}
+
+input CommentUncheckedCreateInput {
+  authorId: Int
+  contain: String!
+  createdAt: DateTime
+  id: Int
   postId: Int!
+  updatedAt: DateTime
+}
+
+input CommentUncheckedCreateNestedManyWithoutAuthorInput {
+  connect: [CommentWhereUniqueInput]
+  connectOrCreate: [CommentCreateOrConnectWithoutauthorInput]
+  create: [CommentCreateWithoutAuthorInput]
+}
+
+input CommentUncheckedCreateNestedManyWithoutPostInput {
+  connect: [CommentWhereUniqueInput]
+  connectOrCreate: [CommentCreateOrConnectWithoutpostInput]
+  create: [CommentCreateWithoutPostInput]
+}
+
+input CommentUncheckedCreateWithoutAuthorInput {
+  contain: String!
+  createdAt: DateTime
+  id: Int
+  postId: Int!
+  updatedAt: DateTime
+}
+
+input CommentUncheckedCreateWithoutPostInput {
+  authorId: Int
+  contain: String!
+  createdAt: DateTime
+  id: Int
+  updatedAt: DateTime
+}
+
+input CommentUncheckedUpdateInput {
+  authorId: NullableIntFieldUpdateOperationsInput
+  contain: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  postId: IntFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input CommentUncheckedUpdateManyInput {
+  authorId: NullableIntFieldUpdateOperationsInput
+  contain: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  postId: IntFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input CommentUncheckedUpdateManyWithoutAuthorInput {
+  connect: [CommentWhereUniqueInput]
+  connectOrCreate: [CommentCreateOrConnectWithoutauthorInput]
+  create: [CommentCreateWithoutAuthorInput]
+  delete: [CommentWhereUniqueInput]
+  deleteMany: [CommentScalarWhereInput]
+  disconnect: [CommentWhereUniqueInput]
+  set: [CommentWhereUniqueInput]
+  update: [CommentUpdateWithWhereUniqueWithoutAuthorInput]
+  updateMany: [CommentUpdateManyWithWhereWithoutAuthorInput]
+  upsert: [CommentUpsertWithWhereUniqueWithoutAuthorInput]
+}
+
+input CommentUncheckedUpdateManyWithoutCommentsInput {
+  contain: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  postId: IntFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input CommentUncheckedUpdateManyWithoutPostInput {
+  connect: [CommentWhereUniqueInput]
+  connectOrCreate: [CommentCreateOrConnectWithoutpostInput]
+  create: [CommentCreateWithoutPostInput]
+  delete: [CommentWhereUniqueInput]
+  deleteMany: [CommentScalarWhereInput]
+  disconnect: [CommentWhereUniqueInput]
+  set: [CommentWhereUniqueInput]
+  update: [CommentUpdateWithWhereUniqueWithoutPostInput]
+  updateMany: [CommentUpdateManyWithWhereWithoutPostInput]
+  upsert: [CommentUpsertWithWhereUniqueWithoutPostInput]
+}
+
+input CommentUncheckedUpdateWithoutAuthorInput {
+  contain: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  postId: IntFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input CommentUncheckedUpdateWithoutPostInput {
+  authorId: NullableIntFieldUpdateOperationsInput
+  contain: StringFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input CommentUpdateInput {
@@ -202,6 +313,16 @@ input CommentUpdateManyMutationInput {
   contain: StringFieldUpdateOperationsInput
   createdAt: DateTimeFieldUpdateOperationsInput
   updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input CommentUpdateManyWithWhereWithoutAuthorInput {
+  data: CommentUncheckedUpdateManyWithoutCommentsInput!
+  where: CommentScalarWhereInput!
+}
+
+input CommentUpdateManyWithWhereWithoutPostInput {
+  data: CommentUncheckedUpdateManyWithoutCommentsInput!
+  where: CommentScalarWhereInput!
 }
 
 input CommentUpdateManyWithoutAuthorInput {
@@ -230,14 +351,14 @@ input CommentUpdateManyWithoutPostInput {
   upsert: [CommentUpsertWithWhereUniqueWithoutPostInput]
 }
 
-input CommentUpdateManyWithWhereWithoutAuthorInput {
-  data: CommentUpdateManyMutationInput!
-  where: CommentScalarWhereInput!
+input CommentUpdateWithWhereUniqueWithoutAuthorInput {
+  data: CommentUncheckedUpdateWithoutAuthorInput!
+  where: CommentWhereUniqueInput!
 }
 
-input CommentUpdateManyWithWhereWithoutPostInput {
-  data: CommentUpdateManyMutationInput!
-  where: CommentScalarWhereInput!
+input CommentUpdateWithWhereUniqueWithoutPostInput {
+  data: CommentUncheckedUpdateWithoutPostInput!
+  where: CommentWhereUniqueInput!
 }
 
 input CommentUpdateWithoutAuthorInput {
@@ -254,37 +375,27 @@ input CommentUpdateWithoutPostInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
-input CommentUpdateWithWhereUniqueWithoutAuthorInput {
-  data: CommentUpdateWithoutAuthorInput!
-  where: CommentWhereUniqueInput!
-}
-
-input CommentUpdateWithWhereUniqueWithoutPostInput {
-  data: CommentUpdateWithoutPostInput!
-  where: CommentWhereUniqueInput!
-}
-
 input CommentUpsertWithWhereUniqueWithoutAuthorInput {
-  create: CommentCreateWithoutAuthorInput!
-  update: CommentUpdateWithoutAuthorInput!
+  create: CommentUncheckedCreateWithoutAuthorInput!
+  update: CommentUncheckedUpdateWithoutAuthorInput!
   where: CommentWhereUniqueInput!
 }
 
 input CommentUpsertWithWhereUniqueWithoutPostInput {
-  create: CommentCreateWithoutPostInput!
-  update: CommentUpdateWithoutPostInput!
+  create: CommentUncheckedCreateWithoutPostInput!
+  update: CommentUncheckedUpdateWithoutPostInput!
   where: CommentWhereUniqueInput!
 }
 
 input CommentWhereInput {
   AND: [CommentWhereInput]
+  NOT: [CommentWhereInput]
+  OR: [CommentWhereInput]
   author: UserWhereInput
   authorId: IntNullableFilter
   contain: StringFilter
   createdAt: DateTimeFilter
   id: IntFilter
-  NOT: [CommentWhereInput]
-  OR: [CommentWhereInput]
   post: PostWhereInput
   postId: IntFilter
   updatedAt: DateTimeFilter
@@ -319,6 +430,10 @@ type Enum {
 
 input EnumRolsNullableListFilter {
   equals: [Rols]
+  has: Rols
+  hasEvery: [Rols]
+  hasSome: [Rols]
+  isEmpty: Boolean
 }
 
 type Field {
@@ -344,6 +459,10 @@ type Field {
 
 input FloatNullableListFilter {
   equals: [Float]
+  has: Float
+  hasEvery: [Float]
+  hasSome: [Float]
+  isEmpty: Boolean
 }
 
 type Group {
@@ -355,13 +474,13 @@ type Group {
 }
 
 type GroupAvgAggregateOutputType {
-  id: Float!
+  id: Float
 }
 
 type GroupCountAggregateOutputType {
-  _all: Int!
+  _all: Int
   createdAt: Int
-  id: Int!
+  id: Int
   name: Int
   updatedAt: Int
 }
@@ -370,17 +489,17 @@ input GroupCreateInput {
   createdAt: DateTime
   name: String!
   updatedAt: DateTime
-  users: UserCreateManyWithoutGroupInput
+  users: UserCreateNestedManyWithoutGroupInput
 }
 
-input GroupCreateOneWithoutUsersInput {
+input GroupCreateNestedOneWithoutUsersInput {
   connect: GroupWhereUniqueInput
   connectOrCreate: GroupCreateOrConnectWithoutusersInput
-  create: GroupCreateWithoutUsersInput
+  create: GroupUncheckedCreateWithoutUsersInput
 }
 
 input GroupCreateOrConnectWithoutusersInput {
-  create: GroupCreateWithoutUsersInput!
+  create: GroupUncheckedCreateWithoutUsersInput!
   where: GroupWhereUniqueInput!
 }
 
@@ -392,14 +511,14 @@ input GroupCreateWithoutUsersInput {
 
 type GroupMaxAggregateOutputType {
   createdAt: DateTime
-  id: Int!
+  id: Int
   name: String
   updatedAt: DateTime
 }
 
 type GroupMinAggregateOutputType {
   createdAt: DateTime
-  id: Int!
+  id: Int
   name: String
   updatedAt: DateTime
 }
@@ -424,7 +543,44 @@ enum GroupScalarFieldEnum {
 }
 
 type GroupSumAggregateOutputType {
-  id: Int!
+  id: Int
+}
+
+input GroupUncheckedCreateInput {
+  createdAt: DateTime
+  id: Int
+  name: String!
+  updatedAt: DateTime
+  users: UserUncheckedCreateNestedManyWithoutGroupInput
+}
+
+input GroupUncheckedCreateWithoutUsersInput {
+  createdAt: DateTime
+  id: Int
+  name: String!
+  updatedAt: DateTime
+}
+
+input GroupUncheckedUpdateInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+  users: UserUncheckedUpdateManyWithoutGroupInput
+}
+
+input GroupUncheckedUpdateManyInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input GroupUncheckedUpdateWithoutUsersInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  name: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input GroupUpdateInput {
@@ -443,10 +599,10 @@ input GroupUpdateManyMutationInput {
 input GroupUpdateOneWithoutUsersInput {
   connect: GroupWhereUniqueInput
   connectOrCreate: GroupCreateOrConnectWithoutusersInput
-  create: GroupCreateWithoutUsersInput
+  create: GroupUncheckedCreateWithoutUsersInput
   delete: Boolean
   disconnect: Boolean
-  update: GroupUpdateWithoutUsersInput
+  update: GroupUncheckedUpdateWithoutUsersInput
   upsert: GroupUpsertWithoutUsersInput
 }
 
@@ -457,23 +613,31 @@ input GroupUpdateWithoutUsersInput {
 }
 
 input GroupUpsertWithoutUsersInput {
-  create: GroupCreateWithoutUsersInput!
-  update: GroupUpdateWithoutUsersInput!
+  create: GroupUncheckedCreateWithoutUsersInput!
+  update: GroupUncheckedUpdateWithoutUsersInput!
 }
 
 input GroupWhereInput {
   AND: [GroupWhereInput]
+  NOT: [GroupWhereInput]
+  OR: [GroupWhereInput]
   createdAt: DateTimeFilter
   id: IntFilter
   name: StringFilter
-  NOT: [GroupWhereInput]
-  OR: [GroupWhereInput]
   updatedAt: DateTimeFilter
   users: UserListRelationFilter
 }
 
 input GroupWhereUniqueInput {
   id: Int
+}
+
+input IntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
 }
 
 input IntFilter {
@@ -500,6 +664,10 @@ input IntNullableFilter {
 
 input IntNullableListFilter {
   equals: [Int]
+  has: Int
+  hasEvery: [Int]
+  hasSome: [Int]
+  isEmpty: Boolean
 }
 
 """Json custom scalar type"""
@@ -522,18 +690,26 @@ type List {
 
 type ListAvgAggregateOutputType {
   flout: Float
-  id: Float!
+  id: Float
   intger: Float
 }
 
 type ListCountAggregateOutputType {
-  _all: Int!
+  _all: Int
   boolean: Int
   enums: Int
   flout: Int
-  id: Int!
+  id: Int
   intger: Int
   string: Int
+}
+
+input ListCreateInput {
+  boolean: ListCreatebooleanInput
+  enums: ListCreateenumsInput
+  flout: ListCreatefloutInput
+  intger: ListCreateintgerInput
+  string: ListCreatestringInput
 }
 
 input ListCreatebooleanInput {
@@ -548,14 +724,6 @@ input ListCreatefloutInput {
   set: Float!
 }
 
-input ListCreateInput {
-  boolean: ListCreatebooleanInput
-  enums: ListCreateenumsInput
-  flout: ListCreatefloutInput
-  intger: ListCreateintgerInput
-  string: ListCreatestringInput
-}
-
 input ListCreateintgerInput {
   set: Int!
 }
@@ -565,11 +733,11 @@ input ListCreatestringInput {
 }
 
 type ListMaxAggregateOutputType {
-  id: Int!
+  id: Int
 }
 
 type ListMinAggregateOutputType {
-  id: Int!
+  id: Int
 }
 
 input ListOrderByInput {
@@ -592,8 +760,51 @@ enum ListScalarFieldEnum {
 
 type ListSumAggregateOutputType {
   flout: Float
-  id: Int!
+  id: Int
   intger: Int
+}
+
+input ListUncheckedCreateInput {
+  boolean: ListCreatebooleanInput
+  enums: ListCreateenumsInput
+  flout: ListCreatefloutInput
+  id: Int
+  intger: ListCreateintgerInput
+  string: ListCreatestringInput
+}
+
+input ListUncheckedUpdateInput {
+  boolean: ListUpdatebooleanInput
+  enums: ListUpdateenumsInput
+  flout: ListUpdatefloutInput
+  id: IntFieldUpdateOperationsInput
+  intger: ListUpdateintgerInput
+  string: ListUpdatestringInput
+}
+
+input ListUncheckedUpdateManyInput {
+  boolean: ListUpdatebooleanInput
+  enums: ListUpdateenumsInput
+  flout: ListUpdatefloutInput
+  id: IntFieldUpdateOperationsInput
+  intger: ListUpdateintgerInput
+  string: ListUpdatestringInput
+}
+
+input ListUpdateInput {
+  boolean: ListUpdatebooleanInput
+  enums: ListUpdateenumsInput
+  flout: ListUpdatefloutInput
+  intger: ListUpdateintgerInput
+  string: ListUpdatestringInput
+}
+
+input ListUpdateManyMutationInput {
+  boolean: ListUpdatebooleanInput
+  enums: ListUpdateenumsInput
+  flout: ListUpdatefloutInput
+  intger: ListUpdateintgerInput
+  string: ListUpdatestringInput
 }
 
 input ListUpdatebooleanInput {
@@ -608,24 +819,8 @@ input ListUpdatefloutInput {
   set: Float!
 }
 
-input ListUpdateInput {
-  boolean: ListUpdatebooleanInput
-  enums: ListUpdateenumsInput
-  flout: ListUpdatefloutInput
-  intger: ListUpdateintgerInput
-  string: ListUpdatestringInput
-}
-
 input ListUpdateintgerInput {
   set: Int!
-}
-
-input ListUpdateManyMutationInput {
-  boolean: ListUpdatebooleanInput
-  enums: ListUpdateenumsInput
-  flout: ListUpdatefloutInput
-  intger: ListUpdateintgerInput
-  string: ListUpdatestringInput
 }
 
 input ListUpdatestringInput {
@@ -634,13 +829,13 @@ input ListUpdatestringInput {
 
 input ListWhereInput {
   AND: [ListWhereInput]
+  NOT: [ListWhereInput]
+  OR: [ListWhereInput]
   boolean: BoolNullableListFilter
   enums: EnumRolsNullableListFilter
   flout: FloatNullableListFilter
   id: IntFilter
   intger: IntNullableListFilter
-  NOT: [ListWhereInput]
-  OR: [ListWhereInput]
   string: StringNullableListFilter
 }
 
@@ -764,6 +959,14 @@ input NestedStringNullableFilter {
   startsWith: String
 }
 
+input NullableIntFieldUpdateOperationsInput {
+  decrement: Int
+  divide: Int
+  increment: Int
+  multiply: Int
+  set: Int
+}
+
 input NullableStringFieldUpdateOperationsInput {
   set: String
 }
@@ -781,52 +984,52 @@ type Post {
 
 type PostAvgAggregateOutputType {
   authorId: Float
-  id: Float!
+  id: Float
 }
 
 type PostCountAggregateOutputType {
-  _all: Int!
+  _all: Int
   authorId: Int
   createdAt: Int
-  id: Int!
+  id: Int
   published: Int
   title: Int
   updatedAt: Int
 }
 
 input PostCreateInput {
-  author: UserCreateOneWithoutPostsInput
-  comments: CommentCreateManyWithoutPostInput
+  author: UserCreateNestedOneWithoutPostsInput
+  comments: CommentCreateNestedManyWithoutPostInput
   createdAt: DateTime
   published: Boolean
   title: String!
   updatedAt: DateTime
 }
 
-input PostCreateManyWithoutAuthorInput {
+input PostCreateNestedManyWithoutAuthorInput {
   connect: [PostWhereUniqueInput]
   connectOrCreate: [PostCreateOrConnectWithoutauthorInput]
   create: [PostCreateWithoutAuthorInput]
 }
 
-input PostCreateOneWithoutCommentsInput {
+input PostCreateNestedOneWithoutCommentsInput {
   connect: PostWhereUniqueInput
   connectOrCreate: PostCreateOrConnectWithoutcommentsInput
-  create: PostCreateWithoutCommentsInput
+  create: PostUncheckedCreateWithoutCommentsInput
 }
 
 input PostCreateOrConnectWithoutauthorInput {
-  create: PostCreateWithoutAuthorInput!
+  create: PostUncheckedCreateWithoutAuthorInput!
   where: PostWhereUniqueInput!
 }
 
 input PostCreateOrConnectWithoutcommentsInput {
-  create: PostCreateWithoutCommentsInput!
+  create: PostUncheckedCreateWithoutCommentsInput!
   where: PostWhereUniqueInput!
 }
 
 input PostCreateWithoutAuthorInput {
-  comments: CommentCreateManyWithoutPostInput
+  comments: CommentCreateNestedManyWithoutPostInput
   createdAt: DateTime
   published: Boolean
   title: String!
@@ -834,7 +1037,7 @@ input PostCreateWithoutAuthorInput {
 }
 
 input PostCreateWithoutCommentsInput {
-  author: UserCreateOneWithoutPostsInput
+  author: UserCreateNestedOneWithoutPostsInput
   createdAt: DateTime
   published: Boolean
   title: String!
@@ -850,7 +1053,7 @@ input PostListRelationFilter {
 type PostMaxAggregateOutputType {
   authorId: Int
   createdAt: DateTime
-  id: Int!
+  id: Int
   published: Boolean
   title: String
   updatedAt: DateTime
@@ -859,13 +1062,14 @@ type PostMaxAggregateOutputType {
 type PostMinAggregateOutputType {
   authorId: Int
   createdAt: DateTime
-  id: Int!
+  id: Int
   published: Boolean
   title: String
   updatedAt: DateTime
 }
 
 input PostOrderByInput {
+  author: UserOrderByInput
   authorId: SortOrder
   createdAt: SortOrder
   id: SortOrder
@@ -890,11 +1094,11 @@ enum PostScalarFieldEnum {
 
 input PostScalarWhereInput {
   AND: [PostScalarWhereInput]
+  NOT: [PostScalarWhereInput]
+  OR: [PostScalarWhereInput]
   authorId: IntNullableFilter
   createdAt: DateTimeFilter
   id: IntFilter
-  NOT: [PostScalarWhereInput]
-  OR: [PostScalarWhereInput]
   published: BoolFilter
   title: StringFilter
   updatedAt: DateTimeFilter
@@ -902,7 +1106,99 @@ input PostScalarWhereInput {
 
 type PostSumAggregateOutputType {
   authorId: Int
-  id: Int!
+  id: Int
+}
+
+input PostUncheckedCreateInput {
+  authorId: Int
+  comments: CommentUncheckedCreateNestedManyWithoutPostInput
+  createdAt: DateTime
+  id: Int
+  published: Boolean
+  title: String!
+  updatedAt: DateTime
+}
+
+input PostUncheckedCreateNestedManyWithoutAuthorInput {
+  connect: [PostWhereUniqueInput]
+  connectOrCreate: [PostCreateOrConnectWithoutauthorInput]
+  create: [PostCreateWithoutAuthorInput]
+}
+
+input PostUncheckedCreateWithoutAuthorInput {
+  comments: CommentUncheckedCreateNestedManyWithoutPostInput
+  createdAt: DateTime
+  id: Int
+  published: Boolean
+  title: String!
+  updatedAt: DateTime
+}
+
+input PostUncheckedCreateWithoutCommentsInput {
+  authorId: Int
+  createdAt: DateTime
+  id: Int
+  published: Boolean
+  title: String!
+  updatedAt: DateTime
+}
+
+input PostUncheckedUpdateInput {
+  authorId: NullableIntFieldUpdateOperationsInput
+  comments: CommentUncheckedUpdateManyWithoutPostInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input PostUncheckedUpdateManyInput {
+  authorId: NullableIntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input PostUncheckedUpdateManyWithoutAuthorInput {
+  connect: [PostWhereUniqueInput]
+  connectOrCreate: [PostCreateOrConnectWithoutauthorInput]
+  create: [PostCreateWithoutAuthorInput]
+  delete: [PostWhereUniqueInput]
+  deleteMany: [PostScalarWhereInput]
+  disconnect: [PostWhereUniqueInput]
+  set: [PostWhereUniqueInput]
+  update: [PostUpdateWithWhereUniqueWithoutAuthorInput]
+  updateMany: [PostUpdateManyWithWhereWithoutAuthorInput]
+  upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput]
+}
+
+input PostUncheckedUpdateManyWithoutPostsInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input PostUncheckedUpdateWithoutAuthorInput {
+  comments: CommentUncheckedUpdateManyWithoutPostInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
+}
+
+input PostUncheckedUpdateWithoutCommentsInput {
+  authorId: NullableIntFieldUpdateOperationsInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  published: BoolFieldUpdateOperationsInput
+  title: StringFieldUpdateOperationsInput
+  updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
 input PostUpdateInput {
@@ -921,6 +1217,11 @@ input PostUpdateManyMutationInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
+input PostUpdateManyWithWhereWithoutAuthorInput {
+  data: PostUncheckedUpdateManyWithoutPostsInput!
+  where: PostScalarWhereInput!
+}
+
 input PostUpdateManyWithoutAuthorInput {
   connect: [PostWhereUniqueInput]
   connectOrCreate: [PostCreateOrConnectWithoutauthorInput]
@@ -934,17 +1235,17 @@ input PostUpdateManyWithoutAuthorInput {
   upsert: [PostUpsertWithWhereUniqueWithoutAuthorInput]
 }
 
-input PostUpdateManyWithWhereWithoutAuthorInput {
-  data: PostUpdateManyMutationInput!
-  where: PostScalarWhereInput!
-}
-
 input PostUpdateOneRequiredWithoutCommentsInput {
   connect: PostWhereUniqueInput
   connectOrCreate: PostCreateOrConnectWithoutcommentsInput
-  create: PostCreateWithoutCommentsInput
-  update: PostUpdateWithoutCommentsInput
+  create: PostUncheckedCreateWithoutCommentsInput
+  update: PostUncheckedUpdateWithoutCommentsInput
   upsert: PostUpsertWithoutCommentsInput
+}
+
+input PostUpdateWithWhereUniqueWithoutAuthorInput {
+  data: PostUncheckedUpdateWithoutAuthorInput!
+  where: PostWhereUniqueInput!
 }
 
 input PostUpdateWithoutAuthorInput {
@@ -963,31 +1264,26 @@ input PostUpdateWithoutCommentsInput {
   updatedAt: DateTimeFieldUpdateOperationsInput
 }
 
-input PostUpdateWithWhereUniqueWithoutAuthorInput {
-  data: PostUpdateWithoutAuthorInput!
+input PostUpsertWithWhereUniqueWithoutAuthorInput {
+  create: PostUncheckedCreateWithoutAuthorInput!
+  update: PostUncheckedUpdateWithoutAuthorInput!
   where: PostWhereUniqueInput!
 }
 
 input PostUpsertWithoutCommentsInput {
-  create: PostCreateWithoutCommentsInput!
-  update: PostUpdateWithoutCommentsInput!
-}
-
-input PostUpsertWithWhereUniqueWithoutAuthorInput {
-  create: PostCreateWithoutAuthorInput!
-  update: PostUpdateWithoutAuthorInput!
-  where: PostWhereUniqueInput!
+  create: PostUncheckedCreateWithoutCommentsInput!
+  update: PostUncheckedUpdateWithoutCommentsInput!
 }
 
 input PostWhereInput {
   AND: [PostWhereInput]
+  NOT: [PostWhereInput]
+  OR: [PostWhereInput]
   author: UserWhereInput
   authorId: IntNullableFilter
   comments: CommentListRelationFilter
   createdAt: DateTimeFilter
   id: IntFilter
-  NOT: [PostWhereInput]
-  OR: [PostWhereInput]
   published: BoolFilter
   title: StringFilter
   updatedAt: DateTimeFilter
@@ -1078,6 +1374,10 @@ input StringNullableFilter {
 
 input StringNullableListFilter {
   equals: [String]
+  has: String
+  hasEvery: [String]
+  hasSome: [String]
+  isEmpty: Boolean
 }
 
 input UpdateFieldInput {
@@ -1125,85 +1425,85 @@ type User {
 
 type UserAvgAggregateOutputType {
   groupId: Float
-  id: Float!
+  id: Float
 }
 
 type UserCountAggregateOutputType {
-  _all: Int!
+  _all: Int
   createdAt: Int
   email: Int
   groupId: Int
-  id: Int!
+  id: Int
   name: Int
   password: Int
 }
 
 input UserCreateInput {
-  comments: CommentCreateManyWithoutAuthorInput
+  comments: CommentCreateNestedManyWithoutAuthorInput
   createdAt: DateTime
   email: String!
-  group: GroupCreateOneWithoutUsersInput
+  group: GroupCreateNestedOneWithoutUsersInput
   name: String
   password: String!
-  posts: PostCreateManyWithoutAuthorInput
+  posts: PostCreateNestedManyWithoutAuthorInput
 }
 
-input UserCreateManyWithoutGroupInput {
+input UserCreateNestedManyWithoutGroupInput {
   connect: [UserWhereUniqueInput]
   connectOrCreate: [UserCreateOrConnectWithoutgroupInput]
   create: [UserCreateWithoutGroupInput]
 }
 
-input UserCreateOneWithoutCommentsInput {
+input UserCreateNestedOneWithoutCommentsInput {
   connect: UserWhereUniqueInput
   connectOrCreate: UserCreateOrConnectWithoutcommentsInput
-  create: UserCreateWithoutCommentsInput
+  create: UserUncheckedCreateWithoutCommentsInput
 }
 
-input UserCreateOneWithoutPostsInput {
+input UserCreateNestedOneWithoutPostsInput {
   connect: UserWhereUniqueInput
   connectOrCreate: UserCreateOrConnectWithoutpostsInput
-  create: UserCreateWithoutPostsInput
+  create: UserUncheckedCreateWithoutPostsInput
 }
 
 input UserCreateOrConnectWithoutcommentsInput {
-  create: UserCreateWithoutCommentsInput!
+  create: UserUncheckedCreateWithoutCommentsInput!
   where: UserWhereUniqueInput!
 }
 
 input UserCreateOrConnectWithoutgroupInput {
-  create: UserCreateWithoutGroupInput!
+  create: UserUncheckedCreateWithoutGroupInput!
   where: UserWhereUniqueInput!
 }
 
 input UserCreateOrConnectWithoutpostsInput {
-  create: UserCreateWithoutPostsInput!
+  create: UserUncheckedCreateWithoutPostsInput!
   where: UserWhereUniqueInput!
 }
 
 input UserCreateWithoutCommentsInput {
   createdAt: DateTime
   email: String!
-  group: GroupCreateOneWithoutUsersInput
+  group: GroupCreateNestedOneWithoutUsersInput
   name: String
   password: String!
-  posts: PostCreateManyWithoutAuthorInput
+  posts: PostCreateNestedManyWithoutAuthorInput
 }
 
 input UserCreateWithoutGroupInput {
-  comments: CommentCreateManyWithoutAuthorInput
+  comments: CommentCreateNestedManyWithoutAuthorInput
   createdAt: DateTime
   email: String!
   name: String
   password: String!
-  posts: PostCreateManyWithoutAuthorInput
+  posts: PostCreateNestedManyWithoutAuthorInput
 }
 
 input UserCreateWithoutPostsInput {
-  comments: CommentCreateManyWithoutAuthorInput
+  comments: CommentCreateNestedManyWithoutAuthorInput
   createdAt: DateTime
   email: String!
-  group: GroupCreateOneWithoutUsersInput
+  group: GroupCreateNestedOneWithoutUsersInput
   name: String
   password: String!
 }
@@ -1218,7 +1518,7 @@ type UserMaxAggregateOutputType {
   createdAt: DateTime
   email: String
   groupId: Int
-  id: Int!
+  id: Int
   name: String
   password: String
 }
@@ -1227,7 +1527,7 @@ type UserMinAggregateOutputType {
   createdAt: DateTime
   email: String
   groupId: Int
-  id: Int!
+  id: Int
   name: String
   password: String
 }
@@ -1235,6 +1535,7 @@ type UserMinAggregateOutputType {
 input UserOrderByInput {
   createdAt: SortOrder
   email: SortOrder
+  group: GroupOrderByInput
   groupId: SortOrder
   id: SortOrder
   name: SortOrder
@@ -1257,19 +1558,137 @@ enum UserScalarFieldEnum {
 
 input UserScalarWhereInput {
   AND: [UserScalarWhereInput]
+  NOT: [UserScalarWhereInput]
+  OR: [UserScalarWhereInput]
   createdAt: DateTimeFilter
   email: StringFilter
   groupId: IntNullableFilter
   id: IntFilter
   name: StringNullableFilter
-  NOT: [UserScalarWhereInput]
-  OR: [UserScalarWhereInput]
   password: StringFilter
 }
 
 type UserSumAggregateOutputType {
   groupId: Int
-  id: Int!
+  id: Int
+}
+
+input UserUncheckedCreateInput {
+  comments: CommentUncheckedCreateNestedManyWithoutAuthorInput
+  createdAt: DateTime
+  email: String!
+  groupId: Int
+  id: Int
+  name: String
+  password: String!
+  posts: PostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+input UserUncheckedCreateNestedManyWithoutGroupInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutgroupInput]
+  create: [UserCreateWithoutGroupInput]
+}
+
+input UserUncheckedCreateWithoutCommentsInput {
+  createdAt: DateTime
+  email: String!
+  groupId: Int
+  id: Int
+  name: String
+  password: String!
+  posts: PostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+input UserUncheckedCreateWithoutGroupInput {
+  comments: CommentUncheckedCreateNestedManyWithoutAuthorInput
+  createdAt: DateTime
+  email: String!
+  id: Int
+  name: String
+  password: String!
+  posts: PostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+input UserUncheckedCreateWithoutPostsInput {
+  comments: CommentUncheckedCreateNestedManyWithoutAuthorInput
+  createdAt: DateTime
+  email: String!
+  groupId: Int
+  id: Int
+  name: String
+  password: String!
+}
+
+input UserUncheckedUpdateInput {
+  comments: CommentUncheckedUpdateManyWithoutAuthorInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  groupId: NullableIntFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  posts: PostUncheckedUpdateManyWithoutAuthorInput
+}
+
+input UserUncheckedUpdateManyInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  groupId: NullableIntFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateManyWithoutGroupInput {
+  connect: [UserWhereUniqueInput]
+  connectOrCreate: [UserCreateOrConnectWithoutgroupInput]
+  create: [UserCreateWithoutGroupInput]
+  delete: [UserWhereUniqueInput]
+  deleteMany: [UserScalarWhereInput]
+  disconnect: [UserWhereUniqueInput]
+  set: [UserWhereUniqueInput]
+  update: [UserUpdateWithWhereUniqueWithoutGroupInput]
+  updateMany: [UserUpdateManyWithWhereWithoutGroupInput]
+  upsert: [UserUpsertWithWhereUniqueWithoutGroupInput]
+}
+
+input UserUncheckedUpdateManyWithoutUsersInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+}
+
+input UserUncheckedUpdateWithoutCommentsInput {
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  groupId: NullableIntFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  posts: PostUncheckedUpdateManyWithoutAuthorInput
+}
+
+input UserUncheckedUpdateWithoutGroupInput {
+  comments: CommentUncheckedUpdateManyWithoutAuthorInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
+  posts: PostUncheckedUpdateManyWithoutAuthorInput
+}
+
+input UserUncheckedUpdateWithoutPostsInput {
+  comments: CommentUncheckedUpdateManyWithoutAuthorInput
+  createdAt: DateTimeFieldUpdateOperationsInput
+  email: StringFieldUpdateOperationsInput
+  groupId: NullableIntFieldUpdateOperationsInput
+  id: IntFieldUpdateOperationsInput
+  name: NullableStringFieldUpdateOperationsInput
+  password: StringFieldUpdateOperationsInput
 }
 
 input UserUpdateInput {
@@ -1289,6 +1708,11 @@ input UserUpdateManyMutationInput {
   password: StringFieldUpdateOperationsInput
 }
 
+input UserUpdateManyWithWhereWithoutGroupInput {
+  data: UserUncheckedUpdateManyWithoutUsersInput!
+  where: UserScalarWhereInput!
+}
+
 input UserUpdateManyWithoutGroupInput {
   connect: [UserWhereUniqueInput]
   connectOrCreate: [UserCreateOrConnectWithoutgroupInput]
@@ -1302,29 +1726,29 @@ input UserUpdateManyWithoutGroupInput {
   upsert: [UserUpsertWithWhereUniqueWithoutGroupInput]
 }
 
-input UserUpdateManyWithWhereWithoutGroupInput {
-  data: UserUpdateManyMutationInput!
-  where: UserScalarWhereInput!
-}
-
 input UserUpdateOneWithoutCommentsInput {
   connect: UserWhereUniqueInput
   connectOrCreate: UserCreateOrConnectWithoutcommentsInput
-  create: UserCreateWithoutCommentsInput
+  create: UserUncheckedCreateWithoutCommentsInput
   delete: Boolean
   disconnect: Boolean
-  update: UserUpdateWithoutCommentsInput
+  update: UserUncheckedUpdateWithoutCommentsInput
   upsert: UserUpsertWithoutCommentsInput
 }
 
 input UserUpdateOneWithoutPostsInput {
   connect: UserWhereUniqueInput
   connectOrCreate: UserCreateOrConnectWithoutpostsInput
-  create: UserCreateWithoutPostsInput
+  create: UserUncheckedCreateWithoutPostsInput
   delete: Boolean
   disconnect: Boolean
-  update: UserUpdateWithoutPostsInput
+  update: UserUncheckedUpdateWithoutPostsInput
   upsert: UserUpsertWithoutPostsInput
+}
+
+input UserUpdateWithWhereUniqueWithoutGroupInput {
+  data: UserUncheckedUpdateWithoutGroupInput!
+  where: UserWhereUniqueInput!
 }
 
 input UserUpdateWithoutCommentsInput {
@@ -1354,29 +1778,26 @@ input UserUpdateWithoutPostsInput {
   password: StringFieldUpdateOperationsInput
 }
 
-input UserUpdateWithWhereUniqueWithoutGroupInput {
-  data: UserUpdateWithoutGroupInput!
+input UserUpsertWithWhereUniqueWithoutGroupInput {
+  create: UserUncheckedCreateWithoutGroupInput!
+  update: UserUncheckedUpdateWithoutGroupInput!
   where: UserWhereUniqueInput!
 }
 
 input UserUpsertWithoutCommentsInput {
-  create: UserCreateWithoutCommentsInput!
-  update: UserUpdateWithoutCommentsInput!
+  create: UserUncheckedCreateWithoutCommentsInput!
+  update: UserUncheckedUpdateWithoutCommentsInput!
 }
 
 input UserUpsertWithoutPostsInput {
-  create: UserCreateWithoutPostsInput!
-  update: UserUpdateWithoutPostsInput!
-}
-
-input UserUpsertWithWhereUniqueWithoutGroupInput {
-  create: UserCreateWithoutGroupInput!
-  update: UserUpdateWithoutGroupInput!
-  where: UserWhereUniqueInput!
+  create: UserUncheckedCreateWithoutPostsInput!
+  update: UserUncheckedUpdateWithoutPostsInput!
 }
 
 input UserWhereInput {
   AND: [UserWhereInput]
+  NOT: [UserWhereInput]
+  OR: [UserWhereInput]
   comments: CommentListRelationFilter
   createdAt: DateTimeFilter
   email: StringFilter
@@ -1384,8 +1805,6 @@ input UserWhereInput {
   groupId: IntNullableFilter
   id: IntFilter
   name: StringNullableFilter
-  NOT: [UserWhereInput]
-  OR: [UserWhereInput]
   password: StringFilter
   posts: PostListRelationFilter
 }
