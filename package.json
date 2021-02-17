@@ -7,6 +7,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "postinstall": "husky install",
     "generate": "yarn generate:prisma && yarn generate:nexus && yarn codegen",
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node --transpile-only -P nexus.tsconfig.json src/Api/nexusSchema",
@@ -62,11 +63,6 @@
     "prettier": "2.2.1",
     "pretty-quick": "3.1.0",
     "typescript": "4.1.5"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --pattern \"**/*.*(ts|tsx|graphql)\" --staged"
-    }
   },
   "cacheDirectories": [
     ".next/cache"
