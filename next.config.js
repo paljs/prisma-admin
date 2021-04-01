@@ -1,3 +1,8 @@
+/**
+ * Init .env
+ */
+require('dotenv').config()
+
 module.exports = {
   typescript: {
     // !! WARN !!
