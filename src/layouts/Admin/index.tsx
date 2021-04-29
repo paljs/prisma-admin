@@ -9,15 +9,15 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
+import TwitterIcon from '@material-ui/icons/Twitter';
 import Container from '@material-ui/core/Container';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { MainListItems } from './listItems';
 import theme from 'components/theme';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { useRouter } from 'next/router';
+import Link from '@material-ui/core/Link';
 
 const drawerWidth = 240;
 
@@ -98,6 +98,14 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  link: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0.5rem',
+  },
+  icon: {
+    height: '20px',
+  },
 }));
 
 const AdminLayout: React.FC = ({ children }) => {
@@ -133,11 +141,34 @@ const AdminLayout: React.FC = ({ children }) => {
               <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
                 Dashboard
               </Typography>
-              <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+              <Link
+                className={classes.link}
+                color="inherit"
+                href="https://github.com/paljs/prisma-tools"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span style={{ marginRight: '5px', fontSize: '1.15rem' }}>Support us in GitHub</span>
+                <img src={`https://badgen.net/github/stars/paljs/prisma-tools`} />
+              </Link>
+              <Link
+                className={classes.link}
+                color="inherit"
+                href="https://discord.gg/NRmdvDxsT8"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img className={classes.icon} src="/discord.svg" alt="discord" />
+              </Link>
+              <Link
+                className={classes.link}
+                color="inherit"
+                href="https://twitter.com/AhmedElywh"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <TwitterIcon />
+              </Link>
             </Toolbar>
           </AppBar>
           <Drawer

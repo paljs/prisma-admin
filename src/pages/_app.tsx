@@ -26,9 +26,21 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <title>Great PalJs App</title>
+        <title>Prisma Admin Dynamic Table</title>
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171177495-2"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'UA-171177495-2');
+              `,
+          }}
+        />
       </Head>
       <ApolloProvider client={apolloClient}>
         {admin ? (

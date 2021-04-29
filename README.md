@@ -1,25 +1,11 @@
-## DB
+## Prisma Admin dynamic Table
 
-We added `sqlite` as db provider in `schema.prisma` you can change it to your custom db provider
+This repo was generated from our CLI `@paljs/cli` to start new project install our CLI and start your project.
 
-after an update your `schema.prisma` run
-
-```shell
-> yarn db-dev
-```
-
-this command will save your schema into db
-
-now run
+## Start your Project
 
 ```shell
-> yarn generate
-> yarn dev
+npx @paljs/cli c
 ```
 
-- build prisma client
-- build crud system
-- build client graphql hooks
-- start dev server
-
-`Good work`
+[Visit Docs](https://paljs.com)

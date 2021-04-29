@@ -7,6 +7,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import ForumIcon from '@material-ui/icons/Forum';
 import PersonIcon from '@material-ui/icons/Person';
 import GroupIcon from '@material-ui/icons/Group';
+import ListIcon from '@material-ui/icons/List';
 import { useRouter } from 'next/router';
 
 export const MainListItems: React.FC = () => {
@@ -42,6 +43,12 @@ export const MainListItems: React.FC = () => {
           <GroupIcon />
         </ListItemIcon>
         <ListItemText primary="Groups" />
+      </ListItem>
+      <ListItem button onClick={() => router.push('/admin/models/List')}>
+        <ListItemIcon>
+          <ListIcon />
+        </ListItemIcon>
+        <ListItemText primary="Lists" />
       </ListItem>
     </div>
   );
