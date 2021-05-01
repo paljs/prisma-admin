@@ -812,42 +812,42 @@ enum KindEnum {
 type List {
   boolean: [Boolean!]!
   enums: [Rols!]!
-  flout: [Float!]!
+  float: [Float!]!
   id: Int!
-  intger: [Int!]!
+  integer: [Int!]!
   string: [String!]!
 }
 
 type ListAvgAggregateOutputType {
-  flout: Float
+  float: Float
   id: Float
-  intger: Float
+  integer: Float
 }
 
 type ListCountAggregateOutputType {
   _all: Int!
   boolean: Int!
   enums: Int!
-  flout: Int!
+  float: Int!
   id: Int!
-  intger: Int!
+  integer: Int!
   string: Int!
 }
 
 input ListCreateInput {
   boolean: [Boolean]
   enums: [Rols]
-  flout: [Float]
-  intger: [Int]
+  float: [Float]
+  integer: [Int]
   string: [String]
 }
 
 input ListCreateManyInput {
   boolean: [Boolean]
   enums: [Rols]
-  flout: [Float]
+  float: [Float]
   id: Int
-  intger: [Int]
+  integer: [Int]
   string: [String]
 }
 
@@ -859,11 +859,11 @@ input ListCreateManyenumsInput {
   set: Rols!
 }
 
-input ListCreateManyfloutInput {
+input ListCreateManyfloatInput {
   set: Float!
 }
 
-input ListCreateManyintgerInput {
+input ListCreateManyintegerInput {
   set: Int!
 }
 
@@ -879,11 +879,11 @@ input ListCreateenumsInput {
   set: Rols!
 }
 
-input ListCreatefloutInput {
+input ListCreatefloatInput {
   set: Float!
 }
 
-input ListCreateintgerInput {
+input ListCreateintegerInput {
   set: Int!
 }
 
@@ -902,18 +902,18 @@ type ListMinAggregateOutputType {
 input ListOrderByInput {
   boolean: SortOrder
   enums: SortOrder
-  flout: SortOrder
+  float: SortOrder
   id: SortOrder
-  intger: SortOrder
+  integer: SortOrder
   string: SortOrder
 }
 
 enum ListScalarFieldEnum {
   boolean
   enums
-  flout
+  float
   id
-  intger
+  integer
   string
 }
 
@@ -923,58 +923,58 @@ input ListScalarWhereWithAggregatesInput {
   OR: [ListScalarWhereWithAggregatesInput]
   boolean: BoolNullableListFilter
   enums: EnumRolsNullableListFilter
-  flout: FloatNullableListFilter
+  float: FloatNullableListFilter
   id: IntWithAggregatesFilter
-  intger: IntNullableListFilter
+  integer: IntNullableListFilter
   string: StringNullableListFilter
 }
 
 type ListSumAggregateOutputType {
-  flout: Float
+  float: Float
   id: Int
-  intger: Int
+  integer: Int
 }
 
 input ListUncheckedCreateInput {
   boolean: [Boolean]
   enums: [Rols]
-  flout: [Float]
+  float: [Float]
   id: Int
-  intger: [Int]
+  integer: [Int]
   string: [String]
 }
 
 input ListUncheckedUpdateInput {
   boolean: [Boolean]
   enums: [Rols]
-  flout: [Float]
+  float: [Float]
   id: IntFieldUpdateOperationsInput
-  intger: [Int]
+  integer: [Int]
   string: [String]
 }
 
 input ListUncheckedUpdateManyInput {
   boolean: [Boolean]
   enums: [Rols]
-  flout: [Float]
+  float: [Float]
   id: IntFieldUpdateOperationsInput
-  intger: [Int]
+  integer: [Int]
   string: [String]
 }
 
 input ListUpdateInput {
   boolean: [Boolean]
   enums: [Rols]
-  flout: [Float]
-  intger: [Int]
+  float: [Float]
+  integer: [Int]
   string: [String]
 }
 
 input ListUpdateManyMutationInput {
   boolean: [Boolean]
   enums: [Rols]
-  flout: [Float]
-  intger: [Int]
+  float: [Float]
+  integer: [Int]
   string: [String]
 }
 
@@ -988,12 +988,12 @@ input ListUpdateenumsInput {
   set: [Rols]
 }
 
-input ListUpdatefloutInput {
+input ListUpdatefloatInput {
   push: Float
   set: [Float]
 }
 
-input ListUpdateintgerInput {
+input ListUpdateintegerInput {
   push: Int
   set: [Int]
 }
@@ -1009,9 +1009,9 @@ input ListWhereInput {
   OR: [ListWhereInput]
   boolean: BoolNullableListFilter
   enums: EnumRolsNullableListFilter
-  flout: FloatNullableListFilter
+  float: FloatNullableListFilter
   id: IntFilter
-  intger: IntNullableListFilter
+  integer: IntNullableListFilter
   string: StringNullableListFilter
 }
 

@@ -5,13 +5,14 @@
   "license": "MIT",
   "scripts": {
     "dev": "next",
-    "build": "next build",
+    "build": "prisma migrate reset -f && next build",
     "start": "next start --port ${PORT-3000}",
     "generate": "pal g && yarn generate:prisma && yarn generate:nexus && yarn codegen",
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node --transpile-only -P nexus.tsconfig.json src/server/nexusSchema",
     "codegen": "graphql-codegen --config codegen.yml",
-    "db-dev": "prisma migrate dev"
+    "db-dev": "prisma migrate dev",
+    "ts-node": "ts-node --compiler-options '{\"module\":\"CommonJS\"}'"
   },
   "dependencies": {
     "@apollo/client": "3.3.15",
@@ -28,6 +29,7 @@
     "graphql-tag": "2.11.0",
     "graphql-tools": "7.0.4",
     "jsonwebtoken": "8.5.1",
+    "namor": "^2.0.2",
     "next": "10.2.0",
     "nexus": "1.0.0",
     "react": "17.0.2",

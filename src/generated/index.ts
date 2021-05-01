@@ -855,17 +855,17 @@ export type List = {
   __typename?: 'List';
   boolean: Array<Scalars['Boolean']>;
   enums: Array<Rols>;
-  flout: Array<Scalars['Float']>;
+  float: Array<Scalars['Float']>;
   id: Scalars['Int'];
-  intger: Array<Scalars['Int']>;
+  integer: Array<Scalars['Int']>;
   string: Array<Scalars['String']>;
 };
 
 export type ListAvgAggregateOutputType = {
   __typename?: 'ListAvgAggregateOutputType';
-  flout?: Maybe<Scalars['Float']>;
+  float?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Float']>;
-  intger?: Maybe<Scalars['Float']>;
+  integer?: Maybe<Scalars['Float']>;
 };
 
 export type ListCountAggregateOutputType = {
@@ -873,26 +873,26 @@ export type ListCountAggregateOutputType = {
   _all: Scalars['Int'];
   boolean: Scalars['Int'];
   enums: Scalars['Int'];
-  flout: Scalars['Int'];
+  float: Scalars['Int'];
   id: Scalars['Int'];
-  intger: Scalars['Int'];
+  integer: Scalars['Int'];
   string: Scalars['Int'];
 };
 
 export type ListCreateInput = {
   boolean?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   enums?: Maybe<Array<Maybe<Rols>>>;
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  float?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  integer?: Maybe<Array<Maybe<Scalars['Int']>>>;
   string?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type ListCreateManyInput = {
   boolean?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   enums?: Maybe<Array<Maybe<Rols>>>;
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  float?: Maybe<Array<Maybe<Scalars['Float']>>>;
   id?: Maybe<Scalars['Int']>;
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  integer?: Maybe<Array<Maybe<Scalars['Int']>>>;
   string?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
@@ -904,11 +904,11 @@ export type ListCreateManyenumsInput = {
   set: Rols;
 };
 
-export type ListCreateManyfloutInput = {
+export type ListCreateManyfloatInput = {
   set: Scalars['Float'];
 };
 
-export type ListCreateManyintgerInput = {
+export type ListCreateManyintegerInput = {
   set: Scalars['Int'];
 };
 
@@ -924,11 +924,11 @@ export type ListCreateenumsInput = {
   set: Rols;
 };
 
-export type ListCreatefloutInput = {
+export type ListCreatefloatInput = {
   set: Scalars['Float'];
 };
 
-export type ListCreateintgerInput = {
+export type ListCreateintegerInput = {
   set: Scalars['Int'];
 };
 
@@ -949,18 +949,18 @@ export type ListMinAggregateOutputType = {
 export type ListOrderByInput = {
   boolean?: Maybe<SortOrder>;
   enums?: Maybe<SortOrder>;
-  flout?: Maybe<SortOrder>;
+  float?: Maybe<SortOrder>;
   id?: Maybe<SortOrder>;
-  intger?: Maybe<SortOrder>;
+  integer?: Maybe<SortOrder>;
   string?: Maybe<SortOrder>;
 };
 
 export enum ListScalarFieldEnum {
   Boolean = 'boolean',
   Enums = 'enums',
-  Flout = 'flout',
+  Float = 'float',
   Id = 'id',
-  Intger = 'intger',
+  Integer = 'integer',
   String = 'string'
 }
 
@@ -970,59 +970,59 @@ export type ListScalarWhereWithAggregatesInput = {
   OR?: Maybe<Array<Maybe<ListScalarWhereWithAggregatesInput>>>;
   boolean?: Maybe<BoolNullableListFilter>;
   enums?: Maybe<EnumRolsNullableListFilter>;
-  flout?: Maybe<FloatNullableListFilter>;
+  float?: Maybe<FloatNullableListFilter>;
   id?: Maybe<IntWithAggregatesFilter>;
-  intger?: Maybe<IntNullableListFilter>;
+  integer?: Maybe<IntNullableListFilter>;
   string?: Maybe<StringNullableListFilter>;
 };
 
 export type ListSumAggregateOutputType = {
   __typename?: 'ListSumAggregateOutputType';
-  flout?: Maybe<Scalars['Float']>;
+  float?: Maybe<Scalars['Float']>;
   id?: Maybe<Scalars['Int']>;
-  intger?: Maybe<Scalars['Int']>;
+  integer?: Maybe<Scalars['Int']>;
 };
 
 export type ListUncheckedCreateInput = {
   boolean?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   enums?: Maybe<Array<Maybe<Rols>>>;
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  float?: Maybe<Array<Maybe<Scalars['Float']>>>;
   id?: Maybe<Scalars['Int']>;
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  integer?: Maybe<Array<Maybe<Scalars['Int']>>>;
   string?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type ListUncheckedUpdateInput = {
   boolean?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   enums?: Maybe<Array<Maybe<Rols>>>;
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  float?: Maybe<Array<Maybe<Scalars['Float']>>>;
   id?: Maybe<IntFieldUpdateOperationsInput>;
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  integer?: Maybe<Array<Maybe<Scalars['Int']>>>;
   string?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type ListUncheckedUpdateManyInput = {
   boolean?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   enums?: Maybe<Array<Maybe<Rols>>>;
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  float?: Maybe<Array<Maybe<Scalars['Float']>>>;
   id?: Maybe<IntFieldUpdateOperationsInput>;
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  integer?: Maybe<Array<Maybe<Scalars['Int']>>>;
   string?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type ListUpdateInput = {
   boolean?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   enums?: Maybe<Array<Maybe<Rols>>>;
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  float?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  integer?: Maybe<Array<Maybe<Scalars['Int']>>>;
   string?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type ListUpdateManyMutationInput = {
   boolean?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   enums?: Maybe<Array<Maybe<Rols>>>;
-  flout?: Maybe<Array<Maybe<Scalars['Float']>>>;
-  intger?: Maybe<Array<Maybe<Scalars['Int']>>>;
+  float?: Maybe<Array<Maybe<Scalars['Float']>>>;
+  integer?: Maybe<Array<Maybe<Scalars['Int']>>>;
   string?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
@@ -1036,12 +1036,12 @@ export type ListUpdateenumsInput = {
   set?: Maybe<Array<Maybe<Rols>>>;
 };
 
-export type ListUpdatefloutInput = {
+export type ListUpdatefloatInput = {
   push?: Maybe<Scalars['Float']>;
   set?: Maybe<Array<Maybe<Scalars['Float']>>>;
 };
 
-export type ListUpdateintgerInput = {
+export type ListUpdateintegerInput = {
   push?: Maybe<Scalars['Int']>;
   set?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
@@ -1057,9 +1057,9 @@ export type ListWhereInput = {
   OR?: Maybe<Array<Maybe<ListWhereInput>>>;
   boolean?: Maybe<BoolNullableListFilter>;
   enums?: Maybe<EnumRolsNullableListFilter>;
-  flout?: Maybe<FloatNullableListFilter>;
+  float?: Maybe<FloatNullableListFilter>;
   id?: Maybe<IntFilter>;
-  intger?: Maybe<IntNullableListFilter>;
+  integer?: Maybe<IntNullableListFilter>;
   string?: Maybe<StringNullableListFilter>;
 };
 

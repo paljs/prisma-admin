@@ -593,16 +593,16 @@ export interface NexusGenInputs {
   ListCreateInput: { // input type
     boolean?: Array<boolean | null> | null; // [Boolean]
     enums?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
-    flout?: Array<number | null> | null; // [Float]
-    intger?: Array<number | null> | null; // [Int]
+    float?: Array<number | null> | null; // [Float]
+    integer?: Array<number | null> | null; // [Int]
     string?: Array<string | null> | null; // [String]
   }
   ListCreateManyInput: { // input type
     boolean?: Array<boolean | null> | null; // [Boolean]
     enums?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
-    flout?: Array<number | null> | null; // [Float]
+    float?: Array<number | null> | null; // [Float]
     id?: number | null; // Int
-    intger?: Array<number | null> | null; // [Int]
+    integer?: Array<number | null> | null; // [Int]
     string?: Array<string | null> | null; // [String]
   }
   ListCreateManybooleanInput: { // input type
@@ -611,10 +611,10 @@ export interface NexusGenInputs {
   ListCreateManyenumsInput: { // input type
     set: NexusGenEnums['Rols']; // Rols!
   }
-  ListCreateManyfloutInput: { // input type
+  ListCreateManyfloatInput: { // input type
     set: number; // Float!
   }
-  ListCreateManyintgerInput: { // input type
+  ListCreateManyintegerInput: { // input type
     set: number; // Int!
   }
   ListCreateManystringInput: { // input type
@@ -626,10 +626,10 @@ export interface NexusGenInputs {
   ListCreateenumsInput: { // input type
     set: NexusGenEnums['Rols']; // Rols!
   }
-  ListCreatefloutInput: { // input type
+  ListCreatefloatInput: { // input type
     set: number; // Float!
   }
-  ListCreateintgerInput: { // input type
+  ListCreateintegerInput: { // input type
     set: number; // Int!
   }
   ListCreatestringInput: { // input type
@@ -638,9 +638,9 @@ export interface NexusGenInputs {
   ListOrderByInput: { // input type
     boolean?: NexusGenEnums['SortOrder'] | null; // SortOrder
     enums?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    flout?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    float?: NexusGenEnums['SortOrder'] | null; // SortOrder
     id?: NexusGenEnums['SortOrder'] | null; // SortOrder
-    intger?: NexusGenEnums['SortOrder'] | null; // SortOrder
+    integer?: NexusGenEnums['SortOrder'] | null; // SortOrder
     string?: NexusGenEnums['SortOrder'] | null; // SortOrder
   }
   ListScalarWhereWithAggregatesInput: { // input type
@@ -649,47 +649,47 @@ export interface NexusGenInputs {
     OR?: Array<NexusGenInputs['ListScalarWhereWithAggregatesInput'] | null> | null; // [ListScalarWhereWithAggregatesInput]
     boolean?: NexusGenInputs['BoolNullableListFilter'] | null; // BoolNullableListFilter
     enums?: NexusGenInputs['EnumRolsNullableListFilter'] | null; // EnumRolsNullableListFilter
-    flout?: NexusGenInputs['FloatNullableListFilter'] | null; // FloatNullableListFilter
+    float?: NexusGenInputs['FloatNullableListFilter'] | null; // FloatNullableListFilter
     id?: NexusGenInputs['IntWithAggregatesFilter'] | null; // IntWithAggregatesFilter
-    intger?: NexusGenInputs['IntNullableListFilter'] | null; // IntNullableListFilter
+    integer?: NexusGenInputs['IntNullableListFilter'] | null; // IntNullableListFilter
     string?: NexusGenInputs['StringNullableListFilter'] | null; // StringNullableListFilter
   }
   ListUncheckedCreateInput: { // input type
     boolean?: Array<boolean | null> | null; // [Boolean]
     enums?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
-    flout?: Array<number | null> | null; // [Float]
+    float?: Array<number | null> | null; // [Float]
     id?: number | null; // Int
-    intger?: Array<number | null> | null; // [Int]
+    integer?: Array<number | null> | null; // [Int]
     string?: Array<string | null> | null; // [String]
   }
   ListUncheckedUpdateInput: { // input type
     boolean?: Array<boolean | null> | null; // [Boolean]
     enums?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
-    flout?: Array<number | null> | null; // [Float]
+    float?: Array<number | null> | null; // [Float]
     id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
-    intger?: Array<number | null> | null; // [Int]
+    integer?: Array<number | null> | null; // [Int]
     string?: Array<string | null> | null; // [String]
   }
   ListUncheckedUpdateManyInput: { // input type
     boolean?: Array<boolean | null> | null; // [Boolean]
     enums?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
-    flout?: Array<number | null> | null; // [Float]
+    float?: Array<number | null> | null; // [Float]
     id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
-    intger?: Array<number | null> | null; // [Int]
+    integer?: Array<number | null> | null; // [Int]
     string?: Array<string | null> | null; // [String]
   }
   ListUpdateInput: { // input type
     boolean?: Array<boolean | null> | null; // [Boolean]
     enums?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
-    flout?: Array<number | null> | null; // [Float]
-    intger?: Array<number | null> | null; // [Int]
+    float?: Array<number | null> | null; // [Float]
+    integer?: Array<number | null> | null; // [Int]
     string?: Array<string | null> | null; // [String]
   }
   ListUpdateManyMutationInput: { // input type
     boolean?: Array<boolean | null> | null; // [Boolean]
     enums?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
-    flout?: Array<number | null> | null; // [Float]
-    intger?: Array<number | null> | null; // [Int]
+    float?: Array<number | null> | null; // [Float]
+    integer?: Array<number | null> | null; // [Int]
     string?: Array<string | null> | null; // [String]
   }
   ListUpdatebooleanInput: { // input type
@@ -700,11 +700,11 @@ export interface NexusGenInputs {
     push?: NexusGenEnums['Rols'] | null; // Rols
     set?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
   }
-  ListUpdatefloutInput: { // input type
+  ListUpdatefloatInput: { // input type
     push?: number | null; // Float
     set?: Array<number | null> | null; // [Float]
   }
-  ListUpdateintgerInput: { // input type
+  ListUpdateintegerInput: { // input type
     push?: number | null; // Int
     set?: Array<number | null> | null; // [Int]
   }
@@ -718,9 +718,9 @@ export interface NexusGenInputs {
     OR?: Array<NexusGenInputs['ListWhereInput'] | null> | null; // [ListWhereInput]
     boolean?: NexusGenInputs['BoolNullableListFilter'] | null; // BoolNullableListFilter
     enums?: NexusGenInputs['EnumRolsNullableListFilter'] | null; // EnumRolsNullableListFilter
-    flout?: NexusGenInputs['FloatNullableListFilter'] | null; // FloatNullableListFilter
+    float?: NexusGenInputs['FloatNullableListFilter'] | null; // FloatNullableListFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
-    intger?: NexusGenInputs['IntNullableListFilter'] | null; // IntNullableListFilter
+    integer?: NexusGenInputs['IntNullableListFilter'] | null; // IntNullableListFilter
     string?: NexusGenInputs['StringNullableListFilter'] | null; // StringNullableListFilter
   }
   ListWhereUniqueInput: { // input type
@@ -1605,7 +1605,7 @@ export interface NexusGenEnums {
   CommentScalarFieldEnum: "authorId" | "contain" | "createdAt" | "id" | "postId" | "updatedAt"
   GroupScalarFieldEnum: "createdAt" | "id" | "name" | "updatedAt"
   KindEnum: "enum" | "object" | "scalar"
-  ListScalarFieldEnum: "boolean" | "enums" | "flout" | "id" | "intger" | "string"
+  ListScalarFieldEnum: "boolean" | "enums" | "float" | "id" | "integer" | "string"
   PostScalarFieldEnum: "authorId" | "createdAt" | "id" | "published" | "title" | "updatedAt"
   QueryMode: "default" | "insensitive"
   Rols: "ADMIN" | "USER"
@@ -1765,23 +1765,23 @@ export interface NexusGenObjects {
   List: { // root type
     boolean: boolean[]; // [Boolean!]!
     enums: NexusGenEnums['Rols'][]; // [Rols!]!
-    flout: number[]; // [Float!]!
+    float: number[]; // [Float!]!
     id: number; // Int!
-    intger: number[]; // [Int!]!
+    integer: number[]; // [Int!]!
     string: string[]; // [String!]!
   }
   ListAvgAggregateOutputType: { // root type
-    flout?: number | null; // Float
+    float?: number | null; // Float
     id?: number | null; // Float
-    intger?: number | null; // Float
+    integer?: number | null; // Float
   }
   ListCountAggregateOutputType: { // root type
     _all: number; // Int!
     boolean: number; // Int!
     enums: number; // Int!
-    flout: number; // Int!
+    float: number; // Int!
     id: number; // Int!
-    intger: number; // Int!
+    integer: number; // Int!
     string: number; // Int!
   }
   ListMaxAggregateOutputType: { // root type
@@ -1791,9 +1791,9 @@ export interface NexusGenObjects {
     id?: number | null; // Int
   }
   ListSumAggregateOutputType: { // root type
-    flout?: number | null; // Float
+    float?: number | null; // Float
     id?: number | null; // Int
-    intger?: number | null; // Int
+    integer?: number | null; // Int
   }
   Model: { // root type
     create: boolean; // Boolean!
@@ -2048,23 +2048,23 @@ export interface NexusGenFieldTypes {
   List: { // field return type
     boolean: boolean[]; // [Boolean!]!
     enums: NexusGenEnums['Rols'][]; // [Rols!]!
-    flout: number[]; // [Float!]!
+    float: number[]; // [Float!]!
     id: number; // Int!
-    intger: number[]; // [Int!]!
+    integer: number[]; // [Int!]!
     string: string[]; // [String!]!
   }
   ListAvgAggregateOutputType: { // field return type
-    flout: number | null; // Float
+    float: number | null; // Float
     id: number | null; // Float
-    intger: number | null; // Float
+    integer: number | null; // Float
   }
   ListCountAggregateOutputType: { // field return type
     _all: number; // Int!
     boolean: number; // Int!
     enums: number; // Int!
-    flout: number; // Int!
+    float: number; // Int!
     id: number; // Int!
-    intger: number; // Int!
+    integer: number; // Int!
     string: number; // Int!
   }
   ListMaxAggregateOutputType: { // field return type
@@ -2074,9 +2074,9 @@ export interface NexusGenFieldTypes {
     id: number | null; // Int
   }
   ListSumAggregateOutputType: { // field return type
-    flout: number | null; // Float
+    float: number | null; // Float
     id: number | null; // Int
-    intger: number | null; // Int
+    integer: number | null; // Int
   }
   Model: { // field return type
     create: boolean; // Boolean!
@@ -2391,23 +2391,23 @@ export interface NexusGenFieldTypeNames {
   List: { // field return type name
     boolean: 'Boolean'
     enums: 'Rols'
-    flout: 'Float'
+    float: 'Float'
     id: 'Int'
-    intger: 'Int'
+    integer: 'Int'
     string: 'String'
   }
   ListAvgAggregateOutputType: { // field return type name
-    flout: 'Float'
+    float: 'Float'
     id: 'Float'
-    intger: 'Float'
+    integer: 'Float'
   }
   ListCountAggregateOutputType: { // field return type name
     _all: 'Int'
     boolean: 'Int'
     enums: 'Int'
-    flout: 'Int'
+    float: 'Int'
     id: 'Int'
-    intger: 'Int'
+    integer: 'Int'
     string: 'Int'
   }
   ListMaxAggregateOutputType: { // field return type name
@@ -2417,9 +2417,9 @@ export interface NexusGenFieldTypeNames {
     id: 'Int'
   }
   ListSumAggregateOutputType: { // field return type name
-    flout: 'Float'
+    float: 'Float'
     id: 'Int'
-    intger: 'Int'
+    integer: 'Int'
   }
   Model: { // field return type name
     create: 'Boolean'

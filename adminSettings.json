@@ -674,8 +674,8 @@
           "order": -1
         },
         {
-          "id": "List.intger",
-          "name": "intger",
+          "id": "List.integer",
+          "name": "integer",
           "type": "Int",
           "isId": false,
           "unique": false,
@@ -683,7 +683,7 @@
           "required": false,
           "kind": "scalar",
           "relationField": false,
-          "title": "Intger",
+          "title": "Integer",
           "create": true,
           "update": true,
           "editor": false,
@@ -694,8 +694,8 @@
           "order": -1
         },
         {
-          "id": "List.flout",
-          "name": "flout",
+          "id": "List.float",
+          "name": "float",
           "type": "Float",
           "isId": false,
           "unique": false,
@@ -703,7 +703,7 @@
           "required": false,
           "kind": "scalar",
           "relationField": false,
-          "title": "Flout",
+          "title": "Float",
           "create": true,
           "update": true,
           "editor": false,
