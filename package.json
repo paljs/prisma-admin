@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start --port ${PORT-3000}",
     "generate": "pal g && yarn generate:prisma && yarn generate:nexus && yarn codegen",
     "generate:prisma": "prisma generate",
     "generate:nexus": "ts-node --transpile-only -P nexus.tsconfig.json src/server/nexusSchema",
