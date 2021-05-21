@@ -68,6 +68,9 @@ export interface NexusGenInputs {
     isEmpty?: boolean | null; // Boolean
   }
   BoolWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    _min?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
     count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     equals?: boolean | null; // Boolean
     max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
@@ -381,6 +384,9 @@ export interface NexusGenInputs {
     notIn?: Array<NexusGenScalars['DateTime'] | null> | null; // [DateTime]
   }
   DateTimeWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedDateTimeFilter'] | null; // NestedDateTimeFilter
+    _min?: NexusGenInputs['NestedDateTimeFilter'] | null; // NestedDateTimeFilter
     count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     equals?: NexusGenScalars['DateTime'] | null; // DateTime
     gt?: NexusGenScalars['DateTime'] | null; // DateTime
@@ -561,6 +567,11 @@ export interface NexusGenInputs {
     isEmpty?: boolean | null; // Boolean
   }
   IntNullableWithAggregatesFilter: { // input type
+    _avg?: NexusGenInputs['NestedFloatNullableFilter'] | null; // NestedFloatNullableFilter
+    _count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _max?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _min?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _sum?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
     avg?: NexusGenInputs['NestedFloatNullableFilter'] | null; // NestedFloatNullableFilter
     count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
     equals?: number | null; // Int
@@ -576,6 +587,11 @@ export interface NexusGenInputs {
     sum?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
   }
   IntWithAggregatesFilter: { // input type
+    _avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _min?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _sum?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
     count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     equals?: number | null; // Int
@@ -693,23 +709,23 @@ export interface NexusGenInputs {
     string?: Array<string | null> | null; // [String]
   }
   ListUpdatebooleanInput: { // input type
-    push?: boolean | null; // Boolean
+    push?: Array<boolean | null> | null; // [Boolean]
     set?: Array<boolean | null> | null; // [Boolean]
   }
   ListUpdateenumsInput: { // input type
-    push?: NexusGenEnums['Rols'] | null; // Rols
+    push?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
     set?: Array<NexusGenEnums['Rols'] | null> | null; // [Rols]
   }
   ListUpdatefloatInput: { // input type
-    push?: number | null; // Float
+    push?: Array<number | null> | null; // [Float]
     set?: Array<number | null> | null; // [Float]
   }
   ListUpdateintegerInput: { // input type
-    push?: number | null; // Int
+    push?: Array<number | null> | null; // [Int]
     set?: Array<number | null> | null; // [Int]
   }
   ListUpdatestringInput: { // input type
-    push?: string | null; // String
+    push?: Array<string | null> | null; // [String]
     set?: Array<string | null> | null; // [String]
   }
   ListWhereInput: { // input type
@@ -731,6 +747,9 @@ export interface NexusGenInputs {
     not?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
   }
   NestedBoolWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
+    _min?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
     count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     equals?: boolean | null; // Boolean
     max?: NexusGenInputs['NestedBoolFilter'] | null; // NestedBoolFilter
@@ -748,6 +767,9 @@ export interface NexusGenInputs {
     notIn?: Array<NexusGenScalars['DateTime'] | null> | null; // [DateTime]
   }
   NestedDateTimeWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedDateTimeFilter'] | null; // NestedDateTimeFilter
+    _min?: NexusGenInputs['NestedDateTimeFilter'] | null; // NestedDateTimeFilter
     count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     equals?: NexusGenScalars['DateTime'] | null; // DateTime
     gt?: NexusGenScalars['DateTime'] | null; // DateTime
@@ -801,6 +823,11 @@ export interface NexusGenInputs {
     notIn?: Array<number | null> | null; // [Int]
   }
   NestedIntNullableWithAggregatesFilter: { // input type
+    _avg?: NexusGenInputs['NestedFloatNullableFilter'] | null; // NestedFloatNullableFilter
+    _count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _max?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _min?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _sum?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
     avg?: NexusGenInputs['NestedFloatNullableFilter'] | null; // NestedFloatNullableFilter
     count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
     equals?: number | null; // Int
@@ -816,6 +843,11 @@ export interface NexusGenInputs {
     sum?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
   }
   NestedIntWithAggregatesFilter: { // input type
+    _avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _min?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _sum?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     avg?: NexusGenInputs['NestedFloatFilter'] | null; // NestedFloatFilter
     count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     equals?: number | null; // Int
@@ -857,6 +889,9 @@ export interface NexusGenInputs {
     startsWith?: string | null; // String
   }
   NestedStringNullableWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _max?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    _min?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
     contains?: string | null; // String
     count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
     endsWith?: string | null; // String
@@ -873,6 +908,9 @@ export interface NexusGenInputs {
     startsWith?: string | null; // String
   }
   NestedStringWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    _min?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
     contains?: string | null; // String
     count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     endsWith?: string | null; // String
@@ -1201,6 +1239,9 @@ export interface NexusGenInputs {
     isEmpty?: boolean | null; // Boolean
   }
   StringNullableWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
+    _max?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
+    _min?: NexusGenInputs['NestedStringNullableFilter'] | null; // NestedStringNullableFilter
     contains?: string | null; // String
     count?: NexusGenInputs['NestedIntNullableFilter'] | null; // NestedIntNullableFilter
     endsWith?: string | null; // String
@@ -1218,6 +1259,9 @@ export interface NexusGenInputs {
     startsWith?: string | null; // String
   }
   StringWithAggregatesFilter: { // input type
+    _count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
+    _max?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
+    _min?: NexusGenInputs['NestedStringFilter'] | null; // NestedStringFilter
     contains?: string | null; // String
     count?: NexusGenInputs['NestedIntFilter'] | null; // NestedIntFilter
     endsWith?: string | null; // String
@@ -1627,6 +1671,11 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   AggregateComment: { // root type
+    _avg?: NexusGenRootTypes['CommentAvgAggregateOutputType'] | null; // CommentAvgAggregateOutputType
+    _count?: NexusGenRootTypes['CommentCountAggregateOutputType'] | null; // CommentCountAggregateOutputType
+    _max?: NexusGenRootTypes['CommentMaxAggregateOutputType'] | null; // CommentMaxAggregateOutputType
+    _min?: NexusGenRootTypes['CommentMinAggregateOutputType'] | null; // CommentMinAggregateOutputType
+    _sum?: NexusGenRootTypes['CommentSumAggregateOutputType'] | null; // CommentSumAggregateOutputType
     avg?: NexusGenRootTypes['CommentAvgAggregateOutputType'] | null; // CommentAvgAggregateOutputType
     count?: NexusGenRootTypes['CommentCountAggregateOutputType'] | null; // CommentCountAggregateOutputType
     max?: NexusGenRootTypes['CommentMaxAggregateOutputType'] | null; // CommentMaxAggregateOutputType
@@ -1634,6 +1683,11 @@ export interface NexusGenObjects {
     sum?: NexusGenRootTypes['CommentSumAggregateOutputType'] | null; // CommentSumAggregateOutputType
   }
   AggregateGroup: { // root type
+    _avg?: NexusGenRootTypes['GroupAvgAggregateOutputType'] | null; // GroupAvgAggregateOutputType
+    _count?: NexusGenRootTypes['GroupCountAggregateOutputType'] | null; // GroupCountAggregateOutputType
+    _max?: NexusGenRootTypes['GroupMaxAggregateOutputType'] | null; // GroupMaxAggregateOutputType
+    _min?: NexusGenRootTypes['GroupMinAggregateOutputType'] | null; // GroupMinAggregateOutputType
+    _sum?: NexusGenRootTypes['GroupSumAggregateOutputType'] | null; // GroupSumAggregateOutputType
     avg?: NexusGenRootTypes['GroupAvgAggregateOutputType'] | null; // GroupAvgAggregateOutputType
     count?: NexusGenRootTypes['GroupCountAggregateOutputType'] | null; // GroupCountAggregateOutputType
     max?: NexusGenRootTypes['GroupMaxAggregateOutputType'] | null; // GroupMaxAggregateOutputType
@@ -1641,6 +1695,11 @@ export interface NexusGenObjects {
     sum?: NexusGenRootTypes['GroupSumAggregateOutputType'] | null; // GroupSumAggregateOutputType
   }
   AggregateList: { // root type
+    _avg?: NexusGenRootTypes['ListAvgAggregateOutputType'] | null; // ListAvgAggregateOutputType
+    _count?: NexusGenRootTypes['ListCountAggregateOutputType'] | null; // ListCountAggregateOutputType
+    _max?: NexusGenRootTypes['ListMaxAggregateOutputType'] | null; // ListMaxAggregateOutputType
+    _min?: NexusGenRootTypes['ListMinAggregateOutputType'] | null; // ListMinAggregateOutputType
+    _sum?: NexusGenRootTypes['ListSumAggregateOutputType'] | null; // ListSumAggregateOutputType
     avg?: NexusGenRootTypes['ListAvgAggregateOutputType'] | null; // ListAvgAggregateOutputType
     count?: NexusGenRootTypes['ListCountAggregateOutputType'] | null; // ListCountAggregateOutputType
     max?: NexusGenRootTypes['ListMaxAggregateOutputType'] | null; // ListMaxAggregateOutputType
@@ -1648,6 +1707,11 @@ export interface NexusGenObjects {
     sum?: NexusGenRootTypes['ListSumAggregateOutputType'] | null; // ListSumAggregateOutputType
   }
   AggregatePost: { // root type
+    _avg?: NexusGenRootTypes['PostAvgAggregateOutputType'] | null; // PostAvgAggregateOutputType
+    _count?: NexusGenRootTypes['PostCountAggregateOutputType'] | null; // PostCountAggregateOutputType
+    _max?: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
+    _min?: NexusGenRootTypes['PostMinAggregateOutputType'] | null; // PostMinAggregateOutputType
+    _sum?: NexusGenRootTypes['PostSumAggregateOutputType'] | null; // PostSumAggregateOutputType
     avg?: NexusGenRootTypes['PostAvgAggregateOutputType'] | null; // PostAvgAggregateOutputType
     count?: NexusGenRootTypes['PostCountAggregateOutputType'] | null; // PostCountAggregateOutputType
     max?: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
@@ -1655,6 +1719,11 @@ export interface NexusGenObjects {
     sum?: NexusGenRootTypes['PostSumAggregateOutputType'] | null; // PostSumAggregateOutputType
   }
   AggregateUser: { // root type
+    _avg?: NexusGenRootTypes['UserAvgAggregateOutputType'] | null; // UserAvgAggregateOutputType
+    _count?: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
+    _max?: NexusGenRootTypes['UserMaxAggregateOutputType'] | null; // UserMaxAggregateOutputType
+    _min?: NexusGenRootTypes['UserMinAggregateOutputType'] | null; // UserMinAggregateOutputType
+    _sum?: NexusGenRootTypes['UserSumAggregateOutputType'] | null; // UserSumAggregateOutputType
     avg?: NexusGenRootTypes['UserAvgAggregateOutputType'] | null; // UserAvgAggregateOutputType
     count?: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
     max?: NexusGenRootTypes['UserMaxAggregateOutputType'] | null; // UserMaxAggregateOutputType
@@ -1907,6 +1976,11 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars & NexusGenEnu
 
 export interface NexusGenFieldTypes {
   AggregateComment: { // field return type
+    _avg: NexusGenRootTypes['CommentAvgAggregateOutputType'] | null; // CommentAvgAggregateOutputType
+    _count: NexusGenRootTypes['CommentCountAggregateOutputType'] | null; // CommentCountAggregateOutputType
+    _max: NexusGenRootTypes['CommentMaxAggregateOutputType'] | null; // CommentMaxAggregateOutputType
+    _min: NexusGenRootTypes['CommentMinAggregateOutputType'] | null; // CommentMinAggregateOutputType
+    _sum: NexusGenRootTypes['CommentSumAggregateOutputType'] | null; // CommentSumAggregateOutputType
     avg: NexusGenRootTypes['CommentAvgAggregateOutputType'] | null; // CommentAvgAggregateOutputType
     count: NexusGenRootTypes['CommentCountAggregateOutputType'] | null; // CommentCountAggregateOutputType
     max: NexusGenRootTypes['CommentMaxAggregateOutputType'] | null; // CommentMaxAggregateOutputType
@@ -1914,6 +1988,11 @@ export interface NexusGenFieldTypes {
     sum: NexusGenRootTypes['CommentSumAggregateOutputType'] | null; // CommentSumAggregateOutputType
   }
   AggregateGroup: { // field return type
+    _avg: NexusGenRootTypes['GroupAvgAggregateOutputType'] | null; // GroupAvgAggregateOutputType
+    _count: NexusGenRootTypes['GroupCountAggregateOutputType'] | null; // GroupCountAggregateOutputType
+    _max: NexusGenRootTypes['GroupMaxAggregateOutputType'] | null; // GroupMaxAggregateOutputType
+    _min: NexusGenRootTypes['GroupMinAggregateOutputType'] | null; // GroupMinAggregateOutputType
+    _sum: NexusGenRootTypes['GroupSumAggregateOutputType'] | null; // GroupSumAggregateOutputType
     avg: NexusGenRootTypes['GroupAvgAggregateOutputType'] | null; // GroupAvgAggregateOutputType
     count: NexusGenRootTypes['GroupCountAggregateOutputType'] | null; // GroupCountAggregateOutputType
     max: NexusGenRootTypes['GroupMaxAggregateOutputType'] | null; // GroupMaxAggregateOutputType
@@ -1921,6 +2000,11 @@ export interface NexusGenFieldTypes {
     sum: NexusGenRootTypes['GroupSumAggregateOutputType'] | null; // GroupSumAggregateOutputType
   }
   AggregateList: { // field return type
+    _avg: NexusGenRootTypes['ListAvgAggregateOutputType'] | null; // ListAvgAggregateOutputType
+    _count: NexusGenRootTypes['ListCountAggregateOutputType'] | null; // ListCountAggregateOutputType
+    _max: NexusGenRootTypes['ListMaxAggregateOutputType'] | null; // ListMaxAggregateOutputType
+    _min: NexusGenRootTypes['ListMinAggregateOutputType'] | null; // ListMinAggregateOutputType
+    _sum: NexusGenRootTypes['ListSumAggregateOutputType'] | null; // ListSumAggregateOutputType
     avg: NexusGenRootTypes['ListAvgAggregateOutputType'] | null; // ListAvgAggregateOutputType
     count: NexusGenRootTypes['ListCountAggregateOutputType'] | null; // ListCountAggregateOutputType
     max: NexusGenRootTypes['ListMaxAggregateOutputType'] | null; // ListMaxAggregateOutputType
@@ -1928,6 +2012,11 @@ export interface NexusGenFieldTypes {
     sum: NexusGenRootTypes['ListSumAggregateOutputType'] | null; // ListSumAggregateOutputType
   }
   AggregatePost: { // field return type
+    _avg: NexusGenRootTypes['PostAvgAggregateOutputType'] | null; // PostAvgAggregateOutputType
+    _count: NexusGenRootTypes['PostCountAggregateOutputType'] | null; // PostCountAggregateOutputType
+    _max: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
+    _min: NexusGenRootTypes['PostMinAggregateOutputType'] | null; // PostMinAggregateOutputType
+    _sum: NexusGenRootTypes['PostSumAggregateOutputType'] | null; // PostSumAggregateOutputType
     avg: NexusGenRootTypes['PostAvgAggregateOutputType'] | null; // PostAvgAggregateOutputType
     count: NexusGenRootTypes['PostCountAggregateOutputType'] | null; // PostCountAggregateOutputType
     max: NexusGenRootTypes['PostMaxAggregateOutputType'] | null; // PostMaxAggregateOutputType
@@ -1935,6 +2024,11 @@ export interface NexusGenFieldTypes {
     sum: NexusGenRootTypes['PostSumAggregateOutputType'] | null; // PostSumAggregateOutputType
   }
   AggregateUser: { // field return type
+    _avg: NexusGenRootTypes['UserAvgAggregateOutputType'] | null; // UserAvgAggregateOutputType
+    _count: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
+    _max: NexusGenRootTypes['UserMaxAggregateOutputType'] | null; // UserMaxAggregateOutputType
+    _min: NexusGenRootTypes['UserMinAggregateOutputType'] | null; // UserMinAggregateOutputType
+    _sum: NexusGenRootTypes['UserSumAggregateOutputType'] | null; // UserSumAggregateOutputType
     avg: NexusGenRootTypes['UserAvgAggregateOutputType'] | null; // UserAvgAggregateOutputType
     count: NexusGenRootTypes['UserCountAggregateOutputType'] | null; // UserCountAggregateOutputType
     max: NexusGenRootTypes['UserMaxAggregateOutputType'] | null; // UserMaxAggregateOutputType
@@ -2250,6 +2344,11 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   AggregateComment: { // field return type name
+    _avg: 'CommentAvgAggregateOutputType'
+    _count: 'CommentCountAggregateOutputType'
+    _max: 'CommentMaxAggregateOutputType'
+    _min: 'CommentMinAggregateOutputType'
+    _sum: 'CommentSumAggregateOutputType'
     avg: 'CommentAvgAggregateOutputType'
     count: 'CommentCountAggregateOutputType'
     max: 'CommentMaxAggregateOutputType'
@@ -2257,6 +2356,11 @@ export interface NexusGenFieldTypeNames {
     sum: 'CommentSumAggregateOutputType'
   }
   AggregateGroup: { // field return type name
+    _avg: 'GroupAvgAggregateOutputType'
+    _count: 'GroupCountAggregateOutputType'
+    _max: 'GroupMaxAggregateOutputType'
+    _min: 'GroupMinAggregateOutputType'
+    _sum: 'GroupSumAggregateOutputType'
     avg: 'GroupAvgAggregateOutputType'
     count: 'GroupCountAggregateOutputType'
     max: 'GroupMaxAggregateOutputType'
@@ -2264,6 +2368,11 @@ export interface NexusGenFieldTypeNames {
     sum: 'GroupSumAggregateOutputType'
   }
   AggregateList: { // field return type name
+    _avg: 'ListAvgAggregateOutputType'
+    _count: 'ListCountAggregateOutputType'
+    _max: 'ListMaxAggregateOutputType'
+    _min: 'ListMinAggregateOutputType'
+    _sum: 'ListSumAggregateOutputType'
     avg: 'ListAvgAggregateOutputType'
     count: 'ListCountAggregateOutputType'
     max: 'ListMaxAggregateOutputType'
@@ -2271,6 +2380,11 @@ export interface NexusGenFieldTypeNames {
     sum: 'ListSumAggregateOutputType'
   }
   AggregatePost: { // field return type name
+    _avg: 'PostAvgAggregateOutputType'
+    _count: 'PostCountAggregateOutputType'
+    _max: 'PostMaxAggregateOutputType'
+    _min: 'PostMinAggregateOutputType'
+    _sum: 'PostSumAggregateOutputType'
     avg: 'PostAvgAggregateOutputType'
     count: 'PostCountAggregateOutputType'
     max: 'PostMaxAggregateOutputType'
@@ -2278,6 +2392,11 @@ export interface NexusGenFieldTypeNames {
     sum: 'PostSumAggregateOutputType'
   }
   AggregateUser: { // field return type name
+    _avg: 'UserAvgAggregateOutputType'
+    _count: 'UserCountAggregateOutputType'
+    _max: 'UserMaxAggregateOutputType'
+    _min: 'UserMinAggregateOutputType'
+    _sum: 'UserSumAggregateOutputType'
     avg: 'UserAvgAggregateOutputType'
     count: 'UserCountAggregateOutputType'
     max: 'UserMaxAggregateOutputType'

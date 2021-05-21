@@ -3,6 +3,11 @@
 
 
 type AggregateComment {
+  _avg: CommentAvgAggregateOutputType
+  _count: CommentCountAggregateOutputType
+  _max: CommentMaxAggregateOutputType
+  _min: CommentMinAggregateOutputType
+  _sum: CommentSumAggregateOutputType
   avg: CommentAvgAggregateOutputType
   count: CommentCountAggregateOutputType
   max: CommentMaxAggregateOutputType
@@ -11,6 +16,11 @@ type AggregateComment {
 }
 
 type AggregateGroup {
+  _avg: GroupAvgAggregateOutputType
+  _count: GroupCountAggregateOutputType
+  _max: GroupMaxAggregateOutputType
+  _min: GroupMinAggregateOutputType
+  _sum: GroupSumAggregateOutputType
   avg: GroupAvgAggregateOutputType
   count: GroupCountAggregateOutputType
   max: GroupMaxAggregateOutputType
@@ -19,6 +29,11 @@ type AggregateGroup {
 }
 
 type AggregateList {
+  _avg: ListAvgAggregateOutputType
+  _count: ListCountAggregateOutputType
+  _max: ListMaxAggregateOutputType
+  _min: ListMinAggregateOutputType
+  _sum: ListSumAggregateOutputType
   avg: ListAvgAggregateOutputType
   count: ListCountAggregateOutputType
   max: ListMaxAggregateOutputType
@@ -27,6 +42,11 @@ type AggregateList {
 }
 
 type AggregatePost {
+  _avg: PostAvgAggregateOutputType
+  _count: PostCountAggregateOutputType
+  _max: PostMaxAggregateOutputType
+  _min: PostMinAggregateOutputType
+  _sum: PostSumAggregateOutputType
   avg: PostAvgAggregateOutputType
   count: PostCountAggregateOutputType
   max: PostMaxAggregateOutputType
@@ -35,6 +55,11 @@ type AggregatePost {
 }
 
 type AggregateUser {
+  _avg: UserAvgAggregateOutputType
+  _count: UserCountAggregateOutputType
+  _max: UserMaxAggregateOutputType
+  _min: UserMinAggregateOutputType
+  _sum: UserSumAggregateOutputType
   avg: UserAvgAggregateOutputType
   count: UserCountAggregateOutputType
   max: UserMaxAggregateOutputType
@@ -67,6 +92,9 @@ input BoolNullableListFilter {
 }
 
 input BoolWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedBoolFilter
+  _min: NestedBoolFilter
   count: NestedIntFilter
   equals: Boolean
   max: NestedBoolFilter
@@ -488,6 +516,9 @@ input DateTimeFilter {
 }
 
 input DateTimeWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedDateTimeFilter
+  _min: NestedDateTimeFilter
   count: NestedIntFilter
   equals: DateTime
   gt: DateTime
@@ -769,6 +800,11 @@ input IntNullableListFilter {
 }
 
 input IntNullableWithAggregatesFilter {
+  _avg: NestedFloatNullableFilter
+  _count: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _sum: NestedIntNullableFilter
   avg: NestedFloatNullableFilter
   count: NestedIntNullableFilter
   equals: Int
@@ -785,6 +821,11 @@ input IntNullableWithAggregatesFilter {
 }
 
 input IntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
   avg: NestedFloatFilter
   count: NestedIntFilter
   equals: Int
@@ -979,27 +1020,27 @@ input ListUpdateManyMutationInput {
 }
 
 input ListUpdatebooleanInput {
-  push: Boolean
+  push: [Boolean]
   set: [Boolean]
 }
 
 input ListUpdateenumsInput {
-  push: Rols
+  push: [Rols]
   set: [Rols]
 }
 
 input ListUpdatefloatInput {
-  push: Float
+  push: [Float]
   set: [Float]
 }
 
 input ListUpdateintegerInput {
-  push: Int
+  push: [Int]
   set: [Int]
 }
 
 input ListUpdatestringInput {
-  push: String
+  push: [String]
   set: [String]
 }
 
@@ -1075,6 +1116,9 @@ input NestedBoolFilter {
 }
 
 input NestedBoolWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedBoolFilter
+  _min: NestedBoolFilter
   count: NestedIntFilter
   equals: Boolean
   max: NestedBoolFilter
@@ -1094,6 +1138,9 @@ input NestedDateTimeFilter {
 }
 
 input NestedDateTimeWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedDateTimeFilter
+  _min: NestedDateTimeFilter
   count: NestedIntFilter
   equals: DateTime
   gt: DateTime
@@ -1152,6 +1199,11 @@ input NestedIntNullableFilter {
 }
 
 input NestedIntNullableWithAggregatesFilter {
+  _avg: NestedFloatNullableFilter
+  _count: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _sum: NestedIntNullableFilter
   avg: NestedFloatNullableFilter
   count: NestedIntNullableFilter
   equals: Int
@@ -1168,6 +1220,11 @@ input NestedIntNullableWithAggregatesFilter {
 }
 
 input NestedIntWithAggregatesFilter {
+  _avg: NestedFloatFilter
+  _count: NestedIntFilter
+  _max: NestedIntFilter
+  _min: NestedIntFilter
+  _sum: NestedIntFilter
   avg: NestedFloatFilter
   count: NestedIntFilter
   equals: Int
@@ -1212,6 +1269,9 @@ input NestedStringNullableFilter {
 }
 
 input NestedStringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
   contains: String
   count: NestedIntNullableFilter
   endsWith: String
@@ -1229,6 +1289,9 @@ input NestedStringNullableWithAggregatesFilter {
 }
 
 input NestedStringWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedStringFilter
+  _min: NestedStringFilter
   contains: String
   count: NestedIntFilter
   endsWith: String
@@ -1709,6 +1772,9 @@ input StringNullableListFilter {
 }
 
 input StringNullableWithAggregatesFilter {
+  _count: NestedIntNullableFilter
+  _max: NestedStringNullableFilter
+  _min: NestedStringNullableFilter
   contains: String
   count: NestedIntNullableFilter
   endsWith: String
@@ -1727,6 +1793,9 @@ input StringNullableWithAggregatesFilter {
 }
 
 input StringWithAggregatesFilter {
+  _count: NestedIntFilter
+  _max: NestedStringFilter
+  _min: NestedStringFilter
   contains: String
   count: NestedIntFilter
   endsWith: String
