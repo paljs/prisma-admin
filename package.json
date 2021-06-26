@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@apollo/client": "3.3.20",
-    "@apollo/react-ssr": "4.0.0",
     "@material-ui/core": "4.11.4",
     "@material-ui/icons": "4.11.2",
     "@paljs/admin": "3.5.4",
