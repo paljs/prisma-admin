@@ -1533,10 +1533,10 @@
     widest-line "^3.1.0"
     wrap-ansi "^4.0.0"
 
-"@paljs/admin@3.5.4":
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/@paljs/admin/-/admin-3.5.4.tgz#3e25504ec3e1057eb4c4fb6045b253fcc4e1ffd4"
-  integrity sha512-AWnwHQi7Y9Cx9RgfveIkQUDXcr/Ant0zCkh4A5fnaz015mefuPSriPqbBGELLrLPCpaFH1Wwk1V+yJaBrJDmXQ==
+"@paljs/admin@3.5.5":
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/@paljs/admin/-/admin-3.5.5.tgz#d4ae9d48ad643abf298b59ef9c88c7984b64ae58"
+  integrity sha512-Hn9Ia6ilXySg6UZ49ZXmf1TigYg7LsMrnx2pbrvPkOk1CO02Dl7vv6D3OK6PzTEEV3iam3lVerMiYVmk0UZKXQ==
   dependencies:
     "@headlessui/react" "^1.3.0"
     "@heroicons/react" "^1.0.1"
@@ -1545,15 +1545,15 @@
     react-hook-form "7.9.0"
     react-table "7.7.0"
 
-"@paljs/cli@3.5.4":
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/@paljs/cli/-/cli-3.5.4.tgz#d71d8ddb1798ec56250f5f6320d6120166dc8b2d"
-  integrity sha512-dgXtSneAUVkGEhEWaee39dScptbZJYYjhcj3zTcl4qWwxNAM7+09gIn+j0u1BkdC+zNfqLY7T8xwwsLDqI6ZTQ==
+"@paljs/cli@3.5.5":
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/@paljs/cli/-/cli-3.5.5.tgz#11875b8d2e0a9efea2f1ce99f34fa7dc3135caab"
+  integrity sha512-FYqwuiHjkflpbeHeaQ8FD5QIB8p04O3HF5n1honr6YGGovj2Sxh6bgqqyHr47CMgpdQh2nHzh2D4Ea7ehBwWZQ==
   dependencies:
     "@oclif/command" "^1"
     "@oclif/config" "^1"
     "@oclif/plugin-help" "^3"
-    "@paljs/create" "^3.5.4"
+    "@paljs/create" "^3.5.5"
     "@paljs/display" "^3.4.0"
     "@paljs/generator" "^3.4.0"
     "@paljs/schema" "^3.4.0"
@@ -1565,10 +1565,10 @@
     prettier "^2.3.1"
     tslib "^2"
 
-"@paljs/create@^3.5.4":
-  version "3.5.4"
-  resolved "https://registry.yarnpkg.com/@paljs/create/-/create-3.5.4.tgz#cc634fd23021f4ac9d766acccc9ca95224d35c6a"
-  integrity sha512-fCohzFvXDIeecGU6YwbIcup24NXwMacUXxOtbAeywQzD5n37mOGfGh8y1DrytrxlnloVxN2kgUfUHk1fnJJQsg==
+"@paljs/create@^3.5.5":
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/@paljs/create/-/create-3.5.5.tgz#a63124984f649c8b2c58a0c66a6a611a2413ed02"
+  integrity sha512-TYGI/rRTroDZEoPSwRCYNuZ7HfvnGNIbvjM+VxSGhrP1k1lHpI2W0vU9wcqGUNz6UrhxSn0fMD5+vSTo2e3J2w==
   dependencies:
     "@paljs/display" "^3.4.0"
     "@paljs/types" "^3.4.0"
