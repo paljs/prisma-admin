@@ -5,42 +5,22 @@ import { NextPage } from 'next';
 import { ApolloProvider } from '@apollo/client';
 import { useApollo } from 'server/client';
 import AdminLayout from 'layouts/Admin';
+import { useRouter } from 'next/router';
 
 import '@paljs/admin/style.css';
-
-import { useRouter } from 'next/router';
+import 'tailwindcss/tailwind.css';
+import '../styles/global.css';
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const apolloClient = useApollo(pageProps.initialApolloState);
   const router = useRouter();
-  React.useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side');
-    if (jssStyles) {
-      jssStyles.parentElement?.removeChild(jssStyles);
-    }
-  }, []);
-
   const admin = router.pathname.startsWith('/admin');
-
   return (
     <>
       <Head>
-        <title>Prisma Admin Dynamic Table</title>
+        <title>Great PalJs App</title>
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171177495-2"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-          
-            gtag('config', 'UA-171177495-2');
-              `,
-          }}
-        />
       </Head>
       <ApolloProvider client={apolloClient}>
         {admin ? (
