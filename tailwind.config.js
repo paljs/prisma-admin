@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'jit',
   purge: {
     mode: 'all',
     preserveHtmlElements: false,
@@ -16,5 +17,5 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/forms')],
 };

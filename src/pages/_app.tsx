@@ -7,8 +7,6 @@ import { useApollo } from 'server/client';
 import AdminLayout from 'layouts/Admin';
 import { useRouter } from 'next/router';
 
-import '@paljs/admin/style.css';
-import 'tailwindcss/tailwind.css';
 import '../styles/global.css';
 
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {

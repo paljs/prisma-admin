@@ -20,6 +20,7 @@
     "@paljs/admin": "3.5.5",
     "@paljs/nexus": "3.4.0",
     "@prisma/client": "2.25.0",
+    "@tailwindcss/forms": "^0.3.3",
     "apollo-server-micro": "2.25.2",
     "bcryptjs": "2.4.3",
     "cookie": "0.4.1",
