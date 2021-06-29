@@ -578,6 +578,7 @@ input FloatNullableListFilter {
 }
 
 type Group {
+  _count: GroupCountOutputType
   createdAt: DateTime!
   id: Int!
   name: String!
@@ -595,6 +596,10 @@ type GroupCountAggregateOutputType {
   id: Int!
   name: Int!
   updatedAt: Int!
+}
+
+type GroupCountOutputType {
+  users: Int!
 }
 
 input GroupCreateInput {
@@ -1321,6 +1326,7 @@ input NullableStringFieldUpdateOperationsInput {
 }
 
 type Post {
+  _count: PostCountOutputType
   author: User
   authorId: Int
   comments(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: CommentOrderByInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
@@ -1344,6 +1350,10 @@ type PostCountAggregateOutputType {
   published: Int!
   title: Int!
   updatedAt: Int!
+}
+
+type PostCountOutputType {
+  comments: Int!
 }
 
 input PostCreateInput {
@@ -1845,6 +1855,7 @@ input UpdateModelInput {
 }
 
 type User {
+  _count: UserCountOutputType
   comments(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: CommentOrderByInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
   createdAt: DateTime!
   email: String!
@@ -1869,6 +1880,11 @@ type UserCountAggregateOutputType {
   id: Int!
   name: Int!
   password: Int!
+}
+
+type UserCountOutputType {
+  comments: Int!
+  posts: Int!
 }
 
 input UserCreateInput {

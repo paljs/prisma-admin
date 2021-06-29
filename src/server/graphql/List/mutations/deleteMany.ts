@@ -6,7 +6,6 @@ export const ListDeleteManyMutation = mutationField('deleteManyList', {
     where: 'ListWhereInput',
   },
   resolve: async (_parent, { where }, { prisma }) => {
-    await prisma.onDelete({ model: 'List', where })
     return prisma.list.deleteMany({ where } as any)
   },
 })

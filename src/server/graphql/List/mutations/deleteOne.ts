@@ -6,7 +6,6 @@ export const ListDeleteOneMutation = mutationField('deleteOneList', {
     where: nonNull('ListWhereUniqueInput'),
   },
   resolve: async (_parent, { where }, { prisma, select }) => {
-    await prisma.onDelete({ model: 'List', where })
     return prisma.list.delete({
       where,
       ...select,

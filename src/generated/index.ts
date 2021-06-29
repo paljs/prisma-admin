@@ -24,6 +24,11 @@ export type Scalars = {
 
 export type AggregateComment = {
   __typename?: 'AggregateComment';
+  _avg?: Maybe<CommentAvgAggregateOutputType>;
+  _count?: Maybe<CommentCountAggregateOutputType>;
+  _max?: Maybe<CommentMaxAggregateOutputType>;
+  _min?: Maybe<CommentMinAggregateOutputType>;
+  _sum?: Maybe<CommentSumAggregateOutputType>;
   avg?: Maybe<CommentAvgAggregateOutputType>;
   count?: Maybe<CommentCountAggregateOutputType>;
   max?: Maybe<CommentMaxAggregateOutputType>;
@@ -33,6 +38,11 @@ export type AggregateComment = {
 
 export type AggregateGroup = {
   __typename?: 'AggregateGroup';
+  _avg?: Maybe<GroupAvgAggregateOutputType>;
+  _count?: Maybe<GroupCountAggregateOutputType>;
+  _max?: Maybe<GroupMaxAggregateOutputType>;
+  _min?: Maybe<GroupMinAggregateOutputType>;
+  _sum?: Maybe<GroupSumAggregateOutputType>;
   avg?: Maybe<GroupAvgAggregateOutputType>;
   count?: Maybe<GroupCountAggregateOutputType>;
   max?: Maybe<GroupMaxAggregateOutputType>;
@@ -42,6 +52,11 @@ export type AggregateGroup = {
 
 export type AggregateList = {
   __typename?: 'AggregateList';
+  _avg?: Maybe<ListAvgAggregateOutputType>;
+  _count?: Maybe<ListCountAggregateOutputType>;
+  _max?: Maybe<ListMaxAggregateOutputType>;
+  _min?: Maybe<ListMinAggregateOutputType>;
+  _sum?: Maybe<ListSumAggregateOutputType>;
   avg?: Maybe<ListAvgAggregateOutputType>;
   count?: Maybe<ListCountAggregateOutputType>;
   max?: Maybe<ListMaxAggregateOutputType>;
@@ -51,6 +66,11 @@ export type AggregateList = {
 
 export type AggregatePost = {
   __typename?: 'AggregatePost';
+  _avg?: Maybe<PostAvgAggregateOutputType>;
+  _count?: Maybe<PostCountAggregateOutputType>;
+  _max?: Maybe<PostMaxAggregateOutputType>;
+  _min?: Maybe<PostMinAggregateOutputType>;
+  _sum?: Maybe<PostSumAggregateOutputType>;
   avg?: Maybe<PostAvgAggregateOutputType>;
   count?: Maybe<PostCountAggregateOutputType>;
   max?: Maybe<PostMaxAggregateOutputType>;
@@ -60,6 +80,11 @@ export type AggregatePost = {
 
 export type AggregateUser = {
   __typename?: 'AggregateUser';
+  _avg?: Maybe<UserAvgAggregateOutputType>;
+  _count?: Maybe<UserCountAggregateOutputType>;
+  _max?: Maybe<UserMaxAggregateOutputType>;
+  _min?: Maybe<UserMinAggregateOutputType>;
+  _sum?: Maybe<UserSumAggregateOutputType>;
   avg?: Maybe<UserAvgAggregateOutputType>;
   count?: Maybe<UserCountAggregateOutputType>;
   max?: Maybe<UserMaxAggregateOutputType>;
@@ -91,6 +116,9 @@ export type BoolNullableListFilter = {
 };
 
 export type BoolWithAggregatesFilter = {
+  _count?: Maybe<NestedIntFilter>;
+  _max?: Maybe<NestedBoolFilter>;
+  _min?: Maybe<NestedBoolFilter>;
   count?: Maybe<NestedIntFilter>;
   equals?: Maybe<Scalars['Boolean']>;
   max?: Maybe<NestedBoolFilter>;
@@ -516,6 +544,9 @@ export type DateTimeFilter = {
 };
 
 export type DateTimeWithAggregatesFilter = {
+  _count?: Maybe<NestedIntFilter>;
+  _max?: Maybe<NestedDateTimeFilter>;
+  _min?: Maybe<NestedDateTimeFilter>;
   count?: Maybe<NestedIntFilter>;
   equals?: Maybe<Scalars['DateTime']>;
   gt?: Maybe<Scalars['DateTime']>;
@@ -576,6 +607,7 @@ export type FloatNullableListFilter = {
 
 export type Group = {
   __typename?: 'Group';
+  _count?: Maybe<GroupCountOutputType>;
   createdAt: Scalars['DateTime'];
   id: Scalars['Int'];
   name: Scalars['String'];
@@ -605,6 +637,11 @@ export type GroupCountAggregateOutputType = {
   id: Scalars['Int'];
   name: Scalars['Int'];
   updatedAt: Scalars['Int'];
+};
+
+export type GroupCountOutputType = {
+  __typename?: 'GroupCountOutputType';
+  users: Scalars['Int'];
 };
 
 export type GroupCreateInput = {
@@ -813,6 +850,11 @@ export type IntNullableListFilter = {
 };
 
 export type IntNullableWithAggregatesFilter = {
+  _avg?: Maybe<NestedFloatNullableFilter>;
+  _count?: Maybe<NestedIntNullableFilter>;
+  _max?: Maybe<NestedIntNullableFilter>;
+  _min?: Maybe<NestedIntNullableFilter>;
+  _sum?: Maybe<NestedIntNullableFilter>;
   avg?: Maybe<NestedFloatNullableFilter>;
   count?: Maybe<NestedIntNullableFilter>;
   equals?: Maybe<Scalars['Int']>;
@@ -829,6 +871,11 @@ export type IntNullableWithAggregatesFilter = {
 };
 
 export type IntWithAggregatesFilter = {
+  _avg?: Maybe<NestedFloatFilter>;
+  _count?: Maybe<NestedIntFilter>;
+  _max?: Maybe<NestedIntFilter>;
+  _min?: Maybe<NestedIntFilter>;
+  _sum?: Maybe<NestedIntFilter>;
   avg?: Maybe<NestedFloatFilter>;
   count?: Maybe<NestedIntFilter>;
   equals?: Maybe<Scalars['Int']>;
@@ -1027,27 +1074,27 @@ export type ListUpdateManyMutationInput = {
 };
 
 export type ListUpdatebooleanInput = {
-  push?: Maybe<Scalars['Boolean']>;
+  push?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
   set?: Maybe<Array<Maybe<Scalars['Boolean']>>>;
 };
 
 export type ListUpdateenumsInput = {
-  push?: Maybe<Rols>;
+  push?: Maybe<Array<Maybe<Rols>>>;
   set?: Maybe<Array<Maybe<Rols>>>;
 };
 
 export type ListUpdatefloatInput = {
-  push?: Maybe<Scalars['Float']>;
+  push?: Maybe<Array<Maybe<Scalars['Float']>>>;
   set?: Maybe<Array<Maybe<Scalars['Float']>>>;
 };
 
 export type ListUpdateintegerInput = {
-  push?: Maybe<Scalars['Int']>;
+  push?: Maybe<Array<Maybe<Scalars['Int']>>>;
   set?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
 export type ListUpdatestringInput = {
-  push?: Maybe<Scalars['String']>;
+  push?: Maybe<Array<Maybe<Scalars['String']>>>;
   set?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
@@ -1327,6 +1374,9 @@ export type NestedBoolFilter = {
 };
 
 export type NestedBoolWithAggregatesFilter = {
+  _count?: Maybe<NestedIntFilter>;
+  _max?: Maybe<NestedBoolFilter>;
+  _min?: Maybe<NestedBoolFilter>;
   count?: Maybe<NestedIntFilter>;
   equals?: Maybe<Scalars['Boolean']>;
   max?: Maybe<NestedBoolFilter>;
@@ -1346,6 +1396,9 @@ export type NestedDateTimeFilter = {
 };
 
 export type NestedDateTimeWithAggregatesFilter = {
+  _count?: Maybe<NestedIntFilter>;
+  _max?: Maybe<NestedDateTimeFilter>;
+  _min?: Maybe<NestedDateTimeFilter>;
   count?: Maybe<NestedIntFilter>;
   equals?: Maybe<Scalars['DateTime']>;
   gt?: Maybe<Scalars['DateTime']>;
@@ -1404,6 +1457,11 @@ export type NestedIntNullableFilter = {
 };
 
 export type NestedIntNullableWithAggregatesFilter = {
+  _avg?: Maybe<NestedFloatNullableFilter>;
+  _count?: Maybe<NestedIntNullableFilter>;
+  _max?: Maybe<NestedIntNullableFilter>;
+  _min?: Maybe<NestedIntNullableFilter>;
+  _sum?: Maybe<NestedIntNullableFilter>;
   avg?: Maybe<NestedFloatNullableFilter>;
   count?: Maybe<NestedIntNullableFilter>;
   equals?: Maybe<Scalars['Int']>;
@@ -1420,6 +1478,11 @@ export type NestedIntNullableWithAggregatesFilter = {
 };
 
 export type NestedIntWithAggregatesFilter = {
+  _avg?: Maybe<NestedFloatFilter>;
+  _count?: Maybe<NestedIntFilter>;
+  _max?: Maybe<NestedIntFilter>;
+  _min?: Maybe<NestedIntFilter>;
+  _sum?: Maybe<NestedIntFilter>;
   avg?: Maybe<NestedFloatFilter>;
   count?: Maybe<NestedIntFilter>;
   equals?: Maybe<Scalars['Int']>;
@@ -1464,6 +1527,9 @@ export type NestedStringNullableFilter = {
 };
 
 export type NestedStringNullableWithAggregatesFilter = {
+  _count?: Maybe<NestedIntNullableFilter>;
+  _max?: Maybe<NestedStringNullableFilter>;
+  _min?: Maybe<NestedStringNullableFilter>;
   contains?: Maybe<Scalars['String']>;
   count?: Maybe<NestedIntNullableFilter>;
   endsWith?: Maybe<Scalars['String']>;
@@ -1481,6 +1547,9 @@ export type NestedStringNullableWithAggregatesFilter = {
 };
 
 export type NestedStringWithAggregatesFilter = {
+  _count?: Maybe<NestedIntFilter>;
+  _max?: Maybe<NestedStringFilter>;
+  _min?: Maybe<NestedStringFilter>;
   contains?: Maybe<Scalars['String']>;
   count?: Maybe<NestedIntFilter>;
   endsWith?: Maybe<Scalars['String']>;
@@ -1511,6 +1580,7 @@ export type NullableStringFieldUpdateOperationsInput = {
 
 export type Post = {
   __typename?: 'Post';
+  _count?: Maybe<PostCountOutputType>;
   author?: Maybe<User>;
   authorId?: Maybe<Scalars['Int']>;
   comments: Array<Comment>;
@@ -1546,6 +1616,11 @@ export type PostCountAggregateOutputType = {
   published: Scalars['Int'];
   title: Scalars['Int'];
   updatedAt: Scalars['Int'];
+};
+
+export type PostCountOutputType = {
+  __typename?: 'PostCountOutputType';
+  comments: Scalars['Int'];
 };
 
 export type PostCreateInput = {
@@ -2204,6 +2279,9 @@ export type StringNullableListFilter = {
 };
 
 export type StringNullableWithAggregatesFilter = {
+  _count?: Maybe<NestedIntNullableFilter>;
+  _max?: Maybe<NestedStringNullableFilter>;
+  _min?: Maybe<NestedStringNullableFilter>;
   contains?: Maybe<Scalars['String']>;
   count?: Maybe<NestedIntNullableFilter>;
   endsWith?: Maybe<Scalars['String']>;
@@ -2222,6 +2300,9 @@ export type StringNullableWithAggregatesFilter = {
 };
 
 export type StringWithAggregatesFilter = {
+  _count?: Maybe<NestedIntFilter>;
+  _max?: Maybe<NestedStringFilter>;
+  _min?: Maybe<NestedStringFilter>;
   contains?: Maybe<Scalars['String']>;
   count?: Maybe<NestedIntFilter>;
   endsWith?: Maybe<Scalars['String']>;
@@ -2272,6 +2353,7 @@ export type UpdateModelInput = {
 
 export type User = {
   __typename?: 'User';
+  _count?: Maybe<UserCountOutputType>;
   comments: Array<Comment>;
   createdAt: Scalars['DateTime'];
   email: Scalars['String'];
@@ -2318,6 +2400,12 @@ export type UserCountAggregateOutputType = {
   id: Scalars['Int'];
   name: Scalars['Int'];
   password: Scalars['Int'];
+};
+
+export type UserCountOutputType = {
+  __typename?: 'UserCountOutputType';
+  comments: Scalars['Int'];
+  posts: Scalars['Int'];
 };
 
 export type UserCreateInput = {
