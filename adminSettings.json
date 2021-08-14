@@ -4,9 +4,7 @@
       "id": "User",
       "name": "User",
       "idField": "email",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -197,9 +195,7 @@
       "id": "Post",
       "name": "Post",
       "idField": "id",
-      "displayFields": [
-        "title"
-      ],
+      "displayFields": ["title"],
       "create": true,
       "update": true,
       "delete": true,
@@ -370,9 +366,7 @@
       "id": "Comment",
       "name": "Comment",
       "idField": "id",
-      "displayFields": [
-        "contain"
-      ],
+      "displayFields": ["contain"],
       "create": true,
       "update": true,
       "delete": true,
@@ -543,9 +537,7 @@
       "id": "Group",
       "name": "Group",
       "idField": "id",
-      "displayFields": [
-        "name"
-      ],
+      "displayFields": ["name"],
       "create": true,
       "update": true,
       "delete": true,
@@ -656,9 +648,7 @@
       "id": "List",
       "name": "List",
       "idField": "id",
-      "displayFields": [
-        "id"
-      ],
+      "displayFields": ["id"],
       "create": true,
       "update": true,
       "delete": true,
@@ -786,13 +776,5 @@
       ]
     }
   ],
-  "enums": [
-    {
-      "name": "Rols",
-      "fields": [
-        "USER",
-        "ADMIN"
-      ]
-    }
-  ]
+  "enums": [{ "name": "Rols", "fields": ["USER", "ADMIN"] }]
 }
