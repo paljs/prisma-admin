@@ -4,11 +4,11 @@ export const ListFindCountQuery = queryField('findManyListCount', {
   type: nonNull('Int'),
   args: {
     where: 'ListWhereInput',
-    orderBy: list('ListOrderByInput'),
+    orderBy: list('ListOrderByWithRelationInput'),
     cursor: 'ListWhereUniqueInput',
-    distinct: 'ListScalarFieldEnum',
-    skip: 'Int',
     take: 'Int',
+    skip: 'Int',
+    distinct: list('ListScalarFieldEnum'),
   },
   resolve(_parent, args, { prisma }) {
     return prisma.list.count(args as any)

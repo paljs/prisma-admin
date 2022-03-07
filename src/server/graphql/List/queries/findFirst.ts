@@ -4,11 +4,11 @@ export const ListFindFirstQuery = queryField('findFirstList', {
   type: 'List',
   args: {
     where: 'ListWhereInput',
-    orderBy: list('ListOrderByInput'),
+    orderBy: list('ListOrderByWithRelationInput'),
     cursor: 'ListWhereUniqueInput',
-    distinct: 'ListScalarFieldEnum',
-    skip: 'Int',
     take: 'Int',
+    skip: 'Int',
+    distinct: list('ListScalarFieldEnum'),
   },
   resolve(_parent, args, { prisma, select }) {
     return prisma.list.findFirst({

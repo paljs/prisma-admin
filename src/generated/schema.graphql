@@ -8,11 +8,6 @@ type AggregateComment {
   _max: CommentMaxAggregateOutputType
   _min: CommentMinAggregateOutputType
   _sum: CommentSumAggregateOutputType
-  avg: CommentAvgAggregateOutputType
-  count: CommentCountAggregateOutputType
-  max: CommentMaxAggregateOutputType
-  min: CommentMinAggregateOutputType
-  sum: CommentSumAggregateOutputType
 }
 
 type AggregateGroup {
@@ -21,11 +16,6 @@ type AggregateGroup {
   _max: GroupMaxAggregateOutputType
   _min: GroupMinAggregateOutputType
   _sum: GroupSumAggregateOutputType
-  avg: GroupAvgAggregateOutputType
-  count: GroupCountAggregateOutputType
-  max: GroupMaxAggregateOutputType
-  min: GroupMinAggregateOutputType
-  sum: GroupSumAggregateOutputType
 }
 
 type AggregateList {
@@ -34,11 +24,6 @@ type AggregateList {
   _max: ListMaxAggregateOutputType
   _min: ListMinAggregateOutputType
   _sum: ListSumAggregateOutputType
-  avg: ListAvgAggregateOutputType
-  count: ListCountAggregateOutputType
-  max: ListMaxAggregateOutputType
-  min: ListMinAggregateOutputType
-  sum: ListSumAggregateOutputType
 }
 
 type AggregatePost {
@@ -47,11 +32,6 @@ type AggregatePost {
   _max: PostMaxAggregateOutputType
   _min: PostMinAggregateOutputType
   _sum: PostSumAggregateOutputType
-  avg: PostAvgAggregateOutputType
-  count: PostCountAggregateOutputType
-  max: PostMaxAggregateOutputType
-  min: PostMinAggregateOutputType
-  sum: PostSumAggregateOutputType
 }
 
 type AggregateUser {
@@ -60,11 +40,6 @@ type AggregateUser {
   _max: UserMaxAggregateOutputType
   _min: UserMinAggregateOutputType
   _sum: UserSumAggregateOutputType
-  avg: UserAvgAggregateOutputType
-  count: UserCountAggregateOutputType
-  max: UserMaxAggregateOutputType
-  min: UserMinAggregateOutputType
-  sum: UserSumAggregateOutputType
 }
 
 type BatchPayload {
@@ -95,10 +70,7 @@ input BoolWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedBoolFilter
   _min: NestedBoolFilter
-  count: NestedIntFilter
   equals: Boolean
-  max: NestedBoolFilter
-  min: NestedBoolFilter
   not: NestedBoolWithAggregatesFilter
 }
 
@@ -119,6 +91,12 @@ type CommentAvgAggregateOutputType {
   postId: Float
 }
 
+input CommentAvgOrderByAggregateInput {
+  authorId: SortOrder
+  id: SortOrder
+  postId: SortOrder
+}
+
 type CommentCountAggregateOutputType {
   _all: Int!
   authorId: Int!
@@ -127,6 +105,15 @@ type CommentCountAggregateOutputType {
   id: Int!
   postId: Int!
   updatedAt: Int!
+}
+
+input CommentCountOrderByAggregateInput {
+  authorId: SortOrder
+  contain: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  postId: SortOrder
+  updatedAt: SortOrder
 }
 
 input CommentCreateInput {
@@ -225,6 +212,15 @@ type CommentMaxAggregateOutputType {
   updatedAt: DateTime
 }
 
+input CommentMaxOrderByAggregateInput {
+  authorId: SortOrder
+  contain: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  postId: SortOrder
+  updatedAt: SortOrder
+}
+
 type CommentMinAggregateOutputType {
   authorId: Int
   contain: String
@@ -234,11 +230,40 @@ type CommentMinAggregateOutputType {
   updatedAt: DateTime
 }
 
-input CommentOrderByInput {
+input CommentMinOrderByAggregateInput {
   authorId: SortOrder
   contain: SortOrder
   createdAt: SortOrder
   id: SortOrder
+  postId: SortOrder
+  updatedAt: SortOrder
+}
+
+input CommentOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input CommentOrderByWithAggregationInput {
+  _avg: CommentAvgOrderByAggregateInput
+  _count: CommentCountOrderByAggregateInput
+  _max: CommentMaxOrderByAggregateInput
+  _min: CommentMinOrderByAggregateInput
+  _sum: CommentSumOrderByAggregateInput
+  authorId: SortOrder
+  contain: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  postId: SortOrder
+  updatedAt: SortOrder
+}
+
+input CommentOrderByWithRelationInput {
+  author: UserOrderByWithRelationInput
+  authorId: SortOrder
+  contain: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  post: PostOrderByWithRelationInput
   postId: SortOrder
   updatedAt: SortOrder
 }
@@ -280,6 +305,12 @@ type CommentSumAggregateOutputType {
   authorId: Int
   id: Int
   postId: Int
+}
+
+input CommentSumOrderByAggregateInput {
+  authorId: SortOrder
+  id: SortOrder
+  postId: SortOrder
 }
 
 input CommentUncheckedCreateInput {
@@ -519,15 +550,12 @@ input DateTimeWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedDateTimeFilter
   _min: NestedDateTimeFilter
-  count: NestedIntFilter
   equals: DateTime
   gt: DateTime
   gte: DateTime
   in: [DateTime]
   lt: DateTime
   lte: DateTime
-  max: NestedDateTimeFilter
-  min: NestedDateTimeFilter
   not: NestedDateTimeWithAggregatesFilter
   notIn: [DateTime]
 }
@@ -578,16 +606,20 @@ input FloatNullableListFilter {
 }
 
 type Group {
-  _count: GroupCountOutputType
+  _count: GroupCountOutputType!
   createdAt: DateTime!
   id: Int!
   name: String!
   updatedAt: DateTime!
-  users(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: UserOrderByInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
+  users(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: UserOrderByWithRelationInput, skip: Int, take: Int, where: UserWhereInput): [User!]!
 }
 
 type GroupAvgAggregateOutputType {
   id: Float
+}
+
+input GroupAvgOrderByAggregateInput {
+  id: SortOrder
 }
 
 type GroupCountAggregateOutputType {
@@ -596,6 +628,13 @@ type GroupCountAggregateOutputType {
   id: Int!
   name: Int!
   updatedAt: Int!
+}
+
+input GroupCountOrderByAggregateInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
 }
 
 type GroupCountOutputType {
@@ -640,6 +679,13 @@ type GroupMaxAggregateOutputType {
   updatedAt: DateTime
 }
 
+input GroupMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
 type GroupMinAggregateOutputType {
   createdAt: DateTime
   id: Int
@@ -647,11 +693,31 @@ type GroupMinAggregateOutputType {
   updatedAt: DateTime
 }
 
-input GroupOrderByInput {
+input GroupMinOrderByAggregateInput {
   createdAt: SortOrder
   id: SortOrder
   name: SortOrder
   updatedAt: SortOrder
+}
+
+input GroupOrderByWithAggregationInput {
+  _avg: GroupAvgOrderByAggregateInput
+  _count: GroupCountOrderByAggregateInput
+  _max: GroupMaxOrderByAggregateInput
+  _min: GroupMinOrderByAggregateInput
+  _sum: GroupSumOrderByAggregateInput
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input GroupOrderByWithRelationInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+  users: UserOrderByRelationAggregateInput
 }
 
 input GroupRelationFilter {
@@ -678,6 +744,10 @@ input GroupScalarWhereWithAggregatesInput {
 
 type GroupSumAggregateOutputType {
   id: Int
+}
+
+input GroupSumOrderByAggregateInput {
+  id: SortOrder
 }
 
 input GroupUncheckedCreateInput {
@@ -810,19 +880,14 @@ input IntNullableWithAggregatesFilter {
   _max: NestedIntNullableFilter
   _min: NestedIntNullableFilter
   _sum: NestedIntNullableFilter
-  avg: NestedFloatNullableFilter
-  count: NestedIntNullableFilter
   equals: Int
   gt: Int
   gte: Int
   in: [Int]
   lt: Int
   lte: Int
-  max: NestedIntNullableFilter
-  min: NestedIntNullableFilter
   not: NestedIntNullableWithAggregatesFilter
   notIn: [Int]
-  sum: NestedIntNullableFilter
 }
 
 input IntWithAggregatesFilter {
@@ -831,19 +896,14 @@ input IntWithAggregatesFilter {
   _max: NestedIntFilter
   _min: NestedIntFilter
   _sum: NestedIntFilter
-  avg: NestedFloatFilter
-  count: NestedIntFilter
   equals: Int
   gt: Int
   gte: Int
   in: [Int]
   lt: Int
   lte: Int
-  max: NestedIntFilter
-  min: NestedIntFilter
   not: NestedIntWithAggregatesFilter
   notIn: [Int]
-  sum: NestedIntFilter
 }
 
 """Json custom scalar type"""
@@ -870,6 +930,12 @@ type ListAvgAggregateOutputType {
   integer: Float
 }
 
+input ListAvgOrderByAggregateInput {
+  float: SortOrder
+  id: SortOrder
+  integer: SortOrder
+}
+
 type ListCountAggregateOutputType {
   _all: Int!
   boolean: Int!
@@ -878,6 +944,15 @@ type ListCountAggregateOutputType {
   id: Int!
   integer: Int!
   string: Int!
+}
+
+input ListCountOrderByAggregateInput {
+  boolean: SortOrder
+  enums: SortOrder
+  float: SortOrder
+  id: SortOrder
+  integer: SortOrder
+  string: SortOrder
 }
 
 input ListCreateInput {
@@ -895,26 +970,6 @@ input ListCreateManyInput {
   id: Int
   integer: [Int]
   string: [String]
-}
-
-input ListCreateManybooleanInput {
-  set: Boolean!
-}
-
-input ListCreateManyenumsInput {
-  set: Rols!
-}
-
-input ListCreateManyfloatInput {
-  set: Float!
-}
-
-input ListCreateManyintegerInput {
-  set: Int!
-}
-
-input ListCreateManystringInput {
-  set: String!
 }
 
 input ListCreatebooleanInput {
@@ -941,11 +996,33 @@ type ListMaxAggregateOutputType {
   id: Int
 }
 
+input ListMaxOrderByAggregateInput {
+  id: SortOrder
+}
+
 type ListMinAggregateOutputType {
   id: Int
 }
 
-input ListOrderByInput {
+input ListMinOrderByAggregateInput {
+  id: SortOrder
+}
+
+input ListOrderByWithAggregationInput {
+  _avg: ListAvgOrderByAggregateInput
+  _count: ListCountOrderByAggregateInput
+  _max: ListMaxOrderByAggregateInput
+  _min: ListMinOrderByAggregateInput
+  _sum: ListSumOrderByAggregateInput
+  boolean: SortOrder
+  enums: SortOrder
+  float: SortOrder
+  id: SortOrder
+  integer: SortOrder
+  string: SortOrder
+}
+
+input ListOrderByWithRelationInput {
   boolean: SortOrder
   enums: SortOrder
   float: SortOrder
@@ -979,6 +1056,12 @@ type ListSumAggregateOutputType {
   float: Float
   id: Int
   integer: Int
+}
+
+input ListSumOrderByAggregateInput {
+  float: SortOrder
+  id: SortOrder
+  integer: SortOrder
 }
 
 input ListUncheckedCreateInput {
@@ -1124,10 +1207,7 @@ input NestedBoolWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedBoolFilter
   _min: NestedBoolFilter
-  count: NestedIntFilter
   equals: Boolean
-  max: NestedBoolFilter
-  min: NestedBoolFilter
   not: NestedBoolWithAggregatesFilter
 }
 
@@ -1146,15 +1226,12 @@ input NestedDateTimeWithAggregatesFilter {
   _count: NestedIntFilter
   _max: NestedDateTimeFilter
   _min: NestedDateTimeFilter
-  count: NestedIntFilter
   equals: DateTime
   gt: DateTime
   gte: DateTime
   in: [DateTime]
   lt: DateTime
   lte: DateTime
-  max: NestedDateTimeFilter
-  min: NestedDateTimeFilter
   not: NestedDateTimeWithAggregatesFilter
   notIn: [DateTime]
 }
@@ -1209,19 +1286,14 @@ input NestedIntNullableWithAggregatesFilter {
   _max: NestedIntNullableFilter
   _min: NestedIntNullableFilter
   _sum: NestedIntNullableFilter
-  avg: NestedFloatNullableFilter
-  count: NestedIntNullableFilter
   equals: Int
   gt: Int
   gte: Int
   in: [Int]
   lt: Int
   lte: Int
-  max: NestedIntNullableFilter
-  min: NestedIntNullableFilter
   not: NestedIntNullableWithAggregatesFilter
   notIn: [Int]
-  sum: NestedIntNullableFilter
 }
 
 input NestedIntWithAggregatesFilter {
@@ -1230,19 +1302,14 @@ input NestedIntWithAggregatesFilter {
   _max: NestedIntFilter
   _min: NestedIntFilter
   _sum: NestedIntFilter
-  avg: NestedFloatFilter
-  count: NestedIntFilter
   equals: Int
   gt: Int
   gte: Int
   in: [Int]
   lt: Int
   lte: Int
-  max: NestedIntFilter
-  min: NestedIntFilter
   not: NestedIntWithAggregatesFilter
   notIn: [Int]
-  sum: NestedIntFilter
 }
 
 input NestedStringFilter {
@@ -1278,7 +1345,6 @@ input NestedStringNullableWithAggregatesFilter {
   _max: NestedStringNullableFilter
   _min: NestedStringNullableFilter
   contains: String
-  count: NestedIntNullableFilter
   endsWith: String
   equals: String
   gt: String
@@ -1286,8 +1352,6 @@ input NestedStringNullableWithAggregatesFilter {
   in: [String]
   lt: String
   lte: String
-  max: NestedStringNullableFilter
-  min: NestedStringNullableFilter
   not: NestedStringNullableWithAggregatesFilter
   notIn: [String]
   startsWith: String
@@ -1298,7 +1362,6 @@ input NestedStringWithAggregatesFilter {
   _max: NestedStringFilter
   _min: NestedStringFilter
   contains: String
-  count: NestedIntFilter
   endsWith: String
   equals: String
   gt: String
@@ -1306,8 +1369,6 @@ input NestedStringWithAggregatesFilter {
   in: [String]
   lt: String
   lte: String
-  max: NestedStringFilter
-  min: NestedStringFilter
   not: NestedStringWithAggregatesFilter
   notIn: [String]
   startsWith: String
@@ -1326,10 +1387,10 @@ input NullableStringFieldUpdateOperationsInput {
 }
 
 type Post {
-  _count: PostCountOutputType
+  _count: PostCountOutputType!
   author: User
   authorId: Int
-  comments(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: CommentOrderByInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
+  comments(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: CommentOrderByWithRelationInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
   createdAt: DateTime!
   id: Int!
   published: Boolean!
@@ -1342,6 +1403,11 @@ type PostAvgAggregateOutputType {
   id: Float
 }
 
+input PostAvgOrderByAggregateInput {
+  authorId: SortOrder
+  id: SortOrder
+}
+
 type PostCountAggregateOutputType {
   _all: Int!
   authorId: Int!
@@ -1350,6 +1416,15 @@ type PostCountAggregateOutputType {
   published: Int!
   title: Int!
   updatedAt: Int!
+}
+
+input PostCountOrderByAggregateInput {
+  authorId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  published: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
 }
 
 type PostCountOutputType {
@@ -1441,6 +1516,15 @@ type PostMaxAggregateOutputType {
   updatedAt: DateTime
 }
 
+input PostMaxOrderByAggregateInput {
+  authorId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  published: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
 type PostMinAggregateOutputType {
   authorId: Int
   createdAt: DateTime
@@ -1450,8 +1534,37 @@ type PostMinAggregateOutputType {
   updatedAt: DateTime
 }
 
-input PostOrderByInput {
+input PostMinOrderByAggregateInput {
   authorId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  published: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+input PostOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input PostOrderByWithAggregationInput {
+  _avg: PostAvgOrderByAggregateInput
+  _count: PostCountOrderByAggregateInput
+  _max: PostMaxOrderByAggregateInput
+  _min: PostMinOrderByAggregateInput
+  _sum: PostSumOrderByAggregateInput
+  authorId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  published: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+input PostOrderByWithRelationInput {
+  author: UserOrderByWithRelationInput
+  authorId: SortOrder
+  comments: CommentOrderByRelationAggregateInput
   createdAt: SortOrder
   id: SortOrder
   published: SortOrder
@@ -1500,6 +1613,11 @@ input PostScalarWhereWithAggregatesInput {
 type PostSumAggregateOutputType {
   authorId: Int
   id: Int
+}
+
+input PostSumOrderByAggregateInput {
+  authorId: SortOrder
+  id: SortOrder
 }
 
 input PostUncheckedCreateInput {
@@ -1690,26 +1808,26 @@ input PostWhereUniqueInput {
 }
 
 type Query {
-  aggregateComment(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): AggregateComment
-  aggregateGroup(cursor: GroupWhereUniqueInput, distinct: GroupScalarFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): AggregateGroup
-  aggregateList(cursor: ListWhereUniqueInput, distinct: ListScalarFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): AggregateList
-  aggregatePost(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): AggregatePost
-  aggregateUser(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): AggregateUser
-  findFirstComment(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Comment
-  findFirstGroup(cursor: GroupWhereUniqueInput, distinct: GroupScalarFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Group
-  findFirstList(cursor: ListWhereUniqueInput, distinct: ListScalarFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): List
-  findFirstPost(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Post
-  findFirstUser(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): User
-  findManyComment(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
-  findManyCommentCount(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: [CommentOrderByInput], skip: Int, take: Int, where: CommentWhereInput): Int!
-  findManyGroup(cursor: GroupWhereUniqueInput, distinct: GroupScalarFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): [Group!]!
-  findManyGroupCount(cursor: GroupWhereUniqueInput, distinct: GroupScalarFieldEnum, orderBy: [GroupOrderByInput], skip: Int, take: Int, where: GroupWhereInput): Int!
-  findManyList(cursor: ListWhereUniqueInput, distinct: ListScalarFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): [List!]!
-  findManyListCount(cursor: ListWhereUniqueInput, distinct: ListScalarFieldEnum, orderBy: [ListOrderByInput], skip: Int, take: Int, where: ListWhereInput): Int!
-  findManyPost(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): [Post!]!
-  findManyPostCount(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: [PostOrderByInput], skip: Int, take: Int, where: PostWhereInput): Int!
-  findManyUser(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): [User!]!
-  findManyUserCount(cursor: UserWhereUniqueInput, distinct: UserScalarFieldEnum, orderBy: [UserOrderByInput], skip: Int, take: Int, where: UserWhereInput): Int!
+  aggregateComment(cursor: CommentWhereUniqueInput, orderBy: [CommentOrderByWithRelationInput], skip: Int, take: Int, where: CommentWhereInput): AggregateComment
+  aggregateGroup(cursor: GroupWhereUniqueInput, orderBy: [GroupOrderByWithRelationInput], skip: Int, take: Int, where: GroupWhereInput): AggregateGroup
+  aggregateList(cursor: ListWhereUniqueInput, orderBy: [ListOrderByWithRelationInput], skip: Int, take: Int, where: ListWhereInput): AggregateList
+  aggregatePost(cursor: PostWhereUniqueInput, orderBy: [PostOrderByWithRelationInput], skip: Int, take: Int, where: PostWhereInput): AggregatePost
+  aggregateUser(cursor: UserWhereUniqueInput, orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): AggregateUser
+  findFirstComment(cursor: CommentWhereUniqueInput, distinct: [CommentScalarFieldEnum], orderBy: [CommentOrderByWithRelationInput], skip: Int, take: Int, where: CommentWhereInput): Comment
+  findFirstGroup(cursor: GroupWhereUniqueInput, distinct: [GroupScalarFieldEnum], orderBy: [GroupOrderByWithRelationInput], skip: Int, take: Int, where: GroupWhereInput): Group
+  findFirstList(cursor: ListWhereUniqueInput, distinct: [ListScalarFieldEnum], orderBy: [ListOrderByWithRelationInput], skip: Int, take: Int, where: ListWhereInput): List
+  findFirstPost(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum], orderBy: [PostOrderByWithRelationInput], skip: Int, take: Int, where: PostWhereInput): Post
+  findFirstUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): User
+  findManyComment(cursor: CommentWhereUniqueInput, distinct: [CommentScalarFieldEnum], orderBy: [CommentOrderByWithRelationInput], skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
+  findManyCommentCount(cursor: CommentWhereUniqueInput, distinct: [CommentScalarFieldEnum], orderBy: [CommentOrderByWithRelationInput], skip: Int, take: Int, where: CommentWhereInput): Int!
+  findManyGroup(cursor: GroupWhereUniqueInput, distinct: [GroupScalarFieldEnum], orderBy: [GroupOrderByWithRelationInput], skip: Int, take: Int, where: GroupWhereInput): [Group!]!
+  findManyGroupCount(cursor: GroupWhereUniqueInput, distinct: [GroupScalarFieldEnum], orderBy: [GroupOrderByWithRelationInput], skip: Int, take: Int, where: GroupWhereInput): Int!
+  findManyList(cursor: ListWhereUniqueInput, distinct: [ListScalarFieldEnum], orderBy: [ListOrderByWithRelationInput], skip: Int, take: Int, where: ListWhereInput): [List!]!
+  findManyListCount(cursor: ListWhereUniqueInput, distinct: [ListScalarFieldEnum], orderBy: [ListOrderByWithRelationInput], skip: Int, take: Int, where: ListWhereInput): Int!
+  findManyPost(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum], orderBy: [PostOrderByWithRelationInput], skip: Int, take: Int, where: PostWhereInput): [Post!]!
+  findManyPostCount(cursor: PostWhereUniqueInput, distinct: [PostScalarFieldEnum], orderBy: [PostOrderByWithRelationInput], skip: Int, take: Int, where: PostWhereInput): Int!
+  findManyUser(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): [User!]!
+  findManyUserCount(cursor: UserWhereUniqueInput, distinct: [UserScalarFieldEnum], orderBy: [UserOrderByWithRelationInput], skip: Int, take: Int, where: UserWhereInput): Int!
   findUniqueComment(where: CommentWhereUniqueInput!): Comment
   findUniqueGroup(where: GroupWhereUniqueInput!): Group
   findUniqueList(where: ListWhereUniqueInput!): List
@@ -1786,7 +1904,6 @@ input StringNullableWithAggregatesFilter {
   _max: NestedStringNullableFilter
   _min: NestedStringNullableFilter
   contains: String
-  count: NestedIntNullableFilter
   endsWith: String
   equals: String
   gt: String
@@ -1794,8 +1911,6 @@ input StringNullableWithAggregatesFilter {
   in: [String]
   lt: String
   lte: String
-  max: NestedStringNullableFilter
-  min: NestedStringNullableFilter
   mode: QueryMode
   not: NestedStringNullableWithAggregatesFilter
   notIn: [String]
@@ -1807,7 +1922,6 @@ input StringWithAggregatesFilter {
   _max: NestedStringFilter
   _min: NestedStringFilter
   contains: String
-  count: NestedIntFilter
   endsWith: String
   equals: String
   gt: String
@@ -1815,8 +1929,6 @@ input StringWithAggregatesFilter {
   in: [String]
   lt: String
   lte: String
-  max: NestedStringFilter
-  min: NestedStringFilter
   mode: QueryMode
   not: NestedStringWithAggregatesFilter
   notIn: [String]
@@ -1855,8 +1967,8 @@ input UpdateModelInput {
 }
 
 type User {
-  _count: UserCountOutputType
-  comments(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: CommentOrderByInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
+  _count: UserCountOutputType!
+  comments(cursor: CommentWhereUniqueInput, distinct: CommentScalarFieldEnum, orderBy: CommentOrderByWithRelationInput, skip: Int, take: Int, where: CommentWhereInput): [Comment!]!
   createdAt: DateTime!
   email: String!
   group: Group
@@ -1864,12 +1976,17 @@ type User {
   id: Int!
   name: String
   password: String!
-  posts(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: PostOrderByInput, skip: Int, take: Int, where: PostWhereInput): [Post!]!
+  posts(cursor: PostWhereUniqueInput, distinct: PostScalarFieldEnum, orderBy: PostOrderByWithRelationInput, skip: Int, take: Int, where: PostWhereInput): [Post!]!
 }
 
 type UserAvgAggregateOutputType {
   groupId: Float
   id: Float
+}
+
+input UserAvgOrderByAggregateInput {
+  groupId: SortOrder
+  id: SortOrder
 }
 
 type UserCountAggregateOutputType {
@@ -1880,6 +1997,15 @@ type UserCountAggregateOutputType {
   id: Int!
   name: Int!
   password: Int!
+}
+
+input UserCountOrderByAggregateInput {
+  createdAt: SortOrder
+  email: SortOrder
+  groupId: SortOrder
+  id: SortOrder
+  name: SortOrder
+  password: SortOrder
 }
 
 type UserCountOutputType {
@@ -1995,6 +2121,15 @@ type UserMaxAggregateOutputType {
   password: String
 }
 
+input UserMaxOrderByAggregateInput {
+  createdAt: SortOrder
+  email: SortOrder
+  groupId: SortOrder
+  id: SortOrder
+  name: SortOrder
+  password: SortOrder
+}
+
 type UserMinAggregateOutputType {
   createdAt: DateTime
   email: String
@@ -2004,13 +2139,43 @@ type UserMinAggregateOutputType {
   password: String
 }
 
-input UserOrderByInput {
+input UserMinOrderByAggregateInput {
   createdAt: SortOrder
   email: SortOrder
   groupId: SortOrder
   id: SortOrder
   name: SortOrder
   password: SortOrder
+}
+
+input UserOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input UserOrderByWithAggregationInput {
+  _avg: UserAvgOrderByAggregateInput
+  _count: UserCountOrderByAggregateInput
+  _max: UserMaxOrderByAggregateInput
+  _min: UserMinOrderByAggregateInput
+  _sum: UserSumOrderByAggregateInput
+  createdAt: SortOrder
+  email: SortOrder
+  groupId: SortOrder
+  id: SortOrder
+  name: SortOrder
+  password: SortOrder
+}
+
+input UserOrderByWithRelationInput {
+  comments: CommentOrderByRelationAggregateInput
+  createdAt: SortOrder
+  email: SortOrder
+  group: GroupOrderByWithRelationInput
+  groupId: SortOrder
+  id: SortOrder
+  name: SortOrder
+  password: SortOrder
+  posts: PostOrderByRelationAggregateInput
 }
 
 input UserRelationFilter {
@@ -2054,6 +2219,11 @@ input UserScalarWhereWithAggregatesInput {
 type UserSumAggregateOutputType {
   groupId: Int
   id: Int
+}
+
+input UserSumOrderByAggregateInput {
+  groupId: SortOrder
+  id: SortOrder
 }
 
 input UserUncheckedCreateInput {

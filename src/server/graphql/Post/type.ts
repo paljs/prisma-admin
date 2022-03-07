@@ -21,7 +21,7 @@ export const Post = objectType({
       type: 'Comment',
       args: {
         where: 'CommentWhereInput',
-        orderBy: 'CommentOrderByInput',
+        orderBy: 'CommentOrderByWithRelationInput',
         cursor: 'CommentWhereUniqueInput',
         take: 'Int',
         skip: 'Int',
@@ -33,7 +33,7 @@ export const Post = objectType({
     })
     t.field('createdAt', { type: 'DateTime' })
     t.field('updatedAt', { type: 'DateTime' })
-    t.nullable.field('_count', {
+    t.field('_count', {
       type: 'PostCountOutputType',
       resolve(root: any) {
         return root._count
