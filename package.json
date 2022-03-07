@@ -68,6 +68,9 @@
   "cacheDirectories": [
     ".next/cache"
   ],
+  "prisma": {
+    "seed": "yarn ts-node prisma/seed.ts"
+  },
   "repository": "https://github.com/paljs/prisma-admin",
   "description": "\"Full stack Prisma, GraphQL, Nexus, Apollo and NextJS with Admin UI to control your Prisma db"
 }
