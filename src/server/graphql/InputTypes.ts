@@ -32,12 +32,7 @@ export const SortOrder = enumType({
 
 export const TransactionIsolationLevel = enumType({
   name: 'TransactionIsolationLevel',
-  members: [
-    'ReadUncommitted',
-    'ReadCommitted',
-    'RepeatableRead',
-    'Serializable',
-  ],
+  members: ['ReadUncommitted', 'ReadCommitted', 'RepeatableRead', 'Serializable'],
 })
 
 export const UserScalarFieldEnum = enumType({
@@ -1763,21 +1758,20 @@ export const PostUncheckedCreateNestedManyWithoutAuthorInput = inputObjectType({
   },
 })
 
-export const CommentUncheckedCreateNestedManyWithoutAuthorInput =
-  inputObjectType({
-    nonNullDefaults: {
-      input: false,
-    },
-    name: 'CommentUncheckedCreateNestedManyWithoutAuthorInput',
-    definition(t) {
-      t.list.field('create', { type: 'CommentCreateWithoutAuthorInput' })
-      t.list.field('connectOrCreate', {
-        type: 'CommentCreateOrConnectWithoutAuthorInput',
-      })
-      t.field('createMany', { type: 'CommentCreateManyAuthorInputEnvelope' })
-      t.list.field('connect', { type: 'CommentWhereUniqueInput' })
-    },
-  })
+export const CommentUncheckedCreateNestedManyWithoutAuthorInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'CommentUncheckedCreateNestedManyWithoutAuthorInput',
+  definition(t) {
+    t.list.field('create', { type: 'CommentCreateWithoutAuthorInput' })
+    t.list.field('connectOrCreate', {
+      type: 'CommentCreateOrConnectWithoutAuthorInput',
+    })
+    t.field('createMany', { type: 'CommentCreateManyAuthorInputEnvelope' })
+    t.list.field('connect', { type: 'CommentWhereUniqueInput' })
+  },
+})
 
 export const DateTimeFieldUpdateOperationsInput = inputObjectType({
   nonNullDefaults: {
@@ -1939,34 +1933,33 @@ export const NullableIntFieldUpdateOperationsInput = inputObjectType({
   },
 })
 
-export const CommentUncheckedUpdateManyWithoutAuthorNestedInput =
-  inputObjectType({
-    nonNullDefaults: {
-      input: false,
-    },
-    name: 'CommentUncheckedUpdateManyWithoutAuthorNestedInput',
-    definition(t) {
-      t.list.field('create', { type: 'CommentCreateWithoutAuthorInput' })
-      t.list.field('connectOrCreate', {
-        type: 'CommentCreateOrConnectWithoutAuthorInput',
-      })
-      t.list.field('upsert', {
-        type: 'CommentUpsertWithWhereUniqueWithoutAuthorInput',
-      })
-      t.field('createMany', { type: 'CommentCreateManyAuthorInputEnvelope' })
-      t.list.field('set', { type: 'CommentWhereUniqueInput' })
-      t.list.field('disconnect', { type: 'CommentWhereUniqueInput' })
-      t.list.field('delete', { type: 'CommentWhereUniqueInput' })
-      t.list.field('connect', { type: 'CommentWhereUniqueInput' })
-      t.list.field('update', {
-        type: 'CommentUpdateWithWhereUniqueWithoutAuthorInput',
-      })
-      t.list.field('updateMany', {
-        type: 'CommentUpdateManyWithWhereWithoutAuthorInput',
-      })
-      t.list.field('deleteMany', { type: 'CommentScalarWhereInput' })
-    },
-  })
+export const CommentUncheckedUpdateManyWithoutAuthorNestedInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
+  },
+  name: 'CommentUncheckedUpdateManyWithoutAuthorNestedInput',
+  definition(t) {
+    t.list.field('create', { type: 'CommentCreateWithoutAuthorInput' })
+    t.list.field('connectOrCreate', {
+      type: 'CommentCreateOrConnectWithoutAuthorInput',
+    })
+    t.list.field('upsert', {
+      type: 'CommentUpsertWithWhereUniqueWithoutAuthorInput',
+    })
+    t.field('createMany', { type: 'CommentCreateManyAuthorInputEnvelope' })
+    t.list.field('set', { type: 'CommentWhereUniqueInput' })
+    t.list.field('disconnect', { type: 'CommentWhereUniqueInput' })
+    t.list.field('delete', { type: 'CommentWhereUniqueInput' })
+    t.list.field('connect', { type: 'CommentWhereUniqueInput' })
+    t.list.field('update', {
+      type: 'CommentUpdateWithWhereUniqueWithoutAuthorInput',
+    })
+    t.list.field('updateMany', {
+      type: 'CommentUpdateManyWithWhereWithoutAuthorInput',
+    })
+    t.list.field('deleteMany', { type: 'CommentScalarWhereInput' })
+  },
+})
 
 export const UserCreateNestedOneWithoutPostsInput = inputObjectType({
   nonNullDefaults: {
@@ -1995,22 +1988,20 @@ export const CommentCreateNestedManyWithoutPostInput = inputObjectType({
   },
 })
 
-export const CommentUncheckedCreateNestedManyWithoutPostInput = inputObjectType(
-  {
-    nonNullDefaults: {
-      input: false,
-    },
-    name: 'CommentUncheckedCreateNestedManyWithoutPostInput',
-    definition(t) {
-      t.list.field('create', { type: 'CommentCreateWithoutPostInput' })
-      t.list.field('connectOrCreate', {
-        type: 'CommentCreateOrConnectWithoutPostInput',
-      })
-      t.field('createMany', { type: 'CommentCreateManyPostInputEnvelope' })
-      t.list.field('connect', { type: 'CommentWhereUniqueInput' })
-    },
+export const CommentUncheckedCreateNestedManyWithoutPostInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
   },
-)
+  name: 'CommentUncheckedCreateNestedManyWithoutPostInput',
+  definition(t) {
+    t.list.field('create', { type: 'CommentCreateWithoutPostInput' })
+    t.list.field('connectOrCreate', {
+      type: 'CommentCreateOrConnectWithoutPostInput',
+    })
+    t.field('createMany', { type: 'CommentCreateManyPostInputEnvelope' })
+    t.list.field('connect', { type: 'CommentWhereUniqueInput' })
+  },
+})
 
 export const BoolFieldUpdateOperationsInput = inputObjectType({
   nonNullDefaults: {
@@ -2066,35 +2057,33 @@ export const CommentUpdateManyWithoutPostNestedInput = inputObjectType({
   },
 })
 
-export const CommentUncheckedUpdateManyWithoutPostNestedInput = inputObjectType(
-  {
-    nonNullDefaults: {
-      input: false,
-    },
-    name: 'CommentUncheckedUpdateManyWithoutPostNestedInput',
-    definition(t) {
-      t.list.field('create', { type: 'CommentCreateWithoutPostInput' })
-      t.list.field('connectOrCreate', {
-        type: 'CommentCreateOrConnectWithoutPostInput',
-      })
-      t.list.field('upsert', {
-        type: 'CommentUpsertWithWhereUniqueWithoutPostInput',
-      })
-      t.field('createMany', { type: 'CommentCreateManyPostInputEnvelope' })
-      t.list.field('set', { type: 'CommentWhereUniqueInput' })
-      t.list.field('disconnect', { type: 'CommentWhereUniqueInput' })
-      t.list.field('delete', { type: 'CommentWhereUniqueInput' })
-      t.list.field('connect', { type: 'CommentWhereUniqueInput' })
-      t.list.field('update', {
-        type: 'CommentUpdateWithWhereUniqueWithoutPostInput',
-      })
-      t.list.field('updateMany', {
-        type: 'CommentUpdateManyWithWhereWithoutPostInput',
-      })
-      t.list.field('deleteMany', { type: 'CommentScalarWhereInput' })
-    },
+export const CommentUncheckedUpdateManyWithoutPostNestedInput = inputObjectType({
+  nonNullDefaults: {
+    input: false,
   },
-)
+  name: 'CommentUncheckedUpdateManyWithoutPostNestedInput',
+  definition(t) {
+    t.list.field('create', { type: 'CommentCreateWithoutPostInput' })
+    t.list.field('connectOrCreate', {
+      type: 'CommentCreateOrConnectWithoutPostInput',
+    })
+    t.list.field('upsert', {
+      type: 'CommentUpsertWithWhereUniqueWithoutPostInput',
+    })
+    t.field('createMany', { type: 'CommentCreateManyPostInputEnvelope' })
+    t.list.field('set', { type: 'CommentWhereUniqueInput' })
+    t.list.field('disconnect', { type: 'CommentWhereUniqueInput' })
+    t.list.field('delete', { type: 'CommentWhereUniqueInput' })
+    t.list.field('connect', { type: 'CommentWhereUniqueInput' })
+    t.list.field('update', {
+      type: 'CommentUpdateWithWhereUniqueWithoutPostInput',
+    })
+    t.list.field('updateMany', {
+      type: 'CommentUpdateManyWithWhereWithoutPostInput',
+    })
+    t.list.field('deleteMany', { type: 'CommentScalarWhereInput' })
+  },
+})
 
 export const PostCreateNestedOneWithoutCommentsInput = inputObjectType({
   nonNullDefaults: {
