@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserCircleIcon } from '@heroicons/react/outline';
+import { UserCircleIcon } from '@heroicons/react/24/outline';
 
 export default function Navbar() {
   return (

@@ -9,41 +9,51 @@ import type { core } from "nexus"
 declare global {
   interface NexusGenCustomInputMethods<TypeName extends string> {
     /**
-     * Json custom scalar type
+     * The `BigInt` scalar type represents non-fractional signed whole numeric values.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
      */
-    json<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Json";
+    bigInt<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "BigInt";
     /**
-     * Decimal custom scalar type
+     * The `Byte` scalar type represents byte value as a Buffer
+     */
+    bytes<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Bytes";
+    /**
+     * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+     */
+    dateTime<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
+    /**
+     * An arbitrary-precision Decimal type
      */
     decimal<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Decimal";
     /**
-     * BigInt custom scalar type
+     * The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
      */
-    bigint<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "BigInt";
-    /**
-     * Date custom scalar type
-     */
-    date<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "DateTime";
+    json<FieldName extends string>(fieldName: FieldName, opts?: core.CommonInputFieldConfig<TypeName, FieldName>): void // "Json";
   }
 }
 declare global {
   interface NexusGenCustomOutputMethods<TypeName extends string> {
     /**
-     * Json custom scalar type
+     * The `BigInt` scalar type represents non-fractional signed whole numeric values.
+     * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
      */
-    json<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Json";
+    bigInt<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "BigInt";
     /**
-     * Decimal custom scalar type
+     * The `Byte` scalar type represents byte value as a Buffer
+     */
+    bytes<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Bytes";
+    /**
+     * A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar.
+     */
+    dateTime<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
+    /**
+     * An arbitrary-precision Decimal type
      */
     decimal<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Decimal";
     /**
-     * BigInt custom scalar type
+     * The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
      */
-    bigint<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "BigInt";
-    /**
-     * Date custom scalar type
-     */
-    date<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "DateTime";
+    json<FieldName extends string>(fieldName: FieldName, ...opts: core.ScalarOutSpread<TypeName, FieldName>): void // "Json";
   }
 }
 
@@ -280,7 +290,7 @@ export interface NexusGenInputs {
     postId?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
-  CommentUncheckedUpdateManyWithoutAuthorInput: { // input type
+  CommentUncheckedUpdateManyWithoutAuthorNestedInput: { // input type
     connect?: Array<NexusGenInputs['CommentWhereUniqueInput'] | null> | null; // [CommentWhereUniqueInput]
     connectOrCreate?: Array<NexusGenInputs['CommentCreateOrConnectWithoutAuthorInput'] | null> | null; // [CommentCreateOrConnectWithoutAuthorInput]
     create?: Array<NexusGenInputs['CommentCreateWithoutAuthorInput'] | null> | null; // [CommentCreateWithoutAuthorInput]
@@ -300,7 +310,7 @@ export interface NexusGenInputs {
     postId?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
-  CommentUncheckedUpdateManyWithoutPostInput: { // input type
+  CommentUncheckedUpdateManyWithoutPostNestedInput: { // input type
     connect?: Array<NexusGenInputs['CommentWhereUniqueInput'] | null> | null; // [CommentWhereUniqueInput]
     connectOrCreate?: Array<NexusGenInputs['CommentCreateOrConnectWithoutPostInput'] | null> | null; // [CommentCreateOrConnectWithoutPostInput]
     create?: Array<NexusGenInputs['CommentCreateWithoutPostInput'] | null> | null; // [CommentCreateWithoutPostInput]
@@ -328,10 +338,10 @@ export interface NexusGenInputs {
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
   CommentUpdateInput: { // input type
-    author?: NexusGenInputs['UserUpdateOneWithoutCommentsInput'] | null; // UserUpdateOneWithoutCommentsInput
+    author?: NexusGenInputs['UserUpdateOneWithoutCommentsNestedInput'] | null; // UserUpdateOneWithoutCommentsNestedInput
     contain?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    post?: NexusGenInputs['PostUpdateOneRequiredWithoutCommentsInput'] | null; // PostUpdateOneRequiredWithoutCommentsInput
+    post?: NexusGenInputs['PostUpdateOneRequiredWithoutCommentsNestedInput'] | null; // PostUpdateOneRequiredWithoutCommentsNestedInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
   CommentUpdateManyMutationInput: { // input type
@@ -347,7 +357,7 @@ export interface NexusGenInputs {
     data: NexusGenInputs['CommentUncheckedUpdateManyWithoutCommentsInput']; // CommentUncheckedUpdateManyWithoutCommentsInput!
     where: NexusGenInputs['CommentScalarWhereInput']; // CommentScalarWhereInput!
   }
-  CommentUpdateManyWithoutAuthorInput: { // input type
+  CommentUpdateManyWithoutAuthorNestedInput: { // input type
     connect?: Array<NexusGenInputs['CommentWhereUniqueInput'] | null> | null; // [CommentWhereUniqueInput]
     connectOrCreate?: Array<NexusGenInputs['CommentCreateOrConnectWithoutAuthorInput'] | null> | null; // [CommentCreateOrConnectWithoutAuthorInput]
     create?: Array<NexusGenInputs['CommentCreateWithoutAuthorInput'] | null> | null; // [CommentCreateWithoutAuthorInput]
@@ -360,7 +370,7 @@ export interface NexusGenInputs {
     updateMany?: Array<NexusGenInputs['CommentUpdateManyWithWhereWithoutAuthorInput'] | null> | null; // [CommentUpdateManyWithWhereWithoutAuthorInput]
     upsert?: Array<NexusGenInputs['CommentUpsertWithWhereUniqueWithoutAuthorInput'] | null> | null; // [CommentUpsertWithWhereUniqueWithoutAuthorInput]
   }
-  CommentUpdateManyWithoutPostInput: { // input type
+  CommentUpdateManyWithoutPostNestedInput: { // input type
     connect?: Array<NexusGenInputs['CommentWhereUniqueInput'] | null> | null; // [CommentWhereUniqueInput]
     connectOrCreate?: Array<NexusGenInputs['CommentCreateOrConnectWithoutPostInput'] | null> | null; // [CommentCreateOrConnectWithoutPostInput]
     create?: Array<NexusGenInputs['CommentCreateWithoutPostInput'] | null> | null; // [CommentCreateWithoutPostInput]
@@ -384,11 +394,11 @@ export interface NexusGenInputs {
   CommentUpdateWithoutAuthorInput: { // input type
     contain?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    post?: NexusGenInputs['PostUpdateOneRequiredWithoutCommentsInput'] | null; // PostUpdateOneRequiredWithoutCommentsInput
+    post?: NexusGenInputs['PostUpdateOneRequiredWithoutCommentsNestedInput'] | null; // PostUpdateOneRequiredWithoutCommentsNestedInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
   CommentUpdateWithoutPostInput: { // input type
-    author?: NexusGenInputs['UserUpdateOneWithoutCommentsInput'] | null; // UserUpdateOneWithoutCommentsInput
+    author?: NexusGenInputs['UserUpdateOneWithoutCommentsNestedInput'] | null; // UserUpdateOneWithoutCommentsNestedInput
     contain?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
@@ -558,7 +568,7 @@ export interface NexusGenInputs {
     id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
     name?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    users?: NexusGenInputs['UserUncheckedUpdateManyWithoutGroupInput'] | null; // UserUncheckedUpdateManyWithoutGroupInput
+    users?: NexusGenInputs['UserUncheckedUpdateManyWithoutGroupNestedInput'] | null; // UserUncheckedUpdateManyWithoutGroupNestedInput
   }
   GroupUncheckedUpdateManyInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
@@ -576,14 +586,14 @@ export interface NexusGenInputs {
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     name?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
-    users?: NexusGenInputs['UserUpdateManyWithoutGroupInput'] | null; // UserUpdateManyWithoutGroupInput
+    users?: NexusGenInputs['UserUpdateManyWithoutGroupNestedInput'] | null; // UserUpdateManyWithoutGroupNestedInput
   }
   GroupUpdateManyMutationInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     name?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
-  GroupUpdateOneWithoutUsersInput: { // input type
+  GroupUpdateOneWithoutUsersNestedInput: { // input type
     connect?: NexusGenInputs['GroupWhereUniqueInput'] | null; // GroupWhereUniqueInput
     connectOrCreate?: NexusGenInputs['GroupCreateOrConnectWithoutUsersInput'] | null; // GroupCreateOrConnectWithoutUsersInput
     create?: NexusGenInputs['GroupUncheckedCreateWithoutUsersInput'] | null; // GroupUncheckedCreateWithoutUsersInput
@@ -1190,7 +1200,7 @@ export interface NexusGenInputs {
   }
   PostUncheckedUpdateInput: { // input type
     authorId?: NexusGenInputs['NullableIntFieldUpdateOperationsInput'] | null; // NullableIntFieldUpdateOperationsInput
-    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutPostInput'] | null; // CommentUncheckedUpdateManyWithoutPostInput
+    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutPostNestedInput'] | null; // CommentUncheckedUpdateManyWithoutPostNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
     published?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
@@ -1205,7 +1215,7 @@ export interface NexusGenInputs {
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
-  PostUncheckedUpdateManyWithoutAuthorInput: { // input type
+  PostUncheckedUpdateManyWithoutAuthorNestedInput: { // input type
     connect?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
     connectOrCreate?: Array<NexusGenInputs['PostCreateOrConnectWithoutAuthorInput'] | null> | null; // [PostCreateOrConnectWithoutAuthorInput]
     create?: Array<NexusGenInputs['PostCreateWithoutAuthorInput'] | null> | null; // [PostCreateWithoutAuthorInput]
@@ -1226,7 +1236,7 @@ export interface NexusGenInputs {
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
   PostUncheckedUpdateWithoutAuthorInput: { // input type
-    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutPostInput'] | null; // CommentUncheckedUpdateManyWithoutPostInput
+    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutPostNestedInput'] | null; // CommentUncheckedUpdateManyWithoutPostNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
     published?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
@@ -1242,8 +1252,8 @@ export interface NexusGenInputs {
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
   PostUpdateInput: { // input type
-    author?: NexusGenInputs['UserUpdateOneWithoutPostsInput'] | null; // UserUpdateOneWithoutPostsInput
-    comments?: NexusGenInputs['CommentUpdateManyWithoutPostInput'] | null; // CommentUpdateManyWithoutPostInput
+    author?: NexusGenInputs['UserUpdateOneWithoutPostsNestedInput'] | null; // UserUpdateOneWithoutPostsNestedInput
+    comments?: NexusGenInputs['CommentUpdateManyWithoutPostNestedInput'] | null; // CommentUpdateManyWithoutPostNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     published?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
@@ -1259,7 +1269,7 @@ export interface NexusGenInputs {
     data: NexusGenInputs['PostUncheckedUpdateManyWithoutPostsInput']; // PostUncheckedUpdateManyWithoutPostsInput!
     where: NexusGenInputs['PostScalarWhereInput']; // PostScalarWhereInput!
   }
-  PostUpdateManyWithoutAuthorInput: { // input type
+  PostUpdateManyWithoutAuthorNestedInput: { // input type
     connect?: Array<NexusGenInputs['PostWhereUniqueInput'] | null> | null; // [PostWhereUniqueInput]
     connectOrCreate?: Array<NexusGenInputs['PostCreateOrConnectWithoutAuthorInput'] | null> | null; // [PostCreateOrConnectWithoutAuthorInput]
     create?: Array<NexusGenInputs['PostCreateWithoutAuthorInput'] | null> | null; // [PostCreateWithoutAuthorInput]
@@ -1272,7 +1282,7 @@ export interface NexusGenInputs {
     updateMany?: Array<NexusGenInputs['PostUpdateManyWithWhereWithoutAuthorInput'] | null> | null; // [PostUpdateManyWithWhereWithoutAuthorInput]
     upsert?: Array<NexusGenInputs['PostUpsertWithWhereUniqueWithoutAuthorInput'] | null> | null; // [PostUpsertWithWhereUniqueWithoutAuthorInput]
   }
-  PostUpdateOneRequiredWithoutCommentsInput: { // input type
+  PostUpdateOneRequiredWithoutCommentsNestedInput: { // input type
     connect?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
     connectOrCreate?: NexusGenInputs['PostCreateOrConnectWithoutCommentsInput'] | null; // PostCreateOrConnectWithoutCommentsInput
     create?: NexusGenInputs['PostUncheckedCreateWithoutCommentsInput'] | null; // PostUncheckedCreateWithoutCommentsInput
@@ -1284,14 +1294,14 @@ export interface NexusGenInputs {
     where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
   }
   PostUpdateWithoutAuthorInput: { // input type
-    comments?: NexusGenInputs['CommentUpdateManyWithoutPostInput'] | null; // CommentUpdateManyWithoutPostInput
+    comments?: NexusGenInputs['CommentUpdateManyWithoutPostNestedInput'] | null; // CommentUpdateManyWithoutPostNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     published?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     updatedAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
   }
   PostUpdateWithoutCommentsInput: { // input type
-    author?: NexusGenInputs['UserUpdateOneWithoutPostsInput'] | null; // UserUpdateOneWithoutPostsInput
+    author?: NexusGenInputs['UserUpdateOneWithoutPostsNestedInput'] | null; // UserUpdateOneWithoutPostsNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     published?: NexusGenInputs['BoolFieldUpdateOperationsInput'] | null; // BoolFieldUpdateOperationsInput
     title?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
@@ -1637,14 +1647,14 @@ export interface NexusGenInputs {
     password: string; // String!
   }
   UserUncheckedUpdateInput: { // input type
-    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutAuthorInput'] | null; // CommentUncheckedUpdateManyWithoutAuthorInput
+    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutAuthorNestedInput'] | null; // CommentUncheckedUpdateManyWithoutAuthorNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     groupId?: NexusGenInputs['NullableIntFieldUpdateOperationsInput'] | null; // NullableIntFieldUpdateOperationsInput
     id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUncheckedUpdateManyWithoutAuthorInput'] | null; // PostUncheckedUpdateManyWithoutAuthorInput
+    posts?: NexusGenInputs['PostUncheckedUpdateManyWithoutAuthorNestedInput'] | null; // PostUncheckedUpdateManyWithoutAuthorNestedInput
   }
   UserUncheckedUpdateManyInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
@@ -1654,7 +1664,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
-  UserUncheckedUpdateManyWithoutGroupInput: { // input type
+  UserUncheckedUpdateManyWithoutGroupNestedInput: { // input type
     connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
     connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutGroupInput'] | null> | null; // [UserCreateOrConnectWithoutGroupInput]
     create?: Array<NexusGenInputs['UserCreateWithoutGroupInput'] | null> | null; // [UserCreateWithoutGroupInput]
@@ -1681,19 +1691,19 @@ export interface NexusGenInputs {
     id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUncheckedUpdateManyWithoutAuthorInput'] | null; // PostUncheckedUpdateManyWithoutAuthorInput
+    posts?: NexusGenInputs['PostUncheckedUpdateManyWithoutAuthorNestedInput'] | null; // PostUncheckedUpdateManyWithoutAuthorNestedInput
   }
   UserUncheckedUpdateWithoutGroupInput: { // input type
-    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutAuthorInput'] | null; // CommentUncheckedUpdateManyWithoutAuthorInput
+    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutAuthorNestedInput'] | null; // CommentUncheckedUpdateManyWithoutAuthorNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     id?: NexusGenInputs['IntFieldUpdateOperationsInput'] | null; // IntFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUncheckedUpdateManyWithoutAuthorInput'] | null; // PostUncheckedUpdateManyWithoutAuthorInput
+    posts?: NexusGenInputs['PostUncheckedUpdateManyWithoutAuthorNestedInput'] | null; // PostUncheckedUpdateManyWithoutAuthorNestedInput
   }
   UserUncheckedUpdateWithoutPostsInput: { // input type
-    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutAuthorInput'] | null; // CommentUncheckedUpdateManyWithoutAuthorInput
+    comments?: NexusGenInputs['CommentUncheckedUpdateManyWithoutAuthorNestedInput'] | null; // CommentUncheckedUpdateManyWithoutAuthorNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     groupId?: NexusGenInputs['NullableIntFieldUpdateOperationsInput'] | null; // NullableIntFieldUpdateOperationsInput
@@ -1702,13 +1712,13 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
   UserUpdateInput: { // input type
-    comments?: NexusGenInputs['CommentUpdateManyWithoutAuthorInput'] | null; // CommentUpdateManyWithoutAuthorInput
+    comments?: NexusGenInputs['CommentUpdateManyWithoutAuthorNestedInput'] | null; // CommentUpdateManyWithoutAuthorNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    group?: NexusGenInputs['GroupUpdateOneWithoutUsersInput'] | null; // GroupUpdateOneWithoutUsersInput
+    group?: NexusGenInputs['GroupUpdateOneWithoutUsersNestedInput'] | null; // GroupUpdateOneWithoutUsersNestedInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorInput'] | null; // PostUpdateManyWithoutAuthorInput
+    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorNestedInput'] | null; // PostUpdateManyWithoutAuthorNestedInput
   }
   UserUpdateManyMutationInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
@@ -1720,7 +1730,7 @@ export interface NexusGenInputs {
     data: NexusGenInputs['UserUncheckedUpdateManyWithoutUsersInput']; // UserUncheckedUpdateManyWithoutUsersInput!
     where: NexusGenInputs['UserScalarWhereInput']; // UserScalarWhereInput!
   }
-  UserUpdateManyWithoutGroupInput: { // input type
+  UserUpdateManyWithoutGroupNestedInput: { // input type
     connect?: Array<NexusGenInputs['UserWhereUniqueInput'] | null> | null; // [UserWhereUniqueInput]
     connectOrCreate?: Array<NexusGenInputs['UserCreateOrConnectWithoutGroupInput'] | null> | null; // [UserCreateOrConnectWithoutGroupInput]
     create?: Array<NexusGenInputs['UserCreateWithoutGroupInput'] | null> | null; // [UserCreateWithoutGroupInput]
@@ -1733,7 +1743,7 @@ export interface NexusGenInputs {
     updateMany?: Array<NexusGenInputs['UserUpdateManyWithWhereWithoutGroupInput'] | null> | null; // [UserUpdateManyWithWhereWithoutGroupInput]
     upsert?: Array<NexusGenInputs['UserUpsertWithWhereUniqueWithoutGroupInput'] | null> | null; // [UserUpsertWithWhereUniqueWithoutGroupInput]
   }
-  UserUpdateOneWithoutCommentsInput: { // input type
+  UserUpdateOneWithoutCommentsNestedInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutCommentsInput'] | null; // UserCreateOrConnectWithoutCommentsInput
     create?: NexusGenInputs['UserUncheckedCreateWithoutCommentsInput'] | null; // UserUncheckedCreateWithoutCommentsInput
@@ -1742,7 +1752,7 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['UserUncheckedUpdateWithoutCommentsInput'] | null; // UserUncheckedUpdateWithoutCommentsInput
     upsert?: NexusGenInputs['UserUpsertWithoutCommentsInput'] | null; // UserUpsertWithoutCommentsInput
   }
-  UserUpdateOneWithoutPostsInput: { // input type
+  UserUpdateOneWithoutPostsNestedInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     connectOrCreate?: NexusGenInputs['UserCreateOrConnectWithoutPostsInput'] | null; // UserCreateOrConnectWithoutPostsInput
     create?: NexusGenInputs['UserUncheckedCreateWithoutPostsInput'] | null; // UserUncheckedCreateWithoutPostsInput
@@ -1758,24 +1768,24 @@ export interface NexusGenInputs {
   UserUpdateWithoutCommentsInput: { // input type
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    group?: NexusGenInputs['GroupUpdateOneWithoutUsersInput'] | null; // GroupUpdateOneWithoutUsersInput
+    group?: NexusGenInputs['GroupUpdateOneWithoutUsersNestedInput'] | null; // GroupUpdateOneWithoutUsersNestedInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorInput'] | null; // PostUpdateManyWithoutAuthorInput
+    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorNestedInput'] | null; // PostUpdateManyWithoutAuthorNestedInput
   }
   UserUpdateWithoutGroupInput: { // input type
-    comments?: NexusGenInputs['CommentUpdateManyWithoutAuthorInput'] | null; // CommentUpdateManyWithoutAuthorInput
+    comments?: NexusGenInputs['CommentUpdateManyWithoutAuthorNestedInput'] | null; // CommentUpdateManyWithoutAuthorNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorInput'] | null; // PostUpdateManyWithoutAuthorInput
+    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorNestedInput'] | null; // PostUpdateManyWithoutAuthorNestedInput
   }
   UserUpdateWithoutPostsInput: { // input type
-    comments?: NexusGenInputs['CommentUpdateManyWithoutAuthorInput'] | null; // CommentUpdateManyWithoutAuthorInput
+    comments?: NexusGenInputs['CommentUpdateManyWithoutAuthorNestedInput'] | null; // CommentUpdateManyWithoutAuthorNestedInput
     createdAt?: NexusGenInputs['DateTimeFieldUpdateOperationsInput'] | null; // DateTimeFieldUpdateOperationsInput
     email?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
-    group?: NexusGenInputs['GroupUpdateOneWithoutUsersInput'] | null; // GroupUpdateOneWithoutUsersInput
+    group?: NexusGenInputs['GroupUpdateOneWithoutUsersNestedInput'] | null; // GroupUpdateOneWithoutUsersNestedInput
     name?: NexusGenInputs['NullableStringFieldUpdateOperationsInput'] | null; // NullableStringFieldUpdateOperationsInput
     password?: NexusGenInputs['StringFieldUpdateOperationsInput'] | null; // StringFieldUpdateOperationsInput
   }
@@ -1821,6 +1831,7 @@ export interface NexusGenEnums {
   QueryMode: "default" | "insensitive"
   Rols: "ADMIN" | "USER"
   SortOrder: "asc" | "desc"
+  TransactionIsolationLevel: "ReadCommitted" | "ReadUncommitted" | "RepeatableRead" | "Serializable"
   UserScalarFieldEnum: "createdAt" | "email" | "groupId" | "id" | "name" | "password"
 }
 
@@ -1831,6 +1842,7 @@ export interface NexusGenScalars {
   Boolean: boolean
   ID: string
   BigInt: any
+  Bytes: any
   DateTime: any
   Decimal: any
   Json: any

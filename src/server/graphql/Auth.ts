@@ -3,7 +3,6 @@ import { compare, hash } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
 import { JWT_SECRET } from '../utils'
 import cookie from 'cookie'
-import { UserInputError } from 'apollo-server-micro'
 
 export const AuthQueries = extendType({
   type: 'Query',
@@ -68,11 +67,11 @@ export const AuthMutations = extendType({
           },
         })
         if (!user) {
-          throw new UserInputError(`No user found for email: ${email}`)
+          throw new Error(`No user found for email: ${email}`)
         }
         const passwordValid = await compare(password, user.password)
         if (!passwordValid) {
-          throw new UserInputError('Invalid password')
+          throw new Error('Invalid password')
         }
         ctx.res.setHeader(
           'Set-Cookie',
@@ -120,7 +119,7 @@ export const AuthMutations = extendType({
             return false
           }
           const validPass = await compare(currentPassword, user.password)
-          if (!validPass) throw new UserInputError('Incorrect Current Password, Error: 1015')
+          if (!validPass) throw new Error('Incorrect Current Password, Error: 1015')
           const hashPassword = await hash(password, 10)
 
           await ctx.prisma.user.update({

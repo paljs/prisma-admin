@@ -18,6 +18,6 @@ if (process.env.NODE_ENV === 'production') {
   db = global.db
 }
 
-db.$executeRaw('PRAGMA foreign_keys = ON')
+db.$executeRaw`PRAGMA foreign_keys = ON'`
 
 export default db

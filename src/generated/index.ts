@@ -13,13 +13,18 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** BigInt custom scalar type */
+  /**
+   * The `BigInt` scalar type represents non-fractional signed whole numeric values.
+   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+   */
   BigInt: any;
-  /** Date custom scalar type */
+  /** The `Byte` scalar type represents byte value as a Buffer */
+  Bytes: any;
+  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   DateTime: any;
-  /** Decimal custom scalar type */
+  /** An arbitrary-precision Decimal type */
   Decimal: any;
-  /** Json custom scalar type */
+  /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   Json: any;
 };
 
@@ -400,7 +405,7 @@ export type CommentUncheckedUpdateManyInput = {
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
-export type CommentUncheckedUpdateManyWithoutAuthorInput = {
+export type CommentUncheckedUpdateManyWithoutAuthorNestedInput = {
   connect?: InputMaybe<Array<InputMaybe<CommentWhereUniqueInput>>>;
   connectOrCreate?: InputMaybe<Array<InputMaybe<CommentCreateOrConnectWithoutAuthorInput>>>;
   create?: InputMaybe<Array<InputMaybe<CommentCreateWithoutAuthorInput>>>;
@@ -422,7 +427,7 @@ export type CommentUncheckedUpdateManyWithoutCommentsInput = {
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
-export type CommentUncheckedUpdateManyWithoutPostInput = {
+export type CommentUncheckedUpdateManyWithoutPostNestedInput = {
   connect?: InputMaybe<Array<InputMaybe<CommentWhereUniqueInput>>>;
   connectOrCreate?: InputMaybe<Array<InputMaybe<CommentCreateOrConnectWithoutPostInput>>>;
   create?: InputMaybe<Array<InputMaybe<CommentCreateWithoutPostInput>>>;
@@ -453,10 +458,10 @@ export type CommentUncheckedUpdateWithoutPostInput = {
 };
 
 export type CommentUpdateInput = {
-  author?: InputMaybe<UserUpdateOneWithoutCommentsInput>;
+  author?: InputMaybe<UserUpdateOneWithoutCommentsNestedInput>;
   contain?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  post?: InputMaybe<PostUpdateOneRequiredWithoutCommentsInput>;
+  post?: InputMaybe<PostUpdateOneRequiredWithoutCommentsNestedInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
@@ -476,7 +481,7 @@ export type CommentUpdateManyWithWhereWithoutPostInput = {
   where: CommentScalarWhereInput;
 };
 
-export type CommentUpdateManyWithoutAuthorInput = {
+export type CommentUpdateManyWithoutAuthorNestedInput = {
   connect?: InputMaybe<Array<InputMaybe<CommentWhereUniqueInput>>>;
   connectOrCreate?: InputMaybe<Array<InputMaybe<CommentCreateOrConnectWithoutAuthorInput>>>;
   create?: InputMaybe<Array<InputMaybe<CommentCreateWithoutAuthorInput>>>;
@@ -490,7 +495,7 @@ export type CommentUpdateManyWithoutAuthorInput = {
   upsert?: InputMaybe<Array<InputMaybe<CommentUpsertWithWhereUniqueWithoutAuthorInput>>>;
 };
 
-export type CommentUpdateManyWithoutPostInput = {
+export type CommentUpdateManyWithoutPostNestedInput = {
   connect?: InputMaybe<Array<InputMaybe<CommentWhereUniqueInput>>>;
   connectOrCreate?: InputMaybe<Array<InputMaybe<CommentCreateOrConnectWithoutPostInput>>>;
   create?: InputMaybe<Array<InputMaybe<CommentCreateWithoutPostInput>>>;
@@ -517,12 +522,12 @@ export type CommentUpdateWithWhereUniqueWithoutPostInput = {
 export type CommentUpdateWithoutAuthorInput = {
   contain?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  post?: InputMaybe<PostUpdateOneRequiredWithoutCommentsInput>;
+  post?: InputMaybe<PostUpdateOneRequiredWithoutCommentsNestedInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
 export type CommentUpdateWithoutPostInput = {
-  author?: InputMaybe<UserUpdateOneWithoutCommentsInput>;
+  author?: InputMaybe<UserUpdateOneWithoutCommentsNestedInput>;
   contain?: InputMaybe<StringFieldUpdateOperationsInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
@@ -813,7 +818,7 @@ export type GroupUncheckedUpdateInput = {
   id?: InputMaybe<IntFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  users?: InputMaybe<UserUncheckedUpdateManyWithoutGroupInput>;
+  users?: InputMaybe<UserUncheckedUpdateManyWithoutGroupNestedInput>;
 };
 
 export type GroupUncheckedUpdateManyInput = {
@@ -834,7 +839,7 @@ export type GroupUpdateInput = {
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   name?: InputMaybe<StringFieldUpdateOperationsInput>;
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
-  users?: InputMaybe<UserUpdateManyWithoutGroupInput>;
+  users?: InputMaybe<UserUpdateManyWithoutGroupNestedInput>;
 };
 
 export type GroupUpdateManyMutationInput = {
@@ -843,7 +848,7 @@ export type GroupUpdateManyMutationInput = {
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
-export type GroupUpdateOneWithoutUsersInput = {
+export type GroupUpdateOneWithoutUsersNestedInput = {
   connect?: InputMaybe<GroupWhereUniqueInput>;
   connectOrCreate?: InputMaybe<GroupCreateOrConnectWithoutUsersInput>;
   create?: InputMaybe<GroupUncheckedCreateWithoutUsersInput>;
@@ -1924,7 +1929,7 @@ export type PostUncheckedCreateWithoutCommentsInput = {
 
 export type PostUncheckedUpdateInput = {
   authorId?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
-  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutPostInput>;
+  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutPostNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<IntFieldUpdateOperationsInput>;
   published?: InputMaybe<BoolFieldUpdateOperationsInput>;
@@ -1941,7 +1946,7 @@ export type PostUncheckedUpdateManyInput = {
   updatedAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
 };
 
-export type PostUncheckedUpdateManyWithoutAuthorInput = {
+export type PostUncheckedUpdateManyWithoutAuthorNestedInput = {
   connect?: InputMaybe<Array<InputMaybe<PostWhereUniqueInput>>>;
   connectOrCreate?: InputMaybe<Array<InputMaybe<PostCreateOrConnectWithoutAuthorInput>>>;
   create?: InputMaybe<Array<InputMaybe<PostCreateWithoutAuthorInput>>>;
@@ -1964,7 +1969,7 @@ export type PostUncheckedUpdateManyWithoutPostsInput = {
 };
 
 export type PostUncheckedUpdateWithoutAuthorInput = {
-  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutPostInput>;
+  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutPostNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   id?: InputMaybe<IntFieldUpdateOperationsInput>;
   published?: InputMaybe<BoolFieldUpdateOperationsInput>;
@@ -1982,8 +1987,8 @@ export type PostUncheckedUpdateWithoutCommentsInput = {
 };
 
 export type PostUpdateInput = {
-  author?: InputMaybe<UserUpdateOneWithoutPostsInput>;
-  comments?: InputMaybe<CommentUpdateManyWithoutPostInput>;
+  author?: InputMaybe<UserUpdateOneWithoutPostsNestedInput>;
+  comments?: InputMaybe<CommentUpdateManyWithoutPostNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   published?: InputMaybe<BoolFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -2002,7 +2007,7 @@ export type PostUpdateManyWithWhereWithoutAuthorInput = {
   where: PostScalarWhereInput;
 };
 
-export type PostUpdateManyWithoutAuthorInput = {
+export type PostUpdateManyWithoutAuthorNestedInput = {
   connect?: InputMaybe<Array<InputMaybe<PostWhereUniqueInput>>>;
   connectOrCreate?: InputMaybe<Array<InputMaybe<PostCreateOrConnectWithoutAuthorInput>>>;
   create?: InputMaybe<Array<InputMaybe<PostCreateWithoutAuthorInput>>>;
@@ -2016,7 +2021,7 @@ export type PostUpdateManyWithoutAuthorInput = {
   upsert?: InputMaybe<Array<InputMaybe<PostUpsertWithWhereUniqueWithoutAuthorInput>>>;
 };
 
-export type PostUpdateOneRequiredWithoutCommentsInput = {
+export type PostUpdateOneRequiredWithoutCommentsNestedInput = {
   connect?: InputMaybe<PostWhereUniqueInput>;
   connectOrCreate?: InputMaybe<PostCreateOrConnectWithoutCommentsInput>;
   create?: InputMaybe<PostUncheckedCreateWithoutCommentsInput>;
@@ -2030,7 +2035,7 @@ export type PostUpdateWithWhereUniqueWithoutAuthorInput = {
 };
 
 export type PostUpdateWithoutAuthorInput = {
-  comments?: InputMaybe<CommentUpdateManyWithoutPostInput>;
+  comments?: InputMaybe<CommentUpdateManyWithoutPostNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   published?: InputMaybe<BoolFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -2038,7 +2043,7 @@ export type PostUpdateWithoutAuthorInput = {
 };
 
 export type PostUpdateWithoutCommentsInput = {
-  author?: InputMaybe<UserUpdateOneWithoutPostsInput>;
+  author?: InputMaybe<UserUpdateOneWithoutPostsNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   published?: InputMaybe<BoolFieldUpdateOperationsInput>;
   title?: InputMaybe<StringFieldUpdateOperationsInput>;
@@ -2424,6 +2429,13 @@ export type StringWithAggregatesFilter = {
   startsWith?: InputMaybe<Scalars['String']>;
 };
 
+export enum TransactionIsolationLevel {
+  ReadCommitted = 'ReadCommitted',
+  ReadUncommitted = 'ReadUncommitted',
+  RepeatableRead = 'RepeatableRead',
+  Serializable = 'Serializable'
+}
+
 export type UpdateFieldInput = {
   create?: InputMaybe<Scalars['Boolean']>;
   editor?: InputMaybe<Scalars['Boolean']>;
@@ -2791,14 +2803,14 @@ export type UserUncheckedCreateWithoutPostsInput = {
 };
 
 export type UserUncheckedUpdateInput = {
-  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutAuthorInput>;
+  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutAuthorNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
   groupId?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
   id?: InputMaybe<IntFieldUpdateOperationsInput>;
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
-  posts?: InputMaybe<PostUncheckedUpdateManyWithoutAuthorInput>;
+  posts?: InputMaybe<PostUncheckedUpdateManyWithoutAuthorNestedInput>;
 };
 
 export type UserUncheckedUpdateManyInput = {
@@ -2810,7 +2822,7 @@ export type UserUncheckedUpdateManyInput = {
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
 
-export type UserUncheckedUpdateManyWithoutGroupInput = {
+export type UserUncheckedUpdateManyWithoutGroupNestedInput = {
   connect?: InputMaybe<Array<InputMaybe<UserWhereUniqueInput>>>;
   connectOrCreate?: InputMaybe<Array<InputMaybe<UserCreateOrConnectWithoutGroupInput>>>;
   create?: InputMaybe<Array<InputMaybe<UserCreateWithoutGroupInput>>>;
@@ -2839,21 +2851,21 @@ export type UserUncheckedUpdateWithoutCommentsInput = {
   id?: InputMaybe<IntFieldUpdateOperationsInput>;
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
-  posts?: InputMaybe<PostUncheckedUpdateManyWithoutAuthorInput>;
+  posts?: InputMaybe<PostUncheckedUpdateManyWithoutAuthorNestedInput>;
 };
 
 export type UserUncheckedUpdateWithoutGroupInput = {
-  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutAuthorInput>;
+  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutAuthorNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
   id?: InputMaybe<IntFieldUpdateOperationsInput>;
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
-  posts?: InputMaybe<PostUncheckedUpdateManyWithoutAuthorInput>;
+  posts?: InputMaybe<PostUncheckedUpdateManyWithoutAuthorNestedInput>;
 };
 
 export type UserUncheckedUpdateWithoutPostsInput = {
-  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutAuthorInput>;
+  comments?: InputMaybe<CommentUncheckedUpdateManyWithoutAuthorNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
   groupId?: InputMaybe<NullableIntFieldUpdateOperationsInput>;
@@ -2863,13 +2875,13 @@ export type UserUncheckedUpdateWithoutPostsInput = {
 };
 
 export type UserUpdateInput = {
-  comments?: InputMaybe<CommentUpdateManyWithoutAuthorInput>;
+  comments?: InputMaybe<CommentUpdateManyWithoutAuthorNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
-  group?: InputMaybe<GroupUpdateOneWithoutUsersInput>;
+  group?: InputMaybe<GroupUpdateOneWithoutUsersNestedInput>;
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
-  posts?: InputMaybe<PostUpdateManyWithoutAuthorInput>;
+  posts?: InputMaybe<PostUpdateManyWithoutAuthorNestedInput>;
 };
 
 export type UserUpdateManyMutationInput = {
@@ -2884,7 +2896,7 @@ export type UserUpdateManyWithWhereWithoutGroupInput = {
   where: UserScalarWhereInput;
 };
 
-export type UserUpdateManyWithoutGroupInput = {
+export type UserUpdateManyWithoutGroupNestedInput = {
   connect?: InputMaybe<Array<InputMaybe<UserWhereUniqueInput>>>;
   connectOrCreate?: InputMaybe<Array<InputMaybe<UserCreateOrConnectWithoutGroupInput>>>;
   create?: InputMaybe<Array<InputMaybe<UserCreateWithoutGroupInput>>>;
@@ -2898,7 +2910,7 @@ export type UserUpdateManyWithoutGroupInput = {
   upsert?: InputMaybe<Array<InputMaybe<UserUpsertWithWhereUniqueWithoutGroupInput>>>;
 };
 
-export type UserUpdateOneWithoutCommentsInput = {
+export type UserUpdateOneWithoutCommentsNestedInput = {
   connect?: InputMaybe<UserWhereUniqueInput>;
   connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutCommentsInput>;
   create?: InputMaybe<UserUncheckedCreateWithoutCommentsInput>;
@@ -2908,7 +2920,7 @@ export type UserUpdateOneWithoutCommentsInput = {
   upsert?: InputMaybe<UserUpsertWithoutCommentsInput>;
 };
 
-export type UserUpdateOneWithoutPostsInput = {
+export type UserUpdateOneWithoutPostsNestedInput = {
   connect?: InputMaybe<UserWhereUniqueInput>;
   connectOrCreate?: InputMaybe<UserCreateOrConnectWithoutPostsInput>;
   create?: InputMaybe<UserUncheckedCreateWithoutPostsInput>;
@@ -2926,26 +2938,26 @@ export type UserUpdateWithWhereUniqueWithoutGroupInput = {
 export type UserUpdateWithoutCommentsInput = {
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
-  group?: InputMaybe<GroupUpdateOneWithoutUsersInput>;
+  group?: InputMaybe<GroupUpdateOneWithoutUsersNestedInput>;
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
-  posts?: InputMaybe<PostUpdateManyWithoutAuthorInput>;
+  posts?: InputMaybe<PostUpdateManyWithoutAuthorNestedInput>;
 };
 
 export type UserUpdateWithoutGroupInput = {
-  comments?: InputMaybe<CommentUpdateManyWithoutAuthorInput>;
+  comments?: InputMaybe<CommentUpdateManyWithoutAuthorNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
-  posts?: InputMaybe<PostUpdateManyWithoutAuthorInput>;
+  posts?: InputMaybe<PostUpdateManyWithoutAuthorNestedInput>;
 };
 
 export type UserUpdateWithoutPostsInput = {
-  comments?: InputMaybe<CommentUpdateManyWithoutAuthorInput>;
+  comments?: InputMaybe<CommentUpdateManyWithoutAuthorNestedInput>;
   createdAt?: InputMaybe<DateTimeFieldUpdateOperationsInput>;
   email?: InputMaybe<StringFieldUpdateOperationsInput>;
-  group?: InputMaybe<GroupUpdateOneWithoutUsersInput>;
+  group?: InputMaybe<GroupUpdateOneWithoutUsersNestedInput>;
   name?: InputMaybe<NullableStringFieldUpdateOperationsInput>;
   password?: InputMaybe<StringFieldUpdateOperationsInput>;
 };
